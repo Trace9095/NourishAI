@@ -25,7 +25,7 @@ NourishAI is an AI-powered nutrition tracking iOS app + marketing website. It ta
 ```
 NourishAI-main/
 ├── ios/                    # Xcode project (create via Xcode UI)
-├── website/                # Next.js 16 marketing site + API (Vercel root dir)
+├── backend/                # Next.js 16 marketing site + API (Vercel root dir)
 ├── CLAUDE.md               # This file
 ├── _LLM_HANDOFF_PROMPT.md  # Full handoff context
 ├── TODO.md                 # Running feature backlog
@@ -105,7 +105,7 @@ NEXT_PUBLIC_APP_URL=https://...  # Canonical URL
 8. **No backdrop-blur on fixed/sticky.** Use fully opaque backgrounds.
 9. **44px touch targets** on all tappable elements.
 10. **quality={90}** on `<Image>` components. Never on `<ImageIcon>` or `<ImagePlus>`.
-11. **Vercel root dir:** `website/` — same pattern as RT/WWBG `backend/`.
+11. **Vercel root dir:** `backend/` — same pattern as RT/WWBG `backend/`.
 12. **Commit format:** `feat:`, `fix:`, `chore:` + `Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>`
 
 ## Code Reuse from LiftLabPro

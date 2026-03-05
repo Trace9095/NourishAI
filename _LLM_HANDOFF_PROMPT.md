@@ -34,7 +34,7 @@ iOS App (SwiftUI)                   Marketing Website (Next.js 16)
 ```
 NourishAI-main/
 ├── ios/                    # Xcode project
-├── website/                # Next.js 16 (Vercel root dir = website/)
+├── backend/                # Next.js 16 (Vercel root dir = backend/)
 ├── CLAUDE.md               # Project instructions
 ├── TODO.md                 # Feature backlog (V1-V6)
 ├── PHASES.md               # Phase tracking
@@ -72,7 +72,7 @@ Source: `CLIENT-SITES/LiftLabPro-main/`
 3. Create Swift files through Xcode (pbxproj needs 4 entries per file).
 4. Swift 6 = MainActor default. Use `nonisolated` for background.
 5. Website follows Gold Standard (36 rules). No backdrop-blur on fixed elements.
-6. Vercel root dir: `website/`
+6. Vercel root dir: `backend/`
 7. CORS in `lib/security.ts`, security headers in `next.config.ts`.
 
 ## 8. Current Status
