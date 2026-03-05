@@ -5,7 +5,7 @@
 ---
 
 ## Phase 0: Infrastructure & Documentation
-**Status: IN PROGRESS**
+**Status: COMPLETE**
 **Started:** Session 68 (March 2026)
 
 | # | Task | Status |
@@ -22,12 +22,12 @@
 | 0.10 | Create Vercel project + env vars | DONE |
 | 0.11 | Create SVG logo + brand assets | DONE |
 | 0.12 | Update master CLAUDE.md + MEMORY.md | DONE |
-| 0.13 | Initial commit + push | PENDING |
+| 0.13 | Initial commit + push | DONE |
 
 ---
 
 ## Phase 1: iOS Core (Models + Services)
-**Status: NOT STARTED**
+**Status: IN PROGRESS**
 **Depends on:** Phase 0 complete, Xcode project created (Trace in Xcode)
 
 | # | Task | Status |
@@ -58,17 +58,17 @@
 ---
 
 ## Phase 3: Website + API Routes + Database
-**Status: NOT STARTED**
+**Status: IN PROGRESS**
 **Can run in parallel with:** Phase 1-2 (independent codebase)
 
 | # | Task | Status |
 |---|------|--------|
-| 3.1 | Set up Neon PostgreSQL | PENDING |
-| 3.2 | Set up Drizzle ORM + schema | PENDING |
-| 3.3 | Build landing page (frontend-design skill) | PENDING |
-| 3.4 | Build API routes (6 endpoints) | PENDING |
-| 3.5 | Gold Standard compliance (36 rules) | PENDING |
-| 3.6 | Legal pages + cookie consent | PENDING |
+| 3.1 | Set up Neon PostgreSQL | DONE |
+| 3.2 | Set up Drizzle ORM + schema | DONE |
+| 3.3 | Build landing page (frontend-design skill) | DONE |
+| 3.4 | Build API routes (7 endpoints) | DONE |
+| 3.5 | Gold Standard compliance (36 rules) | DONE |
+| 3.6 | Legal pages + cookie consent | IN PROGRESS |
 | 3.7 | Blog engine + seed articles | PENDING |
 | 3.8 | Deploy to Vercel + domain | PENDING |
 
