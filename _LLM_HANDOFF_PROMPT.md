@@ -79,8 +79,8 @@ Source: `CLIENT-SITES/LiftLabPro-main/`
 
 - **Phase 0:** Infrastructure setup (Session 68)
 - **GitHub:** https://github.com/Trace9095/NourishAI
-- **Vercel:** nourish-ai (to be created)
-- **Domain:** TBD (nourishai.app/.co/.com — Trace to purchase)
+- **Vercel:** nourish-ai
+- **Domain:** nourishhealthai.com
 
 ## 9. Development Phases
 

@@ -1,7 +1,7 @@
 # AI Crawler Metadata — NourishAI
 
 User-agent: *
-Sitemap: https://nourishai.app/sitemap.xml
+Sitemap: https://nourishhealthai.com/sitemap.xml
 AI-Content-Metadata: /llms.txt
 
 # Allowed paths

@@ -19,7 +19,7 @@
 | 0.7 | Write APPLE_SETUP_GUIDE.md | DONE |
 | 0.8 | Write _LLM_HANDOFF_PROMPT.md | DONE |
 | 0.9 | Scaffold Next.js 16 website | DONE |
-| 0.10 | Create Vercel project + env vars | IN PROGRESS |
+| 0.10 | Create Vercel project + env vars | DONE |
 | 0.11 | Create SVG logo + brand assets | DONE |
 | 0.12 | Update master CLAUDE.md + MEMORY.md | DONE |
 | 0.13 | Initial commit + push | PENDING |

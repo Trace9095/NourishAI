@@ -90,7 +90,7 @@ cd website && npx next build
 ANTHROPIC_API_KEY=sk-ant-...     # Claude API (server-side only)
 RESEND_API_KEY=re_...            # Email sending
 DATABASE_URL=postgresql://...    # Neon (auto-set by integration)
-NEXT_PUBLIC_APP_URL=https://...  # Canonical URL
+NEXT_PUBLIC_APP_URL=https://nourishhealthai.com  # Canonical URL
 ```
 
 ## Critical Rules
