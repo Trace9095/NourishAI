@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" fill="none">
+  <defs>
+    <linearGradient id="wGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34C759"/>
+      <stop offset="100%" stop-color="#2AA44A"/>
+    </linearGradient>
+  </defs>
+  <!-- Icon mark (compact leaf) -->
+  <g transform="translate(0, 4)">
+    <circle cx="36" cy="36" r="34" fill="#0A0A14"/>
+    <path d="M36 10c-12 6-22 20-22 34 0 7.5 3.2 13.6 9 17.6 3.2-10 8.4-18 13-23.6 4.6 5.6 9.8 13.6 13 23.6 5.8-4 9-10.1 9-17.6 0-14-10-28-22-34z" fill="url(#wGrad)" opacity="0.9"/>
+    <circle cx="36" cy="56" r="2.8" fill="#FF9500"/>
+  </g>
+  <!-- Wordmark -->
+  <text x="82" y="54" font-family="system-ui, -apple-system, 'SF Pro Display', 'Helvetica Neue', sans-serif" font-size="36" font-weight="700" fill="white" letter-spacing="-0.5">
+    Nourish<tspan fill="url(#wGrad)">AI</tspan>
+  </text>
+</svg>

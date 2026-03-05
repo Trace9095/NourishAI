@@ -1,0 +1,33 @@
+# NourishAI
+
+> AI-powered nutrition tracking for fitness-focused people
+
+NourishAI helps gym-goers, macro trackers, and athletes track their nutrition effortlessly using AI-powered food photo analysis.
+
+## Features
+
+- Snap a photo of your food for instant macro breakdown (calories, protein, carbs, fat)
+- Barcode scanner for packaged foods
+- Manual food entry
+- Daily macro tracking dashboard with ring progress views
+- Apple HealthKit integration
+- Apple Watch companion app
+- iOS Widgets
+- Water intake tracking
+- Weight and progress trends
+- AI-powered food analysis via Claude vision
+
+## Pricing
+
+- Free: 1 AI scan per week, manual entry, barcode scanner, HealthKit
+- Pro ($7.99/mo or $39.99/yr): Unlimited AI scans, saved meals, analytics, Watch app, water tracking
+
+## Links
+
+- Website: https://nourishai.app
+- App Store: (coming soon)
+
+## Contact
+
+- Email: CEO@epicai.ai
+- Built by Epic AI (epicai.ai)
