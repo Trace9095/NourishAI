@@ -4,122 +4,170 @@
 > **Bundle ID:** com.epicai.nourishai | **App Group:** group.com.epicai.nourishai
 > **Vercel Slug:** `nourish-ai` | **Team:** `team_pGqkBUxWUXiBoZoKYPgweHDl`
 > **Repo:** Trace9095/NourishAI | **Branch:** main
+> **Domain:** nourishhealthai.com | **Project #:** 23
 
 ## What This Is
 
-NourishAI is an AI-powered nutrition tracking iOS app + marketing website. It targets fitness-focused people (gym-goers, macro trackers, athletes) and monetizes via freemium subscription.
+NourishAI is an AI-powered nutrition tracking iOS app + marketing website. Targets fitness-focused people (gym-goers, macro trackers, athletes). Freemium subscription model.
 
 ## Architecture
 
 - **iOS App** (Swift 6 / SwiftUI / iOS 17+) — local-first with SwiftData
-- **Marketing Website + Backend API** (Next.js 16 / Tailwind v4 / Vercel) — serves as the iOS app's server
-- **Database** (Neon PostgreSQL via Vercel) — user accounts, scan tracking, subscription verification
+- **Marketing Website + Backend API** (Next.js 16 / Tailwind v4 / Vercel) — serves as iOS app's server + admin dashboard
+- **Database** (Neon PostgreSQL via Vercel) — user accounts, scan tracking, admin users, blog, contact
 - **AI** — Claude Haiku vision via server proxy (NO embedded API keys in iOS)
 
 ### Data Split
 - **iOS (SwiftData):** UserProfile, DailyNutrition, FoodEntry, SavedFood, DailyWaterIntake
-- **Server (Neon):** users, scan_usage tables (rate limiting, subscription status, AI logs)
+- **Server (Neon PostgreSQL, 5 tables):** users, scan_usage, admin_users, blog_posts, contact_submissions
 
-## Repo Structure
+## File Inventory
 
-```
-NourishAI-main/
-├── ios/                    # Xcode project (create via Xcode UI)
-├── backend/                # Next.js 16 marketing site + API (Vercel root dir)
-├── CLAUDE.md               # This file
-├── _LLM_HANDOFF_PROMPT.md  # Full handoff context
-├── TODO.md                 # Running feature backlog
-├── PHASES.md               # Phase breakdown with status
-└── APPLE_SETUP_GUIDE.md    # App Store Connect subscription setup
-```
+### Backend (Next.js 16 — Vercel root dir: `backend/`)
+
+**Pages (12):**
+- `app/page.tsx` — Landing page (hero, features, how-it-works, pricing, testimonials, FAQ, download CTA)
+- `app/features/page.tsx` — Detailed features with comparison table
+- `app/about/page.tsx` — About page with story, values, Epic AI
+- `app/blog/page.tsx` — Blog index with category filters
+- `app/blog/[slug]/page.tsx` — Blog post pages (SSG via generateStaticParams)
+- `app/contact/page.tsx` — Contact page with form
+- `app/brand/page.tsx` — Brand assets, colors (click-to-copy), typography, referral links (noindex)
+- `app/privacy/page.tsx` — Privacy policy
+- `app/terms/page.tsx` — Terms of service
+- `app/accessibility/page.tsx` — Accessibility statement
+- `app/not-found.tsx` — Branded 404 with gradient orbs, quick nav
+- `app/admin/page.tsx` — Admin login (email + password)
+- `app/admin/dashboard/page.tsx` — Full admin dashboard (12 KPIs, charts, tables, auto-refresh)
+
+**API Routes (11):**
+- `api/analyze-food/route.ts` — Claude Haiku vision proxy (photo → macros)
+- `api/analyze-description/route.ts` — Text-based food analysis
+- `api/lookup-barcode/route.ts` — OpenFoodFacts API (free)
+- `api/register-device/route.ts` — Device UUID registration
+- `api/scan-count/route.ts` — Usage tracking / remaining scans
+- `api/verify-subscription/route.ts` — StoreKit receipt validation
+- `api/contact/route.ts` — Contact form (Resend email)
+- `api/admin/login/route.ts` — Admin login (PBKDF2 password verification)
+- `api/admin/logout/route.ts` — Session cookie destruction
+- `api/admin/setup/route.ts` — One-time admin seed (protected by ADMIN_SETUP_TOKEN)
+- `api/admin/stats/route.ts` — Dashboard data (users, scans, revenue, costs)
+
+**Components (15):**
+AnimateIn, BrandContent, ContactForm, CookieConsentBanner, DownloadCTA, FAQ, Features, Footer, Header, Hero, HowItWorks, MacroRings, Pricing, Stats, Testimonials
+
+**Lib (6 files):**
+- `lib/admin-auth.ts` — PBKDF2 hashing, HMAC sessions, HttpOnly cookies
+- `lib/blog.ts` — 5 seed articles with full HTML content
+- `lib/cookie-consent.ts` — 3-tier consent (necessary/analytics/marketing)
+- `lib/security.ts` — CORS utilities
+- `lib/db/index.ts` — Neon + Drizzle lazy singleton connection
+- `lib/db/schema.ts` — 5 tables (users, scan_usage, admin_users, blog_posts, contact_submissions)
+
+**Other:** `middleware.ts` (admin auth redirect + llms.txt Link header), `app/opengraph-image.tsx`, `app/robots.ts`, `app/sitemap.ts`, `app/admin/layout.tsx`, `app/blog/layout.tsx`
+
+### iOS (19 Swift files — awaiting Xcode project)
+
+**Root (3):** NourishAIApp.swift, ContentView.swift, Constants.swift
+**Models (3):** UserProfile.swift, NutritionModels.swift, NutritionCalculator.swift
+**Services (2):** NourishAPIManager.swift, HealthKitManager.swift
+**Components (1):** MacroRingView.swift
+**Views/Dashboard (1):** DashboardView.swift
+**Views/FoodLog (5):** FoodLogView.swift, AIFoodCameraView.swift, AIFoodChatView.swift, ManualEntryView.swift, BarcodeScanView.swift
+**Views/Onboarding (1):** OnboardingContainerView.swift
+**Views/Progress (1):** ProgressView.swift
+**Views/Settings (1):** SettingsView.swift
+**Views/Subscription (1):** SubscriptionView.swift
+
+**Missing:** MealRow.swift (referenced by FoodLogView — simple food entry row component)
 
 ## Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
-| iOS Language | Swift 6 (strict concurrency, MainActor default) |
-| iOS UI | SwiftUI, iOS 17+ |
-| iOS Storage | SwiftData (local-first, offline-capable) |
-| iOS Health | HealthKit (nutrition read/write, weight, steps) |
-| iOS Payments | StoreKit 2 (Free + Pro subscription) |
-| iOS Watch | WatchKit + WatchConnectivity (watchOS 10+) |
-| Web Framework | Next.js 16 App Router |
-| Web Styling | Tailwind CSS v4 + shadcn/ui |
-| Web ORM | Drizzle ORM |
-| Database | Neon PostgreSQL (via Vercel Integration) |
-| AI | Anthropic Claude API (Haiku for scans, server-side only) |
+| iOS | Swift 6, SwiftUI, SwiftData, HealthKit, StoreKit 2, iOS 17+ |
+| Web | Next.js 16 App Router, Tailwind CSS v4, Drizzle ORM |
+| DB | Neon PostgreSQL (5 tables) |
+| AI | Claude Haiku (vision) via server proxy |
+| Auth | PBKDF2 + HMAC sessions (admin), device UUID (iOS) |
 | Email | Resend API |
-| Deployment | Vercel (auto-deploy on push to main) |
+| Deploy | Vercel (auto-deploy on push to main) |
 
 ## Subscription Model
 
-| Tier | Price | AI Scans | Key Features |
-|------|-------|----------|-------------|
-| Free | $0 | 1/week | Manual entry, barcode, HealthKit, basic dashboard |
-| Pro | $7.99/mo or $39.99/yr | Unlimited | + AI photo scans, saved meals, analytics, watch app, water tracking |
+| Tier | Price | AI Scans |
+|------|-------|----------|
+| Free | $0 | 1/week |
+| Pro | $7.99/mo or $39.99/yr | Unlimited (30s cooldown) |
 
-**Product IDs:**
-- `com.nourishai.subscription.pro.monthly`
-- `com.nourishai.subscription.pro.annual`
+**Product IDs:** `com.nourishai.subscription.pro.monthly`, `com.nourishai.subscription.pro.annual`
 
 ## Brand
 
-**Colors:**
-- Primary: `#34C759` (Apple Health green)
-- Accent: `#FF9500` (warm orange)
-- Dark: `#0A0A14` | Card: `#12121A`
-- Protein: `#FF6B6B` | Carbs: `#4ECDC4` | Fat: `#FFE66D` | Calories: `#FF9500` | Water: `#5AC8FA`
+- Primary: `#34C759` (green) | Accent: `#FF9500` (orange) | Dark: `#0A0A14` | Card: `#12121A`
+- Macros: Protein `#FF6B6B` | Carbs `#4ECDC4` | Fat `#FFE66D` | Calories `#FF9500` | Water `#5AC8FA`
+- Typography: SF Pro (iOS), Inter body + Outfit headlines (web)
+- Epic AI product — CAN show "Built by Epic AI" branding
 
-**Typography:** SF Pro (iOS system). Website: Inter (body) + Outfit (headlines).
+## Environment Variables (Vercel)
 
-**Branding:** NourishAI is an Epic AI product. CAN show "Built by Epic AI" in footer/about.
+| Variable | Status | Notes |
+|----------|--------|-------|
+| ANTHROPIC_API_KEY | SET | Claude API (server-side only) |
+| RESEND_API_KEY | SET | Email sending |
+| DATABASE_URL | SET | Neon (auto by integration) |
+| NEXT_PUBLIC_APP_URL | SET | `https://nourishhealthai.com` |
+| ADMIN_SETUP_TOKEN | **NEEDED** | One-time admin seed protection |
+| ADMIN_SESSION_SECRET | **NEEDED** | Session cookie signing |
 
 ## Build Commands
 
 ```bash
-# Website
-cd website && npx next build
-
-# iOS (via Xcode or xcodebuild)
-# Open ios/NourishAI.xcodeproj in Xcode
-```
-
-## Environment Variables (Vercel)
-
-```
-ANTHROPIC_API_KEY=sk-ant-...     # Claude API (server-side only)
-RESEND_API_KEY=re_...            # Email sending
-DATABASE_URL=postgresql://...    # Neon (auto-set by integration)
-NEXT_PUBLIC_APP_URL=https://nourishhealthai.com  # Canonical URL
+cd backend && npx next build     # Website
+# iOS: Open ios/NourishAI.xcodeproj in Xcode (must create project first)
 ```
 
 ## Critical Rules
 
-1. **NO embedded API keys in iOS code.** All AI calls go through `/api/analyze-food` server route.
-2. **Rate limiting:** Free = 1 scan/week. Pro = unlimited with 30s cooldown. Server-side enforcement.
-3. **pbxproj rule:** Every .swift file needs 4 entries. Create files through Xcode, not manually.
-4. **Swift 6 concurrency:** `MainActor` default. Use `nonisolated` for background. All Codable = `Sendable`.
-5. **SwiftData arrays:** Use `[Type]?` (optional) for CloudKit compatibility.
-6. **Gold Standard:** Website follows all 36 rules from day 1 (see master CLAUDE.md).
-7. **Security pattern:** CORS in `lib/security.ts`, headers in `next.config.ts`. Never both.
-8. **No backdrop-blur on fixed/sticky.** Use fully opaque backgrounds.
-9. **44px touch targets** on all tappable elements.
-10. **quality={90}** on `<Image>` components. Never on `<ImageIcon>` or `<ImagePlus>`.
-11. **Vercel root dir:** `backend/` — same pattern as RT/WWBG `backend/`.
-12. **Commit format:** `feat:`, `fix:`, `chore:` + `Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>`
+1. **NO embedded API keys in iOS.** All AI calls → `/api/analyze-food` server route.
+2. **Rate limiting:** Free = 1 scan/week. Pro = unlimited + 30s cooldown. Server-side.
+3. **pbxproj rule:** Create Swift files through Xcode UI, not manually.
+4. **Swift 6:** MainActor default. `nonisolated` for background. Codable = Sendable.
+5. **Gold Standard:** Website follows all 36 rules (see master CLAUDE.md).
+6. **Security pattern:** CORS in `lib/security.ts`, headers in `next.config.ts`. Never both.
+7. **No backdrop-blur on fixed/sticky.** Opaque backgrounds only.
+8. **44px touch targets.** All tappable elements.
+9. **quality={90}** on `<Image>` components. Never on `<ImageIcon>`/`<ImagePlus>`.
+10. **Vercel root dir:** `backend/`
+11. **Admin auth:** PBKDF2 + HMAC sessions. `ADMIN_SESSION_SECRET` env var required.
+12. **Commit format:** `feat:`/`fix:`/`chore:` + `Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>`
 
-## Code Reuse from LiftLabPro
+## Admin Dashboard
 
-Source: `CLIENT-SITES/LiftLabPro-main/`
-
-**Copy as-is:** NutritionModels.swift, WaterIntakeModels.swift, BarcodeScanner.swift, HapticManager.swift, DesignSystem.swift, OfflineManager.swift
-
-**Adapt:** HealthKitManager (trim workouts), SubscriptionManager (2 tiers, scan-based), NotificationManager (meal reminders), AllEnums (nutrition only), UserProfile (nutrition fields only)
-
-**Rewrite:** ClaudeAPIManager → NourishAPIManager (server proxy, no embedded keys)
+- **Login:** `/admin` (email + password)
+- **Dashboard:** `/admin/dashboard` (protected by middleware cookie check)
+- **Setup:** POST `/api/admin/setup` with `ADMIN_SETUP_TOKEN` to seed first super_admin
+- **Roles:** super_admin, admin, viewer (pgEnum in schema)
+- **Features:** 12 KPI cards, scan/user charts (30-day), recent activity tables, auto-refresh 30s
+- **Footer lock icon** links to `/admin` (Gold Standard pattern)
 
 ## Session History
 
-### Session 68 (Current — March 2026)
-- Project created. GitHub repo: Trace9095/NourishAI
-- Phase 0: Infrastructure & documentation
+### Sessions 68-69 (March 2026)
+- Phase 0 COMPLETE: Infrastructure, GitHub repo, Vercel project, docs, SVG logo
+- Phase 1 DONE: 19 iOS Swift files written (awaiting Xcode project creation)
+- Phase 2 MOSTLY DONE: All 5 FoodLog views + SubscriptionView built
+- Phase 3 MOSTLY DONE: Full website (12 pages), 11 API routes, admin dashboard, blog engine, cookie consent, middleware, 5 DB tables
+- Missing: MealRow.swift, Xcode project, env vars (ADMIN_SETUP_TOKEN, ADMIN_SESSION_SECRET), DB migration, domain in Vercel
+
+### Phase Status
+| Phase | Status |
+|-------|--------|
+| 0 — Infrastructure | COMPLETE |
+| 1 — iOS Core | DONE (source files written, awaiting Xcode) |
+| 2 — iOS Views + AI | MOSTLY DONE |
+| 3 — Website + API + DB | MOSTLY DONE |
+| 4 — Watch + Widget | NOT STARTED |
+| 5 — Launch | NOT STARTED |
+
+See `PHASES.md` for detailed task tracking, `HUMAN_TASKS.md` for Trace's action items, `TODO.md` for full backlog.

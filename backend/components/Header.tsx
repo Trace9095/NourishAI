@@ -4,9 +4,11 @@ import { useState } from "react";
 import Link from "next/link";
 
 const NAV_LINKS = [
-  { href: "#features", label: "Features" },
-  { href: "#how-it-works", label: "How It Works" },
-  { href: "#pricing", label: "Pricing" },
+  { href: "/features", label: "Features" },
+  { href: "/about", label: "About" },
+  { href: "/blog", label: "Blog" },
+  { href: "/#pricing", label: "Pricing" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export function Header() {

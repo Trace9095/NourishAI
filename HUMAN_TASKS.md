@@ -4,10 +4,19 @@
 
 ---
 
-## Immediate (Before Development Continues)
+## CRITICAL — Do These First
 
-- [ ] **Add domain to Vercel:** Go to Vercel Dashboard > nourish-ai > Settings > Domains > Add `nourishhealthai.com`. Verify DNS records match GoDaddy.
-- [ ] **Run Drizzle migration:** From `backend/` directory, run `npx drizzle-kit push` to create the `users` and `scan_usage` tables in Neon.
+- [ ] **Add domain to Vercel:** Dashboard > nourish-ai > Settings > Domains > Add `nourishhealthai.com`
+- [ ] **Run Drizzle migration:** `cd backend && npx drizzle-kit push` — creates ALL tables (users, scan_usage, admin_users, blog_posts, contact_submissions)
+- [ ] **Set ADMIN_SETUP_TOKEN env var:** Vercel Dashboard > nourish-ai > Settings > Environment Variables > Add `ADMIN_SETUP_TOKEN` with a random string (e.g., `nourishai-setup-2026-random`). This protects the one-time admin setup.
+- [ ] **Set ADMIN_SESSION_SECRET env var:** Add `ADMIN_SESSION_SECRET` with a random string for signing session cookies.
+- [ ] **Seed your admin account:** After migration + env vars, POST to `/api/admin/setup`:
+  ```bash
+  curl -X POST https://nourishhealthai.com/api/admin/setup \
+    -H "Content-Type: application/json" \
+    -d '{"token":"YOUR_ADMIN_SETUP_TOKEN","email":"CEO@epicai.ai","name":"Trace Hildebrand","password":"YOUR_PASSWORD"}'
+  ```
+  Then login at `/admin` with your email + password.
 
 ## Xcode Project Setup
 
@@ -20,82 +29,81 @@
   - Storage: SwiftData
   - Language: Swift
   - Save to: `NourishAI-main/ios/`
+- [ ] **Drag all Swift files into Xcode:** Select all files in `ios/NourishAI/` and drag into the project navigator. Ensure "Create groups" is selected and the iOS target is checked.
+
+### Swift files to add (21 total):
+**Root:** NourishAIApp.swift, ContentView.swift, Constants.swift
+**Models/** (3): UserProfile.swift, NutritionModels.swift, NutritionCalculator.swift
+**Services/** (2): NourishAPIManager.swift, HealthKitManager.swift
+**Components/** (1): MacroRingView.swift
+**Views/Dashboard/** (1): DashboardView.swift
+**Views/FoodLog/** (5): FoodLogView.swift, AIFoodCameraView.swift, AIFoodChatView.swift, ManualEntryView.swift, BarcodeScanView.swift
+**Views/Onboarding/** (1): OnboardingContainerView.swift
+**Views/Progress/** (1): ProgressView.swift
+**Views/Settings/** (1): SettingsView.swift
+**Views/Subscription/** (1): SubscriptionView.swift
+**Components/** (1): MealRow.swift (create empty — referenced by FoodLogView)
+
 - [ ] **Add Watch target:** File > New > Target > watchOS > Watch App
-  - Product Name: `NourishWatch`
-  - Bundle Identifier: `com.epicai.nourishai.watchkitapp`
 - [ ] **Add Widget target:** File > New > Target > iOS > Widget Extension
-  - Product Name: `NourishWidget`
-  - Bundle Identifier: `com.epicai.nourishai.widget`
-- [ ] **Enable capabilities in Xcode:**
-  - HealthKit (iOS + Watch targets)
-  - In-App Purchase (iOS target)
+- [ ] **Enable capabilities:**
+  - HealthKit (iOS + Watch)
+  - In-App Purchase (iOS)
   - App Groups: `group.com.epicai.nourishai` (iOS + Widget)
-  - Push Notifications (iOS target)
-- [ ] **Create StoreKit configuration file:** File > New > File > StoreKit Configuration
-  - Name: `NourishAI.storekit`
-  - Do NOT sync with App Store Connect (for local testing)
-  - Add subscription group "NourishAI Pro"
-  - Add monthly ($7.99) + annual ($39.99) products
-  - Scheme > Run > Options > StoreKit Configuration: select the file
-- [ ] **Set Swift 6 concurrency:** Build Settings > `SWIFT_DEFAULT_ACTOR_ISOLATION` = `MainActor`
+  - Push Notifications (iOS)
+- [ ] **Create StoreKit config:** File > New > StoreKit Configuration File > `NourishAI.storekit`
+- [ ] **Set Swift 6:** Build Settings > `SWIFT_DEFAULT_ACTOR_ISOLATION` = `MainActor`
 
 ## App Store Connect
 
-- [ ] **Register Bundle IDs:** developer.apple.com > Certificates, IDs & Profiles > Identifiers
-  - `com.epicai.nourishai` (iOS app)
-  - `com.epicai.nourishai.watchkitapp` (Watch)
-  - `com.epicai.nourishai.widget` (Widget)
-- [ ] **Register App:** App Store Connect > My Apps > "+" > New App
-  - Platform: iOS
-  - Name: NourishAI
-  - Bundle ID: `com.epicai.nourishai`
-  - SKU: `nourishai-001`
-- [ ] **Create Subscription Group:** App > Monetization > Subscriptions > "+"
-  - Group name: `NourishAI Pro`
-  - Monthly: Product ID `com.nourishai.subscription.pro.monthly`, $7.99
-  - Annual: Product ID `com.nourishai.subscription.pro.annual`, $39.99
-  - Add Localizations (Display Name + Description) — REQUIRED
-  - Optional: 7-day free trial on annual plan
-- [ ] **Verify Paid Apps Agreement:** Agreements, Tax & Banking > "Paid Apps" must be active
-- See `APPLE_SETUP_GUIDE.md` for detailed step-by-step
+- [ ] Register bundle IDs (`com.epicai.nourishai`, `.watchkitapp`, `.widget`)
+- [ ] Register app in App Store Connect
+- [ ] Create subscription group "NourishAI Pro" with monthly ($7.99) + annual ($39.99)
+- [ ] Add localizations (required for StoreKit)
+- [ ] Verify Paid Apps agreement is active
+- [ ] See `APPLE_SETUP_GUIDE.md` for full details
 
 ## Domain & DNS
 
 - [x] Purchase domain: nourishhealthai.com
 - [x] Point DNS to Vercel in GoDaddy
-- [ ] **Add domain in Vercel Dashboard** (Vercel > nourish-ai > Settings > Domains)
-- [ ] Verify SSL certificate is active
+- [ ] **Add domain in Vercel Dashboard**
+- [ ] Verify SSL certificate
 
 ## Marketing
 
-- [ ] Create Instagram account for NourishAI
-- [ ] Prepare App Store screenshots (6.7" + 6.1") after app is built
-- [ ] Write App Store description + keywords
-- [ ] Create app icon (all sizes) — or have Claude generate SVG → export from Figma
+- [ ] Create Instagram account
+- [ ] App Store screenshots (after app built)
+- [ ] App Store description + keywords
+- [ ] App icon export (all sizes)
 
-## Environment
+## Environment Variables (Vercel)
 
-- [x] Neon PostgreSQL connected to Vercel
-- [x] ANTHROPIC_API_KEY set
-- [x] RESEND_API_KEY set
-- [x] NEXT_PUBLIC_APP_URL set
-- [ ] **Verify Resend domain:** Add `nourishhealthai.com` in Resend Dashboard for email sending
-- [ ] **Create ANTHROPIC_API_KEY dedicated key** (optional — currently using shared LiftLabPro key)
+| Variable | Status | Notes |
+|----------|--------|-------|
+| ANTHROPIC_API_KEY | SET | Shared with LiftLabPro |
+| RESEND_API_KEY | SET | For email sending |
+| DATABASE_URL | SET | Auto by Neon integration |
+| NEXT_PUBLIC_APP_URL | SET | `https://nourishhealthai.com` |
+| ADMIN_SETUP_TOKEN | NEEDED | One-time admin seed protection |
+| ADMIN_SESSION_SECRET | NEEDED | Session cookie signing |
+
+- [ ] **Verify Resend domain:** Add `nourishhealthai.com` in Resend Dashboard
 
 ---
 
 ## Notes
 
-**HealthKit data the app will read:**
-- Height, weight, biological sex, date of birth
-- Active energy burned, basal energy burned
-- Steps, sleep analysis
-- Dietary energy, protein, carbohydrates, fat (if logged elsewhere)
+### Missing Component: MealRow.swift
+FoodLogView references `MealRow(entry:)` — this component needs to be created. Simple view showing food entry name, calories, and macros in a row.
 
-**HealthKit data the app will write:**
-- Dietary energy consumed (calories)
-- Dietary protein, carbohydrates, total fat
-- Dietary fiber, sugar, sodium
-- Water consumption
+### HealthKit Data
+**Reads:** Height, weight, biological sex, DOB, steps, active calories, sleep
+**Writes:** Dietary energy, protein, carbs, fat, fiber, sugar, sodium, water, body mass
 
-All HealthKit access requires explicit user permission on first launch. The iOS app handles all HealthKit locally — no server involvement.
+### Database Tables (after migration)
+- `users` — iOS app device registrations
+- `scan_usage` — AI scan tracking and rate limiting
+- `admin_users` — Dashboard admin accounts with roles (super_admin, admin, viewer)
+- `blog_posts` — Blog content (currently using static file, DB ready for future)
+- `contact_submissions` — Contact form entries

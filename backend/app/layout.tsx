@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
+import { CookieConsentBanner } from "@/components/CookieConsentBanner";
 import "./globals.css";
 
 const inter = Inter({
@@ -116,6 +117,7 @@ export default function RootLayout({
           Skip to content
         </a>
         {children}
+        <CookieConsentBanner />
       </body>
     </html>
   );

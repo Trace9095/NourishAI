@@ -11,80 +11,85 @@
 - [x] Create folder structure
 - [x] Initialize git repo
 - [x] Create GitHub repo (Trace9095/NourishAI)
-- [ ] Create Vercel project (`nourish-ai`)
-- [ ] Add Neon PostgreSQL via Vercel Integration
-- [ ] Set env vars (ANTHROPIC_API_KEY, RESEND_API_KEY, DATABASE_URL)
-- [ ] Purchase domain (nourishai.app / .co / .com)
-- [ ] Point domain to Vercel
+- [x] Create Vercel project (`nourish-ai`)
+- [x] Add Neon PostgreSQL via Vercel Integration
+- [x] Set env vars (ANTHROPIC_API_KEY, RESEND_API_KEY, DATABASE_URL, NEXT_PUBLIC_APP_URL)
+- [x] Purchase domain (nourishhealthai.com)
+- [ ] Add domain to Vercel Dashboard
+- [ ] Set ADMIN_SETUP_TOKEN env var in Vercel
+- [ ] Set ADMIN_SESSION_SECRET env var in Vercel
+- [ ] Run Drizzle migration (`npx drizzle-kit push`)
+- [ ] Seed admin account via POST /api/admin/setup
 
 ### iOS App — Models & Services
-- [ ] Create Xcode project with targets (iOS, Watch, Widget)
-- [ ] Copy NutritionModels.swift from LiftLabPro (as-is)
-- [ ] Copy WaterIntakeModels.swift from LiftLabPro (as-is)
-- [ ] Copy BarcodeScanner.swift from LiftLabPro (as-is)
-- [ ] Copy HapticManager.swift from LiftLabPro (as-is)
-- [ ] Copy DesignSystem.swift from LiftLabPro (as-is)
-- [ ] Copy OfflineManager.swift from LiftLabPro (as-is)
-- [ ] Create UserProfile.swift (trimmed from LiftLabPro)
-- [ ] Create AllEnums.swift (nutrition enums only)
-- [ ] Create NutritionCalculator.swift (BMR/TDEE/macros only)
-- [ ] Create GoalModels.swift (NutritionGoal enum)
-- [ ] Create NourishAPIManager.swift (server proxy client)
-- [ ] Adapt HealthKitManager.swift (remove workout methods)
-- [ ] Simplify SubscriptionManager.swift (2 tiers, scan-based)
-- [ ] Adapt NotificationManager.swift (meal reminders)
-- [ ] Create Constants.swift (NourishAI brand colors)
+- [ ] Create Xcode project with targets (iOS, Watch, Widget) — TRACE MUST DO IN XCODE UI
+- [x] Create UserProfile.swift
+- [x] Create NutritionModels.swift
+- [x] Create NutritionCalculator.swift
+- [x] Create NourishAPIManager.swift (server proxy client)
+- [x] Create HealthKitManager.swift
+- [x] Create Constants.swift (NourishAI brand colors)
 
 ### iOS App — Views
-- [ ] Build NourishAIApp.swift (SwiftData schema)
-- [ ] Build ContentView.swift (onboarding check + TabView)
-- [ ] Build OnboardingFlow (7 screens)
-- [ ] Build DashboardView (macro rings, recent meals, quick-add FAB)
-- [ ] Build FoodLogView (meal list grouped by MealType)
-- [ ] Build AIFoodCameraView (camera -> server -> confirm -> log)
-- [ ] Build AIFoodChatView (text-based food analysis)
-- [ ] Build ManualEntryView (form-based entry)
-- [ ] Build BarcodeScanView (scanner + OpenFoodFacts lookup)
-- [ ] Build ProgressView (weight chart, macro trends, streaks)
-- [ ] Build SettingsView (profile, goals, HealthKit, notifications)
-- [ ] Build SubscriptionView (paywall — Free vs Pro)
-- [ ] Build UpgradePromptView (triggered at scan limit)
+- [x] Build NourishAIApp.swift (SwiftData schema)
+- [x] Build ContentView.swift (onboarding check + TabView)
+- [x] Build OnboardingContainerView (7 screens)
+- [x] Build DashboardView (macro rings, recent meals, quick-add FAB)
+- [x] Build FoodLogView (meal list grouped by MealType)
+- [x] Build AIFoodCameraView (camera → server → confirm → log)
+- [x] Build AIFoodChatView (text-based food analysis)
+- [x] Build ManualEntryView (form-based entry)
+- [x] Build BarcodeScanView (scanner + OpenFoodFacts lookup)
+- [x] Build ProgressView (weight chart, macro trends, streaks)
+- [x] Build SettingsView (profile, goals, HealthKit, notifications)
+- [x] Build SubscriptionView (paywall — Free vs Pro)
 
 ### iOS App — Components
-- [ ] Build MacroRingView (circular progress)
-- [ ] Build MealCard (food entry card)
-- [ ] Build NutrientBar (horizontal progress)
-- [ ] Build QuickAddFAB (floating action button with options)
+- [x] Build MacroRingView (circular progress)
+- [ ] Build MealRow (food entry row — referenced by FoodLogView)
 
 ### Website — Landing & Marketing
-- [ ] Scaffold Next.js 16 project
-- [ ] Build landing page (hero, features, pricing, CTA)
-- [ ] Build pricing page
-- [ ] Build blog engine + seed articles
-- [ ] Build privacy policy page
-- [ ] Build terms of service page
-- [ ] Build accessibility statement page
-- [ ] Build branded 404 page
-- [ ] Create dynamic OG image (opengraph-image.tsx)
-- [ ] Create robots.ts (19-bot Gold Standard)
-- [ ] Create sitemap.ts
-- [ ] Create llms.txt + ai.txt
-- [ ] Create full favicon array
-- [ ] Create site.webmanifest
-- [ ] Implement cookie consent (3-tier)
-- [ ] Implement security headers in next.config.ts
+- [x] Scaffold Next.js 16 project
+- [x] Build landing page (hero, features, pricing, testimonials, FAQ, CTA)
+- [x] Build features page (/features)
+- [x] Build about page (/about)
+- [x] Build blog engine + 5 seed articles
+- [x] Build contact page with form (/contact)
+- [x] Build brand page with referral links (/brand)
+- [x] Build privacy policy page
+- [x] Build terms of service page
+- [x] Build accessibility statement page
+- [x] Build branded 404 page (gradient orbs, quick nav)
+- [x] Create dynamic OG image (opengraph-image.tsx)
+- [x] Create robots.ts (19-bot Gold Standard)
+- [x] Create sitemap.ts (all pages)
+- [x] Create llms.txt + ai.txt
+- [x] Create full favicon array
+- [x] Create site.webmanifest
+- [x] Implement cookie consent (3-tier)
+- [x] Implement security headers in next.config.ts
+- [x] Add testimonials section (6 testimonials)
+- [x] Add FAQ section (8 questions with accordion)
 - [ ] Set up Vercel Analytics
 
+### Website — Admin Dashboard
+- [x] Build admin login page (/admin)
+- [x] Build admin dashboard (/admin/dashboard — 12 KPIs, charts, tables)
+- [x] Build admin auth (PBKDF2 + HMAC sessions)
+- [x] Build admin middleware (cookie check, redirect)
+- [x] Build admin API routes (login, logout, setup, stats)
+- [x] Add footer lock icon (Gold Standard pattern)
+
 ### Website — API Routes (iOS Backend)
-- [ ] Set up Drizzle ORM + Neon connection
-- [ ] Create database schema (users, scan_usage)
-- [ ] Build /api/register-device (create user, return auth token)
-- [ ] Build /api/analyze-food (Claude Haiku vision proxy)
-- [ ] Build /api/analyze-description (text-based food analysis)
-- [ ] Build /api/lookup-barcode (OpenFoodFacts API)
-- [ ] Build /api/scan-count (remaining scans)
-- [ ] Build /api/verify-subscription (StoreKit receipt validation)
-- [ ] Build /api/contact (Resend email)
+- [x] Set up Drizzle ORM + Neon connection
+- [x] Create database schema (5 tables)
+- [x] Build /api/register-device
+- [x] Build /api/analyze-food (Claude Haiku vision proxy)
+- [x] Build /api/analyze-description (text-based analysis)
+- [x] Build /api/lookup-barcode (OpenFoodFacts API)
+- [x] Build /api/scan-count (remaining scans)
+- [x] Build /api/verify-subscription (StoreKit receipt validation)
+- [x] Build /api/contact (Resend email)
 
 ### Apple Watch
 - [ ] Build NourishWatchApp.swift
@@ -108,8 +113,8 @@
 
 ### Marketing
 - [ ] Instagram launch content
-- [ ] Blog SEO articles (5 seed posts)
-- [ ] Social sharing OG images
+- [x] Blog SEO articles (5 seed posts)
+- [x] Social sharing OG images
 - [ ] App Store optimization (ASO)
 
 ---

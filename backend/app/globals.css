@@ -150,6 +150,71 @@ body {
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(52, 199, 89, 0.08);
 }
 
+/* Blog content typography */
+.blog-content {
+  color: #d1d5db; /* gray-300 */
+  font-size: 1.0625rem;
+  line-height: 1.8;
+}
+.blog-content p {
+  margin-bottom: 1.25rem;
+}
+.blog-content h2 {
+  font-family: var(--font-outfit), system-ui, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgba(52, 199, 89, 0.2);
+}
+.blog-content h3 {
+  font-family: var(--font-outfit), system-ui, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--brand-green);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+.blog-content ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.25rem;
+}
+.blog-content ul li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.blog-content ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--brand-green);
+}
+.blog-content strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+.blog-content em {
+  color: var(--brand-orange);
+  font-style: italic;
+}
+.blog-content a {
+  color: var(--brand-green);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s;
+}
+.blog-content a:hover {
+  color: var(--brand-green-dark);
+}
+
 /* Skip to content (Gold Standard) */
 .skip-to-content {
   position: absolute;

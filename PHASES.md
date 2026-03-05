@@ -27,56 +27,65 @@
 ---
 
 ## Phase 1: iOS Core (Models + Services)
-**Status: IN PROGRESS**
-**Depends on:** Phase 0 complete, Xcode project created (Trace in Xcode)
+**Status: DONE (source files written — awaiting Xcode project)**
+**Depends on:** Trace creates Xcode project in Xcode UI
 
 | # | Task | Status |
 |---|------|--------|
-| 1.1 | Create Xcode project (iOS + Watch + Widget targets) | PENDING |
-| 1.2 | Copy 6 as-is files from LiftLabPro | PENDING |
-| 1.3 | Create/adapt 8 modified files | PENDING |
-| 1.4 | Build SwiftData schema (5 models) | PENDING |
-| 1.5 | Build NourishAPIManager (server proxy) | PENDING |
-| 1.6 | Build onboarding flow (7 screens) | PENDING |
-| 1.7 | Build ContentView + MainTabView | PENDING |
+| 1.1 | Create Xcode project (iOS + Watch + Widget targets) | BLOCKED (Trace must do in Xcode) |
+| 1.2 | Copy 6 as-is files from LiftLabPro | SKIPPED (built fresh) |
+| 1.3 | Create/adapt 8 modified files | DONE |
+| 1.4 | Build SwiftData schema (5 models) | DONE |
+| 1.5 | Build NourishAPIManager (server proxy) | DONE |
+| 1.6 | Build onboarding flow (7 screens) | DONE |
+| 1.7 | Build ContentView + MainTabView | DONE |
 
 ---
 
 ## Phase 2: iOS Views + AI Features
-**Status: NOT STARTED**
-**Depends on:** Phase 1 complete
+**Status: MOSTLY DONE (source files written)**
 
 | # | Task | Status |
 |---|------|--------|
-| 2.1 | Build DashboardView | PENDING |
-| 2.2 | Build FoodLogView + AIFoodCameraView | PENDING |
-| 2.3 | Build ManualEntryView + BarcodeScanView | PENDING |
-| 2.4 | Build subscription paywall | PENDING |
-| 2.5 | Wire up scan tracking + usage limits | PENDING |
-| 2.6 | Build ProgressView | PENDING |
+| 2.1 | Build DashboardView | DONE |
+| 2.2 | Build FoodLogView + AIFoodCameraView | DONE |
+| 2.3 | Build ManualEntryView + BarcodeScanView | DONE |
+| 2.4 | Build subscription paywall (SubscriptionView) | DONE |
+| 2.5 | Build AIFoodChatView (text description) | DONE |
+| 2.6 | Wire up scan tracking + usage limits | DONE (server-side) |
+| 2.7 | Build ProgressView | DONE |
 
 ---
 
 ## Phase 3: Website + API Routes + Database
-**Status: IN PROGRESS**
+**Status: MOSTLY DONE**
 **Can run in parallel with:** Phase 1-2 (independent codebase)
 
 | # | Task | Status |
 |---|------|--------|
 | 3.1 | Set up Neon PostgreSQL | DONE |
-| 3.2 | Set up Drizzle ORM + schema | DONE |
+| 3.2 | Set up Drizzle ORM + schema | DONE (updated: admin_users, blog_posts, contact_submissions) |
 | 3.3 | Build landing page (frontend-design skill) | DONE |
 | 3.4 | Build API routes (7 endpoints) | DONE |
 | 3.5 | Gold Standard compliance (36 rules) | DONE |
-| 3.6 | Legal pages + cookie consent | IN PROGRESS |
-| 3.7 | Blog engine + seed articles | PENDING |
-| 3.8 | Deploy to Vercel + domain | PENDING |
+| 3.6 | Legal pages + cookie consent | DONE |
+| 3.7 | Blog engine + 5 seed articles | DONE |
+| 3.8 | Deploy to Vercel + domain | DEPLOYED (domain needs adding in Vercel Dashboard) |
+| 3.9 | Features page (/features) | DONE |
+| 3.10 | About page (/about) | DONE |
+| 3.11 | Contact page (/contact) | DONE |
+| 3.12 | Brand page (/brand) | DONE |
+| 3.13 | Admin dashboard (/admin) | DONE |
+| 3.14 | Testimonials + FAQ on landing page | DONE |
+| 3.15 | Upgraded 404 page | DONE |
+| 3.16 | Cookie consent banner (3-tier) | DONE |
+| 3.17 | Middleware (admin auth + llms.txt header) | DONE |
 
 ---
 
 ## Phase 4: Watch + Widget + Polish
 **Status: NOT STARTED**
-**Depends on:** Phase 2 complete
+**Depends on:** Xcode project created by Trace
 
 | # | Task | Status |
 |---|------|--------|
