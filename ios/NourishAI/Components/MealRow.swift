@@ -6,9 +6,9 @@ struct MealRow: View {
     var body: some View {
         HStack(spacing: 12) {
             // Source indicator
-            Image(systemName: entry.source == .aiPhoto ? "camera.fill" :
-                             entry.source == .aiDescription ? "text.bubble.fill" :
-                             entry.source == .barcode ? "barcode" : "pencil")
+            Image(systemName: entry.entryMethod == .aiPhoto ? "camera.fill" :
+                             entry.entryMethod == .aiDescription ? "text.bubble.fill" :
+                             entry.entryMethod == .barcode ? "barcode" : "pencil")
                 .font(.caption)
                 .foregroundColor(.brandGreen)
                 .frame(width: 28, height: 28)
