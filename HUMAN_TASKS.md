@@ -52,10 +52,18 @@
 - [ ] TestFlight beta upload
 - [ ] App Store submission
 
-### Marketing Templates — Remaining Improvements
+### Marketing Templates — Major Overhaul Needed
+- [ ] **REEL OVERHAUL (Priority 1):**
+  - CTA scenes only get 1.5s — need 3-4 seconds on ALL templates
+  - All content too small — text, phone mockups, icons need to be 30-50% bigger
+  - Only 4 reel templates — need 8-10 unique templates (more variety)
+  - Need MORE reels in content calendar — double the count
+  - Overall quality must be premium/professional — these sell the app
+  - Templates to fix: reel-ai-scan, reel-speed-demo, reel-macro-rings, reel-day-tracker
+  - Scene timing across all: compress early scenes, give CTA 3-4s
+  - Reel timing fix IS working (Web Animations API pause+seek) — just need better content
 - [ ] **Story template redesign** — stories look bad, need premium SVG icons instead of emojis
 - [ ] **Feed macro-tip template** — replace emoji icons with numbered SVG badges
-- [ ] **Reel templates** — replace inline emojis with SVG icons
 - [ ] **Hero rotating text** — homepage needs cycling text animation (Gold Standard #38)
 - [ ] **Blog [slug] dynamic OG image** — per-post OG images (Gold Standard #37)
 - [ ] **Regenerate all marketing assets** after template fixes (`python3 marketing/generate.py --force`)
