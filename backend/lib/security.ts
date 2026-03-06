@@ -11,12 +11,18 @@ export function corsHeaders(request: NextRequest): HeadersInit {
     ALLOWED_ORIGINS.includes(origin) ||
     process.env.NODE_ENV === "development";
 
-  return {
-    "Access-Control-Allow-Origin": isAllowed ? origin : "",
+  const headers: Record<string, string> = {
     "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Device-ID",
     "Access-Control-Max-Age": "86400",
   };
+
+  // Only set ACAO header for allowed origins — omit entirely for disallowed
+  if (isAllowed && origin) {
+    headers["Access-Control-Allow-Origin"] = origin;
+  }
+
+  return headers;
 }
 
 export function handleCors(request: NextRequest): NextResponse | null {

@@ -1,7 +1,7 @@
 import SwiftUI
 import SwiftData
 
-struct ProgressView: View {
+struct NutritionProgressView: View {
     @Query(sort: \DailyNutrition.date, order: .reverse) private var dailyData: [DailyNutrition]
 
     var body: some View {

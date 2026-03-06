@@ -6,7 +6,18 @@ import crypto from "crypto";
 
 const COOKIE_NAME = "nourishai-admin-session";
 const SESSION_DURATION = 24 * 60 * 60 * 1000; // 24 hours
-const SESSION_SECRET = process.env.ADMIN_SESSION_SECRET || "nourishai-session-secret-2026";
+const SESSION_SECRET = process.env.ADMIN_SESSION_SECRET;
+if (!SESSION_SECRET) {
+  // In production, this MUST be set. During build (SSG), admin routes aren't invoked.
+  if (process.env.NODE_ENV === "production" && typeof window === "undefined") {
+    console.warn("ADMIN_SESSION_SECRET not set — admin auth will fail");
+  }
+}
+
+function getSecret(): string {
+  if (!SESSION_SECRET) throw new Error("ADMIN_SESSION_SECRET env var is required");
+  return SESSION_SECRET;
+}
 
 // Password hashing with PBKDF2 (Node.js crypto, works in Vercel serverless)
 export function hashPassword(password: string): string {
@@ -25,7 +36,7 @@ export function verifyPassword(password: string, storedHash: string): boolean {
 // Session token: HMAC of admin user ID + expiry
 function createToken(adminId: string, expiresAt: number): string {
   const payload = `${adminId}:${expiresAt}`;
-  const hmac = crypto.createHmac("sha256", SESSION_SECRET).update(payload).digest("hex");
+  const hmac = crypto.createHmac("sha256", getSecret()).update(payload).digest("hex");
   return Buffer.from(`${payload}:${hmac}`).toString("base64");
 }
 
@@ -39,7 +50,7 @@ function verifyToken(token: string): { adminId: string; expiresAt: number } | nu
     if (isNaN(expiresAt) || Date.now() > expiresAt) return null;
 
     const payload = `${adminId}:${expiresStr}`;
-    const expectedHmac = crypto.createHmac("sha256", SESSION_SECRET).update(payload).digest("hex");
+    const expectedHmac = crypto.createHmac("sha256", getSecret()).update(payload).digest("hex");
     if (!crypto.timingSafeEqual(Buffer.from(hmac), Buffer.from(expectedHmac))) return null;
 
     return { adminId, expiresAt };

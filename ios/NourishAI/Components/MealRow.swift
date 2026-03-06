@@ -23,8 +23,8 @@ struct MealRow: View {
                     .foregroundColor(.white)
                     .lineLimit(1)
 
-                if let serving = entry.servingSize {
-                    Text(serving)
+                if !entry.servingSize.isEmpty {
+                    Text(entry.servingSize)
                         .font(.caption2)
                         .foregroundColor(.gray)
                 }

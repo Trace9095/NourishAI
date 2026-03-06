@@ -41,9 +41,7 @@
 **Views/Progress/** (1): ProgressView.swift
 **Views/Settings/** (1): SettingsView.swift
 **Views/Subscription/** (1): SubscriptionView.swift
-**Services/** (1): SubscriptionManager.swift
-**Components/** (2): MealRow.swift, MacroRingView.swift
-**Views/Subscription/** (1): SubscriptionView.swift
+**Components/** (2): MacroRingView.swift, MealRow.swift
 
 - [ ] **Add Watch target:** File > New > Target > watchOS > Watch App
 - [ ] **Add Widget target:** File > New > Target > iOS > Widget Extension

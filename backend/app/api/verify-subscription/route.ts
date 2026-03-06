@@ -56,9 +56,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Update user subscription status
-    // In production, you'd verify the receipt with Apple's App Store Server API
-    // For now, we trust the client-side StoreKit 2 verification
+    // TODO: Integrate Apple App Store Server API for server-side receipt verification
+    // before going to production. Currently trusts client-side StoreKit 2 verification.
+    // See: https://developer.apple.com/documentation/appstoreserverapi
     const expiresAt = expiresDate ? new Date(expiresDate) : null;
 
     await db()

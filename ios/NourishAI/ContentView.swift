@@ -41,7 +41,7 @@ struct MainTabView: View {
             }
 
             Tab("Progress", systemImage: "chart.line.uptrend.xyaxis", value: 2) {
-                ProgressView()
+                NutritionProgressView()
             }
 
             Tab("Settings", systemImage: "gearshape.fill", value: 3) {
@@ -54,5 +54,5 @@ struct MainTabView: View {
 
 #Preview {
     ContentView()
-        .modelContainer(for: [UserProfile.self], inMemory: true)
+        .modelContainer(for: [UserProfile.self, DailyNutrition.self, FoodEntry.self], inMemory: true)
 }

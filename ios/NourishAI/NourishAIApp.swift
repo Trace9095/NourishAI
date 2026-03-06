@@ -13,6 +13,7 @@ struct NourishAIApp: App {
             FoodEntry.self,
             SavedFood.self,
             DailyWaterIntake.self,
+            WaterEntry.self,
         ])
     }
 }

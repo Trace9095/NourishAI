@@ -302,7 +302,7 @@ struct AIFoodCameraView: View {
             fiber: result.fiber ?? 0,
             sugar: result.sugar ?? 0,
             sodium: result.sodium ?? 0,
-            servingSize: result.servingSize,
+            servingSize: result.servingSize ?? "1 serving",
             mealType: selectedMealType,
             entryMethod: .aiPhoto
         )

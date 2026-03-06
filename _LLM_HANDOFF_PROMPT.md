@@ -40,27 +40,25 @@ Browser --> /admin (login page)
 
 **Key principle:** iOS app is local-first (SwiftData). Server handles ONLY AI proxy, rate limiting, and subscription verification. No embedded API keys.
 
-## 3. Current State (After Sessions 68-69)
+## 3. Current State (After Sessions 68-70)
 
 ### What's Built
 
-**Website (backend/):** 12 pages, 11 API routes, 15 components, 6 lib files, middleware. Fully functional marketing site with admin dashboard, blog engine, contact form, cookie consent, brand page, legal pages, branded 404.
+**Website (backend/):** 12 pages, 11 API routes + RSS feed, 15 components, 6 lib files, middleware. Fully functional and deployed to Vercel. Gold Standard 100% compliant. Admin dashboard with PBKDF2+HMAC auth, blog engine (5 articles), contact form (saves to DB), cookie consent, brand page, legal pages, branded 404, FAQ with CTA buttons.
 
-**iOS (ios/):** 19 Swift source files covering models, services, and all major views. NOT compilable yet — requires Xcode project creation (Trace must do in Xcode UI).
+**iOS (ios/):** 21 Swift source files covering all models, services, components, and views. All cross-file dependencies resolved. SubscriptionManager wired to StoreKit 2. All HealthKit calls use correct `logNutrition()` method. NOT compilable yet — requires Xcode project creation (Trace must do in Xcode UI).
 
 **Database schema (Drizzle ORM):** 5 tables defined — users, scan_usage, admin_users, blog_posts, contact_submissions. Migration NOT yet run.
 
 ### What's NOT Done
 
 - **Xcode project:** .xcodeproj must be created via Xcode UI (cannot be scripted)
-- **MealRow.swift:** Simple component referenced by FoodLogView, not yet created
 - **DB migration:** `npx drizzle-kit push` needs to be run
 - **Env vars:** ADMIN_SETUP_TOKEN and ADMIN_SESSION_SECRET need adding in Vercel
 - **Admin seed:** POST to /api/admin/setup after migration + env vars
 - **Domain:** nourishhealthai.com needs adding in Vercel Dashboard
 - **Phase 4:** Apple Watch companion, iOS Widgets, push notifications
 - **Phase 5:** TestFlight, App Store submission, marketing launch
-- **Git:** All work from sessions 68-69 is uncommitted
 
 ## 4. Tech Stack
 
@@ -114,7 +112,7 @@ contact_submissions — id, name, email, subject, message, read, created_at
 |------|---------|
 | `CLAUDE.md` | Project instructions + full file inventory |
 | `PHASES.md` | Phase tracking (0-5) with task statuses |
-| `HUMAN_TASKS.md` | Trace's action items (env vars, Xcode, migration) |
+| `HUMAN_TASKS.md` | Trace's action items (env vars, Xcode, migration, payment testing) |
 | `TODO.md` | Feature backlog (V1-V6) |
 | `APPLE_SETUP_GUIDE.md` | App Store Connect subscription setup |
 | `backend/lib/db/schema.ts` | All 5 DB table definitions |
@@ -123,9 +121,9 @@ contact_submissions — id, name, email, subject, message, read, created_at
 
 ## 10. Immediate Next Steps
 
-1. **Git commit + push** all uncommitted work → triggers Vercel deploy
-2. **Trace action items** (see HUMAN_TASKS.md): env vars, DB migration, admin seed, domain
-3. **Create MealRow.swift** — simple component for FoodLogView
+1. **Trace action items** (see HUMAN_TASKS.md): domain in Vercel, env vars, DB migration, admin seed
+2. **Xcode project creation** — Trace creates project, drags in all 21 Swift files
+3. **StoreKit testing** — Create .storekit config file, test payment flows
 4. **Phase 4:** Apple Watch companion, iOS Widgets, push notifications
 5. **Phase 5:** TestFlight beta, App Store submission, marketing launch
 

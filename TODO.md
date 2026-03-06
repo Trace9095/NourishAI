@@ -92,6 +92,7 @@
 - [x] Build /api/lookup-barcode (OpenFoodFacts API)
 - [x] Build /api/scan-count (remaining scans)
 - [x] Build /api/verify-subscription (StoreKit receipt validation)
+- [ ] Integrate Apple App Store Server API for server-side receipt verification (pre-launch)
 - [x] Build /api/contact (Resend email)
 
 ### Apple Watch
