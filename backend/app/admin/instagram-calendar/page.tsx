@@ -116,12 +116,15 @@ export default function InstagramCalendarPage() {
     return result;
   }, [selectedMonth, selectedType, search]);
 
-  const marchCount = allPosts.filter(
-    (p) => p.date && new Date(p.date + "T12:00:00").getMonth() === 2
-  ).length;
-  const aprilCount = allPosts.filter(
-    (p) => p.date && new Date(p.date + "T12:00:00").getMonth() === 3
-  ).length;
+  const monthCounts = useMemo(() => {
+    const counts: Record<number, number> = {};
+    for (const p of allPosts) {
+      if (!p.date) continue;
+      const m = new Date(p.date + "T12:00:00").getMonth() + 1;
+      counts[m] = (counts[m] || 0) + 1;
+    }
+    return counts;
+  }, []);
 
   return (
     <div className="min-h-screen bg-brand-dark text-white">
@@ -212,26 +215,24 @@ export default function InstagramCalendarPage() {
           >
             All ({allPosts.length})
           </button>
-          <button
-            onClick={() => setSelectedMonth(3)}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors min-h-[44px] ${
-              selectedMonth === 3
-                ? "bg-brand-green text-brand-dark"
-                : "bg-white/5 text-white/60 hover:bg-white/10"
-            }`}
-          >
-            March ({marchCount})
-          </button>
-          <button
-            onClick={() => setSelectedMonth(4)}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors min-h-[44px] ${
-              selectedMonth === 4
-                ? "bg-brand-green text-brand-dark"
-                : "bg-white/5 text-white/60 hover:bg-white/10"
-            }`}
-          >
-            April ({aprilCount})
-          </button>
+          {[
+            { month: 3, label: "March" },
+            { month: 4, label: "April" },
+            { month: 5, label: "May" },
+            { month: 6, label: "June" },
+          ].filter(({ month }) => monthCounts[month]).map(({ month, label }) => (
+            <button
+              key={month}
+              onClick={() => setSelectedMonth(month)}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors min-h-[44px] ${
+                selectedMonth === month
+                  ? "bg-brand-green text-brand-dark"
+                  : "bg-white/5 text-white/60 hover:bg-white/10"
+              }`}
+            >
+              {label} ({monthCounts[month]})
+            </button>
+          ))}
         </div>
 
         {/* Type filter + search */}

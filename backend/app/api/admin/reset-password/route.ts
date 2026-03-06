@@ -55,6 +55,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    if (!/[A-Z]/.test(password) || !/[a-z]/.test(password) || !/[0-9]/.test(password)) {
+      return NextResponse.json(
+        { error: "Password must contain uppercase, lowercase, and a number" },
+        { status: 400 }
+      );
+    }
+
     // Decode token to extract adminId for DB lookup
     let adminId: string;
     try {

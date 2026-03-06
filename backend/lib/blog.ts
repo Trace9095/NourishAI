@@ -625,6 +625,131 @@ export const blogPosts: BlogPost[] = [
 <p>The daily progress rings give you at-a-glance visibility into whether you're on pace to hit your targets before your eating window closes. If you're 30g short on protein with one meal left, you know to prioritize a protein-heavy final meal.</p>
 `,
   },
+  {
+    slug: "meal-prep-for-beginners-weekly-plan",
+    title: "Meal Prep for Beginners: Your Complete Weekly Plan",
+    excerpt:
+      "Learn how to meal prep like a pro with this beginner-friendly weekly plan. Save time, money, and hit your macros every single day without cooking from scratch each meal.",
+    author: "NourishAI Team",
+    category: "Tips",
+    tags: ["meal-prep", "beginner", "weekly-plan", "budget"],
+    publishedAt: "2026-03-01",
+    readTime: 9,
+    content: `
+<p>Meal prep is the single most impactful habit you can build for consistent nutrition. People who batch-cook their meals are 3x more likely to hit their macro targets compared to those who decide what to eat in the moment. But if you've never done it before, the idea of spending hours in the kitchen on a Sunday can feel overwhelming.</p>
+
+<p>The good news: you don't need to be a chef, and you don't need to spend three hours cooking. With the right system, you can prep 4-5 days of meals in about 90 minutes. This guide gives you everything you need to start.</p>
+
+<h2>Why Meal Prep Works</h2>
+
+<p>The biggest enemy of good nutrition isn't knowledge — it's decision fatigue. By the time you're hungry at 6pm after a long day, your willpower is depleted. You default to whatever's easiest: takeout, cereal, or skipping meals entirely. Meal prep removes the decision entirely. Open the fridge, grab a container, heat and eat.</p>
+
+<p>Beyond consistency, meal prep saves serious money. The average American spends $3,000+ per year on food delivery apps. A well-planned prep week costs $50-70 in groceries and yields 15-20 meals.</p>
+
+<h2>The Beginner Framework: Cook 3, Assemble 2</h2>
+
+<p>Don't try to cook five completely different meals. Instead, cook three base components and assemble two variations. Here's the formula:</p>
+
+<ul>
+<li><strong>Protein base:</strong> Cook 2 lbs of one protein (chicken breast, ground turkey, or salmon)</li>
+<li><strong>Carb base:</strong> Cook 3 cups of one grain (rice, quinoa, or pasta)</li>
+<li><strong>Veggie base:</strong> Roast a large sheet pan of mixed vegetables (broccoli, bell peppers, zucchini, sweet potato)</li>
+<li><strong>Variation 1:</strong> Protein + carb + veggies with Italian seasoning and marinara</li>
+<li><strong>Variation 2:</strong> Same bases with teriyaki sauce and sesame seeds</li>
+</ul>
+
+<p>Same ingredients, completely different flavors. You'll never get bored.</p>
+
+<h2>The 90-Minute Sunday Prep Session</h2>
+
+<p>Here's the exact timeline:</p>
+
+<ul>
+<li><strong>0:00:</strong> Preheat oven to 400F. Start rice cooker or pot of quinoa.</li>
+<li><strong>0:05:</strong> Season and arrange vegetables on sheet pan. Put in oven (25 min).</li>
+<li><strong>0:10:</strong> Season protein. Start cooking on stovetop or second sheet pan.</li>
+<li><strong>0:15:</strong> Hard-boil 12 eggs. Wash and portion salad greens.</li>
+<li><strong>0:30:</strong> Flip/check protein and vegetables.</li>
+<li><strong>0:40:</strong> Everything is cooked. Let cool 10 minutes.</li>
+<li><strong>0:50:</strong> Begin portioning into containers. Weigh protein portions (4-6 oz each).</li>
+<li><strong>1:05:</strong> Add sauces/dressings to separate small containers.</li>
+<li><strong>1:15:</strong> Label containers with day/meal. Stack in fridge.</li>
+<li><strong>1:30:</strong> Clean up. Done.</li>
+</ul>
+
+<h2>Container Tips</h2>
+
+<p>Invest in quality glass containers with snap lids. They don't stain, don't absorb odors, and are microwave-safe. Get at least 10 — five for lunches, five for dinners. Label them Monday through Friday so you just grab the right one each morning.</p>
+
+<h2>Tracking Prepped Meals with NourishAI</h2>
+
+<p>Once you've prepped your meals, log one serving in NourishAI using the AI photo scan. Save it as a custom meal. For the rest of the week, just tap your saved meal to log it instantly — no re-scanning needed. Your macros are pre-calculated and consistent across every identical container.</p>
+
+<p>This combination of meal prep + NourishAI tracking is the closest thing to nutritional autopilot. You spend 90 minutes once, and your entire week of nutrition is handled.</p>
+`,
+  },
+  {
+    slug: "how-to-read-nutrition-labels-like-a-pro",
+    title: "How to Read Nutrition Labels Like a Pro",
+    excerpt:
+      "Nutrition labels can be misleading if you don't know what to look for. Learn the tricks food companies use and how to decode labels for smarter food choices.",
+    author: "NourishAI Team",
+    category: "Nutrition",
+    tags: ["nutrition-labels", "food-science", "shopping", "education"],
+    publishedAt: "2026-03-05",
+    readTime: 8,
+    content: `
+<p>You stand in the grocery aisle, flip a package over, and see a wall of numbers. Serving size, calories, percent daily value, ingredient lists in microscopic font. Most people glance at the calorie count and move on. But if you're serious about your nutrition goals, you're leaving critical information on the table.</p>
+
+<p>Food companies spend millions on marketing to make products seem healthier than they are. "Low fat" often means "loaded with sugar." "Natural" has no legal definition. "Made with whole grains" might mean 2% whole grain flour. This guide teaches you to cut through the noise.</p>
+
+<h2>Start with Serving Size — Always</h2>
+
+<p>This is the single most manipulated number on the label. A bag of chips might list 140 calories per serving — but there are 8 servings in the bag. That "light snack" is actually 1,120 calories. A bottle of soda lists calories per serving, but the bottle contains 2.5 servings. Check the serving size first, then mentally multiply if you plan to eat more.</p>
+
+<p>NourishAI's barcode scanner automatically adjusts for serving size. Scan the package, then use the slider to match how much you actually ate.</p>
+
+<h2>The Macro Triangle: Protein, Carbs, Fat</h2>
+
+<p>After serving size, jump to the three macronutrients:</p>
+
+<ul>
+<li><strong>Protein:</strong> The higher, the better for most fitness-focused eaters. Look for at least 15-20g per serving in main courses.</li>
+<li><strong>Total Carbohydrates:</strong> Check the breakdown. Look at fiber (higher is better) and added sugars (lower is better). Total carbs minus fiber gives you net carbs.</li>
+<li><strong>Total Fat:</strong> Not all fat is bad. Check saturated fat (keep low) and trans fat (should be 0g). Unsaturated fats from nuts, seeds, and fish are beneficial.</li>
+</ul>
+
+<h2>The Ingredient List Red Flags</h2>
+
+<p>Ingredients are listed in order of quantity — the first ingredient is the most abundant. Here's what to watch for:</p>
+
+<ul>
+<li><strong>Sugar by other names:</strong> High fructose corn syrup, dextrose, maltose, sucrose, cane juice, agave nectar. If multiple sugar aliases appear in the first 5 ingredients, the product is essentially candy.</li>
+<li><strong>"Enriched" flour:</strong> This means the original nutrients were stripped out during processing and synthetic versions were added back. Choose "whole wheat flour" or "whole grain" as the first ingredient instead.</li>
+<li><strong>Hydrogenated oils:</strong> These are trans fats, even if the label says 0g (companies can round down from 0.49g per serving). Avoid anything with "partially hydrogenated" in the ingredients.</li>
+<li><strong>Long ingredient lists:</strong> As a general rule, fewer ingredients = less processing. A jar of peanut butter should have 1-2 ingredients: peanuts and maybe salt.</li>
+</ul>
+
+<h2>Percent Daily Value: Context Matters</h2>
+
+<p>The %DV column is based on a 2,000-calorie diet, which may not be your target. Use it as a rough guide: 5% or less is low, 20% or more is high. It's most useful for micronutrients — checking if a food is a good source of iron, calcium, or Vitamin D.</p>
+
+<h2>Common Label Tricks</h2>
+
+<ul>
+<li><strong>"Sugar-free":</strong> Often contains sugar alcohols (erythritol, maltitol) which can cause digestive issues and still affect blood sugar.</li>
+<li><strong>"Organic":</strong> Doesn't mean healthy. Organic cookies are still cookies.</li>
+<li><strong>"Keto-friendly":</strong> Unregulated marketing term. Check the actual carb count.</li>
+<li><strong>"High protein":</strong> Relative to what? A "high protein" candy bar with 10g protein and 35g sugar is not a smart choice.</li>
+</ul>
+
+<h2>The NourishAI Shortcut</h2>
+
+<p>The fastest way to decode any packaged food is to scan its barcode with NourishAI. The app pulls full nutrition data from our database, displays it in a clean macro breakdown, and lets you adjust the serving size before logging. No squinting at fine print, no mental math — just scan and decide.</p>
+
+<p>For foods without a barcode, snap a photo. The AI identifies the food and estimates macros based on visible portion size. It's not perfect for every situation, but it's accurate enough for consistent tracking — which is what actually drives results.</p>
+`,
+  },
 ];
 
 /**

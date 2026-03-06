@@ -1,0 +1,248 @@
+[
+  {
+    "id": "nai-2026-06-01-summer-hydration",
+    "date": "2026-06-01",
+    "type": "feed",
+    "template": "feed-macro-tip",
+    "data": {
+      "CATEGORY": "Summer Hydration",
+      "HEADLINE": "Summer Hydration: Beyond Just Water",
+      "BODY": "In summer heat, you can lose 2-3 liters of sweat per hour during intense exercise. Dehydration of just 2% body weight reduces performance by up to 25%. Plan your fluids like you plan your meals.",
+      "STAT_NUMBER": "2-3L",
+      "STAT_LABEL": "Sweat loss per hour in summer heat",
+      "TIP_TITLE": "Hydration Schedule",
+      "TIP_TEXT": "Wake up: 16oz water. Pre-workout: 16oz 30min before. During: 6-8oz every 15min. Post: 24oz per pound lost. NourishAI's water tracker sends reminders throughout the day."
+    }
+  },
+  {
+    "id": "nai-2026-06-03-outdoor-workout-fuel",
+    "date": "2026-06-03",
+    "type": "feed",
+    "template": "feed-macro-tip",
+    "data": {
+      "CATEGORY": "Outdoor Training",
+      "HEADLINE": "Fueling Outdoor Summer Workouts",
+      "BODY": "Training in heat increases calorie burn by 7-10% but also increases nutrient demands. You need more sodium, more carbs for fuel, and better pre-cooling strategies.",
+      "STAT_NUMBER": "7-10%",
+      "STAT_LABEL": "More calories burned in hot weather training",
+      "TIP_TITLE": "Hot Weather Fueling",
+      "TIP_TEXT": "Train early morning or evening. Eat a carb-rich meal 2 hours before. Freeze a sports drink for sipping during. Post-workout: watermelon + salt is nature's recovery drink."
+    }
+  },
+  {
+    "id": "nai-2026-06-05-feature-manual-entry",
+    "date": "2026-06-05",
+    "type": "story",
+    "template": "story-feature",
+    "data": {
+      "BADGE": "QUICK LOG",
+      "HEADLINE": "Manual Entry: Log Anything in Seconds",
+      "SUBTITLE": "Type a food name and NourishAI fills in the macros automatically",
+      "FEATURE1_ICON": "1",
+      "FEATURE1_TITLE": "Smart Search",
+      "FEATURE1_DESC": "Type 'chicken breast' and get instant nutrition data from our food database",
+      "FEATURE2_ICON": "2",
+      "FEATURE2_TITLE": "Custom Portions",
+      "FEATURE2_DESC": "Adjust serving size with a slider — macros update in real time",
+      "FEATURE3_ICON": "3",
+      "FEATURE3_TITLE": "Save Favorites",
+      "FEATURE3_DESC": "One-tap logging for your go-to meals and frequent foods"
+    }
+  },
+  {
+    "id": "nai-2026-06-07-travel-nutrition",
+    "date": "2026-06-07",
+    "type": "feed",
+    "template": "feed-macro-tip",
+    "data": {
+      "CATEGORY": "Travel",
+      "HEADLINE": "Vacation Nutrition: Stay on Track While Traveling",
+      "BODY": "Summer travel doesn't mean abandoning your goals. Focus on protein at every meal, stay hydrated on flights, and use NourishAI's photo scan at restaurants — no calorie counting needed.",
+      "STAT_NUMBER": "500+",
+      "STAT_LABEL": "Extra calories typically consumed per travel day",
+      "TIP_TITLE": "Travel Day Essentials",
+      "TIP_TEXT": "Pack: protein bars, mixed nuts, dried fruit, individual nut butter packets. At airports: grilled chicken salads, hard-boiled eggs, fruit cups. Avoid: oversized muffins and sugary coffee drinks."
+    }
+  },
+  {
+    "id": "nai-2026-06-09-before-after-couple",
+    "date": "2026-06-09",
+    "type": "feed",
+    "template": "feed-before-after",
+    "data": {
+      "HEADLINE": "Couples Who Track Together, Win Together",
+      "BEFORE_LABEL": "Before Tracking as a Couple",
+      "BEFORE_STAT1": "Different meal times, different foods",
+      "BEFORE_STAT2": "One partner always sabotaging the other",
+      "BEFORE_STAT3": "Zero accountability or shared goals",
+      "AFTER_LABEL": "After Both Using NourishAI",
+      "AFTER_STAT1": "Shared meal prep every Sunday",
+      "AFTER_STAT2": "Both hit protein targets 6/7 days",
+      "AFTER_STAT3": "Lost a combined 28 lbs in 3 months"
+    }
+  },
+  {
+    "id": "nai-2026-06-11-vitamin-d-sun",
+    "date": "2026-06-11",
+    "type": "feed",
+    "template": "feed-macro-tip",
+    "data": {
+      "CATEGORY": "Micronutrients",
+      "HEADLINE": "Vitamin D: The Sunshine Vitamin",
+      "BODY": "Despite more sun in summer, 42% of Americans are still Vitamin D deficient. This vitamin is critical for bone health, immune function, mood, and muscle strength.",
+      "STAT_NUMBER": "42%",
+      "STAT_LABEL": "of Americans are Vitamin D deficient",
+      "TIP_TITLE": "Get Your D",
+      "TIP_TEXT": "15-20 min of midday sun (arms and legs exposed). Eat: fatty fish, egg yolks, fortified milk. Supplement 2000-4000 IU daily if levels are low. Ask your doctor to test."
+    }
+  },
+  {
+    "id": "nai-2026-06-13-smoothie-mistakes",
+    "date": "2026-06-13",
+    "type": "feed",
+    "template": "feed-macro-tip",
+    "data": {
+      "CATEGORY": "Smoothies",
+      "HEADLINE": "5 Smoothie Mistakes Killing Your Macros",
+      "BODY": "Smoothies can be a 200-calorie power breakfast or a hidden 800-calorie sugar bomb. The difference is knowing what to add — and what to skip.",
+      "STAT_NUMBER": "800+",
+      "STAT_LABEL": "Calories in an average juice bar smoothie",
+      "TIP_TITLE": "The Perfect Macro Smoothie",
+      "TIP_TEXT": "Base: water or unsweetened almond milk (not juice). Protein: 1 scoop whey or pea protein. Fruit: 1/2 cup berries (not banana + mango + pineapple). Fat: 1 tbsp nut butter. Green: handful of spinach."
+    }
+  },
+  {
+    "id": "nai-2026-06-15-fathers-day",
+    "date": "2026-06-15",
+    "type": "story",
+    "template": "story-feature",
+    "data": {
+      "BADGE": "HAPPY FATHER'S DAY",
+      "HEADLINE": "Dad Fuel: High-Protein Grilling Menu",
+      "SUBTITLE": "Celebrate Dad with a cookout that's as nutritious as it is delicious",
+      "FEATURE1_ICON": "1",
+      "FEATURE1_TITLE": "Ribeye Steak (6oz)",
+      "FEATURE1_DESC": "450 cal, 42g protein, 28g fat. Grill to medium-rare for maximum flavor",
+      "FEATURE2_ICON": "2",
+      "FEATURE2_TITLE": "Grilled Asparagus",
+      "FEATURE2_DESC": "40 cal, 4g protein, 4g fiber. Drizzle with olive oil and lemon",
+      "FEATURE3_ICON": "3",
+      "FEATURE3_TITLE": "Sweet Potato Wedges",
+      "FEATURE3_DESC": "180 cal, 4g protein, 41g complex carbs. Seasoned with paprika and garlic"
+    }
+  },
+  {
+    "id": "nai-2026-06-17-intermittent-fasting-summer",
+    "date": "2026-06-17",
+    "type": "feed",
+    "template": "feed-macro-tip",
+    "data": {
+      "CATEGORY": "Intermittent Fasting",
+      "HEADLINE": "Intermittent Fasting in Summer: Good Idea?",
+      "BODY": "IF can work year-round, but summer heat and longer active days mean you need to be smarter about your eating window. Don't fast through your most active hours.",
+      "STAT_NUMBER": "16:8",
+      "STAT_LABEL": "Most popular fasting protocol (16hr fast, 8hr eat)",
+      "TIP_TITLE": "Summer IF Tips",
+      "TIP_TEXT": "Shift your window earlier (10am-6pm) to fuel daytime activities. Stay hydrated during fasting hours — add electrolytes. Break your fast with protein, not carbs. NourishAI tracks your fasting window."
+    }
+  },
+  {
+    "id": "nai-2026-06-19-before-after-marathon",
+    "date": "2026-06-19",
+    "type": "feed",
+    "template": "feed-before-after",
+    "data": {
+      "HEADLINE": "Marathon Training: Nutrition Makes or Breaks You",
+      "BEFORE_LABEL": "First Marathon Attempt",
+      "BEFORE_STAT1": "Hit the wall at mile 18 — bonked hard",
+      "BEFORE_STAT2": "Carb loading = eating pizza the night before",
+      "BEFORE_STAT3": "Finished in 4:32 completely depleted",
+      "AFTER_LABEL": "Second Marathon with NourishAI",
+      "AFTER_STAT1": "Steady energy through mile 26",
+      "AFTER_STAT2": "Proper 3-day carb load (7g/kg bodyweight)",
+      "AFTER_STAT3": "Finished in 3:48 — a 44 minute PR"
+    }
+  },
+  {
+    "id": "nai-2026-06-21-longest-day-fuel",
+    "date": "2026-06-21",
+    "type": "feed",
+    "template": "feed-macro-tip",
+    "data": {
+      "CATEGORY": "Summer Solstice",
+      "HEADLINE": "Longest Day of the Year: Maximize Your Fuel",
+      "BODY": "More daylight means more opportunities to move, train, and burn calories. Make sure your nutrition matches your increased activity level. Summer is not the time to under-eat.",
+      "STAT_NUMBER": "15hrs",
+      "STAT_LABEL": "of daylight on the summer solstice",
+      "TIP_TITLE": "Long Day Fueling Strategy",
+      "TIP_TEXT": "Eat 5-6 smaller meals spread across waking hours. Include a mid-morning and mid-afternoon snack. Keep cut fruit and veggie sticks prepped in the fridge for grab-and-go fuel."
+    }
+  },
+  {
+    "id": "nai-2026-06-23-collagen-hype",
+    "date": "2026-06-23",
+    "type": "feed",
+    "template": "feed-macro-tip",
+    "data": {
+      "CATEGORY": "Supplements",
+      "HEADLINE": "Collagen Supplements: Worth the Hype?",
+      "BODY": "Collagen is the most abundant protein in your body, supporting joints, skin, and connective tissue. Research shows 10-15g daily may reduce joint pain and improve skin elasticity.",
+      "STAT_NUMBER": "10-15g",
+      "STAT_LABEL": "Daily collagen for joint and skin benefits",
+      "TIP_TITLE": "Collagen Sources",
+      "TIP_TEXT": "Supplement: collagen peptides in coffee or smoothies (flavorless). Whole foods: bone broth (10g per cup), chicken skin, sardines. Pair with Vitamin C to boost absorption."
+    }
+  },
+  {
+    "id": "nai-2026-06-25-feature-progress",
+    "date": "2026-06-25",
+    "type": "story",
+    "template": "story-feature",
+    "data": {
+      "BADGE": "PROGRESS",
+      "HEADLINE": "Track Your Transformation Over Time",
+      "SUBTITLE": "NourishAI's Progress tab shows you trends that matter, not just daily numbers",
+      "FEATURE1_ICON": "1",
+      "FEATURE1_TITLE": "Weight Trend Line",
+      "FEATURE1_DESC": "Smoothed 7-day average eliminates daily water weight fluctuations",
+      "FEATURE2_ICON": "2",
+      "FEATURE2_TITLE": "Macro Consistency Score",
+      "FEATURE2_DESC": "See what percentage of days you hit within 5% of your targets",
+      "FEATURE3_ICON": "3",
+      "FEATURE3_TITLE": "Achievement Badges",
+      "FEATURE3_DESC": "Unlock 9 badges from 7-day streaks to 100-day logging milestones"
+    }
+  },
+  {
+    "id": "nai-2026-06-27-before-after-busy-parent",
+    "date": "2026-06-27",
+    "type": "feed",
+    "template": "feed-before-after",
+    "data": {
+      "HEADLINE": "Busy Parent Transforms with 10 Min/Day Tracking",
+      "BEFORE_LABEL": "Before NourishAI",
+      "BEFORE_STAT1": "Living on kids' leftover chicken nuggets",
+      "BEFORE_STAT2": "Too tired to cook, ordered DoorDash 4x/week",
+      "BEFORE_STAT3": "Gained 20 lbs since baby was born",
+      "AFTER_LABEL": "After 4 Months of Tracking",
+      "AFTER_STAT1": "Meal preps adult meals on Sunday, kids eat same proteins",
+      "AFTER_STAT2": "Cooking 5x/week, DoorDash down to 1x",
+      "AFTER_STAT3": "Lost 18 lbs while still enjoying treats weekly"
+    }
+  },
+  {
+    "id": "nai-2026-06-29-month-recap-summer",
+    "date": "2026-06-29",
+    "type": "feed",
+    "template": "feed-macro-tip",
+    "data": {
+      "CATEGORY": "Monthly Recap",
+      "HEADLINE": "June Nutrition Wins to Celebrate",
+      "BODY": "Summer is officially here and you've been showing up. Whether you nailed your protein goals, stayed hydrated, or just logged consistently — every day of data is a win.",
+      "STAT_NUMBER": "100%",
+      "STAT_LABEL": "Effort is the only metric that matters",
+      "TIP_TITLE": "Set Your July Goals",
+      "TIP_TEXT": "Review your June data in NourishAI's Progress tab. Pick ONE macro to focus on improving in July. Small, consistent improvements compound into life-changing results."
+    }
+  }
+]

@@ -84,14 +84,17 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Email, name, password, and role are required" }, { status: 400 });
     }
 
-    if (typeof email !== "string" || email.length > 254) {
-      return NextResponse.json({ error: "Invalid email" }, { status: 400 });
+    if (typeof email !== "string" || email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return NextResponse.json({ error: "Invalid email format" }, { status: 400 });
     }
-    if (typeof name !== "string" || name.length > 100) {
-      return NextResponse.json({ error: "Invalid name" }, { status: 400 });
+    if (typeof name !== "string" || name.trim().length < 1 || name.length > 100) {
+      return NextResponse.json({ error: "Name must be 1-100 characters" }, { status: 400 });
     }
     if (typeof password !== "string" || password.length < 8 || password.length > 128) {
       return NextResponse.json({ error: "Password must be 8-128 characters" }, { status: 400 });
+    }
+    if (!/[A-Z]/.test(password) || !/[a-z]/.test(password) || !/[0-9]/.test(password)) {
+      return NextResponse.json({ error: "Password must contain uppercase, lowercase, and a number" }, { status: 400 });
     }
 
     const validRoles = ["super_admin", "admin", "viewer"] as const;
