@@ -65,7 +65,7 @@ body {
 /* Scene 1: Hook text */
 .scene-hook {
   opacity: 0;
-  animation: sceneIn 0.6s ease-out 0.3s forwards, sceneOut 0.5s ease-in 3.5s forwards;
+  animation: sceneIn 0.6s ease-out 0.3s forwards, sceneOut 0.5s ease-in 5.0s forwards;
 }
 .hook-text {
   font-family: 'Outfit', sans-serif;
@@ -90,7 +90,7 @@ body {
 /* Scene 2: Phone with scanning animation */
 .scene-phone {
   opacity: 0;
-  animation: sceneIn 0.6s ease-out 4.2s forwards, sceneOut 0.5s ease-in 8.5s forwards;
+  animation: sceneIn 0.6s ease-out 5.8s forwards, sceneOut 0.5s ease-in 10.5s forwards;
 }
 .phone-frame {
   width: 380px;
@@ -138,7 +138,7 @@ body {
   height: 3px;
   background: linear-gradient(90deg, transparent, #34C759, transparent);
   top: 0;
-  animation: scanDown 1.5s ease-in-out 5.2s infinite;
+  animation: scanDown 1.5s ease-in-out 6.8s infinite;
   box-shadow: 0 0 20px #34C759;
 }
 @keyframes scanDown {
@@ -151,7 +151,7 @@ body {
   border: 2px solid #34C759;
   border-radius: 8px;
   opacity: 0;
-  animation: cornersIn 0.4s ease-out 5s forwards;
+  animation: cornersIn 0.4s ease-out 6.6s forwards;
 }
 @keyframes cornersIn {
   to { opacity: 0.6; }
@@ -162,7 +162,7 @@ body {
   margin-top: 24px;
   width: 100%;
   opacity: 0;
-  animation: slideUp 0.5s ease-out 6.5s forwards;
+  animation: slideUp 0.5s ease-out 8.2s forwards;
 }
 .macro-result-row {
   display: flex;
@@ -183,13 +183,13 @@ body {
   color: rgba(255,255,255,0.5);
   margin-top: 32px;
   opacity: 0;
-  animation: fadeIn 0.5s ease-out 5.8s forwards;
+  animation: fadeIn 0.5s ease-out 7.4s forwards;
 }
 
 /* Scene 3: Feature callouts */
 .scene-features {
   opacity: 0;
-  animation: sceneIn 0.6s ease-out 9.2s forwards, sceneOut 0.5s ease-in 13.5s forwards;
+  animation: sceneIn 0.6s ease-out 11.2s forwards, sceneOut 0.5s ease-in 15.0s forwards;
 }
 .feature-item {
   display: flex;
@@ -198,10 +198,10 @@ body {
   padding: 28px 0;
   opacity: 0;
 }
-.feature-item:nth-child(1) { animation: slideRight 0.5s ease-out 9.8s forwards; }
-.feature-item:nth-child(2) { animation: slideRight 0.5s ease-out 10.3s forwards; }
-.feature-item:nth-child(3) { animation: slideRight 0.5s ease-out 10.8s forwards; }
-.feature-item:nth-child(4) { animation: slideRight 0.5s ease-out 11.3s forwards; }
+.feature-item:nth-child(1) { animation: slideRight 0.5s ease-out 11.6s forwards; }
+.feature-item:nth-child(2) { animation: slideRight 0.5s ease-out 12.0s forwards; }
+.feature-item:nth-child(3) { animation: slideRight 0.5s ease-out 12.4s forwards; }
+.feature-item:nth-child(4) { animation: slideRight 0.5s ease-out 12.8s forwards; }
 
 .feature-icon {
   width: 72px;
@@ -234,7 +234,7 @@ body {
 /* Scene 4: CTA */
 .scene-cta {
   opacity: 0;
-  animation: sceneIn 0.6s ease-out 14.2s forwards;
+  animation: sceneIn 0.6s ease-out 15.5s forwards;
 }
 .cta-logo {
   font-family: 'Outfit', sans-serif;
@@ -261,7 +261,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 2px;
   box-shadow: 0 8px 32px rgba(52,199,89,0.4);
-  animation: pulse 2s ease-in-out 15s infinite;
+  animation: pulse 2s ease-in-out 16s infinite;
 }
 @keyframes pulse {
   0%, 100% { transform: scale(1); box-shadow: 0 8px 32px rgba(52,199,89,0.4); }

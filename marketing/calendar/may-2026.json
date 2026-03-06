@@ -242,18 +242,20 @@
     }
   },
   {
+    "id": "nai-2026-05-14-reel-day-tracker",
+    "date": "2026-05-14",
+    "type": "reel",
+    "template": "reel-day-tracker",
+    "caption": "A full day of tracking in under 2 minutes. Breakfast, lunch, snack, dinner — all logged.\n\n#NourishAI #DayOfEating #MacroTracking #FitTok #NutritionApp #MealTracking",
+    "data": {}
+  },
+  {
     "id": "nai-2026-05-24-ai-scan-reel",
     "date": "2026-05-24",
     "type": "reel",
     "template": "reel-ai-scan",
-    "caption": "AI scans a poke bowl in under 2 seconds. Every macro, instantly. 🤯\n\n#NourishAI #AIFoodScanner #PokeBowl #MacroTracking #FitTok",
-    "data": {
-      "FOOD_NAME": "Poke Bowl with Tuna, Edamame & Brown Rice",
-      "CALORIES": "580",
-      "PROTEIN": "38g",
-      "CARBS": "62g",
-      "FAT": "18g"
-    }
+    "caption": "AI scans a poke bowl in under 2 seconds. Every macro, instantly.\n\n#NourishAI #AIFoodScanner #PokeBowl #MacroTracking #FitTok",
+    "data": {}
   },
   {
     "id": "nai-2026-05-25-memorial-day-cookout",

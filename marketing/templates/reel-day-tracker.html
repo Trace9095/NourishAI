@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  width: 1080px;
+  height: 1920px;
+  background: #0A0A14;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Ambient */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+}
+.orb-1 {
+  width: 500px; height: 500px;
+  background: rgba(52,199,89,0.07);
+  top: -100px; right: -100px;
+}
+.orb-2 {
+  width: 400px; height: 400px;
+  background: rgba(255,149,0,0.05);
+  bottom: 200px; left: -80px;
+}
+.grain {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  z-index: 100;
+  pointer-events: none;
+}
+
+.scene {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 60px;
+}
+
+/* ---- Scene 1: Hook ---- */
+.scene-hook {
+  opacity: 0;
+  animation: sceneIn 0.8s ease-out 0.3s forwards, sceneOut 0.6s ease-in 4.0s forwards;
+}
+.hook-pre {
+  font-size: 20px;
+  font-weight: 700;
+  color: #34C759;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  margin-bottom: 24px;
+}
+.hook-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 80px;
+  font-weight: 900;
+  color: white;
+  text-align: center;
+  line-height: 1.05;
+  letter-spacing: -3px;
+}
+.hook-text .green { color: #34C759; }
+.hook-text .orange { color: #FF9500; }
+.hook-sub {
+  font-size: 24px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.4);
+  margin-top: 28px;
+  text-align: center;
+}
+
+/* ---- Scene 2: Meals Timeline ---- */
+.scene-meals {
+  opacity: 0;
+  animation: sceneIn 0.6s ease-out 4.8s forwards, sceneOut 0.5s ease-in 11.5s forwards;
+  justify-content: flex-start;
+  padding-top: 120px;
+}
+.meals-header {
+  font-family: 'Outfit', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 48px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.timeline {
+  width: 100%;
+  max-width: 800px;
+  position: relative;
+}
+/* Vertical line */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 32px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, #34C759 0%, rgba(52,199,89,0.1) 100%);
+}
+
+.meal-card {
+  display: flex;
+  gap: 28px;
+  margin-bottom: 28px;
+  opacity: 0;
+  position: relative;
+}
+.meal-card:nth-child(1) { animation: slideRight 0.5s ease-out 5.4s forwards; }
+.meal-card:nth-child(2) { animation: slideRight 0.5s ease-out 6.4s forwards; }
+.meal-card:nth-child(3) { animation: slideRight 0.5s ease-out 7.4s forwards; }
+.meal-card:nth-child(4) { animation: slideRight 0.5s ease-out 8.4s forwards; }
+
+.meal-dot {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  z-index: 1;
+}
+.dot-breakfast { background: rgba(255,149,0,0.15); border: 2px solid rgba(255,149,0,0.3); }
+.dot-lunch { background: rgba(52,199,89,0.15); border: 2px solid rgba(52,199,89,0.3); }
+.dot-snack { background: rgba(90,200,250,0.15); border: 2px solid rgba(90,200,250,0.3); }
+.dot-dinner { background: rgba(255,107,107,0.15); border: 2px solid rgba(255,107,107,0.3); }
+
+.meal-info {
+  flex: 1;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 20px;
+  padding: 24px 28px;
+}
+.meal-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.meal-time {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.meal-type {
+  font-family: 'Outfit', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 4px;
+}
+.meal-desc {
+  font-size: 16px;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 12px;
+}
+.meal-macros {
+  display: flex;
+  gap: 20px;
+}
+.macro-pill {
+  font-size: 14px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 8px;
+}
+.mp-cal { color: #FF9500; background: rgba(255,149,0,0.1); }
+.mp-pro { color: #FF6B6B; background: rgba(255,107,107,0.1); }
+.mp-carb { color: #4ECDC4; background: rgba(78,205,196,0.1); }
+
+/* Running total */
+.running-total {
+  margin-top: 40px;
+  width: 100%;
+  max-width: 800px;
+  background: rgba(52,199,89,0.06);
+  border: 1px solid rgba(52,199,89,0.15);
+  border-radius: 20px;
+  padding: 28px 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0;
+  animation: slideUp 0.5s ease-out 9.5s forwards;
+}
+.total-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+}
+.total-value {
+  font-family: 'Outfit', sans-serif;
+  font-size: 36px;
+  font-weight: 900;
+  color: #34C759;
+}
+
+/* ---- Scene 3: Result ---- */
+.scene-result {
+  opacity: 0;
+  animation: sceneIn 0.8s ease-out 12.2s forwards, sceneOut 0.6s ease-in 15.0s forwards;
+}
+.result-number {
+  font-family: 'Outfit', sans-serif;
+  font-size: 160px;
+  font-weight: 900;
+  color: #34C759;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.result-unit {
+  font-family: 'Outfit', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 32px;
+}
+.result-badge {
+  background: rgba(52,199,89,0.12);
+  border: 1px solid rgba(52,199,89,0.25);
+  border-radius: 40px;
+  padding: 14px 36px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #34C759;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
+.result-sub {
+  font-size: 28px;
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  line-height: 1.4;
+}
+.result-sub strong {
+  color: white;
+  font-weight: 700;
+}
+
+/* ---- Scene 4: CTA ---- */
+.scene-cta {
+  opacity: 0;
+  animation: sceneIn 0.8s ease-out 15.5s forwards;
+}
+.cta-logo {
+  font-family: 'Outfit', sans-serif;
+  font-size: 72px;
+  font-weight: 900;
+  color: white;
+  margin-bottom: 16px;
+}
+.cta-logo .green { color: #34C759; }
+.cta-tagline {
+  font-size: 26px;
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  margin-bottom: 48px;
+}
+.cta-button {
+  background: linear-gradient(135deg, #34C759, #2DD870);
+  padding: 28px 80px;
+  border-radius: 22px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 30px;
+  font-weight: 800;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  box-shadow: 0 8px 40px rgba(52,199,89,0.4);
+  animation: pulse 2s ease-in-out 16s infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 8px 32px rgba(52,199,89,0.4); }
+  50% { transform: scale(1.03); box-shadow: 0 12px 48px rgba(52,199,89,0.6); }
+}
+.cta-free {
+  font-size: 20px;
+  color: rgba(255,255,255,0.35);
+  margin-top: 20px;
+}
+
+/* Shared */
+@keyframes sceneIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes sceneOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+</style>
+</head>
+<body>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="grain"></div>
+
+<!-- Scene 1: Hook -->
+<div class="scene scene-hook">
+  <div class="hook-pre">A day with NourishAI</div>
+  <div class="hook-text">
+    TRACK<br>
+    <span class="green">EVERY</span><br>
+    <span class="orange">MEAL.</span>
+  </div>
+  <div class="hook-sub">Total time spent: under 2 minutes</div>
+</div>
+
+<!-- Scene 2: Meal Timeline -->
+<div class="scene scene-meals">
+  <div class="meals-header">Today's Food Log</div>
+  <div class="timeline">
+    <div class="meal-card">
+      <div class="meal-dot dot-breakfast">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF9500" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg>
+      </div>
+      <div class="meal-info">
+        <div class="meal-top">
+          <div class="meal-type">Breakfast</div>
+          <div class="meal-time">7:30 AM</div>
+        </div>
+        <div class="meal-desc">Greek yogurt parfait with granola</div>
+        <div class="meal-macros">
+          <span class="macro-pill mp-cal">380 cal</span>
+          <span class="macro-pill mp-pro">32g P</span>
+          <span class="macro-pill mp-carb">42g C</span>
+        </div>
+      </div>
+    </div>
+    <div class="meal-card">
+      <div class="meal-dot dot-lunch">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="1.5" stroke-linecap="round"><path d="M12 2v6M12 22v-6M6 12H2M22 12h-4M4.93 4.93l4.24 4.24M14.83 14.83l4.24 4.24M4.93 19.07l4.24-4.24M14.83 9.17l4.24-4.24"/></svg>
+      </div>
+      <div class="meal-info">
+        <div class="meal-top">
+          <div class="meal-type">Lunch</div>
+          <div class="meal-time">12:15 PM</div>
+        </div>
+        <div class="meal-desc">Grilled chicken bowl with quinoa</div>
+        <div class="meal-macros">
+          <span class="macro-pill mp-cal">620 cal</span>
+          <span class="macro-pill mp-pro">48g P</span>
+          <span class="macro-pill mp-carb">55g C</span>
+        </div>
+      </div>
+    </div>
+    <div class="meal-card">
+      <div class="meal-dot dot-snack">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5AC8FA" stroke-width="1.5" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </div>
+      <div class="meal-info">
+        <div class="meal-top">
+          <div class="meal-type">Snack</div>
+          <div class="meal-time">3:30 PM</div>
+        </div>
+        <div class="meal-desc">Protein shake + banana</div>
+        <div class="meal-macros">
+          <span class="macro-pill mp-cal">280 cal</span>
+          <span class="macro-pill mp-pro">30g P</span>
+          <span class="macro-pill mp-carb">28g C</span>
+        </div>
+      </div>
+    </div>
+    <div class="meal-card">
+      <div class="meal-dot dot-dinner">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF6B6B" stroke-width="1.5" stroke-linecap="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
+      </div>
+      <div class="meal-info">
+        <div class="meal-top">
+          <div class="meal-type">Dinner</div>
+          <div class="meal-time">6:45 PM</div>
+        </div>
+        <div class="meal-desc">Salmon with roasted vegetables</div>
+        <div class="meal-macros">
+          <span class="macro-pill mp-cal">520 cal</span>
+          <span class="macro-pill mp-pro">44g P</span>
+          <span class="macro-pill mp-carb">32g C</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="running-total">
+    <div class="total-label">Daily Total</div>
+    <div class="total-value">1,800 cal | 154g protein</div>
+  </div>
+</div>
+
+<!-- Scene 3: Result -->
+<div class="scene scene-result">
+  <div class="result-number">1,800</div>
+  <div class="result-unit">calories tracked</div>
+  <div class="result-badge">On target</div>
+  <div class="result-sub">
+    <strong>4 meals logged.</strong><br>
+    Total time: under 2 minutes.
+  </div>
+</div>
+
+<!-- Scene 4: CTA -->
+<div class="scene scene-cta">
+  <div class="cta-logo"><span class="green">Nourish</span>AI</div>
+  <div class="cta-tagline">Track everything. Effort nothing.</div>
+  <div class="cta-button">Download Free</div>
+  <div class="cta-free">Available on the App Store</div>
+</div>
+
+</body>
+</html>

@@ -313,6 +313,14 @@
     }
   },
   {
+    "id": "nai-2026-04-21-reel-speed-demo",
+    "date": "2026-04-21",
+    "template": "reel-speed-demo",
+    "type": "reel",
+    "caption": "5 minutes of manual logging... or 2 seconds with AI. Your choice.\n\n#NourishAI #AIFoodScanner #MacroTracking #FitTok #NutritionApp #StopManualLogging",
+    "data": {}
+  },
+  {
     "id": "nai-2026-04-24-restaurant-ordering",
     "date": "2026-04-24",
     "type": "feed",

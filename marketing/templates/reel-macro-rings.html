@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  width: 1080px;
+  height: 1920px;
+  background: #0A0A14;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Ambient gradient orbs */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0;
+  animation: orbPulse 10s ease-in-out infinite;
+}
+.orb-1 {
+  width: 500px; height: 500px;
+  background: #34C759;
+  top: -150px; left: 50%;
+  transform: translateX(-50%);
+}
+.orb-2 {
+  width: 400px; height: 400px;
+  background: #FF9500;
+  bottom: 100px; right: -100px;
+  animation-delay: 3s;
+}
+.orb-3 {
+  width: 300px; height: 300px;
+  background: #5AC8FA;
+  top: 50%; left: -80px;
+  animation-delay: 5s;
+}
+
+@keyframes orbPulse {
+  0%, 100% { opacity: 0.06; }
+  50% { opacity: 0.12; }
+}
+
+/* Grain overlay */
+.grain {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  z-index: 100;
+  pointer-events: none;
+}
+
+/* Scene container */
+.scene {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 60px;
+}
+
+/* ---- Scene 1: Hook ---- */
+.scene-hook {
+  opacity: 0;
+  animation: sceneIn 0.8s ease-out 0.3s forwards, sceneOut 0.6s ease-in 4.5s forwards;
+}
+.hook-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 78px;
+  font-weight: 900;
+  color: white;
+  text-align: center;
+  line-height: 1.05;
+  text-transform: uppercase;
+  letter-spacing: -3px;
+}
+.hook-text .green { color: #34C759; }
+.hook-text .orange { color: #FF9500; }
+.hook-sub {
+  font-size: 26px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  margin-top: 28px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+/* ---- Scene 2: Macro Rings ---- */
+.scene-rings {
+  opacity: 0;
+  animation: sceneIn 0.8s ease-out 5.2s forwards, sceneOut 0.6s ease-in 11.0s forwards;
+}
+.rings-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+  margin-bottom: 48px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.rings-container {
+  display: flex;
+  gap: 48px;
+  align-items: center;
+  justify-content: center;
+}
+.ring-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.ring-svg {
+  width: 240px;
+  height: 240px;
+  transform: rotate(-90deg);
+}
+.ring-bg {
+  fill: none;
+  stroke: rgba(255,255,255,0.06);
+  stroke-width: 14;
+}
+.ring-progress {
+  fill: none;
+  stroke-width: 14;
+  stroke-linecap: round;
+  stroke-dasharray: 628;
+  stroke-dashoffset: 628;
+}
+.ring-calories .ring-progress {
+  stroke: #FF9500;
+  animation: ringFill 2.5s ease-out 6.0s forwards;
+}
+.ring-protein .ring-progress {
+  stroke: #FF6B6B;
+  animation: ringFill75 2.5s ease-out 6.4s forwards;
+}
+.ring-carbs .ring-progress {
+  stroke: #4ECDC4;
+  animation: ringFill60 2.5s ease-out 6.8s forwards;
+}
+@keyframes ringFill {
+  to { stroke-dashoffset: 63; } /* ~90% fill */
+}
+@keyframes ringFill75 {
+  to { stroke-dashoffset: 157; } /* ~75% fill */
+}
+@keyframes ringFill60 {
+  to { stroke-dashoffset: 251; } /* ~60% fill */
+}
+.ring-value {
+  position: absolute;
+  font-family: 'Outfit', sans-serif;
+  font-size: 42px;
+  font-weight: 800;
+  color: white;
+  text-align: center;
+}
+.ring-value-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ring-label {
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.ring-calories .ring-label { color: #FF9500; }
+.ring-protein .ring-label { color: #FF6B6B; }
+.ring-carbs .ring-label { color: #4ECDC4; }
+
+/* Counter animation */
+.counter {
+  opacity: 0;
+  animation: fadeIn 0.4s ease-out 7.0s forwards;
+}
+.ring-protein .counter { animation-delay: 7.4s; }
+.ring-carbs .counter { animation-delay: 7.8s; }
+
+/* Daily total bar */
+.daily-total {
+  margin-top: 56px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 24px 48px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  opacity: 0;
+  animation: slideUp 0.6s ease-out 8.5s forwards;
+}
+.daily-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(52,199,89,0.15);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.daily-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: white;
+}
+.daily-text span { color: #34C759; }
+
+/* ---- Scene 3: Tagline ---- */
+.scene-tagline {
+  opacity: 0;
+  animation: sceneIn 0.8s ease-out 11.8s forwards, sceneOut 0.6s ease-in 15.0s forwards;
+}
+.tagline-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 56px;
+  font-weight: 800;
+  color: white;
+  text-align: center;
+  line-height: 1.2;
+  max-width: 800px;
+}
+.tagline-text .green { color: #34C759; }
+.tagline-sub {
+  font-size: 24px;
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  margin-top: 24px;
+}
+.tagline-features {
+  display: flex;
+  gap: 32px;
+  margin-top: 48px;
+}
+.tagline-pill {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 40px;
+  padding: 14px 28px;
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.7);
+  opacity: 0;
+}
+.tagline-pill:nth-child(1) { animation: slideUp 0.4s ease-out 12.5s forwards; }
+.tagline-pill:nth-child(2) { animation: slideUp 0.4s ease-out 12.8s forwards; }
+.tagline-pill:nth-child(3) { animation: slideUp 0.4s ease-out 13.1s forwards; }
+
+/* ---- Scene 4: CTA ---- */
+.scene-cta {
+  opacity: 0;
+  animation: sceneIn 0.8s ease-out 15.5s forwards;
+}
+.cta-logo {
+  font-family: 'Outfit', sans-serif;
+  font-size: 72px;
+  font-weight: 900;
+  color: white;
+  margin-bottom: 16px;
+}
+.cta-logo .green { color: #34C759; }
+.cta-tagline {
+  font-size: 26px;
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  margin-bottom: 48px;
+}
+.cta-button {
+  background: linear-gradient(135deg, #34C759, #2DD870);
+  padding: 28px 80px;
+  border-radius: 22px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 30px;
+  font-weight: 800;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  box-shadow: 0 8px 40px rgba(52,199,89,0.4);
+  animation: pulse 2s ease-in-out 16s infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 8px 32px rgba(52,199,89,0.4); }
+  50% { transform: scale(1.03); box-shadow: 0 12px 48px rgba(52,199,89,0.6); }
+}
+.cta-free {
+  font-size: 20px;
+  color: rgba(255,255,255,0.35);
+  margin-top: 20px;
+  letter-spacing: 1px;
+}
+
+/* Shared animations */
+@keyframes sceneIn {
+  from { opacity: 0; transform: translateY(40px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes sceneOut {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(0.95); }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+</style>
+</head>
+<body>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+<div class="grain"></div>
+
+<!-- Scene 1: Hook -->
+<div class="scene scene-hook">
+  <div class="hook-text">
+    EVERY <span class="green">MACRO.</span><br>
+    EVERY <span class="orange">MEAL.</span><br>
+    VISUALIZED.
+  </div>
+  <div class="hook-sub">AI-powered nutrition tracking</div>
+</div>
+
+<!-- Scene 2: Animated Macro Rings -->
+<div class="scene scene-rings">
+  <div class="rings-title">Today's Progress</div>
+  <div class="rings-container">
+    <div class="ring-item ring-calories">
+      <div class="ring-value-wrap">
+        <svg class="ring-svg" viewBox="0 0 220 220">
+          <circle class="ring-bg" cx="110" cy="110" r="100" />
+          <circle class="ring-progress" cx="110" cy="110" r="100" />
+        </svg>
+        <div class="ring-value counter">1,847</div>
+      </div>
+      <div class="ring-label">Calories</div>
+    </div>
+    <div class="ring-item ring-protein">
+      <div class="ring-value-wrap">
+        <svg class="ring-svg" viewBox="0 0 220 220">
+          <circle class="ring-bg" cx="110" cy="110" r="100" />
+          <circle class="ring-progress" cx="110" cy="110" r="100" />
+        </svg>
+        <div class="ring-value counter">142g</div>
+      </div>
+      <div class="ring-label">Protein</div>
+    </div>
+    <div class="ring-item ring-carbs">
+      <div class="ring-value-wrap">
+        <svg class="ring-svg" viewBox="0 0 220 220">
+          <circle class="ring-bg" cx="110" cy="110" r="100" />
+          <circle class="ring-progress" cx="110" cy="110" r="100" />
+        </svg>
+        <div class="ring-value counter">186g</div>
+      </div>
+      <div class="ring-label">Carbs</div>
+    </div>
+  </div>
+  <div class="daily-total">
+    <div class="daily-icon">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <div class="daily-text">On track for <span>2,100 cal</span> target</div>
+  </div>
+</div>
+
+<!-- Scene 3: Tagline -->
+<div class="scene scene-tagline">
+  <div class="tagline-text">
+    Every bite <span class="green">counted.</span><br>
+    Zero effort.
+  </div>
+  <div class="tagline-sub">AI does the work so you can focus on results</div>
+  <div class="tagline-features">
+    <div class="tagline-pill">Photo Scan</div>
+    <div class="tagline-pill">Barcode Reader</div>
+    <div class="tagline-pill">AI Chat</div>
+  </div>
+</div>
+
+<!-- Scene 4: CTA -->
+<div class="scene scene-cta">
+  <div class="cta-logo"><span class="green">Nourish</span>AI</div>
+  <div class="cta-tagline">AI-Powered Nutrition Tracking</div>
+  <div class="cta-button">Download Free</div>
+  <div class="cta-free">Available on the App Store</div>
+</div>
+
+</body>
+</html>

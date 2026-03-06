@@ -262,6 +262,22 @@
     }
   },
   {
+    "id": "nai-2026-06-22-reel-macro-rings",
+    "date": "2026-06-22",
+    "type": "reel",
+    "template": "reel-macro-rings",
+    "caption": "Your macros, visualized. Watch the rings fill up as you hit your targets.\n\n#NourishAI #MacroRings #NutritionGoals #FitTok #CalorieTracking #GymTok",
+    "data": {}
+  },
+  {
+    "id": "nai-2026-06-26-reel-speed-demo",
+    "date": "2026-06-26",
+    "type": "reel",
+    "template": "reel-speed-demo",
+    "caption": "Still typing in every food manually? There's a faster way.\n\n#NourishAI #AIFoodScanner #StopManualLogging #FitTok #NutritionApp",
+    "data": {}
+  },
+  {
     "id": "nai-2026-06-29-month-recap-summer",
     "date": "2026-06-29",
     "type": "feed",
