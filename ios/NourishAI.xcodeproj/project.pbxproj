@@ -31,7 +31,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A10003010000000000000001 /* NourishAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NourishAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A10002010000000000000001 /* NourishAIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NourishAIApp.swift; sourceTree = "<group>"; };
 		A10002010000000000000002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A10002010000000000000003 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -54,6 +53,7 @@
 		A10002010000000000000020 /* MacroRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroRingView.swift; sourceTree = "<group>"; };
 		A10002010000000000000021 /* MealRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealRow.swift; sourceTree = "<group>"; };
 		A10002010000000000000099 /* NourishAI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NourishAI.entitlements; sourceTree = "<group>"; };
+		A10003010000000000000001 /* NourishAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NourishAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,14 +73,6 @@
 				A10005010000000000000002 /* NourishAI */,
 				A10005010000000000000099 /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		A10005010000000000000099 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A10003010000000000000001 /* NourishAI.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		A10005010000000000000002 /* NourishAI */ = {
@@ -190,6 +182,14 @@
 				A10002010000000000000019 /* SubscriptionView.swift */,
 			);
 			path = Subscription;
+			sourceTree = "<group>";
+		};
+		A10005010000000000000099 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A10003010000000000000001 /* NourishAI.app */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -416,7 +416,7 @@
 				CODE_SIGN_ENTITLEMENTS = NourishAI/NourishAI.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = MPH83385EQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = NourishAI;
@@ -455,7 +455,7 @@
 				CODE_SIGN_ENTITLEMENTS = NourishAI/NourishAI.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = MPH83385EQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = NourishAI;

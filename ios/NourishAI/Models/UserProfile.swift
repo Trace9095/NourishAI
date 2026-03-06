@@ -2,7 +2,7 @@ import Foundation
 import SwiftData
 
 @Model
-final class UserProfile: Sendable {
+final class UserProfile {
     var id: UUID
     var deviceId: String
     var serverUserId: String?

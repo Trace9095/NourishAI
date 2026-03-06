@@ -3,7 +3,7 @@ import UIKit
 
 /// Server proxy client — all AI calls go through the website API routes.
 /// NO embedded API keys. The server handles Claude API calls.
-actor NourishAPIManager {
+final class NourishAPIManager {
     static let shared = NourishAPIManager()
 
     private var deviceId: String {

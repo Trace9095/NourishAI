@@ -32,21 +32,29 @@ struct MainTabView: View {
 
     var body: some View {
         TabView(selection: $selectedTab) {
-            Tab("Dashboard", systemImage: "chart.pie.fill", value: 0) {
-                DashboardView()
-            }
+            DashboardView()
+                .tabItem {
+                    Label("Dashboard", systemImage: "chart.pie.fill")
+                }
+                .tag(0)
 
-            Tab("Food Log", systemImage: "fork.knife", value: 1) {
-                FoodLogView()
-            }
+            FoodLogView()
+                .tabItem {
+                    Label("Food Log", systemImage: "fork.knife")
+                }
+                .tag(1)
 
-            Tab("Progress", systemImage: "chart.line.uptrend.xyaxis", value: 2) {
-                NutritionProgressView()
-            }
+            NutritionProgressView()
+                .tabItem {
+                    Label("Progress", systemImage: "chart.line.uptrend.xyaxis")
+                }
+                .tag(2)
 
-            Tab("Settings", systemImage: "gearshape.fill", value: 3) {
-                SettingsView()
-            }
+            SettingsView()
+                .tabItem {
+                    Label("Settings", systemImage: "gearshape.fill")
+                }
+                .tag(3)
         }
         .tint(.brandGreen)
     }

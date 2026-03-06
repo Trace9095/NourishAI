@@ -4,7 +4,7 @@ import SwiftData
 // MARK: - Daily Nutrition (aggregated daily totals)
 
 @Model
-final class DailyNutrition: Sendable {
+final class DailyNutrition {
     var id: UUID
     var date: Date
     var totalCalories: Int
@@ -44,7 +44,7 @@ final class DailyNutrition: Sendable {
 // MARK: - Food Entry (individual logged meal/food)
 
 @Model
-final class FoodEntry: Sendable {
+final class FoodEntry {
     var id: UUID
     var name: String
     var brand: String?
@@ -106,7 +106,7 @@ final class FoodEntry: Sendable {
 // MARK: - Saved Food (favorites/frequently used)
 
 @Model
-final class SavedFood: Sendable {
+final class SavedFood {
     var id: UUID
     var name: String
     var brand: String?
@@ -153,7 +153,7 @@ final class SavedFood: Sendable {
 // MARK: - Water Intake
 
 @Model
-final class DailyWaterIntake: Sendable {
+final class DailyWaterIntake {
     var id: UUID
     var date: Date
     var totalMl: Int
@@ -173,7 +173,7 @@ final class DailyWaterIntake: Sendable {
 }
 
 @Model
-final class WaterEntry: Sendable {
+final class WaterEntry {
     var id: UUID
     var amountMl: Int
     var loggedAt: Date
