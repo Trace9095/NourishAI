@@ -1,5 +1,6 @@
 import SwiftUI
 import SwiftData
+import PhotosUI
 
 struct AIFoodCameraView: View {
     @Environment(\.modelContext) private var modelContext
@@ -12,6 +13,7 @@ struct AIFoodCameraView: View {
     @State private var errorMessage: String?
     @State private var showCamera = true
     @State private var selectedMealType: MealType = .lunch
+    @State private var selectedPhotoItem: PhotosPickerItem?
 
     private var profile: UserProfile? { profiles.first }
 
@@ -66,12 +68,8 @@ struct AIFoodCameraView: View {
             // Meal type selector
             mealTypeSelector
 
-            // Capture button
-            Button {
-                // In real app, this captures from camera
-                // For now, use photo picker
-                simulateCapture()
-            } label: {
+            // Photo picker
+            PhotosPicker(selection: $selectedPhotoItem, matching: .images) {
                 ZStack {
                     Circle()
                         .fill(Color.brandGreen)
@@ -79,11 +77,25 @@ struct AIFoodCameraView: View {
                     Circle()
                         .strokeBorder(Color.white, lineWidth: 3)
                         .frame(width: 64, height: 64)
+                    Image(systemName: "photo.on.rectangle")
+                        .font(.title2)
+                        .foregroundColor(.white)
                 }
             }
             .frame(minHeight: Layout.minTouchTarget)
+            .onChange(of: selectedPhotoItem) { _, newItem in
+                guard let newItem else { return }
+                Task {
+                    if let data = try? await newItem.loadTransferable(type: Data.self),
+                       let image = UIImage(data: data) {
+                        capturedImage = image
+                        showCamera = false
+                        analyzeImage(image)
+                    }
+                }
+            }
 
-            Text("Or use the photo library")
+            Text("Choose a photo of your food")
                 .font(.caption)
                 .foregroundColor(.gray)
 
@@ -265,11 +277,6 @@ struct AIFoodCameraView: View {
             Spacer()
             Text(value).foregroundColor(.white).fontWeight(.semibold)
         }
-    }
-
-    private func simulateCapture() {
-        // In real app, this would use UIImagePickerController or AVCaptureSession
-        // For now, just show the analyzing state with a placeholder
     }
 
     private func analyzeImage(_ image: UIImage) {

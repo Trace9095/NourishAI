@@ -65,6 +65,11 @@
 | 2.16 | Fix servingSize String? type mismatch in 3 views | DONE |
 | 2.17 | Fix MealRow optional binding on non-optional | DONE |
 | 2.18 | Add WaterEntry to SwiftData model container | DONE |
+| 2.19 | Fix DashboardView #Predicate (Calendar not translatable to SQL) | DONE |
+| 2.20 | Fix SubscriptionManager Task.detached Swift 6 concurrency | DONE |
+| 2.21 | Fix BarcodeScanView loading spinner state machine | DONE |
+| 2.22 | Wire AIFoodCameraView PhotosPicker (functional photo selection) | DONE |
+| 2.23 | Fix SubscriptionView isPurchasing reset before dismiss | DONE |
 
 ---
 
@@ -100,6 +105,13 @@
 | 3.24 | Remove hardcoded session secret fallback | DONE |
 | 3.25 | Fix CORS empty-string origin handling | DONE |
 | 3.26 | FAQ CTA buttons on contact page | DONE |
+| 3.27 | Fix scan limit inconsistency (count ALL scan types for free tier) | DONE |
+| 3.28 | Add input size limits (description 500 chars, image 10MB) | DONE |
+| 3.29 | Add cooldown to analyze-description (was missing) | DONE |
+| 3.30 | Hide CookieConsentBanner on admin pages | DONE |
+| 3.31 | Complete favicon metadata in layout (ico, 192, 512) | DONE |
+| 3.32 | Truncate device IDs in admin stats response | DONE |
+| 3.33 | Fix blog Copy Link button (client component with clipboard) | DONE |
 
 ---
 

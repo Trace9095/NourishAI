@@ -41,7 +41,26 @@ export async function POST(request: NextRequest) {
       user.subscriptionExpiresAt &&
       user.subscriptionExpiresAt > new Date();
 
-    // Free tier weekly limit
+    // Rate limiting: check cooldown (all users)
+    const recentScan = await db()
+      .select()
+      .from(scanUsage)
+      .where(
+        and(
+          eq(scanUsage.userId, user.id),
+          gte(scanUsage.createdAt, new Date(Date.now() - 30_000))
+        )
+      )
+      .limit(1);
+
+    if (recentScan.length > 0) {
+      return NextResponse.json(
+        { error: "Please wait 30 seconds between scans" },
+        { status: 429, headers: corsHeaders(request) }
+      );
+    }
+
+    // Free tier weekly limit (counts ALL AI scan types: photo + description)
     if (!isPro) {
       const weekStart = new Date();
       weekStart.setDate(weekStart.getDate() - weekStart.getDay());
@@ -59,7 +78,12 @@ export async function POST(request: NextRequest) {
 
       if (weeklyScans.length >= 1) {
         return NextResponse.json(
-          { error: "Free scan limit reached", upgradeRequired: true },
+          {
+            error: "Free scan limit reached",
+            scansUsed: weeklyScans.length,
+            scansMax: 1,
+            upgradeRequired: true,
+          },
           { status: 403, headers: corsHeaders(request) }
         );
       }
@@ -69,6 +93,14 @@ export async function POST(request: NextRequest) {
     if (!description || typeof description !== "string") {
       return NextResponse.json(
         { error: "Missing food description" },
+        { status: 400, headers: corsHeaders(request) }
+      );
+    }
+
+    // Limit description length to prevent prompt injection and cost abuse
+    if (description.length > 500) {
+      return NextResponse.json(
+        { error: "Description too long (max 500 characters)" },
         { status: 400, headers: corsHeaders(request) }
       );
     }

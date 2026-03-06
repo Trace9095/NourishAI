@@ -107,8 +107,8 @@ export async function GET() {
       .orderBy(desc(scanUsage.createdAt))
       .limit(50);
 
-    // Recent users (last 20)
-    const recentUsers = await database
+    // Recent users (last 20) — truncate device IDs for privacy
+    const recentUsersRaw = await database
       .select({
         id: users.id,
         deviceId: users.deviceId,
@@ -118,6 +118,11 @@ export async function GET() {
       .from(users)
       .orderBy(desc(users.createdAt))
       .limit(20);
+
+    const recentUsers = recentUsersRaw.map((u) => ({
+      ...u,
+      deviceId: u.deviceId ? `${u.deviceId.slice(0, 8)}...` : null,
+    }));
 
     // Estimated AI cost (Haiku: ~$0.001/scan average)
     const aiScans = scansByType.filter(

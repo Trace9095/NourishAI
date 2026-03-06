@@ -1,9 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { hasConsented, setConsent } from "@/lib/cookie-consent";
 
 export function CookieConsentBanner() {
+  const pathname = usePathname();
   const [visible, setVisible] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
   const [analytics, setAnalytics] = useState(true);
@@ -33,6 +35,8 @@ export function CookieConsentBanner() {
     setVisible(false);
   }
 
+  // Don't show on admin pages (Gold Standard #28)
+  if (pathname?.startsWith("/admin")) return null;
   if (!visible) return null;
 
   return (

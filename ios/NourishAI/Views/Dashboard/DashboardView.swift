@@ -3,18 +3,17 @@ import SwiftData
 
 struct DashboardView: View {
     @Query private var profiles: [UserProfile]
-    @Query(
-        filter: #Predicate<DailyNutrition> { daily in
-            daily.date >= Calendar.current.startOfDay(for: Date())
-        },
-        sort: \DailyNutrition.date,
-        order: .reverse
-    ) private var todayNutrition: [DailyNutrition]
+    @Query(sort: \DailyNutrition.date, order: .reverse)
+    private var allNutrition: [DailyNutrition]
 
     @State private var showAddFood = false
 
     private var profile: UserProfile? { profiles.first }
-    private var today: DailyNutrition? { todayNutrition.first }
+
+    private var today: DailyNutrition? {
+        let startOfDay = Calendar.current.startOfDay(for: Date())
+        return allNutrition.first { $0.date >= startOfDay }
+    }
 
     var body: some View {
         NavigationStack {

@@ -107,10 +107,10 @@ final class SubscriptionManager {
     }
 
     private func listenForTransactions() -> Task<Void, Error> {
-        Task.detached {
+        Task {
             for await result in Transaction.updates {
-                if let transaction = try? self.checkVerified(result) {
-                    await self.updatePurchasedProducts()
+                if let transaction = try? checkVerified(result) {
+                    await updatePurchasedProducts()
                     await transaction.finish()
                 }
             }

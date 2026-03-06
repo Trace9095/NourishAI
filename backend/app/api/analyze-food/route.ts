@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Free tier: check weekly limit
+    // Free tier: check weekly limit (counts ALL AI scan types)
     if (!isPro) {
       const weekStart = new Date();
       weekStart.setDate(weekStart.getDate() - weekStart.getDay());
@@ -75,7 +75,6 @@ export async function POST(request: NextRequest) {
         .where(
           and(
             eq(scanUsage.userId, user.id),
-            eq(scanUsage.scanType, "photo"),
             gte(scanUsage.createdAt, weekStart)
           )
         );
@@ -100,6 +99,14 @@ export async function POST(request: NextRequest) {
     if (!imageBase64 || !mediaType) {
       return NextResponse.json(
         { error: "Missing image data" },
+        { status: 400, headers: corsHeaders(request) }
+      );
+    }
+
+    // Limit image size to 10MB base64 (~7.5MB raw) to prevent cost abuse
+    if (imageBase64.length > 10_000_000) {
+      return NextResponse.json(
+        { error: "Image too large (max 10MB)" },
         { status: 400, headers: corsHeaders(request) }
       );
     }

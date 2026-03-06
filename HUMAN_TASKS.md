@@ -38,7 +38,7 @@
 **Views/Dashboard/** (1): DashboardView.swift
 **Views/FoodLog/** (5): FoodLogView.swift, AIFoodCameraView.swift, AIFoodChatView.swift, ManualEntryView.swift, BarcodeScanView.swift
 **Views/Onboarding/** (1): OnboardingContainerView.swift
-**Views/Progress/** (1): ProgressView.swift
+**Views/Progress/** (1): NutritionProgressView.swift (file on disk is ProgressView.swift — struct renamed inside)
 **Views/Settings/** (1): SettingsView.swift
 **Views/Subscription/** (1): SubscriptionView.swift
 **Components/** (2): MacroRingView.swift, MealRow.swift

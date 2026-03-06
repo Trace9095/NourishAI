@@ -159,6 +159,7 @@ cd backend && npx next build     # Website
 - Phase 2 DONE: All views + services, all compile errors resolved, all cross-file deps verified
 - Phase 3 DONE: Full website (12 pages), 11 API routes + RSS feed, admin dashboard, Gold Standard compliant
 - Session 71: Security hardening (removed hardcoded session secret, fixed CORS), iOS fixes (ProgressView rename, servingSize type mismatch, WaterEntry model container, MealRow optional binding), FAQ CTA buttons, comprehensive code review via background agents
+- Session 72: Fixed all remaining code review findings. iOS: DashboardView #Predicate crash (Calendar not translatable), SubscriptionManager Task.detached Swift 6 violation, BarcodeScanView loading spinner state machine, AIFoodCameraView PhotosPicker wiring, SubscriptionView isPurchasing reset. Web: scan limit consistency (all scan types counted), input size limits, cooldown on analyze-description, CookieConsentBanner hidden on admin, complete favicon metadata, device ID truncation in admin stats, blog Copy Link client component.
 - Remaining: Xcode project creation (Trace), env vars, DB migration, domain in Vercel, Apple App Store Server API integration (pre-launch)
 
 ### Phase Status

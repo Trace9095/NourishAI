@@ -246,13 +246,13 @@ struct SubscriptionView: View {
 
         do {
             let success = try await subscriptionManager.purchase(product)
+            isPurchasing = false
             if success {
                 dismiss()
             }
         } catch {
             errorMessage = error.localizedDescription
+            isPurchasing = false
         }
-
-        isPurchasing = false
     }
 }

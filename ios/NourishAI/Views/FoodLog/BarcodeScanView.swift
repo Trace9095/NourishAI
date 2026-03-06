@@ -17,14 +17,14 @@ struct BarcodeScanView: View {
             ZStack {
                 Color.brandDark.ignoresSafeArea()
 
-                if lookupResult == nil && errorMessage == nil {
-                    scannerView
-                } else if isLooking {
+                if isLooking {
                     lookingUpView
                 } else if let result = lookupResult {
                     resultView(result)
                 } else if let error = errorMessage {
                     errorView(error)
+                } else {
+                    scannerView
                 }
             }
             .navigationTitle("Barcode Scanner")
