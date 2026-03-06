@@ -2,6 +2,16 @@ import { NextRequest, NextResponse } from "next/server";
 import { handleCors, corsHeaders } from "@/lib/security";
 import { db } from "@/lib/db";
 import { contactSubmissions } from "@/lib/db/schema";
+import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
+
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
 
 export async function OPTIONS(request: NextRequest) {
   return handleCors(request) ?? NextResponse.json(null, { status: 204 });
@@ -12,6 +22,22 @@ export async function POST(request: NextRequest) {
   if (cors) return cors;
 
   try {
+    // Rate limit: 3 submissions per 15 minutes per IP
+    const ip = getClientIp(request);
+    const limit = checkRateLimit(`contact:${ip}`, 3, 15 * 60 * 1000);
+    if (!limit.allowed) {
+      return NextResponse.json(
+        { error: "Too many submissions. Please try again later." },
+        {
+          status: 429,
+          headers: {
+            ...corsHeaders(request),
+            "Retry-After": String(Math.ceil((limit.resetAt - Date.now()) / 1000)),
+          } as HeadersInit,
+        }
+      );
+    }
+
     const { name, email, subject, message } = await request.json();
 
     if (!name || !email || !message) {
@@ -21,10 +47,44 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Basic email validation
+    // Input length limits
+    if (typeof name !== "string" || name.length > 100) {
+      return NextResponse.json(
+        { error: "Name too long (max 100 characters)" },
+        { status: 400, headers: corsHeaders(request) }
+      );
+    }
+    if (typeof email !== "string" || email.length > 254) {
+      return NextResponse.json(
+        { error: "Invalid email address" },
+        { status: 400, headers: corsHeaders(request) }
+      );
+    }
+    if (typeof message !== "string" || message.length > 2000) {
+      return NextResponse.json(
+        { error: "Message too long (max 2000 characters)" },
+        { status: 400, headers: corsHeaders(request) }
+      );
+    }
+    if (subject && (typeof subject !== "string" || subject.length > 200)) {
+      return NextResponse.json(
+        { error: "Subject too long (max 200 characters)" },
+        { status: 400, headers: corsHeaders(request) }
+      );
+    }
+
+    // Email validation
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return NextResponse.json(
         { error: "Invalid email address" },
+        { status: 400, headers: corsHeaders(request) }
+      );
+    }
+
+    // Reject emails with newlines (header injection prevention)
+    if (/[\r\n]/.test(email) || /[\r\n]/.test(name)) {
+      return NextResponse.json(
+        { error: "Invalid input" },
         { status: 400, headers: corsHeaders(request) }
       );
     }
@@ -33,10 +93,10 @@ export async function POST(request: NextRequest) {
     try {
       const database = db();
       await database.insert(contactSubmissions).values({
-        name,
-        email,
-        subject: subject || "General Inquiry",
-        message,
+        name: escapeHtml(name.trim()),
+        email: email.trim().toLowerCase(),
+        subject: escapeHtml((subject || "General Inquiry").trim()),
+        message: escapeHtml(message.trim()),
       });
     } catch (dbError) {
       console.error("DB save error (non-blocking):", dbError);
@@ -52,9 +112,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const emailSubject = subject
-      ? `NourishAI Contact [${subject}]: ${name}`
-      : `NourishAI Contact: ${name}`;
+    const safeSubject = subject
+      ? `NourishAI Contact [${escapeHtml(subject.trim())}]: ${escapeHtml(name.trim())}`
+      : `NourishAI Contact: ${escapeHtml(name.trim())}`;
 
     const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -65,9 +125,9 @@ export async function POST(request: NextRequest) {
       body: JSON.stringify({
         from: "NourishAI <noreply@nourishhealthai.com>",
         to: "CEO@epicai.ai",
-        subject: emailSubject,
-        text: `Name: ${name}\nEmail: ${email}\nSubject: ${subject || "General Inquiry"}\n\nMessage:\n${message}`,
-        reply_to: email,
+        subject: safeSubject,
+        text: `Name: ${escapeHtml(name.trim())}\nEmail: ${email.trim()}\nSubject: ${escapeHtml((subject || "General Inquiry").trim())}\n\nMessage:\n${escapeHtml(message.trim())}`,
+        reply_to: email.trim(),
       }),
     });
 

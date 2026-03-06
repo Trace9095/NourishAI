@@ -3,9 +3,23 @@ import { db } from "@/lib/db";
 import { adminUsers } from "@/lib/db/schema";
 import { eq, and } from "drizzle-orm";
 import { verifyPassword, createSession } from "@/lib/admin-auth";
+import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 
 export async function POST(request: NextRequest) {
   try {
+    // Rate limit: 5 login attempts per 15 minutes per IP
+    const ip = getClientIp(request);
+    const limit = checkRateLimit(`admin-login:${ip}`, 5, 15 * 60 * 1000);
+    if (!limit.allowed) {
+      return NextResponse.json(
+        { error: "Too many login attempts. Try again later." },
+        {
+          status: 429,
+          headers: { "Retry-After": String(Math.ceil((limit.resetAt - Date.now()) / 1000)) },
+        }
+      );
+    }
+
     const { email, password } = await request.json();
 
     if (!email || !password) {
@@ -13,6 +27,14 @@ export async function POST(request: NextRequest) {
         { error: "Email and password required" },
         { status: 400 }
       );
+    }
+
+    // Input length limits
+    if (typeof email !== "string" || email.length > 254) {
+      return NextResponse.json({ error: "Invalid email" }, { status: 400 });
+    }
+    if (typeof password !== "string" || password.length > 128) {
+      return NextResponse.json({ error: "Invalid password" }, { status: 400 });
     }
 
     const database = db();

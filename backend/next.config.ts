@@ -17,7 +17,7 @@ const nextConfig: NextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com",
+              "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com",
               "style-src 'self' 'unsafe-inline'",
               "img-src 'self' data: blob: https:",
               "font-src 'self' https://fonts.gstatic.com",
@@ -25,6 +25,7 @@ const nextConfig: NextConfig = {
               "frame-ancestors 'none'",
               "base-uri 'self'",
               "form-action 'self'",
+              "upgrade-insecure-requests",
             ].join("; "),
           },
           {
@@ -45,7 +46,7 @@ const nextConfig: NextConfig = {
           },
           {
             key: "Permissions-Policy",
-            value: "interest-cohort=(), camera=(self), microphone=()",
+            value: "interest-cohort=(), camera=(self), microphone=(), geolocation=(), payment=(self)",
           },
           {
             key: "X-DNS-Prefetch-Control",

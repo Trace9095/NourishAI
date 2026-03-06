@@ -3,6 +3,7 @@ import { db } from "@/lib/db";
 import { users } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import { handleCors, corsHeaders } from "@/lib/security";
+import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 
 export async function OPTIONS(request: NextRequest) {
   return handleCors(request) ?? NextResponse.json(null, { status: 204 });
@@ -13,11 +14,35 @@ export async function POST(request: NextRequest) {
   if (cors) return cors;
 
   try {
+    // Rate limit: 10 registrations per hour per IP (prevents mass account creation)
+    const ip = getClientIp(request);
+    const limit = checkRateLimit(`register:${ip}`, 10, 60 * 60 * 1000);
+    if (!limit.allowed) {
+      return NextResponse.json(
+        { error: "Too many registration attempts" },
+        {
+          status: 429,
+          headers: {
+            ...corsHeaders(request),
+            "Retry-After": String(Math.ceil((limit.resetAt - Date.now()) / 1000)),
+          } as HeadersInit,
+        }
+      );
+    }
+
     const { deviceId } = await request.json();
 
-    if (!deviceId || typeof deviceId !== "string" || deviceId.length < 10) {
+    if (!deviceId || typeof deviceId !== "string" || deviceId.length < 10 || deviceId.length > 128) {
       return NextResponse.json(
         { error: "Invalid device ID" },
+        { status: 400, headers: corsHeaders(request) }
+      );
+    }
+
+    // Sanitize: only allow alphanumeric, hyphens, and underscores (UUID format)
+    if (!/^[a-zA-Z0-9\-_]+$/.test(deviceId)) {
+      return NextResponse.json(
+        { error: "Invalid device ID format" },
         { status: 400, headers: corsHeaders(request) }
       );
     }
