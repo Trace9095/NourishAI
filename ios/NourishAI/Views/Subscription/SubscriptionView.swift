@@ -1,10 +1,13 @@
 import SwiftUI
+import StoreKit
 
 struct SubscriptionView: View {
     @Environment(\.dismiss) private var dismiss
+    @State private var subscriptionManager = SubscriptionManager.shared
 
     @State private var selectedPlan: Plan = .annual
     @State private var isPurchasing = false
+    @State private var errorMessage: String?
 
     enum Plan {
         case monthly, annual
@@ -48,26 +51,55 @@ struct SubscriptionView: View {
 
                     // Plan selection
                     VStack(spacing: 12) {
-                        planCard(
-                            plan: .annual,
-                            title: "Annual",
-                            price: "$39.99/year",
-                            perMonth: "$3.33/mo",
-                            badge: "Save 58%"
-                        )
-                        planCard(
-                            plan: .monthly,
-                            title: "Monthly",
-                            price: "$7.99/month",
-                            perMonth: nil,
-                            badge: nil
-                        )
+                        if let annual = subscriptionManager.annualProduct {
+                            planCard(
+                                plan: .annual,
+                                title: "Annual",
+                                price: annual.displayPrice + "/year",
+                                perMonth: "$3.33/mo",
+                                badge: "Save 58%"
+                            )
+                        } else {
+                            planCard(
+                                plan: .annual,
+                                title: "Annual",
+                                price: "$39.99/year",
+                                perMonth: "$3.33/mo",
+                                badge: "Save 58%"
+                            )
+                        }
+
+                        if let monthly = subscriptionManager.monthlyProduct {
+                            planCard(
+                                plan: .monthly,
+                                title: "Monthly",
+                                price: monthly.displayPrice + "/month",
+                                perMonth: nil,
+                                badge: nil
+                            )
+                        } else {
+                            planCard(
+                                plan: .monthly,
+                                title: "Monthly",
+                                price: "$7.99/month",
+                                perMonth: nil,
+                                badge: nil
+                            )
+                        }
                     }
                     .padding(.horizontal, 20)
 
+                    // Error message
+                    if let errorMessage {
+                        Text(errorMessage)
+                            .font(.caption)
+                            .foregroundColor(.red)
+                            .padding(.horizontal, 20)
+                    }
+
                     // Subscribe button
                     Button {
-                        subscribe()
+                        Task { await subscribe() }
                     } label: {
                         HStack {
                             if isPurchasing {
@@ -102,7 +134,9 @@ struct SubscriptionView: View {
                             Button("Privacy") {}
                                 .font(.caption2)
                                 .foregroundColor(.brandGreen)
-                            Button("Restore Purchases") {}
+                            Button("Restore Purchases") {
+                                Task { await subscriptionManager.restorePurchases() }
+                            }
                                 .font(.caption2)
                                 .foregroundColor(.brandGreen)
                         }
@@ -124,6 +158,9 @@ struct SubscriptionView: View {
                     }
                     .frame(minWidth: Layout.minTouchTarget, minHeight: Layout.minTouchTarget)
                 }
+            }
+            .task {
+                await subscriptionManager.loadProducts()
             }
         }
     }
@@ -190,12 +227,32 @@ struct SubscriptionView: View {
         .frame(minHeight: Layout.minTouchTarget)
     }
 
-    private func subscribe() {
+    private func subscribe() async {
         isPurchasing = true
-        // In real app, this calls StoreKit 2:
-        // let productId = selectedPlan == .annual
-        //     ? SubscriptionProductID.proAnnual
-        //     : SubscriptionProductID.proMonthly
-        // await SubscriptionManager.shared.purchase(productId)
+        errorMessage = nil
+
+        let product: Product?
+        if selectedPlan == .annual {
+            product = subscriptionManager.annualProduct
+        } else {
+            product = subscriptionManager.monthlyProduct
+        }
+
+        guard let product else {
+            errorMessage = "Product not available. Please try again."
+            isPurchasing = false
+            return
+        }
+
+        do {
+            let success = try await subscriptionManager.purchase(product)
+            if success {
+                dismiss()
+            }
+        } catch {
+            errorMessage = error.localizedDescription
+        }
+
+        isPurchasing = false
     }
 }
