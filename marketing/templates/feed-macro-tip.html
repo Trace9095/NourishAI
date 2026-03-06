@@ -38,17 +38,20 @@ body {
 .badge {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   background: rgba(52,199,89,0.12);
   border: 1px solid rgba(52,199,89,0.25);
   border-radius: 40px;
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: 600;
+  padding: 10px 22px;
+  font-size: 15px;
+  font-weight: 700;
   color: #34C759;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   align-self: flex-start;
+}
+.badge svg {
+  flex-shrink: 0;
 }
 
 .title {
@@ -63,36 +66,71 @@ body {
 .title .highlight { color: #34C759; }
 
 .tip-card {
-  background: #1A1A2E;
+  background: rgba(255,255,255,0.03);
   border-radius: 24px;
-  border: 1px solid rgba(255,255,255,0.08);
-  padding: 36px;
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 12px 36px;
   margin-top: 40px;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 0;
 }
 
 .tip-row {
   display: flex;
   align-items: center;
-  gap: 20px;
-  padding: 20px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  gap: 24px;
+  padding: 24px 0;
+  border-left: none;
+  position: relative;
 }
-.tip-row:last-child { border-bottom: none; }
+.tip-row:not(:last-child) {
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
 
-.tip-emoji {
-  font-size: 40px;
+/* Left accent border per row */
+.tip-row::before {
+  content: '';
+  position: absolute;
+  left: -36px;
+  top: 16px;
+  bottom: 16px;
+  width: 2px;
+  border-radius: 1px;
+}
+.tip-row.row-green::before { background: #34C759; }
+.tip-row.row-orange::before { background: #FF9500; }
+.tip-row.row-blue::before { background: #5AC8FA; }
+
+.tip-number {
   width: 64px;
   height: 64px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255,255,255,0.04);
-  border-radius: 16px;
   flex-shrink: 0;
+  font-family: 'Outfit', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+.tip-number.num-green {
+  background: rgba(52,199,89,0.15);
+  color: #34C759;
+  border: 1px solid rgba(52,199,89,0.25);
+}
+.tip-number.num-orange {
+  background: rgba(255,149,0,0.15);
+  color: #FF9500;
+  border: 1px solid rgba(255,149,0,0.25);
+}
+.tip-number.num-blue {
+  background: rgba(90,200,250,0.15);
+  color: #5AC8FA;
+  border: 1px solid rgba(90,200,250,0.25);
 }
 
 .tip-text {
@@ -121,9 +159,16 @@ body {
 }
 .logo .green { color: #34C759; }
 .save-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-size: 16px;
   color: rgba(255,255,255,0.4);
   font-weight: 500;
+}
+.save-cta svg {
+  flex-shrink: 0;
+  opacity: 0.6;
 }
 </style>
 </head>
@@ -132,7 +177,10 @@ body {
 <div class="bg-glow glow-2"></div>
 
 <div class="content">
-  <div class="badge">💡 Macro Tip</div>
+  <div class="badge">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1h-6a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/></svg>
+    MACRO TIP
+  </div>
 
   <div class="title">
     {{TITLE_LINE1}}<br>
@@ -140,23 +188,26 @@ body {
   </div>
 
   <div class="tip-card">
-    <div class="tip-row">
-      <div class="tip-emoji">{{TIP1_EMOJI}}</div>
+    <div class="tip-row row-green">
+      <div class="tip-number num-green">01</div>
       <div class="tip-text">{{TIP1_TEXT}}</div>
     </div>
-    <div class="tip-row">
-      <div class="tip-emoji">{{TIP2_EMOJI}}</div>
+    <div class="tip-row row-orange">
+      <div class="tip-number num-orange">02</div>
       <div class="tip-text">{{TIP2_TEXT}}</div>
     </div>
-    <div class="tip-row">
-      <div class="tip-emoji">{{TIP3_EMOJI}}</div>
+    <div class="tip-row row-blue">
+      <div class="tip-number num-blue">03</div>
       <div class="tip-text">{{TIP3_TEXT}}</div>
     </div>
   </div>
 
   <div class="footer">
     <div class="logo"><span class="green">Nourish</span>AI</div>
-    <div class="save-cta">Save this for later 🔖</div>
+    <div class="save-cta">
+      Save this for later
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="rgba(255,255,255,0.4)" stroke="none"><path d="M5 3a2 2 0 0 0-2 2v16l9-4 9 4V5a2 2 0 0 0-2-2H5z"/></svg>
+    </div>
   </div>
 </div>
 </body>

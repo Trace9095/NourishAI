@@ -1,4 +1,5 @@
 import { MacroRings } from "./MacroRings";
+import { HeroRotatingText } from "./HeroRotatingText";
 
 export function Hero() {
   return (
@@ -26,9 +27,7 @@ export function Hero() {
               style={{ animation: "fadeInUp 0.6s ease 0.1s both" }}
             >
               Snap. Track.{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-green to-brand-green-dark green-glow-text">
-                Transform.
-              </span>
+              <HeroRotatingText />
             </h1>
 
             <p

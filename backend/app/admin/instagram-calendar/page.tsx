@@ -323,8 +323,12 @@ export default function InstagramCalendarPage() {
                       />
                     </button>
                   ) : (
-                    <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0 text-lg">
-                      {post.type === "reel" ? "🎬" : "📷"}
+                    <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0">
+                      {post.type === "reel" ? (
+                        <svg className="w-5 h-5 text-brand-orange" fill="currentColor" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                      ) : (
+                        <svg className="w-5 h-5 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0022.5 18.75V5.25A2.25 2.25 0 0020.25 3H3.75A2.25 2.25 0 001.5 5.25v13.5A2.25 2.25 0 003.75 21z"/></svg>
+                      )}
                     </div>
                   )}
 
@@ -446,18 +450,27 @@ export default function InstagramCalendarPage() {
                         </div>
                       )}
                     </button>
-                  ) : post.type === "reel" ? (
-                    <div className="relative w-full aspect-video bg-white/5 flex items-center justify-center">
-                      <div className="text-center">
-                        <span className="text-3xl">🎬</span>
-                        <p className="text-xs text-white/40 mt-1">
-                          Reel Video
-                        </p>
+                  ) : post.type === "reel" && imgPath ? (
+                    <button
+                      onClick={() => setLightbox(imgPath)}
+                      className="relative w-full aspect-video bg-white/5 overflow-hidden"
+                    >
+                      <video
+                        src={imgPath}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute top-2 right-2 bg-black/60 text-white text-[10px] px-2 py-0.5 rounded-full flex items-center gap-1">
+                        <svg className="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                        Reel
                       </div>
-                    </div>
+                    </button>
                   ) : (
                     <div className="relative w-full aspect-square bg-white/5 flex items-center justify-center">
-                      <span className="text-4xl">📷</span>
+                      <svg className="w-10 h-10 text-white/20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0022.5 18.75V5.25A2.25 2.25 0 0020.25 3H3.75A2.25 2.25 0 001.5 5.25v13.5A2.25 2.25 0 003.75 21z"/></svg>
                     </div>
                   )}
 
@@ -612,16 +625,30 @@ export default function InstagramCalendarPage() {
             </svg>
           </button>
           <div
-            className="relative max-w-lg max-h-[90vh] w-full aspect-square"
+            className="relative max-w-lg max-h-[90vh] w-full"
             onClick={(e) => e.stopPropagation()}
           >
-            <Image
-              src={lightbox}
-              alt="Post preview"
-              fill
-              className="object-contain"
-              unoptimized
-            />
+            {lightbox.endsWith(".mp4") ? (
+              <video
+                src={lightbox}
+                autoPlay
+                muted
+                loop
+                playsInline
+                controls
+                className="w-full max-h-[90vh] object-contain"
+              />
+            ) : (
+              <div className="relative w-full aspect-square">
+                <Image
+                  src={lightbox}
+                  alt="Post preview"
+                  fill
+                  className="object-contain"
+                  unoptimized
+                />
+              </div>
+            )}
           </div>
         </dialog>
       )}

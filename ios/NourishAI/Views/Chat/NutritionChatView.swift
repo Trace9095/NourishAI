@@ -14,13 +14,6 @@ struct ChatMessage: Identifiable, Sendable {
     }
 }
 
-// MARK: - Local type mirroring future NourishAPIManager response
-
-struct ChatResponse: Sendable {
-    let reply: String
-    let tokensUsed: Int?
-}
-
 struct NutritionChatView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
@@ -239,40 +232,42 @@ struct NutritionChatView: View {
     // MARK: - Input Bar
 
     private var inputBar: some View {
-        HStack(spacing: 10) {
-            TextField("Ask about nutrition...", text: $inputText)
-                .foregroundColor(.white)
-                .padding(.horizontal, 14)
-                .padding(.vertical, 10)
-                .background(Color.brandCard)
-                .clipShape(RoundedRectangle(cornerRadius: 20))
-                .onSubmit {
+        VStack(spacing: 0) {
+            if let error = errorMessage {
+                Text(error)
+                    .font(.caption)
+                    .foregroundColor(.brandOrange)
+                    .padding(.horizontal)
+                    .padding(.bottom, 4)
+            }
+
+            HStack(spacing: 10) {
+                TextField("Ask about nutrition...", text: $inputText)
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 14)
+                    .padding(.vertical, 10)
+                    .background(Color.brandCard)
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                    .onSubmit {
+                        guard !inputText.isEmpty else { return }
+                        sendMessage(inputText)
+                    }
+
+                Button {
                     guard !inputText.isEmpty else { return }
                     sendMessage(inputText)
+                } label: {
+                    Image(systemName: "arrow.up.circle.fill")
+                        .font(.title2)
+                        .foregroundColor(inputText.isEmpty ? .gray : .brandGreen)
                 }
-
-            Button {
-                guard !inputText.isEmpty else { return }
-                sendMessage(inputText)
-            } label: {
-                Image(systemName: "arrow.up.circle.fill")
-                    .font(.title2)
-                    .foregroundColor(inputText.isEmpty ? .gray : .brandGreen)
+                .frame(minWidth: Layout.minTouchTarget, minHeight: Layout.minTouchTarget)
+                .disabled(inputText.isEmpty || isTyping)
             }
-            .frame(minWidth: Layout.minTouchTarget, minHeight: Layout.minTouchTarget)
-            .disabled(inputText.isEmpty || isTyping)
+            .padding(.horizontal)
+            .padding(.vertical, 8)
         }
-        .padding(.horizontal)
-        .padding(.vertical, 8)
         .background(Color.brandDark)
-
-        if let error = errorMessage {
-            Text(error)
-                .font(.caption)
-                .foregroundColor(.brandOrange)
-                .padding(.horizontal)
-                .padding(.bottom, 4)
-        }
     }
 
     // MARK: - Helpers
@@ -296,27 +291,23 @@ struct NutritionChatView: View {
         let eaten = todayNutrition
         let targetCal = profile?.targetCalories ?? 2000
         let targetP = profile?.targetProtein ?? 150
-        let targetC = profile?.targetCarbs ?? 250
-        let targetF = profile?.targetFat ?? 65
 
-        let context = """
-        User profile: \(profile?.name ?? "User"), \
-        goal: \(profile?.nutritionGoal.displayName ?? "maintenance"), \
-        targets: \(targetCal) cal / \(targetP)g protein / \(targetC)g carbs / \(targetF)g fat. \
-        Today eaten: \(eaten?.totalCalories ?? 0) cal / \
-        \(Int(eaten?.totalProtein ?? 0))g protein / \
-        \(Int(eaten?.totalCarbs ?? 0))g carbs / \
-        \(Int(eaten?.totalFat ?? 0))g fat. \
-        Preferences: \(profile?.dietaryPreferences?.joined(separator: ", ") ?? "none"). \
-        Allergies: \(profile?.allergies?.joined(separator: ", ") ?? "none").
-        """
+        let chatContext = ChatContext(
+            dailyCalories: eaten?.totalCalories,
+            dailyProtein: eaten?.totalProtein,
+            dailyCarbs: eaten?.totalCarbs,
+            dailyFat: eaten?.totalFat,
+            targetCalories: targetCal,
+            targetProtein: targetP,
+            goalType: profile?.nutritionGoal.displayName,
+            recentFoods: nil
+        )
 
         Task {
             do {
                 let response = try await NourishAPIManager.shared.sendChatMessage(
                     message: text,
-                    context: context,
-                    history: messages.map { ($0.role == .user ? "user" : "assistant", $0.content) }
+                    context: chatContext
                 )
                 await MainActor.run {
                     let assistantMessage = ChatMessage(

@@ -2,24 +2,6 @@ import SwiftUI
 import SwiftData
 import PhotosUI
 
-// MARK: - Local types mirroring future NourishAPIManager response
-
-struct MenuItemAnalysis: Identifiable, Sendable {
-    let id = UUID()
-    let name: String
-    let estimatedCalories: Int
-    let estimatedProtein: Double
-    let estimatedCarbs: Double
-    let estimatedFat: Double
-    let healthScore: Int
-    let healthNotes: String?
-}
-
-struct MenuAnalysisResponse: Sendable {
-    let items: [MenuItemAnalysis]
-    let healthiestPicks: [String]
-}
-
 struct MenuScanView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
@@ -32,7 +14,7 @@ struct MenuScanView: View {
     @State private var scanState: ScanState = .idle
     @State private var selectedPhotoItem: PhotosPickerItem?
     @State private var capturedImage: UIImage?
-    @State private var analysisResult: MenuAnalysisResponse?
+    @State private var analysisResult: NourishAPIManager.MenuAnalysisResponse?
     @State private var errorMessage: String?
     @State private var selectedMealType: MealType = .lunch
 
@@ -188,7 +170,7 @@ struct MenuScanView: View {
 
     // MARK: - Results
 
-    private func resultsView(_ result: MenuAnalysisResponse) -> some View {
+    private func resultsView(_ result: NourishAPIManager.MenuAnalysisResponse) -> some View {
         ScrollView {
             VStack(spacing: 20) {
                 if let image = capturedImage {
@@ -242,7 +224,7 @@ struct MenuScanView: View {
         }
     }
 
-    private func menuItemCard(_ item: MenuItemAnalysis, isHealthiest: Bool) -> some View {
+    private func menuItemCard(_ item: NourishAPIManager.MenuItemAnalysis, isHealthiest: Bool) -> some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
                 Text(item.name)
@@ -373,7 +355,7 @@ struct MenuScanView: View {
         }
     }
 
-    private func logMenuItem(_ item: MenuItemAnalysis) {
+    private func logMenuItem(_ item: NourishAPIManager.MenuItemAnalysis) {
         let entry = FoodEntry(
             name: item.name,
             servingSize: "1 serving",

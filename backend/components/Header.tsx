@@ -48,7 +48,7 @@ export function Header() {
         </Link>
 
         {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-6">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
@@ -69,7 +69,7 @@ export function Header() {
         {/* Mobile hamburger */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden min-w-[44px] min-h-[44px] flex items-center justify-center"
+          className="lg:hidden min-w-[44px] min-h-[44px] flex items-center justify-center"
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
         >
@@ -95,7 +95,7 @@ export function Header() {
 
       {/* Mobile menu */}
       <div
-        className={`md:hidden bg-brand-dark border-t border-brand-border/50 transition-all duration-300 overflow-hidden ${
+        className={`lg:hidden bg-brand-dark border-t border-brand-border/50 transition-all duration-300 overflow-hidden ${
           menuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
         }`}
       >

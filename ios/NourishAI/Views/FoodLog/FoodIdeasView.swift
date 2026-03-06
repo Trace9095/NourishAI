@@ -1,31 +1,13 @@
 import SwiftUI
 import SwiftData
 
-// MARK: - Local types mirroring future NourishAPIManager response
-
-struct FoodSuggestion: Identifiable, Sendable {
-    let id = UUID()
-    let name: String
-    let description: String
-    let calories: Int
-    let protein: Double
-    let carbs: Double
-    let fat: Double
-    let prepTime: Int
-    let difficulty: String
-}
-
-struct FoodSuggestionsResponse: Sendable {
-    let suggestions: [FoodSuggestion]
-}
-
 struct FoodIdeasView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     @Query private var profiles: [UserProfile]
 
     @State private var isLoading = false
-    @State private var suggestions: [FoodSuggestion] = []
+    @State private var suggestions: [NourishAPIManager.FoodSuggestion] = []
     @State private var errorMessage: String?
     @State private var selectedMealType: MealType = .lunch
 
@@ -170,7 +152,7 @@ struct FoodIdeasView: View {
         }
     }
 
-    private func suggestionCard(_ suggestion: FoodSuggestion) -> some View {
+    private func suggestionCard(_ suggestion: NourishAPIManager.FoodSuggestion) -> some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
                 Text(suggestion.name)
@@ -284,8 +266,7 @@ struct FoodIdeasView: View {
         let remainingCarbs = Double(targetC) - (eaten?.totalCarbs ?? 0)
         let remainingFat = Double(targetF) - (eaten?.totalFat ?? 0)
 
-        let preferences = profile?.dietaryPreferences ?? []
-        let allergies = profile?.allergies ?? []
+        let prefs = (profile?.dietaryPreferences ?? []) + (profile?.allergies ?? [])
 
         Task {
             do {
@@ -295,8 +276,7 @@ struct FoodIdeasView: View {
                     remainingCarbs: remainingCarbs,
                     remainingFat: remainingFat,
                     timeOfDay: timeOfDay,
-                    dietaryPreferences: preferences,
-                    allergies: allergies
+                    preferences: prefs.isEmpty ? nil : prefs
                 )
                 await MainActor.run {
                     self.suggestions = result.suggestions
@@ -311,7 +291,7 @@ struct FoodIdeasView: View {
         }
     }
 
-    private func logSuggestion(_ suggestion: FoodSuggestion) {
+    private func logSuggestion(_ suggestion: NourishAPIManager.FoodSuggestion) {
         let entry = FoodEntry(
             name: suggestion.name,
             servingSize: "1 serving",

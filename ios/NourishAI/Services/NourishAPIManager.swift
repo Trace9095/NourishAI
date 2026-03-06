@@ -216,7 +216,8 @@ final class NourishAPIManager {
 
     // MARK: - Analyze Menu Photo
 
-    struct MenuItemAnalysis: Codable, Sendable {
+    struct MenuItemAnalysis: Codable, Sendable, Identifiable {
+        let id: UUID
         let name: String
         let estimatedCalories: Int
         let estimatedProtein: Double
@@ -224,6 +225,22 @@ final class NourishAPIManager {
         let estimatedFat: Double
         let healthScore: Int
         let healthNotes: String?
+
+        init(from decoder: Decoder) throws {
+            let c = try decoder.container(keyedBy: CodingKeys.self)
+            self.id = UUID()
+            self.name = try c.decode(String.self, forKey: .name)
+            self.estimatedCalories = try c.decode(Int.self, forKey: .estimatedCalories)
+            self.estimatedProtein = try c.decode(Double.self, forKey: .estimatedProtein)
+            self.estimatedCarbs = try c.decode(Double.self, forKey: .estimatedCarbs)
+            self.estimatedFat = try c.decode(Double.self, forKey: .estimatedFat)
+            self.healthScore = try c.decode(Int.self, forKey: .healthScore)
+            self.healthNotes = try c.decodeIfPresent(String.self, forKey: .healthNotes)
+        }
+
+        private enum CodingKeys: String, CodingKey {
+            case name, estimatedCalories, estimatedProtein, estimatedCarbs, estimatedFat, healthScore, healthNotes
+        }
     }
 
     struct MenuAnalysisResponse: Codable, Sendable {
@@ -268,7 +285,8 @@ final class NourishAPIManager {
 
     // MARK: - Food Suggestions
 
-    struct FoodSuggestion: Codable, Sendable {
+    struct FoodSuggestion: Codable, Sendable, Identifiable {
+        let id: UUID
         let name: String
         let description: String
         let calories: Int
@@ -277,6 +295,23 @@ final class NourishAPIManager {
         let fat: Double
         let prepTime: Int
         let difficulty: String
+
+        init(from decoder: Decoder) throws {
+            let c = try decoder.container(keyedBy: CodingKeys.self)
+            self.id = UUID()
+            self.name = try c.decode(String.self, forKey: .name)
+            self.description = try c.decode(String.self, forKey: .description)
+            self.calories = try c.decode(Int.self, forKey: .calories)
+            self.protein = try c.decode(Double.self, forKey: .protein)
+            self.carbs = try c.decode(Double.self, forKey: .carbs)
+            self.fat = try c.decode(Double.self, forKey: .fat)
+            self.prepTime = try c.decode(Int.self, forKey: .prepTime)
+            self.difficulty = try c.decode(String.self, forKey: .difficulty)
+        }
+
+        private enum CodingKeys: String, CodingKey {
+            case name, description, calories, protein, carbs, fat, prepTime, difficulty
+        }
     }
 
     struct FoodSuggestionsResponse: Codable, Sendable {
