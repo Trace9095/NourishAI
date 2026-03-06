@@ -16,11 +16,15 @@ const FAQ_ITEMS = [
     question: "Is NourishAI really free?",
     answer:
       "Yes, manual entry, barcode scanning, and HealthKit sync are free forever. AI photo scanning is limited to 1/week on free, unlimited on Pro.",
+    link: "/#pricing",
+    linkText: "View Pricing",
   },
   {
     question: "How accurate is the AI?",
     answer:
       "Our AI uses Claude, one of the most advanced AI models available. It achieves 95%+ accuracy on common foods.",
+    link: "/features",
+    linkText: "Explore Features",
   },
   {
     question: "Does NourishAI work offline?",
@@ -36,6 +40,8 @@ const FAQ_ITEMS = [
     question: "Is my data private?",
     answer:
       "Absolutely. Nutrition data is stored locally on your device. We only process photos temporarily for AI analysis and never store them.",
+    link: "/privacy",
+    linkText: "Read Privacy Policy",
   },
 ];
 
@@ -238,6 +244,18 @@ export default function ContactPage() {
                     <p className="text-sm text-gray-400 leading-relaxed">
                       {item.answer}
                     </p>
+                    {"link" in item && item.link && (
+                      <Link
+                        href={item.link}
+                        className="mt-4 inline-flex items-center gap-2 rounded-lg bg-brand-green/10 border border-brand-green/20 px-4 py-2 text-sm font-medium text-brand-green hover:bg-brand-green/20 transition-colors min-h-[44px]"
+                      >
+                        {item.linkText}
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <line x1="5" y1="12" x2="19" y2="12" />
+                          <polyline points="12 5 19 12 12 19" />
+                        </svg>
+                      </Link>
+                    )}
                   </div>
                 </AnimateIn>
               ))}

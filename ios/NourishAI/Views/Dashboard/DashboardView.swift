@@ -219,24 +219,24 @@ struct AddFoodSheet: View {
             List {
                 Section {
                     NavigationLink {
-                        Text("AI Camera — coming soon")
+                        AIFoodCameraView()
                     } label: {
                         Label("Scan with AI Camera", systemImage: "camera.fill")
                             .foregroundColor(.brandGreen)
                     }
                     NavigationLink {
-                        Text("AI Chat — coming soon")
+                        AIFoodChatView()
                     } label: {
                         Label("Describe Your Food", systemImage: "text.bubble.fill")
                             .foregroundColor(.brandOrange)
                     }
                     NavigationLink {
-                        Text("Barcode — coming soon")
+                        BarcodeScanView()
                     } label: {
                         Label("Scan Barcode", systemImage: "barcode.viewfinder")
                     }
                     NavigationLink {
-                        Text("Manual — coming soon")
+                        ManualEntryView()
                     } label: {
                         Label("Manual Entry", systemImage: "square.and.pencil")
                     }

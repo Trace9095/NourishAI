@@ -86,7 +86,7 @@ struct SettingsView: View {
             }
             .navigationTitle("Settings")
             .sheet(isPresented: $showSubscription) {
-                Text("Subscription paywall coming soon")
+                SubscriptionView()
             }
         }
     }
