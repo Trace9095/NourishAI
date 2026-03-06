@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { handleCors, corsHeaders } from "@/lib/security";
+import { db } from "@/lib/db";
+import { contactSubmissions } from "@/lib/db/schema";
 
 export async function OPTIONS(request: NextRequest) {
   return handleCors(request) ?? NextResponse.json(null, { status: 204 });
@@ -10,7 +12,7 @@ export async function POST(request: NextRequest) {
   if (cors) return cors;
 
   try {
-    const { name, email, message } = await request.json();
+    const { name, email, subject, message } = await request.json();
 
     if (!name || !email || !message) {
       return NextResponse.json(
@@ -27,6 +29,20 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Save to database
+    try {
+      const database = db();
+      await database.insert(contactSubmissions).values({
+        name,
+        email,
+        subject: subject || "General Inquiry",
+        message,
+      });
+    } catch (dbError) {
+      console.error("DB save error (non-blocking):", dbError);
+    }
+
+    // Send email
     const resendKey = process.env.RESEND_API_KEY;
     if (!resendKey) {
       console.error("RESEND_API_KEY not configured");
@@ -35,6 +51,10 @@ export async function POST(request: NextRequest) {
         { status: 503, headers: corsHeaders(request) }
       );
     }
+
+    const emailSubject = subject
+      ? `NourishAI Contact [${subject}]: ${name}`
+      : `NourishAI Contact: ${name}`;
 
     const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -45,8 +65,8 @@ export async function POST(request: NextRequest) {
       body: JSON.stringify({
         from: "NourishAI <noreply@nourishhealthai.com>",
         to: "CEO@epicai.ai",
-        subject: `NourishAI Contact: ${name}`,
-        text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
+        subject: emailSubject,
+        text: `Name: ${name}\nEmail: ${email}\nSubject: ${subject || "General Inquiry"}\n\nMessage:\n${message}`,
         reply_to: email,
       }),
     });

@@ -66,12 +66,12 @@ AnimateIn, BrandContent, ContactForm, CookieConsentBanner, DownloadCTA, FAQ, Fea
 
 **Other:** `middleware.ts` (admin auth redirect + llms.txt Link header), `app/opengraph-image.tsx`, `app/robots.ts`, `app/sitemap.ts`, `app/admin/layout.tsx`, `app/blog/layout.tsx`
 
-### iOS (19 Swift files — awaiting Xcode project)
+### iOS (21 Swift files — awaiting Xcode project)
 
 **Root (3):** NourishAIApp.swift, ContentView.swift, Constants.swift
 **Models (3):** UserProfile.swift, NutritionModels.swift, NutritionCalculator.swift
-**Services (2):** NourishAPIManager.swift, HealthKitManager.swift
-**Components (1):** MacroRingView.swift
+**Services (3):** NourishAPIManager.swift, HealthKitManager.swift, SubscriptionManager.swift
+**Components (2):** MacroRingView.swift, MealRow.swift
 **Views/Dashboard (1):** DashboardView.swift
 **Views/FoodLog (5):** FoodLogView.swift, AIFoodCameraView.swift, AIFoodChatView.swift, ManualEntryView.swift, BarcodeScanView.swift
 **Views/Onboarding (1):** OnboardingContainerView.swift
@@ -79,7 +79,7 @@ AnimateIn, BrandContent, ContactForm, CookieConsentBanner, DownloadCTA, FAQ, Fea
 **Views/Settings (1):** SettingsView.swift
 **Views/Subscription (1):** SubscriptionView.swift
 
-**Missing:** MealRow.swift (referenced by FoodLogView — simple food entry row component)
+**All view dependencies satisfied.** SubscriptionView wired to SubscriptionManager with StoreKit 2.
 
 ## Tech Stack
 
