@@ -25,7 +25,7 @@ NourishAI is an AI-powered nutrition tracking iOS app + marketing website. Targe
 
 ### Backend (Next.js 16 — Vercel root dir: `backend/`)
 
-**Pages (15):**
+**Pages (16):**
 - `app/page.tsx` — Landing page (hero, features, how-it-works, pricing, testimonials, FAQ, download CTA)
 - `app/features/page.tsx` — Detailed features with comparison table
 - `app/about/page.tsx` — About page with story, values, Epic AI
@@ -40,6 +40,7 @@ NourishAI is an AI-powered nutrition tracking iOS app + marketing website. Targe
 - `app/admin/page.tsx` — Admin login (email + password, forgot password link)
 - `app/admin/dashboard/page.tsx` — Full admin dashboard (12 KPIs, charts, tables, auto-refresh)
 - `app/admin/users/page.tsx` — Admin users management (CRUD, role badges, inline add form)
+- `app/admin/instagram-calendar/page.tsx` — Instagram content calendar (grid/list, filters, posted tracking)
 - `app/admin/forgot-password/page.tsx` — Forgot password form (email input)
 - `app/admin/reset-password/page.tsx` — Reset password form (token validation, dual password input)
 
@@ -157,7 +158,8 @@ cd backend && npx next build     # Website
 - **Reset Password:** `/admin/reset-password?token=...` → validates token, sets new password
 - **Setup:** POST `/api/admin/setup` with `ADMIN_SETUP_TOKEN` to seed first super_admin
 - **Roles:** super_admin, admin, viewer (pgEnum in schema)
-- **Features:** 12 KPI cards, scan/user charts (30-day), recent activity tables, auto-refresh 30s
+- **Instagram:** `/admin/instagram-calendar` (grid/list view, month filter, search, posted tracking)
+- **Features:** 12 KPI cards, scan/user charts (30-day), recent activity tables, auto-refresh 30s (pauses on tab hide)
 - **Footer lock icon** links to `/admin` (Gold Standard pattern)
 
 ## Session History
@@ -172,6 +174,7 @@ cd backend && npx next build     # Website
 - Session 73: Generated Xcode project.pbxproj programmatically (all 21 Swift files, iOS 17, Swift 6, MainActor isolation). Set all Vercel env vars (ADMIN_SETUP_TOKEN, ADMIN_SESSION_SECRET). Ran Drizzle migration (5 tables). Seeded admin account (CEO@epicai.ai, super_admin). Verified admin login, website live at nourishhealthai.com, API routes responding.
 - Session 74: Admin users management (/admin/users with CRUD), forgot password flow (Resend email + token reset), fixed Claude JSON parsing (strip markdown fences), fixed barcode kJ/kcal swap detection, expanded FAQ to 34 questions (6 categories), expanded blog to 8 posts, marketing engine (5 templates + March/April calendars = 35 posts, 25 PNGs, 1 MP4). Full Gold Standard audit passed all 36 rules. Security headers verified live. All docs updated.
 - Session 75: Security audit (53 findings from 2 background agents). Critical fix: replaced in-memory password reset tokens with HMAC-based self-validating tokens (serverless-safe). Added isActive check to getSessionAdmin(). Fixed tokensUsed NaN, 44px touch targets on admin pages, CSS block/flex conflicts, contact form double-encoding (raw in DB, escape in email only), removed unused rateLimitKey. All fixes deployed to Vercel (READY).
+- Session 76: Instagram calendar admin page (/admin/instagram-calendar — grid/list view, month filters, search, posted tracking, lightbox). May/June 2026 content calendars (33 new posts, total 68 across Mar-Jun). Dashboard auto-refresh pauses on tab hide. Password complexity requirements (uppercase + lowercase + number) on admin create and reset. Email format validation. 2 new blog posts (10 total). Per-page OG images deployed.
 - Remaining: Open project in Xcode (set team, build), Watch/Widget targets, StoreKit config, App Store Connect setup, payment testing, Resend domain verification
 
 ### Phase Status

@@ -125,11 +125,13 @@
 
 ### Marketing
 - [ ] Instagram launch content
-- [x] Blog SEO articles (8 seed posts)
+- [x] Blog SEO articles (10 posts)
 - [x] Social sharing OG images
 - [x] Marketing engine (HTML templates + Playwright PNG generation)
 - [x] March 2026 content calendar (15 posts — 7 feed, 3 before-after, 4 story, 1 reel)
 - [x] April 2026 content calendar (20 posts — 15 feed, 4 story, 1 reel)
+- [x] May 2026 content calendar (18 posts — 11 feed, 4 story, 2 before-after, 1 reel)
+- [x] June 2026 content calendar (15 posts — 9 feed, 3 story, 2 before-after, 1 reel)
 - [ ] App Store optimization (ASO)
 
 ---
