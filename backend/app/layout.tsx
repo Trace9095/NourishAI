@@ -58,6 +58,7 @@ export const metadata: Metadata = {
   alternates: {
     types: {
       "text/markdown": "/llms.txt",
+      "application/rss+xml": "/feed.xml",
     },
   },
   icons: {

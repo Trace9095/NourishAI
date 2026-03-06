@@ -6,11 +6,17 @@ AI-Content-Metadata: /llms.txt
 
 # Allowed paths
 Allow: /
-Allow: /pricing
+Allow: /features
+Allow: /about
 Allow: /blog
+Allow: /contact
 Allow: /privacy
 Allow: /terms
 Allow: /accessibility
 
 # Disallowed paths
 Disallow: /api/
+Disallow: /admin/
+
+# RSS Feed
+RSS: https://nourishhealthai.com/feed.xml
