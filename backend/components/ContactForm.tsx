@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, useEffect, useRef, type FormEvent } from "react";
 
 const SUBJECTS = [
   "General",
@@ -19,17 +19,38 @@ export function ContactForm() {
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const formTimeRef = useRef<number>(Date.now());
+
+  // Record when the form was rendered (bot detection: too-fast submissions)
+  useEffect(() => {
+    formTimeRef.current = Date.now();
+  }, []);
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     setStatus("submitting");
     setErrorMsg("");
 
+    // Client-side: basic email domain check
+    const domain = email.split("@")[1]?.toLowerCase();
+    if (!domain || !domain.includes(".")) {
+      setStatus("error");
+      setErrorMsg("Please enter a valid email address with a real domain.");
+      return;
+    }
+
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, subject, message }),
+        body: JSON.stringify({
+          name,
+          email,
+          subject,
+          message,
+          website: (document.getElementById("contact-website") as HTMLInputElement)?.value || "",
+          _formTime: formTimeRef.current,
+        }),
       });
 
       if (!res.ok) {
@@ -101,6 +122,7 @@ export function ContactForm() {
             id="contact-name"
             type="text"
             required
+            maxLength={100}
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Your name"
@@ -120,10 +142,24 @@ export function ContactForm() {
             id="contact-email"
             type="email"
             required
+            maxLength={254}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="you@example.com"
+            placeholder="you@company.com"
             className="w-full rounded-xl bg-brand-dark border border-brand-border/50 px-4 py-3 text-white placeholder:text-gray-600 focus:outline-none focus:border-brand-green/50 focus:ring-1 focus:ring-brand-green/30 transition-colors min-h-[44px]"
+          />
+          <p className="text-xs text-gray-600 mt-1.5">Use your real email — disposable addresses are blocked.</p>
+        </div>
+
+        {/* Honeypot — invisible to humans, bots auto-fill it */}
+        <div className="absolute opacity-0 h-0 w-0 overflow-hidden" aria-hidden="true" tabIndex={-1}>
+          <label htmlFor="contact-website">Website</label>
+          <input
+            id="contact-website"
+            type="text"
+            name="website"
+            autoComplete="off"
+            tabIndex={-1}
           />
         </div>
 
@@ -166,11 +202,13 @@ export function ContactForm() {
             id="contact-message"
             required
             rows={5}
+            maxLength={2000}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="Tell us what's on your mind..."
             className="w-full rounded-xl bg-brand-dark border border-brand-border/50 px-4 py-3 text-white placeholder:text-gray-600 focus:outline-none focus:border-brand-green/50 focus:ring-1 focus:ring-brand-green/30 transition-colors resize-y"
           />
+          <p className="text-xs text-gray-600 mt-1.5 text-right">{message.length}/2000</p>
         </div>
 
         {/* Error */}

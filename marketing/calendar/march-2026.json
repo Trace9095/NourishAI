@@ -1,0 +1,99 @@
+{
+  "brand": "NourishAI",
+  "month": "March 2026",
+  "posts": [
+    {
+      "id": "nai-2026-03-06-protein-tip",
+      "date": "2026-03-06",
+      "template": "feed-macro-tip",
+      "type": "feed",
+      "caption": "Struggling to hit your protein? Here are 3 easy wins 💪\n\n#NourishAI #MacroTracking #ProteinGoals #FitnessNutrition #MealPrep",
+      "data": {
+        "TITLE_LINE1": "3 Ways to Hit",
+        "TITLE_LINE2": "Your Protein Goal",
+        "TIP1_EMOJI": "🥚",
+        "TIP1_TEXT": "Start with <strong>30g protein</strong> at breakfast. <span class='green'>Eggs + Greek yogurt</span> is the easiest combo.",
+        "TIP2_EMOJI": "🥤",
+        "TIP2_TEXT": "Add a <strong>protein shake</strong> between meals. That's an easy <span class='red'>25-30g</span> without cooking.",
+        "TIP3_EMOJI": "🍗",
+        "TIP3_TEXT": "Double your dinner protein. <span class='orange'>8oz chicken</span> instead of 4oz = 25g extra."
+      }
+    },
+    {
+      "id": "nai-2026-03-08-calorie-myth",
+      "date": "2026-03-08",
+      "template": "feed-macro-tip",
+      "type": "feed",
+      "caption": "Stop believing these calorie myths ❌\n\nTrack smarter, not harder.\n\n#NourishAI #CalorieTracking #NutritionFacts #FitnessTips",
+      "data": {
+        "TITLE_LINE1": "3 Calorie Myths",
+        "TITLE_LINE2": "Killing Your Cut",
+        "TIP1_EMOJI": "❌",
+        "TIP1_TEXT": "<strong>\"Eating less = faster results.\"</strong> Too big a deficit <span class='red'>kills muscle</span> and tanks metabolism.",
+        "TIP2_EMOJI": "❌",
+        "TIP2_TEXT": "<strong>\"All calories are equal.\"</strong> <span class='green'>200 cal of chicken</span> hits different than 200 cal of candy.",
+        "TIP3_EMOJI": "❌",
+        "TIP3_TEXT": "<strong>\"You can eyeball portions.\"</strong> Most people are off by <span class='orange'>40-60%</span>. Track it."
+      }
+    },
+    {
+      "id": "nai-2026-03-10-ai-scan-reel",
+      "date": "2026-03-10",
+      "template": "reel-ai-scan",
+      "type": "reel",
+      "caption": "Just snap a photo and NourishAI does the rest 🤯📸\n\nAI-powered macro tracking — no more guessing.\n\nFree on the App Store 🔗\n\n#NourishAI #AIFitness #MacroTracker #FoodScanner #GymTok #FitTok",
+      "data": {}
+    },
+    {
+      "id": "nai-2026-03-12-meal-prep",
+      "date": "2026-03-12",
+      "template": "feed-macro-tip",
+      "type": "feed",
+      "caption": "Sunday meal prep hits different when you know your macros 🔥\n\n#MealPrep #MacroFriendly #NourishAI #ProteinMeals",
+      "data": {
+        "TITLE_LINE1": "Meal Prep That",
+        "TITLE_LINE2": "Hits Your Macros",
+        "TIP1_EMOJI": "📋",
+        "TIP1_TEXT": "<strong>Plan before you shop.</strong> Set your <span class='green'>weekly macro targets</span> in NourishAI first.",
+        "TIP2_EMOJI": "⚖️",
+        "TIP2_TEXT": "<strong>Weigh everything once.</strong> Prep <span class='orange'>5 identical containers</span> = zero daily decisions.",
+        "TIP3_EMOJI": "📸",
+        "TIP3_TEXT": "<strong>Scan new meals with AI.</strong> Snap a photo and <span class='red'>save to favorites</span> for instant relogging."
+      }
+    },
+    {
+      "id": "nai-2026-03-14-bulk-cut",
+      "date": "2026-03-14",
+      "template": "feed-macro-tip",
+      "type": "feed",
+      "caption": "Bulking vs Cutting — the numbers that actually matter 📊\n\n#BulkingTips #CuttingTips #NourishAI #Macros #Bodybuilding",
+      "data": {
+        "TITLE_LINE1": "Bulk vs Cut:",
+        "TITLE_LINE2": "Know Your Numbers",
+        "TIP1_EMOJI": "📈",
+        "TIP1_TEXT": "<strong>Bulking?</strong> Aim for <span class='green'>+15% surplus</span>. More than that = unnecessary fat gain.",
+        "TIP2_EMOJI": "📉",
+        "TIP2_TEXT": "<strong>Cutting?</strong> Stay at <span class='orange'>-20% deficit</span>. Slower cuts preserve more muscle.",
+        "TIP3_EMOJI": "🎯",
+        "TIP3_TEXT": "<strong>Either way:</strong> Hit <span class='red'>1g protein per lb</span> bodyweight. Non-negotiable."
+      }
+    },
+    {
+      "id": "nai-2026-03-17-water-tip",
+      "date": "2026-03-17",
+      "template": "feed-macro-tip",
+      "type": "feed",
+      "caption": "Water intake is the most underrated performance hack 💧\n\n#Hydration #FitnessHacks #NourishAI #WaterIntake",
+      "data": {
+        "TITLE_LINE1": "Why Your Gains",
+        "TITLE_LINE2": "Need More Water",
+        "TIP1_EMOJI": "💧",
+        "TIP1_TEXT": "<strong>Dehydration = weaker lifts.</strong> Even <span class='red'>2% dehydrated</span> drops strength by 20%.",
+        "TIP2_EMOJI": "⚡",
+        "TIP2_TEXT": "<strong>Protein needs water.</strong> High protein diets need <span class='green'>100+ oz/day</span> for kidney health.",
+        "TIP3_EMOJI": "📱",
+        "TIP3_TEXT": "<strong>Track it.</strong> NourishAI's water tracker makes it <span class='orange'>dead simple</span> to stay on top."
+      }
+    }
+  ]
+}

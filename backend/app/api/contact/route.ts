@@ -3,6 +3,7 @@ import { handleCors, corsHeaders } from "@/lib/security";
 import { db } from "@/lib/db";
 import { contactSubmissions } from "@/lib/db/schema";
 import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
+import { isDisposableEmail, hasMxRecords } from "@/lib/email-validation";
 
 function escapeHtml(str: string): string {
   return str
@@ -38,7 +39,28 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { name, email, subject, message } = await request.json();
+    const body = await request.json();
+    const { name, email, subject, message, website, _formTime } = body;
+
+    // Honeypot: if "website" field is filled, it's a bot (field is hidden via CSS)
+    if (website) {
+      // Return success to not tip off the bot, but don't actually send
+      return NextResponse.json(
+        { success: true },
+        { headers: corsHeaders(request) }
+      );
+    }
+
+    // Time-based check: form must take at least 3 seconds to fill (bots are instant)
+    if (_formTime && typeof _formTime === "number") {
+      const elapsed = Date.now() - _formTime;
+      if (elapsed < 3000) {
+        return NextResponse.json(
+          { success: true }, // Fake success to not reveal the check
+          { headers: corsHeaders(request) }
+        );
+      }
+    }
 
     if (!name || !email || !message) {
       return NextResponse.json(
@@ -73,7 +95,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Email validation
+    // Email format validation
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return NextResponse.json(
         { error: "Invalid email address" },
@@ -85,6 +107,23 @@ export async function POST(request: NextRequest) {
     if (/[\r\n]/.test(email) || /[\r\n]/.test(name)) {
       return NextResponse.json(
         { error: "Invalid input" },
+        { status: 400, headers: corsHeaders(request) }
+      );
+    }
+
+    // Block disposable/throwaway email domains
+    if (isDisposableEmail(email)) {
+      return NextResponse.json(
+        { error: "Please use a real email address, not a disposable one." },
+        { status: 400, headers: corsHeaders(request) }
+      );
+    }
+
+    // Verify the email domain has MX records (real mail server)
+    const hasMx = await hasMxRecords(email);
+    if (!hasMx) {
+      return NextResponse.json(
+        { error: "That email domain doesn't appear to accept mail. Please use a valid email." },
         { status: 400, headers: corsHeaders(request) }
       );
     }
