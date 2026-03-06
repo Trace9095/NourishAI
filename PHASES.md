@@ -27,12 +27,11 @@
 ---
 
 ## Phase 1: iOS Core (Models + Services)
-**Status: DONE (source files written — awaiting Xcode project)**
-**Depends on:** Trace creates Xcode project in Xcode UI
+**Status: DONE (source files written + Xcode project generated)**
 
 | # | Task | Status |
 |---|------|--------|
-| 1.1 | Create Xcode project (iOS + Watch + Widget targets) | BLOCKED (Trace must do in Xcode) |
+| 1.1 | Create Xcode project (iOS target) | DONE (pbxproj generated programmatically) |
 | 1.2 | Copy 6 as-is files from LiftLabPro | SKIPPED (built fresh) |
 | 1.3 | Create/adapt 8 modified files | DONE |
 | 1.4 | Build SwiftData schema (5 models) | DONE |
@@ -86,7 +85,7 @@
 | 3.5 | Gold Standard compliance (36 rules) | DONE |
 | 3.6 | Legal pages + cookie consent | DONE |
 | 3.7 | Blog engine + 5 seed articles | DONE |
-| 3.8 | Deploy to Vercel + domain | DEPLOYED (domain needs adding in Vercel Dashboard) |
+| 3.8 | Deploy to Vercel + domain | DONE (live at nourishhealthai.com) |
 | 3.9 | Features page (/features) | DONE |
 | 3.10 | About page (/about) | DONE |
 | 3.11 | Contact page (/contact) | DONE |

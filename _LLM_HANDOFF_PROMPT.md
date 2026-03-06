@@ -40,23 +40,27 @@ Browser --> /admin (login page)
 
 **Key principle:** iOS app is local-first (SwiftData). Server handles ONLY AI proxy, rate limiting, and subscription verification. No embedded API keys.
 
-## 3. Current State (After Sessions 68-70)
+## 3. Current State (After Session 73)
 
-### What's Built
+### What's Built and Live
 
-**Website (backend/):** 12 pages, 11 API routes + RSS feed, 15 components, 6 lib files, middleware. Fully functional and deployed to Vercel. Gold Standard 100% compliant. Admin dashboard with PBKDF2+HMAC auth, blog engine (5 articles), contact form (saves to DB), cookie consent, brand page, legal pages, branded 404, FAQ with CTA buttons.
+**Website (backend/):** 12 pages, 11 API routes + RSS feed, 15 components, 6 lib files, middleware. Live at nourishhealthai.com. Gold Standard 100% compliant. Admin dashboard with PBKDF2+HMAC auth, blog engine (5 articles), contact form (saves to DB), cookie consent, brand page, legal pages, branded 404, FAQ with CTA buttons.
 
-**iOS (ios/):** 21 Swift source files covering all models, services, components, and views. All cross-file dependencies resolved. SubscriptionManager wired to StoreKit 2. All HealthKit calls use correct `logNutrition()` method. NOT compilable yet — requires Xcode project creation (Trace must do in Xcode UI).
+**iOS (ios/):** 21 Swift source files + Xcode project (project.pbxproj generated). All cross-file dependencies resolved. SubscriptionManager wired to StoreKit 2. All HealthKit calls use correct `logNutrition()` method. Needs opening in Xcode to set team and build.
 
-**Database schema (Drizzle ORM):** 5 tables defined — users, scan_usage, admin_users, blog_posts, contact_submissions. Migration NOT yet run.
+**Database:** 5 tables created via Drizzle migration (users, scan_usage, admin_users, blog_posts, contact_submissions).
+
+**Admin:** Super admin seeded (CEO@epicai.ai). Login works at /admin.
+
+**Env vars:** All 6 production env vars set in Vercel.
 
 ### What's NOT Done
 
-- **Xcode project:** .xcodeproj must be created via Xcode UI (cannot be scripted)
-- **DB migration:** `npx drizzle-kit push` needs to be run
-- **Env vars:** ADMIN_SETUP_TOKEN and ADMIN_SESSION_SECRET need adding in Vercel
-- **Admin seed:** POST to /api/admin/setup after migration + env vars
-- **Domain:** nourishhealthai.com needs adding in Vercel Dashboard
+- **Xcode build:** Project needs opening in Xcode to set Developer Team and build
+- **Watch/Widget targets:** Need creating through Xcode UI
+- **StoreKit config:** .storekit file for testing payments
+- **App Store Connect:** Bundle ID registration, subscription group creation
+- **Resend domain:** nourishhealthai.com needs verifying in Resend Dashboard
 - **Phase 4:** Apple Watch companion, iOS Widgets, push notifications
 - **Phase 5:** TestFlight, App Store submission, marketing launch
 
@@ -69,7 +73,7 @@ Browser --> /admin (login page)
 - **Email:** Resend API
 - **Deploy:** Vercel (`nourish-ai`, team `team_pGqkBUxWUXiBoZoKYPgweHDl`, root: `backend/`)
 
-## 5. Database Schema (5 tables)
+## 5. Database Schema (5 tables — migrated)
 
 ```
 users           — id, device_id (unique), subscription_tier, subscription_expires_at, timestamps
@@ -79,52 +83,37 @@ blog_posts      — id, slug (unique), title, excerpt, content, cover_image, aut
 contact_submissions — id, name, email, subject, message, read, created_at
 ```
 
-## 6. Admin Auth Flow
-
-1. Trace sets `ADMIN_SETUP_TOKEN` env var in Vercel
-2. POST `/api/admin/setup` with `{token, email, name, password}` creates super_admin
-3. Login at `/admin` with email + password
-4. Server verifies PBKDF2 hash, creates HMAC session token, sets HttpOnly cookie
-5. Middleware checks cookie on `/admin/dashboard/*` routes
-6. Dashboard auto-refreshes stats every 30 seconds
-
-## 7. Brand
-
-- Primary: `#34C759` (green) | Accent: `#FF9500` (orange) | Dark: `#0A0A14`
-- Macro colors: Protein `#FF6B6B`, Carbs `#4ECDC4`, Fat `#FFE66D`, Water `#5AC8FA`
-- Epic AI product — CAN show branding
-
-## 8. Critical Rules
+## 6. Critical Rules
 
 1. NO embedded API keys in iOS. All AI calls through server.
 2. Free = 1 scan/week. Server-side enforcement.
-3. Create Swift files through Xcode (pbxproj needs 4 entries per file).
-4. Swift 6 = MainActor default. Use `nonisolated` for background.
-5. Website follows Gold Standard (36 rules). No backdrop-blur on fixed elements.
-6. Vercel root dir: `backend/`
-7. CORS in `lib/security.ts`, security headers in `next.config.ts`.
-8. 44px touch targets on all tappable elements.
-9. Admin auth uses PBKDF2 + HMAC (not bcrypt/JWT). ADMIN_SESSION_SECRET env var required.
+3. Swift 6 = MainActor default. Use `nonisolated` for background.
+4. Website follows Gold Standard (36 rules). No backdrop-blur on fixed elements.
+5. Vercel root dir: `backend/`
+6. CORS in `lib/security.ts`, security headers in `next.config.ts`.
+7. 44px touch targets on all tappable elements.
+8. Admin auth uses PBKDF2 + HMAC. ADMIN_SESSION_SECRET env var required.
 
-## 9. Key Files
+## 7. Key Files
 
 | File | Purpose |
 |------|---------|
 | `CLAUDE.md` | Project instructions + full file inventory |
 | `PHASES.md` | Phase tracking (0-5) with task statuses |
-| `HUMAN_TASKS.md` | Trace's action items (env vars, Xcode, migration, payment testing) |
+| `HUMAN_TASKS.md` | Remaining action items |
 | `TODO.md` | Feature backlog (V1-V6) |
 | `APPLE_SETUP_GUIDE.md` | App Store Connect subscription setup |
 | `backend/lib/db/schema.ts` | All 5 DB table definitions |
 | `backend/lib/admin-auth.ts` | Admin authentication system |
 | `backend/middleware.ts` | Admin route protection + llms.txt header |
 
-## 10. Immediate Next Steps
+## 8. Immediate Next Steps
 
-1. **Trace action items** (see HUMAN_TASKS.md): domain in Vercel, env vars, DB migration, admin seed
-2. **Xcode project creation** — Trace creates project, drags in all 21 Swift files
-3. **StoreKit testing** — Create .storekit config file, test payment flows
-4. **Phase 4:** Apple Watch companion, iOS Widgets, push notifications
-5. **Phase 5:** TestFlight beta, App Store submission, marketing launch
+1. **Open Xcode project** — Set developer team, build, fix any signing issues
+2. **Create StoreKit config** — Add .storekit file with both subscription products
+3. **App Store Connect** — Register bundle IDs, create subscription group
+4. **Payment testing** — StoreKit sandbox, then TestFlight
+5. **Phase 4:** Apple Watch companion, iOS Widgets
+6. **Phase 5:** App Store submission + marketing launch
 
 See `PHASES.md` for detailed task tracking and `TODO.md` for full backlog (V1-V6).

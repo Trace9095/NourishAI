@@ -66,7 +66,7 @@ AnimateIn, BrandContent, ContactForm, CookieConsentBanner, DownloadCTA, FAQ, Fea
 
 **Other:** `middleware.ts` (admin auth redirect + llms.txt Link header), `app/opengraph-image.tsx`, `app/robots.ts`, `app/sitemap.ts`, `app/feed.xml/route.ts` (RSS), `app/admin/layout.tsx`, `app/blog/layout.tsx`
 
-### iOS (21 Swift files — awaiting Xcode project)
+### iOS (21 Swift files + Xcode project)
 
 **Root (3):** NourishAIApp.swift, ContentView.swift, Constants.swift
 **Models (3):** UserProfile.swift, NutritionModels.swift, NutritionCalculator.swift
@@ -117,8 +117,8 @@ AnimateIn, BrandContent, ContactForm, CookieConsentBanner, DownloadCTA, FAQ, Fea
 | RESEND_API_KEY | SET | Email sending |
 | DATABASE_URL | SET | Neon (auto by integration) |
 | NEXT_PUBLIC_APP_URL | SET | `https://nourishhealthai.com` |
-| ADMIN_SETUP_TOKEN | **NEEDED** | One-time admin seed protection |
-| ADMIN_SESSION_SECRET | **NEEDED** | Session cookie signing |
+| ADMIN_SETUP_TOKEN | SET | `nourishai-admin-setup-2026` |
+| ADMIN_SESSION_SECRET | SET | Random string for session signing |
 
 ## Build Commands
 
@@ -160,13 +160,14 @@ cd backend && npx next build     # Website
 - Phase 3 DONE: Full website (12 pages), 11 API routes + RSS feed, admin dashboard, Gold Standard compliant
 - Session 71: Security hardening (removed hardcoded session secret, fixed CORS), iOS fixes (ProgressView rename, servingSize type mismatch, WaterEntry model container, MealRow optional binding), FAQ CTA buttons, comprehensive code review via background agents
 - Session 72: Fixed all remaining code review findings. iOS: DashboardView #Predicate crash (Calendar not translatable), SubscriptionManager Task.detached Swift 6 violation, BarcodeScanView loading spinner state machine, AIFoodCameraView PhotosPicker wiring, SubscriptionView isPurchasing reset. Web: scan limit consistency (all scan types counted), input size limits, cooldown on analyze-description, CookieConsentBanner hidden on admin, complete favicon metadata, device ID truncation in admin stats, blog Copy Link client component.
-- Remaining: Xcode project creation (Trace), env vars, DB migration, domain in Vercel, Apple App Store Server API integration (pre-launch)
+- Session 73: Generated Xcode project.pbxproj programmatically (all 21 Swift files, iOS 17, Swift 6, MainActor isolation). Set all Vercel env vars (ADMIN_SETUP_TOKEN, ADMIN_SESSION_SECRET). Ran Drizzle migration (5 tables). Seeded admin account (CEO@epicai.ai, super_admin). Verified admin login, website live at nourishhealthai.com, API routes responding.
+- Remaining: Open project in Xcode (set team, build), Watch/Widget targets, StoreKit config, App Store Connect setup, payment testing, Resend domain verification
 
 ### Phase Status
 | Phase | Status |
 |-------|--------|
 | 0 — Infrastructure | COMPLETE |
-| 1 — iOS Core | DONE (21 source files written, awaiting Xcode) |
+| 1 — iOS Core | DONE (21 source files + Xcode project generated) |
 | 2 — iOS Views + AI | DONE |
 | 3 — Website + API + DB | DONE (Gold Standard compliant) |
 | 4 — Watch + Widget | NOT STARTED (depends on Xcode project) |

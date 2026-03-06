@@ -6,32 +6,23 @@
 
 ## CRITICAL — Do These First
 
-- [ ] **Add domain to Vercel:** Dashboard > nourish-ai > Settings > Domains > Add `nourishhealthai.com`
-- [ ] **Run Drizzle migration:** `cd backend && npx drizzle-kit push` — creates ALL tables (users, scan_usage, admin_users, blog_posts, contact_submissions)
-- [ ] **Set ADMIN_SETUP_TOKEN env var:** Vercel Dashboard > nourish-ai > Settings > Environment Variables > Add `ADMIN_SETUP_TOKEN` with a random string (e.g., `nourishai-setup-2026-random`). This protects the one-time admin setup.
-- [ ] **Set ADMIN_SESSION_SECRET env var:** Add `ADMIN_SESSION_SECRET` with a random string for signing session cookies.
-- [ ] **Seed your admin account:** After migration + env vars, POST to `/api/admin/setup`:
-  ```bash
-  curl -X POST https://nourishhealthai.com/api/admin/setup \
-    -H "Content-Type: application/json" \
-    -d '{"token":"YOUR_ADMIN_SETUP_TOKEN","email":"CEO@epicai.ai","name":"Trace Hildebrand","password":"YOUR_PASSWORD"}'
-  ```
-  Then login at `/admin` with your email + password.
+- [x] **Add domain to Vercel:** Dashboard > nourish-ai > Settings > Domains > Add `nourishhealthai.com`
+- [x] **Run Drizzle migration:** `cd backend && npx drizzle-kit push` — creates ALL tables (users, scan_usage, admin_users, blog_posts, contact_submissions)
+- [x] **Set ADMIN_SETUP_TOKEN env var:** Set to `nourishai-admin-setup-2026` in Vercel production
+- [x] **Set ADMIN_SESSION_SECRET env var:** Set in Vercel production for signing session cookies
+- [x] **Seed your admin account:** Super admin seeded (CEO@epicai.ai, super_admin role)
+  - Login at `/admin` with email `CEO@epicai.ai` + password `vLCbKRMBza7IzgqKlzekZQ==`
 
 ## Xcode Project Setup
 
-- [ ] **Create Xcode project:** File > New > Project > iOS App
-  - Product Name: `NourishAI`
-  - Team: Your Apple Developer account
-  - Organization Identifier: `com.epicai`
+- [x] **Xcode project generated:** `ios/NourishAI.xcodeproj/project.pbxproj` created programmatically
   - Bundle Identifier: `com.epicai.nourishai`
-  - Interface: SwiftUI
-  - Storage: SwiftData
-  - Language: Swift
-  - Save to: `NourishAI-main/ios/`
-- [ ] **Drag all Swift files into Xcode:** Select all files in `ios/NourishAI/` and drag into the project navigator. Ensure "Create groups" is selected and the iOS target is checked.
+  - iOS 17.0 deployment target, Swift 6.0
+  - All 21 Swift files registered in build phases
+  - HealthKit, App Groups, Camera/Photos entitlements configured
+- [x] **All Swift files in project:** 21 files registered in pbxproj
 
-### Swift files to add (21 total):
+### Swift files (21 total):
 **Root:** NourishAIApp.swift, ContentView.swift, Constants.swift
 **Models/** (3): UserProfile.swift, NutritionModels.swift, NutritionCalculator.swift
 **Services/** (3): NourishAPIManager.swift, HealthKitManager.swift, SubscriptionManager.swift
@@ -43,15 +34,17 @@
 **Views/Subscription/** (1): SubscriptionView.swift
 **Components/** (2): MacroRingView.swift, MealRow.swift
 
+- [ ] **Open in Xcode:** Open `ios/NourishAI.xcodeproj` in Xcode
+  - Set your Apple Developer Team in Signing & Capabilities
+  - Build and fix any signing issues
 - [ ] **Add Watch target:** File > New > Target > watchOS > Watch App
 - [ ] **Add Widget target:** File > New > Target > iOS > Widget Extension
-- [ ] **Enable capabilities:**
+- [ ] **Verify capabilities in Xcode:**
   - HealthKit (iOS + Watch)
   - In-App Purchase (iOS)
   - App Groups: `group.com.epicai.nourishai` (iOS + Widget)
   - Push Notifications (iOS)
 - [ ] **Create StoreKit config:** File > New > StoreKit Configuration File > `NourishAI.storekit`
-- [ ] **Set Swift 6:** Build Settings > `SWIFT_DEFAULT_ACTOR_ISOLATION` = `MainActor`
 
 ## App Store Connect
 
@@ -73,7 +66,7 @@
 - [ ] **Set StoreKit config in scheme:** Edit Scheme > Run > Options > StoreKit Configuration > select `NourishAI.storekit`
 - [ ] **Test in Simulator:**
   - Verify products load (SubscriptionView shows real prices)
-  - Test monthly purchase flow (approve → dismiss paywall)
+  - Test monthly purchase flow (approve -> dismiss paywall)
   - Test annual purchase flow
   - Test restore purchases
   - Verify scan limit enforced for free tier (1/week)
@@ -86,8 +79,8 @@
 
 - [x] Purchase domain: nourishhealthai.com
 - [x] Point DNS to Vercel in GoDaddy
-- [ ] **Add domain in Vercel Dashboard**
-- [ ] Verify SSL certificate
+- [x] **Add domain in Vercel Dashboard**
+- [x] Verify SSL certificate (site loads over HTTPS)
 
 ## Marketing
 
@@ -104,8 +97,8 @@
 | RESEND_API_KEY | SET | For email sending |
 | DATABASE_URL | SET | Auto by Neon integration |
 | NEXT_PUBLIC_APP_URL | SET | `https://nourishhealthai.com` |
-| ADMIN_SETUP_TOKEN | NEEDED | One-time admin seed protection |
-| ADMIN_SESSION_SECRET | NEEDED | Session cookie signing |
+| ADMIN_SETUP_TOKEN | SET | `nourishai-admin-setup-2026` |
+| ADMIN_SESSION_SECRET | SET | Random string for session signing |
 
 - [ ] **Verify Resend domain:** Add `nourishhealthai.com` in Resend Dashboard
 
@@ -113,11 +106,17 @@
 
 ## Notes
 
+### Admin Login Credentials
+- **URL:** https://nourishhealthai.com/admin
+- **Email:** CEO@epicai.ai
+- **Password:** vLCbKRMBza7IzgqKlzekZQ==
+- **Role:** super_admin
+
 ### HealthKit Data
 **Reads:** Height, weight, biological sex, DOB, steps, active calories, sleep
 **Writes:** Dietary energy, protein, carbs, fat, fiber, sugar, sodium, water, body mass
 
-### Database Tables (after migration)
+### Database Tables (migration complete)
 - `users` — iOS app device registrations
 - `scan_usage` — AI scan tracking and rate limiting
 - `admin_users` — Dashboard admin accounts with roles (super_admin, admin, viewer)
