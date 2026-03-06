@@ -117,7 +117,7 @@ struct DashboardView: View {
 
             if let entries = today?.entries, !entries.isEmpty {
                 ForEach(entries.prefix(5), id: \.id) { entry in
-                    MealRow(entry: entry)
+                    DashboardMealRow(entry: entry)
                 }
             } else {
                 Text("No meals logged today. Tap + to add your first meal.")
@@ -177,7 +177,7 @@ struct QuickStatCard: View {
     }
 }
 
-struct MealRow: View {
+struct DashboardMealRow: View {
     let entry: FoodEntry
 
     var body: some View {

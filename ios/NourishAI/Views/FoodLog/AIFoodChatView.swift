@@ -320,10 +320,12 @@ struct AIFoodChatView: View {
         }
 
         Task {
-            try? await HealthKitManager.shared.writeDietaryEnergy(calories: Double(result.calories))
-            try? await HealthKitManager.shared.writeProtein(grams: result.protein)
-            try? await HealthKitManager.shared.writeCarbs(grams: result.carbs)
-            try? await HealthKitManager.shared.writeFat(grams: result.fat)
+            try? await HealthKitManager.shared.logNutrition(
+                calories: result.calories,
+                protein: result.protein,
+                carbs: result.carbs,
+                fat: result.fat
+            )
         }
 
         dismiss()

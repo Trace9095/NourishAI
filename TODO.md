@@ -44,9 +44,12 @@
 - [x] Build SettingsView (profile, goals, HealthKit, notifications)
 - [x] Build SubscriptionView (paywall — Free vs Pro)
 
+### iOS App — Services (continued)
+- [x] Build SubscriptionManager.swift (StoreKit 2 integration)
+
 ### iOS App — Components
 - [x] Build MacroRingView (circular progress)
-- [ ] Build MealRow (food entry row — referenced by FoodLogView)
+- [x] Build MealRow (food entry row — source icon, macros display)
 
 ### Website — Landing & Marketing
 - [x] Scaffold Next.js 16 project

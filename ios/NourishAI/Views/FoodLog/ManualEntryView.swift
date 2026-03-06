@@ -174,10 +174,12 @@ struct ManualEntryView: View {
 
         // Push to HealthKit
         Task {
-            try? await HealthKitManager.shared.writeDietaryEnergy(calories: Double(entry.calories))
-            try? await HealthKitManager.shared.writeProtein(grams: entry.protein)
-            try? await HealthKitManager.shared.writeCarbs(grams: entry.carbs)
-            try? await HealthKitManager.shared.writeFat(grams: entry.fat)
+            try? await HealthKitManager.shared.logNutrition(
+                calories: entry.calories,
+                protein: entry.protein,
+                carbs: entry.carbs,
+                fat: entry.fat
+            )
         }
 
         dismiss()

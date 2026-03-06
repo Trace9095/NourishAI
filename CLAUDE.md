@@ -40,7 +40,7 @@ NourishAI is an AI-powered nutrition tracking iOS app + marketing website. Targe
 - `app/admin/page.tsx` — Admin login (email + password)
 - `app/admin/dashboard/page.tsx` — Full admin dashboard (12 KPIs, charts, tables, auto-refresh)
 
-**API Routes (11):**
+**API Routes (11) + RSS Feed:**
 - `api/analyze-food/route.ts` — Claude Haiku vision proxy (photo → macros)
 - `api/analyze-description/route.ts` — Text-based food analysis
 - `api/lookup-barcode/route.ts` — OpenFoodFacts API (free)
@@ -64,7 +64,7 @@ AnimateIn, BrandContent, ContactForm, CookieConsentBanner, DownloadCTA, FAQ, Fea
 - `lib/db/index.ts` — Neon + Drizzle lazy singleton connection
 - `lib/db/schema.ts` — 5 tables (users, scan_usage, admin_users, blog_posts, contact_submissions)
 
-**Other:** `middleware.ts` (admin auth redirect + llms.txt Link header), `app/opengraph-image.tsx`, `app/robots.ts`, `app/sitemap.ts`, `app/admin/layout.tsx`, `app/blog/layout.tsx`
+**Other:** `middleware.ts` (admin auth redirect + llms.txt Link header), `app/opengraph-image.tsx`, `app/robots.ts`, `app/sitemap.ts`, `app/feed.xml/route.ts` (RSS), `app/admin/layout.tsx`, `app/blog/layout.tsx`
 
 ### iOS (21 Swift files — awaiting Xcode project)
 
@@ -153,21 +153,22 @@ cd backend && npx next build     # Website
 
 ## Session History
 
-### Sessions 68-69 (March 2026)
+### Sessions 68-70 (March 2026)
 - Phase 0 COMPLETE: Infrastructure, GitHub repo, Vercel project, docs, SVG logo
-- Phase 1 DONE: 19 iOS Swift files written (awaiting Xcode project creation)
-- Phase 2 MOSTLY DONE: All 5 FoodLog views + SubscriptionView built
-- Phase 3 MOSTLY DONE: Full website (12 pages), 11 API routes, admin dashboard, blog engine, cookie consent, middleware, 5 DB tables
-- Missing: MealRow.swift, Xcode project, env vars (ADMIN_SETUP_TOKEN, ADMIN_SESSION_SECRET), DB migration, domain in Vercel
+- Phase 1 DONE: 21 iOS Swift files written (awaiting Xcode project creation)
+- Phase 2 DONE: All 5 FoodLog views, SubscriptionView wired to SubscriptionManager (StoreKit 2), MealRow component
+- Phase 3 DONE: Full website (12 pages), 11 API routes + RSS feed, admin dashboard, blog engine, cookie consent, middleware, 5 DB tables, full Gold Standard compliance
+- Session 70: MealRow.swift created, SubscriptionManager.swift + SubscriptionView wired to StoreKit 2, RSS feed, favicon array, contact form DB save, logo scroll-to-top, legal pages accessibility fix, comprehensive audit + HUMAN_TASKS payment testing checklist
+- Remaining: Xcode project creation (Trace), env vars (ADMIN_SETUP_TOKEN, ADMIN_SESSION_SECRET), DB migration, domain in Vercel, Vercel Analytics
 
 ### Phase Status
 | Phase | Status |
 |-------|--------|
 | 0 — Infrastructure | COMPLETE |
-| 1 — iOS Core | DONE (source files written, awaiting Xcode) |
-| 2 — iOS Views + AI | MOSTLY DONE |
-| 3 — Website + API + DB | MOSTLY DONE |
-| 4 — Watch + Widget | NOT STARTED |
+| 1 — iOS Core | DONE (21 source files written, awaiting Xcode) |
+| 2 — iOS Views + AI | DONE |
+| 3 — Website + API + DB | DONE (Gold Standard compliant) |
+| 4 — Watch + Widget | NOT STARTED (depends on Xcode project) |
 | 5 — Launch | NOT STARTED |
 
 See `PHASES.md` for detailed task tracking, `HUMAN_TASKS.md` for Trace's action items, `TODO.md` for full backlog.

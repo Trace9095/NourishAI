@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 const NAV_LINKS = [
@@ -13,13 +14,22 @@ const NAV_LINKS = [
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  function handleLogoClick(e: React.MouseEvent) {
+    if (pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-brand-dark border-b border-brand-border/50">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        {/* Logo */}
+        {/* Logo — scroll to top on homepage, navigate on other pages */}
         <Link
           href="/"
+          onClick={handleLogoClick}
           className="flex items-center gap-3 min-w-[44px] min-h-[44px]"
           aria-label="NourishAI home"
         >

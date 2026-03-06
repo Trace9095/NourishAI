@@ -34,15 +34,16 @@
 ### Swift files to add (21 total):
 **Root:** NourishAIApp.swift, ContentView.swift, Constants.swift
 **Models/** (3): UserProfile.swift, NutritionModels.swift, NutritionCalculator.swift
-**Services/** (2): NourishAPIManager.swift, HealthKitManager.swift
-**Components/** (1): MacroRingView.swift
+**Services/** (3): NourishAPIManager.swift, HealthKitManager.swift, SubscriptionManager.swift
 **Views/Dashboard/** (1): DashboardView.swift
 **Views/FoodLog/** (5): FoodLogView.swift, AIFoodCameraView.swift, AIFoodChatView.swift, ManualEntryView.swift, BarcodeScanView.swift
 **Views/Onboarding/** (1): OnboardingContainerView.swift
 **Views/Progress/** (1): ProgressView.swift
 **Views/Settings/** (1): SettingsView.swift
 **Views/Subscription/** (1): SubscriptionView.swift
-**Components/** (1): MealRow.swift (create empty — referenced by FoodLogView)
+**Services/** (1): SubscriptionManager.swift
+**Components/** (2): MealRow.swift, MacroRingView.swift
+**Views/Subscription/** (1): SubscriptionView.swift
 
 - [ ] **Add Watch target:** File > New > Target > watchOS > Watch App
 - [ ] **Add Widget target:** File > New > Target > iOS > Widget Extension
@@ -62,6 +63,26 @@
 - [ ] Add localizations (required for StoreKit)
 - [ ] Verify Paid Apps agreement is active
 - [ ] See `APPLE_SETUP_GUIDE.md` for full details
+
+## Payment Testing Checklist
+
+- [ ] **Create StoreKit configuration file** in Xcode: File > New > File > StoreKit Configuration File > `NourishAI.storekit`
+  - Do NOT sync with App Store Connect (use local testing first)
+  - Add subscription group "NourishAI Pro"
+  - Add product: `com.nourishai.subscription.pro.monthly` ($7.99/month)
+  - Add product: `com.nourishai.subscription.pro.annual` ($39.99/year)
+  - Optional: Add 7-day free trial for annual
+- [ ] **Set StoreKit config in scheme:** Edit Scheme > Run > Options > StoreKit Configuration > select `NourishAI.storekit`
+- [ ] **Test in Simulator:**
+  - Verify products load (SubscriptionView shows real prices)
+  - Test monthly purchase flow (approve → dismiss paywall)
+  - Test annual purchase flow
+  - Test restore purchases
+  - Verify scan limit enforced for free tier (1/week)
+  - Verify unlimited scans after subscribing
+  - Test subscription expiry (StoreKit config allows time acceleration)
+- [ ] **Sandbox testing:** Create sandbox Apple ID in App Store Connect > Users & Access > Sandbox Testers
+- [ ] **TestFlight testing:** Upload build, invite testers, verify payment flow end-to-end
 
 ## Domain & DNS
 
@@ -93,9 +114,6 @@
 ---
 
 ## Notes
-
-### Missing Component: MealRow.swift
-FoodLogView references `MealRow(entry:)` — this component needs to be created. Simple view showing food entry name, calories, and macros in a row.
 
 ### HealthKit Data
 **Reads:** Height, weight, biological sex, DOB, steps, active calories, sleep

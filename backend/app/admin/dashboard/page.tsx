@@ -100,7 +100,7 @@ export default function AdminDashboardPage() {
   const maxDailyUsers = Math.max(...dailyUsers.map((d) => d.count), 1);
 
   return (
-    <div className="min-h-screen">
+    <main id="main-content" className="min-h-screen">
       {/* Top bar */}
       <header className="sticky top-0 z-50 bg-brand-dark border-b border-brand-border/30">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -127,7 +127,7 @@ export default function AdminDashboardPage() {
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-6 py-8 space-y-8">
+      <div className="max-w-7xl mx-auto px-6 py-8 space-y-8">
         {/* KPI Cards Row 1 */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <StatCard label="Total Users" value={overview.totalUsers} color="text-white">
@@ -338,8 +338,8 @@ export default function AdminDashboardPage() {
             </div>
           </div>
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }
 

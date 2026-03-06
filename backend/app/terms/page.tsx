@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <div className="min-h-screen pt-24 pb-16 px-6">
+    <main id="main-content" className="min-h-screen pt-24 pb-16 px-6">
       <div className="mx-auto max-w-3xl">
         <Link href="/" className="text-sm text-brand-green hover:underline mb-8 inline-block min-h-[44px] flex items-center">&larr; Back to Home</Link>
         <h1 className="font-[family-name:var(--font-outfit)] text-4xl font-extrabold text-white mb-8">Terms of Service</h1>
@@ -44,6 +44,6 @@ export default function TermsPage() {
           <p>Questions? Email <a href="mailto:CEO@epicai.ai" className="text-brand-green hover:underline">CEO@epicai.ai</a>.</p>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

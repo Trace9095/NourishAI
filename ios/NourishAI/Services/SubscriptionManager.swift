@@ -31,8 +31,8 @@ final class SubscriptionManager {
         isLoading = true
         do {
             let productIDs = [
-                SubscriptionIDs.proMonthly,
-                SubscriptionIDs.proAnnual,
+                SubscriptionProductID.proMonthly,
+                SubscriptionProductID.proAnnual,
             ]
             products = try await Product.products(for: productIDs)
                 .sorted { $0.price < $1.price }
@@ -120,11 +120,11 @@ final class SubscriptionManager {
     // MARK: - Product Helpers
 
     var monthlyProduct: Product? {
-        products.first { $0.id == SubscriptionIDs.proMonthly }
+        products.first { $0.id == SubscriptionProductID.proMonthly }
     }
 
     var annualProduct: Product? {
-        products.first { $0.id == SubscriptionIDs.proAnnual }
+        products.first { $0.id == SubscriptionProductID.proAnnual }
     }
 }
 

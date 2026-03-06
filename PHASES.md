@@ -43,7 +43,7 @@
 ---
 
 ## Phase 2: iOS Views + AI Features
-**Status: MOSTLY DONE (source files written)**
+**Status: DONE (all source files written, cross-file deps resolved)**
 
 | # | Task | Status |
 |---|------|--------|
@@ -54,11 +54,18 @@
 | 2.5 | Build AIFoodChatView (text description) | DONE |
 | 2.6 | Wire up scan tracking + usage limits | DONE (server-side) |
 | 2.7 | Build ProgressView | DONE |
+| 2.8 | Build SubscriptionManager (StoreKit 2) | DONE |
+| 2.9 | Build MealRow component | DONE |
+| 2.10 | Fix HealthKit method calls (logNutrition) | DONE |
+| 2.11 | Fix API response type mapping (FoodAnalysisResponse) | DONE |
+| 2.12 | Fix SubscriptionIDs → SubscriptionProductID | DONE |
+| 2.13 | Fix BarcodeResponse convenience accessors | DONE |
+| 2.14 | Fix DashboardMealRow naming conflict | DONE |
 
 ---
 
 ## Phase 3: Website + API Routes + Database
-**Status: MOSTLY DONE**
+**Status: DONE (Gold Standard 100% compliant)**
 **Can run in parallel with:** Phase 1-2 (independent codebase)
 
 | # | Task | Status |
@@ -80,6 +87,12 @@
 | 3.15 | Upgraded 404 page | DONE |
 | 3.16 | Cookie consent banner (3-tier) | DONE |
 | 3.17 | Middleware (admin auth + llms.txt header) | DONE |
+| 3.18 | RSS feed (/feed.xml) | DONE |
+| 3.19 | Full favicon array (svg, ico, apple-touch, 192, 512) | DONE |
+| 3.20 | Logo scroll-to-top on homepage | DONE |
+| 3.21 | Contact form saves to DB | DONE |
+| 3.22 | Blog posts in sitemap | DONE |
+| 3.23 | id="main-content" on all pages | DONE |
 
 ---
 

@@ -66,7 +66,39 @@ actor NourishAPIManager {
         let tokensUsed: Int?
     }
 
-    func analyzeFood(image: UIImage) async throws -> AnalysisResponse {
+    /// Flattened response for view consumption
+    struct FoodAnalysisResponse: Sendable {
+        let foodName: String
+        let description: String?
+        let calories: Int
+        let protein: Double
+        let carbs: Double
+        let fat: Double
+        let fiber: Double?
+        let sugar: Double?
+        let sodium: Double?
+        let servingSize: String?
+        let confidence: String?
+        let notes: String?
+
+        init(from response: AnalysisResponse) {
+            let firstFood = response.analysis.foods?.first
+            self.foodName = firstFood?.name ?? "Unknown Food"
+            self.description = response.analysis.notes
+            self.calories = firstFood?.calories ?? response.analysis.totalCalories ?? 0
+            self.protein = firstFood?.protein ?? response.analysis.totalProtein ?? 0
+            self.carbs = firstFood?.carbs ?? response.analysis.totalCarbs ?? 0
+            self.fat = firstFood?.fat ?? response.analysis.totalFat ?? 0
+            self.fiber = firstFood?.fiber
+            self.sugar = nil
+            self.sodium = nil
+            self.servingSize = firstFood?.servingSize
+            self.confidence = response.analysis.confidence
+            self.notes = response.analysis.notes
+        }
+    }
+
+    func analyzeFood(image: UIImage) async throws -> FoodAnalysisResponse {
         guard let imageData = image.jpegData(compressionQuality: 0.8) else {
             throw APIError.invalidImage
         }
@@ -97,12 +129,13 @@ actor NourishAPIManager {
             throw APIError.analysisServerError
         }
 
-        return try JSONDecoder().decode(AnalysisResponse.self, from: data)
+        let raw = try JSONDecoder().decode(AnalysisResponse.self, from: data)
+        return FoodAnalysisResponse(from: raw)
     }
 
     // MARK: - Analyze Text Description
 
-    func analyzeDescription(_ description: String) async throws -> AnalysisResponse {
+    func analyzeDescription(_ description: String) async throws -> FoodAnalysisResponse {
         let url = URL(string: APIConfig.analyzeDescription)!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -120,13 +153,26 @@ actor NourishAPIManager {
             throw APIError.analysisServerError
         }
 
-        return try JSONDecoder().decode(AnalysisResponse.self, from: data)
+        let raw = try JSONDecoder().decode(AnalysisResponse.self, from: data)
+        return FoodAnalysisResponse(from: raw)
     }
 
     // MARK: - Barcode Lookup
 
     struct BarcodeResponse: Codable, Sendable {
         let product: BarcodeProduct
+
+        // Convenience accessors for views
+        var productName: String { product.name }
+        var brand: String? { product.brand.isEmpty ? nil : product.brand }
+        var servingSize: String? { product.servingSize.isEmpty ? nil : product.servingSize }
+        var calories: Int { product.nutrition.calories }
+        var protein: Double { product.nutrition.protein }
+        var carbs: Double { product.nutrition.carbs }
+        var fat: Double { product.nutrition.fat }
+        var fiber: Double? { product.nutrition.fiber > 0 ? product.nutrition.fiber : nil }
+        var sugar: Double? { product.nutrition.sugar > 0 ? product.nutrition.sugar : nil }
+        var sodium: Double? { product.nutrition.sodium > 0 ? product.nutrition.sodium : nil }
     }
 
     struct BarcodeProduct: Codable, Sendable {

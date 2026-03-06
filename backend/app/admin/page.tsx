@@ -36,7 +36,7 @@ export default function AdminLoginPage() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen px-6">
+    <main id="main-content" className="flex items-center justify-center min-h-screen px-6">
       <div className="w-full max-w-sm">
         <div className="text-center mb-8">
           <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-brand-green/10 flex items-center justify-center">
@@ -83,6 +83,6 @@ export default function AdminLoginPage() {
           </button>
         </form>
       </div>
-    </div>
+    </main>
   );
 }
