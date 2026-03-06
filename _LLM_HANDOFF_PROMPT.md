@@ -39,18 +39,18 @@ Browser --> /admin (login page, "Forgot password?" link)
         --> /api/admin/login (PBKDF2 verify)
         --> /api/admin/stats (dashboard data)
         --> /api/admin/users (GET/POST/PATCH/DELETE with role checks)
-        --> /api/admin/forgot-password (rate limited, in-memory token, 15min expiry)
-        --> /api/admin/reset-password (token validation + PBKDF2 hash)
+        --> /api/admin/forgot-password (rate limited, HMAC token, 15min expiry)
+        --> /api/admin/reset-password (HMAC token validation + PBKDF2 hash)
         --> /api/admin/setup (one-time seed)
 ```
 
 **Key principle:** iOS app is local-first (SwiftData). Server handles ONLY AI proxy, rate limiting, and subscription verification. No embedded API keys.
 
-## 3. Current State (After Session 74)
+## 3. Current State (After Session 75)
 
 ### What's Built and Live
 
-**Website (backend/):** 15 pages, 14 API routes + RSS feed, 15 components, 6 lib files, middleware. Live at nourishhealthai.com. Gold Standard 100% compliant (all 36 rules verified). Admin dashboard with full user management, forgot/reset password flow (Resend email), PBKDF2+HMAC auth, blog engine (8 articles), 34-question FAQ (6 categories), contact form (saves to DB), cookie consent, brand page, legal pages, branded 404.
+**Website (backend/):** 15 pages, 14 API routes + RSS feed, 15 components, 6 lib files, middleware. Live at nourishhealthai.com. Gold Standard 100% compliant (all 36 rules verified). Admin dashboard with full user management, forgot/reset password flow (HMAC tokens, serverless-safe), PBKDF2+HMAC auth, blog engine (8 articles), 34-question FAQ (6 categories), contact form (saves to DB), cookie consent, brand page, legal pages, branded 404.
 
 **iOS (ios/):** 21 Swift source files + Xcode project (project.pbxproj generated). All cross-file dependencies resolved. SubscriptionManager wired to StoreKit 2. All HealthKit calls use correct `logNutrition()` method. Needs opening in Xcode to set team and build.
 

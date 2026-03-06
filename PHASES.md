@@ -124,6 +124,14 @@
 | 3.44 | Marketing engine (5 HTML templates, Playwright PNG generation) | DONE |
 | 3.45 | March + April content calendars (35 posts total) | DONE |
 | 3.46 | Gold Standard audit — full 36 rules verified pass | DONE |
+| 3.47 | Serverless-safe password reset (HMAC tokens replace in-memory Map) | DONE |
+| 3.48 | Add isActive check to getSessionAdmin() | DONE |
+| 3.49 | Fix tokensUsed NaN in analyze-food/analyze-description | DONE |
+| 3.50 | Fix 44px touch targets on admin pages | DONE |
+| 3.51 | Fix CSS block/flex conflict on forgot/reset password pages | DONE |
+| 3.52 | Remove unused rateLimitKey from security.ts | DONE |
+| 3.53 | Fix contact form double-encoding (raw in DB, escape in email) | DONE |
+| 3.54 | Security audit — 53 findings reviewed, critical fixes applied | DONE |
 
 ---
 
