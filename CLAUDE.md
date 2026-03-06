@@ -44,9 +44,12 @@ NourishAI is an AI-powered nutrition tracking iOS app + marketing website. Targe
 - `app/admin/forgot-password/page.tsx` — Forgot password form (email input)
 - `app/admin/reset-password/page.tsx` — Reset password form (token validation, dual password input)
 
-**API Routes (14) + RSS Feed:**
+**API Routes (17) + RSS Feed:**
 - `api/analyze-food/route.ts` — Claude Haiku vision proxy (photo → macros)
 - `api/analyze-description/route.ts` — Text-based food analysis
+- `api/analyze-menu/route.ts` — Menu photo scanning with health insights (Claude Haiku vision)
+- `api/suggest-foods/route.ts` — AI food suggestions based on remaining macros (Claude Haiku text)
+- `api/chat/route.ts` — AI nutrition chat assistant (Claude Sonnet, 20 msg/day free)
 - `api/lookup-barcode/route.ts` — OpenFoodFacts API (free)
 - `api/register-device/route.ts` — Device UUID registration
 - `api/scan-count/route.ts` — Usage tracking / remaining scans
@@ -73,14 +76,16 @@ AnimateIn, BrandContent, ContactForm, CookieConsentBanner, DownloadCTA, FAQ, Fea
 
 **Other:** `middleware.ts` (admin auth redirect + llms.txt Link header), `app/opengraph-image.tsx`, `app/robots.ts`, `app/sitemap.ts`, `app/feed.xml/route.ts` (RSS), `app/admin/layout.tsx`, `app/blog/layout.tsx`
 
-### iOS (21 Swift files + Xcode project)
+### iOS (25 Swift files + Xcode project)
 
 **Root (3):** NourishAIApp.swift, ContentView.swift, Constants.swift
 **Models (3):** UserProfile.swift, NutritionModels.swift, NutritionCalculator.swift
 **Services (3):** NourishAPIManager.swift, HealthKitManager.swift, SubscriptionManager.swift
 **Components (2):** MacroRingView.swift, MealRow.swift
 **Views/Dashboard (1):** DashboardView.swift
-**Views/FoodLog (5):** FoodLogView.swift, AIFoodCameraView.swift, AIFoodChatView.swift, ManualEntryView.swift, BarcodeScanView.swift
+**Views/FoodLog (7):** FoodLogView.swift, AIFoodCameraView.swift, AIFoodChatView.swift, ManualEntryView.swift, BarcodeScanView.swift, MenuScanView.swift, FoodIdeasView.swift
+**Views/Discovery (1):** RestaurantMapView.swift
+**Views/Chat (1):** NutritionChatView.swift
 **Views/Onboarding (1):** OnboardingContainerView.swift
 **Views/Progress (1):** ProgressView.swift
 **Views/Settings (1):** SettingsView.swift
@@ -175,15 +180,25 @@ cd backend && npx next build     # Website
 - Session 74: Admin users management (/admin/users with CRUD), forgot password flow (Resend email + token reset), fixed Claude JSON parsing (strip markdown fences), fixed barcode kJ/kcal swap detection, expanded FAQ to 34 questions (6 categories), expanded blog to 8 posts, marketing engine (5 templates + March/April calendars = 35 posts, 25 PNGs, 1 MP4). Full Gold Standard audit passed all 36 rules. Security headers verified live. All docs updated.
 - Session 75: Security audit (53 findings from 2 background agents). Critical fix: replaced in-memory password reset tokens with HMAC-based self-validating tokens (serverless-safe). Added isActive check to getSessionAdmin(). Fixed tokensUsed NaN, 44px touch targets on admin pages, CSS block/flex conflicts, contact form double-encoding (raw in DB, escape in email only), removed unused rateLimitKey. All fixes deployed to Vercel (READY).
 - Session 76: Instagram calendar admin page (/admin/instagram-calendar — grid/list view, month filters, search, posted tracking, lightbox). May/June 2026 content calendars (33 new posts, total 68 across Mar-Jun). Dashboard auto-refresh pauses on tab hide. Password complexity requirements (uppercase + lowercase + number) on admin create and reset. Email format validation. 2 new blog posts (10 total). Per-page OG images deployed.
-- Remaining: Open project in Xcode (set team, build), Watch/Widget targets, StoreKit config, App Store Connect setup, payment testing, Resend domain verification
+- Session 77: V1 MVP Expansion — 6 phases implemented:
+  - Phase 1: Fixed all 68 Instagram calendar JSON field names (4 months) to match HTML templates. Regenerated all 65 PNGs + 3 MP4s.
+  - Phase 3: Menu scanning API route (Claude Haiku vision, health scores 1-10) + iOS MenuScanView
+  - Phase 4: Food suggestions API route (Claude Haiku text, 5 suggestions) + iOS FoodIdeasView
+  - Phase 5: Restaurant discovery via Apple MapKit (iOS-only, no backend) + RestaurantMapView
+  - Phase 6: AI nutrition chat API route (Claude Sonnet, 20 msg/day free) + iOS NutritionChatView
+  - iOS wiring: 3 new API endpoints in Constants, 3 new manager methods, DashboardView AddFoodSheet + restaurant card
+  - 4 new iOS Swift files (need Xcode project addition), 3 new API routes, 8 calendar JSONs fixed
+  - All deployed to Vercel (READY). Visual audit screenshots saved.
+- Remaining: Open project in Xcode (set team, build, add 4 new Swift files), Watch/Widget targets, StoreKit config, App Store Connect setup, payment testing, Resend domain verification, NSLocationWhenInUseUsageDescription in Info.plist
 
 ### Phase Status
 | Phase | Status |
 |-------|--------|
 | 0 — Infrastructure | COMPLETE |
-| 1 — iOS Core | DONE (21 source files + Xcode project generated) |
+| 1 — iOS Core | DONE (25 source files + Xcode project generated) |
 | 2 — iOS Views + AI | DONE |
-| 3 — Website + API + DB | DONE (Gold Standard compliant) |
+| 3 — Website + API + DB | DONE (Gold Standard compliant, 17 API routes) |
+| 3.5 — V1 Features | DONE (menu scan, food ideas, restaurant discovery, AI chat) |
 | 4 — Watch + Widget | NOT STARTED (depends on Xcode project) |
 | 5 — Launch | NOT STARTED |
 
