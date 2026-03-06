@@ -6,14 +6,14 @@
     "type": "feed",
     "caption": "Protein is the king of macros for muscle growth. Here's the research-backed target most people miss.\n\n#NourishAI #MacroTracking #ProteinGoals #FitnessNutrition #GymLife #MealPrep #NutritionTips",
     "data": {
-      "BADGE": "MACRO TIP",
-      "HEADLINE": "Are You Getting\nEnough Protein?",
-      "TIP_1_EMOJI": "🎯",
-      "TIP_1": "Aim for 0.8-1g per pound of bodyweight daily",
-      "TIP_2_EMOJI": "🥩",
-      "TIP_2": "Split across 4-5 meals for optimal absorption",
-      "TIP_3_EMOJI": "⏰",
-      "TIP_3": "Hit 30-40g within 2 hours post-workout"
+      "TITLE_LINE1": "Are You Getting",
+      "TITLE_LINE2": "Enough Protein?",
+      "TIP1_EMOJI": "🎯",
+      "TIP1_TEXT": "Aim for <strong>0.8-1g per pound</strong> of bodyweight daily",
+      "TIP2_EMOJI": "🥩",
+      "TIP2_TEXT": "Split across <strong>4-5 meals</strong> for optimal absorption",
+      "TIP3_EMOJI": "⏰",
+      "TIP3_TEXT": "Hit <strong>30-40g</strong> within 2 hours post-workout"
     }
   },
   {
@@ -23,14 +23,14 @@
     "type": "feed",
     "caption": "Stop believing everything you hear about calories. Here's what the science actually says.\n\n#CalorieMyths #NutritionFacts #NourishAI #FitnessTips #MacroTracking #HealthyEating",
     "data": {
-      "BADGE": "MYTH BUSTER",
-      "HEADLINE": "3 Calorie Myths\nHolding You Back",
-      "TIP_1_EMOJI": "❌",
-      "TIP_1": "Eating after 8pm does NOT make you gain fat",
-      "TIP_2_EMOJI": "❌",
-      "TIP_2": "All calories are NOT created equal for body comp",
-      "TIP_3_EMOJI": "❌",
-      "TIP_3": "Skipping meals does NOT boost your metabolism"
+      "TITLE_LINE1": "3 Calorie Myths",
+      "TITLE_LINE2": "Holding You Back",
+      "TIP1_EMOJI": "❌",
+      "TIP1_TEXT": "Eating after 8pm does <strong>NOT</strong> make you gain fat",
+      "TIP2_EMOJI": "❌",
+      "TIP2_TEXT": "All calories are <strong>NOT</strong> created equal for body comp",
+      "TIP3_EMOJI": "❌",
+      "TIP3_TEXT": "Skipping meals does <strong>NOT</strong> boost your metabolism"
     }
   },
   {
@@ -82,14 +82,14 @@
     "type": "feed",
     "caption": "Sunday meal prep is the cheat code. Here's how to set up your week for macro success.\n\n#MealPrep #MealPrepSunday #NourishAI #MacroTracking #FitnessFood #HealthyMeals",
     "data": {
-      "BADGE": "MEAL PREP",
-      "HEADLINE": "Meal Prep Like\na Pro Athlete",
-      "TIP_1_EMOJI": "📦",
-      "TIP_1": "Cook 3 proteins + 2 carb sources on Sunday",
-      "TIP_2_EMOJI": "📸",
-      "TIP_2": "Scan each meal once — save as a favorite",
-      "TIP_3_EMOJI": "🔁",
-      "TIP_3": "Log saved meals all week in 1 tap"
+      "TITLE_LINE1": "Meal Prep Like",
+      "TITLE_LINE2": "a Pro Athlete",
+      "TIP1_EMOJI": "📦",
+      "TIP1_TEXT": "Cook <strong>3 proteins + 2 carb sources</strong> on Sunday",
+      "TIP2_EMOJI": "📸",
+      "TIP2_TEXT": "Scan each meal once — <strong>save as a favorite</strong>",
+      "TIP3_EMOJI": "🔁",
+      "TIP3_TEXT": "Log saved meals all week in <strong>1 tap</strong>"
     }
   },
   {
@@ -121,14 +121,14 @@
     "type": "feed",
     "caption": "Bulk vs cut — the macro targets change. Here's the quick guide.\n\n#BulkingAndCutting #MacroTargets #NourishAI #FitnessGoals #BodyRecomp #GymTips",
     "data": {
-      "BADGE": "GUIDE",
-      "HEADLINE": "Bulk vs Cut:\nMacro Targets",
-      "TIP_1_EMOJI": "💪",
-      "TIP_1": "Bulk: 1g protein/lb, surplus of 300-500 cal",
-      "TIP_2_EMOJI": "🔥",
-      "TIP_2": "Cut: 1.2g protein/lb, deficit of 400-600 cal",
-      "TIP_3_EMOJI": "⚖️",
-      "TIP_3": "Maintain: 1g protein/lb, eat at TDEE"
+      "TITLE_LINE1": "Bulk vs Cut:",
+      "TITLE_LINE2": "Macro Targets",
+      "TIP1_EMOJI": "💪",
+      "TIP1_TEXT": "Bulk: <strong>1g protein/lb</strong>, surplus of 300-500 cal",
+      "TIP2_EMOJI": "🔥",
+      "TIP2_TEXT": "Cut: <strong>1.2g protein/lb</strong>, deficit of 400-600 cal",
+      "TIP3_EMOJI": "⚖️",
+      "TIP3_TEXT": "Maintain: <strong>1g protein/lb</strong>, eat at TDEE"
     }
   },
   {
@@ -146,14 +146,14 @@
     "type": "feed",
     "caption": "Water is the most underrated macro in your toolkit. Here's what most athletes get wrong.\n\n#HydrationTips #WaterIntake #NourishAI #FitnessHydration #DrinkMoreWater #AthleteTips",
     "data": {
-      "BADGE": "HYDRATION",
-      "HEADLINE": "You're Probably\nNot Drinking Enough",
-      "TIP_1_EMOJI": "💧",
-      "TIP_1": "Aim for half your bodyweight (lbs) in ounces",
-      "TIP_2_EMOJI": "🏋️",
-      "TIP_2": "Add 16-24 oz for every hour of training",
-      "TIP_3_EMOJI": "📱",
-      "TIP_3": "Track water intake in NourishAI dashboard"
+      "TITLE_LINE1": "You're Probably",
+      "TITLE_LINE2": "Not Drinking Enough",
+      "TIP1_EMOJI": "💧",
+      "TIP1_TEXT": "Aim for <strong>half your bodyweight (lbs)</strong> in ounces",
+      "TIP2_EMOJI": "🏋️",
+      "TIP2_TEXT": "Add <strong>16-24 oz</strong> for every hour of training",
+      "TIP3_EMOJI": "📱",
+      "TIP3_TEXT": "Track water intake in <span class='green'>NourishAI</span> dashboard"
     }
   },
   {
@@ -205,14 +205,14 @@
     "type": "feed",
     "caption": "Fiber is the forgotten macro. Here's why it matters more than you think for body comp.\n\n#FiberIntake #NutritionTips #NourishAI #GutHealth #MacroTracking #HealthyDigestion",
     "data": {
-      "BADGE": "NUTRITION",
-      "HEADLINE": "The Forgotten\nMacro: Fiber",
-      "TIP_1_EMOJI": "🥦",
-      "TIP_1": "Aim for 25-35g of fiber per day minimum",
-      "TIP_2_EMOJI": "🧠",
-      "TIP_2": "Fiber keeps you full — crucial during a cut",
-      "TIP_3_EMOJI": "📈",
-      "TIP_3": "Track it in NourishAI alongside your macros"
+      "TITLE_LINE1": "The Forgotten",
+      "TITLE_LINE2": "Macro: Fiber",
+      "TIP1_EMOJI": "🥦",
+      "TIP1_TEXT": "Aim for <strong>25-35g</strong> of fiber per day minimum",
+      "TIP2_EMOJI": "🧠",
+      "TIP2_TEXT": "Fiber keeps you full — <strong>crucial during a cut</strong>",
+      "TIP3_EMOJI": "📈",
+      "TIP3_TEXT": "Track it in <span class='green'>NourishAI</span> alongside your macros"
     }
   },
   {
@@ -264,14 +264,14 @@
     "type": "feed",
     "caption": "Carbs aren't the enemy. They're your training fuel. Here's how to use them right.\n\n#CarbCycling #MacroTips #NourishAI #FitnessNutrition #TrainingFuel #GymFood",
     "data": {
-      "BADGE": "CARB GUIDE",
-      "HEADLINE": "Carbs Are Your\nTraining Fuel",
-      "TIP_1_EMOJI": "⚡",
-      "TIP_1": "Higher carbs on training days, lower on rest",
-      "TIP_2_EMOJI": "🍚",
-      "TIP_2": "Time your biggest carb meal post-workout",
-      "TIP_3_EMOJI": "📊",
-      "TIP_3": "Track carb timing with NourishAI meal log"
+      "TITLE_LINE1": "Carbs Are Your",
+      "TITLE_LINE2": "Training Fuel",
+      "TIP1_EMOJI": "⚡",
+      "TIP1_TEXT": "Higher carbs on <strong>training days</strong>, lower on rest",
+      "TIP2_EMOJI": "🍚",
+      "TIP2_TEXT": "Time your <strong>biggest carb meal</strong> post-workout",
+      "TIP3_EMOJI": "📊",
+      "TIP3_TEXT": "Track carb timing with <span class='green'>NourishAI</span> meal log"
     }
   }
 ]

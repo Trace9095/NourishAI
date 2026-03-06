@@ -4,14 +4,16 @@
     "date": "2026-05-01",
     "type": "feed",
     "template": "feed-macro-tip",
+    "caption": "You can't out-train a bad diet. Here's how to eat for your summer body.\n\n#SummerNutrition #NourishAI #MacroTracking #BodyComposition #FitnessFood",
     "data": {
-      "CATEGORY": "Summer Nutrition",
-      "HEADLINE": "Summer Body Starts in the Kitchen",
-      "BODY": "You can't out-train a bad diet. Focus on nutrient-dense whole foods, adequate protein, and proper hydration as temperatures rise. Your body composition is 80% nutrition.",
-      "STAT_NUMBER": "80%",
-      "STAT_LABEL": "of body composition results come from nutrition",
-      "TIP_TITLE": "Summer Plate Method",
-      "TIP_TEXT": "Half your plate: colorful vegetables. Quarter: lean protein (chicken, fish, tofu). Quarter: complex carbs (sweet potato, brown rice). Add healthy fat from avocado or olive oil."
+      "TITLE_LINE1": "Summer Body Starts",
+      "TITLE_LINE2": "in the Kitchen",
+      "TIP1_EMOJI": "📊",
+      "TIP1_TEXT": "<strong>80% of body comp</strong> results come from nutrition",
+      "TIP2_EMOJI": "🥗",
+      "TIP2_TEXT": "Half plate veggies, quarter <strong>lean protein</strong>, quarter complex carbs",
+      "TIP3_EMOJI": "🥑",
+      "TIP3_TEXT": "Add <strong>healthy fat</strong> from avocado or olive oil to every meal"
     }
   },
   {
@@ -19,14 +21,16 @@
     "date": "2026-05-03",
     "type": "feed",
     "template": "feed-macro-tip",
+    "caption": "When you sweat, plain water isn't enough. Here's your electrolyte guide.\n\n#Electrolytes #Hydration #NourishAI #SummerFitness #WorkoutFuel",
     "data": {
-      "CATEGORY": "Hydration",
-      "HEADLINE": "Electrolytes: More Than Just Salt",
-      "BODY": "When you sweat, you lose sodium, potassium, magnesium, and calcium. Plain water alone won't fully rehydrate you during intense summer training. Balance matters.",
-      "STAT_NUMBER": "1-1.5L",
-      "STAT_LABEL": "of sweat lost per hour in hot weather exercise",
-      "TIP_TITLE": "DIY Electrolyte Drink",
-      "TIP_TEXT": "Mix 16 oz water + 1/8 tsp salt + juice of half a lemon + 1 tbsp honey. Cheaper and cleaner than store-bought sports drinks."
+      "TITLE_LINE1": "Electrolytes:",
+      "TITLE_LINE2": "More Than Just Salt",
+      "TIP1_EMOJI": "💦",
+      "TIP1_TEXT": "You lose <strong>1-1.5L sweat/hour</strong> in hot weather exercise",
+      "TIP2_EMOJI": "🧂",
+      "TIP2_TEXT": "You need <strong>sodium, potassium, magnesium</strong>, and calcium",
+      "TIP3_EMOJI": "🍋",
+      "TIP3_TEXT": "DIY: 16oz water + <strong>1/8 tsp salt + lemon + honey</strong>"
     }
   },
   {
@@ -34,19 +38,21 @@
     "date": "2026-05-04",
     "type": "story",
     "template": "story-feature",
+    "caption": "Scan any barcode. Instant nutrition data. Free forever. Download NourishAI.",
     "data": {
       "BADGE": "SCAN & LOG",
-      "HEADLINE": "Barcode Scanning: Instant Nutrition Data",
+      "HEADLINE_1": "Barcode Scanning:",
+      "HEADLINE_2": "Instant Nutrition Data",
       "SUBTITLE": "Scan any packaged food and get full macro breakdown in under a second",
-      "FEATURE1_ICON": "1",
-      "FEATURE1_TITLE": "Point at Barcode",
-      "FEATURE1_DESC": "NourishAI reads UPC/EAN codes from any packaged food product instantly",
-      "FEATURE2_ICON": "2",
-      "FEATURE2_TITLE": "Verify & Adjust",
-      "FEATURE2_DESC": "See full nutrition facts and adjust serving size to match what you actually ate",
-      "FEATURE3_ICON": "3",
-      "FEATURE3_TITLE": "Auto-Logged",
-      "FEATURE3_DESC": "One tap to add it to your daily log with accurate macros and calories"
+      "ICON_1": "📱",
+      "FEAT_1_TITLE": "Point at Barcode",
+      "FEAT_1_DESC": "NourishAI reads UPC/EAN codes from any packaged food product instantly",
+      "ICON_2": "✅",
+      "FEAT_2_TITLE": "Verify & Adjust",
+      "FEAT_2_DESC": "See full nutrition facts and adjust serving size to match what you actually ate",
+      "ICON_3": "📊",
+      "FEAT_3_TITLE": "Auto-Logged",
+      "FEAT_3_DESC": "One tap to add it to your daily log with accurate macros and calories"
     }
   },
   {
@@ -54,14 +60,16 @@
     "date": "2026-05-06",
     "type": "feed",
     "template": "feed-macro-tip",
+    "caption": "Cutting requires precision. Bulking requires strategy. Here's the difference.\n\n#CuttingVsBulking #BodyRecomp #NourishAI #MacroTargets #FitnessGoals",
     "data": {
-      "CATEGORY": "Body Composition",
-      "HEADLINE": "Cutting vs. Bulking: Macro Differences",
-      "BODY": "Cutting requires a 300-500 calorie deficit with high protein (1g/lb) to preserve muscle. Bulking needs a 200-300 surplus with adequate carbs to fuel training and growth.",
-      "STAT_NUMBER": "1g/lb",
-      "STAT_LABEL": "Protein per pound of bodyweight while cutting",
-      "TIP_TITLE": "Phase Your Approach",
-      "TIP_TEXT": "Cut for 8-12 weeks, then reverse diet for 4 weeks, then maintain or bulk. NourishAI adjusts your macro targets automatically when you update your goal."
+      "TITLE_LINE1": "Cutting vs. Bulking:",
+      "TITLE_LINE2": "Macro Differences",
+      "TIP1_EMOJI": "🔥",
+      "TIP1_TEXT": "Cut: <strong>1g protein/lb</strong>, 300-500 cal deficit to preserve muscle",
+      "TIP2_EMOJI": "💪",
+      "TIP2_TEXT": "Bulk: 200-300 cal surplus with <strong>adequate carbs</strong> for growth",
+      "TIP3_EMOJI": "🔄",
+      "TIP3_TEXT": "Cut 8-12 weeks, <strong>reverse diet 4 weeks</strong>, then maintain or bulk"
     }
   },
   {
@@ -69,16 +77,19 @@
     "date": "2026-05-08",
     "type": "feed",
     "template": "feed-before-after",
+    "caption": "12 weeks of consistent tracking transforms everything. Here are the numbers.\n\n#BodyRecomp #NourishAI #12WeekTransformation #MacroTracking #FitnessResults",
     "data": {
-      "HEADLINE": "12-Week Body Recomposition Results",
-      "BEFORE_LABEL": "Week 1",
-      "BEFORE_STAT1": "185 lbs, estimated 22% body fat",
-      "BEFORE_STAT2": "Eating 95g protein per day",
-      "BEFORE_STAT3": "No consistent meal structure",
-      "AFTER_LABEL": "Week 12 with NourishAI",
-      "AFTER_STAT1": "179 lbs, estimated 16% body fat",
-      "AFTER_STAT2": "Consistently hitting 165g protein",
-      "AFTER_STAT3": "4 meals + 1 snack daily, all tracked"
+      "BADGE": "12-WEEK RESULTS",
+      "HEADLINE_1": "12-Week Body",
+      "HEADLINE_2": "Recomposition Results",
+      "BEFORE_CAL": "No structure",
+      "BEFORE_PRO": "95g/day",
+      "BEFORE_TIME": "No tracking",
+      "BEFORE_ACC": "22% body fat",
+      "AFTER_CAL": "4+1 meals/day",
+      "AFTER_PRO": "165g/day",
+      "AFTER_TIME": "30 sec/day",
+      "AFTER_ACC": "16% body fat"
     }
   },
   {
@@ -86,14 +97,16 @@
     "date": "2026-05-10",
     "type": "feed",
     "template": "feed-macro-tip",
+    "caption": "Grilling is one of the healthiest cooking methods. Here's why it's perfect for macro tracking.\n\n#GrillingSeason #HealthyBBQ #NourishAI #MacroFriendly #SummerFood",
     "data": {
-      "CATEGORY": "Grilling Season",
-      "HEADLINE": "Healthy Grilling: Macro-Friendly BBQ",
-      "BODY": "Grilling is one of the healthiest cooking methods when done right. Fat drips off, you don't need oil, and smoky flavor means less sauce needed. Perfect for high-protein summer eating.",
-      "STAT_NUMBER": "0g",
-      "STAT_LABEL": "Added fat needed for grilled chicken breast",
-      "TIP_TITLE": "Grill This, Not That",
-      "TIP_TEXT": "Grill: chicken thighs (skin-off), salmon fillets, shrimp skewers, veggie kabobs. Skip: fatty sausages, sugar-loaded BBQ sauce, mayo-heavy coleslaw."
+      "TITLE_LINE1": "Healthy Grilling:",
+      "TITLE_LINE2": "Macro-Friendly BBQ",
+      "TIP1_EMOJI": "🔥",
+      "TIP1_TEXT": "Fat drips off, <strong>0g added fat</strong> needed for grilled chicken",
+      "TIP2_EMOJI": "✅",
+      "TIP2_TEXT": "Grill: <strong>chicken thighs, salmon, shrimp skewers</strong>, veggie kabobs",
+      "TIP3_EMOJI": "🚫",
+      "TIP3_TEXT": "Skip: fatty sausages, <strong>sugar-loaded BBQ sauce</strong>, mayo coleslaw"
     }
   },
   {
@@ -101,19 +114,21 @@
     "date": "2026-05-11",
     "type": "story",
     "template": "story-feature",
+    "caption": "Show Mom you care with a healthy and delicious brunch. Happy Mother's Day!",
     "data": {
       "BADGE": "HAPPY MOTHER'S DAY",
-      "HEADLINE": "Cook for Mom: A Healthy Brunch Menu",
+      "HEADLINE_1": "Cook for Mom:",
+      "HEADLINE_2": "A Healthy Brunch Menu",
       "SUBTITLE": "Show her you care with a nutritious and delicious Mother's Day spread",
-      "FEATURE1_ICON": "1",
-      "FEATURE1_TITLE": "Veggie Frittata",
-      "FEATURE1_DESC": "Eggs, spinach, bell peppers, feta. 280 cal, 22g protein per slice",
-      "FEATURE2_ICON": "2",
-      "FEATURE2_TITLE": "Berry Yogurt Parfait",
-      "FEATURE2_DESC": "Greek yogurt layered with mixed berries and granola. 310 cal, 24g protein",
-      "FEATURE3_ICON": "3",
-      "FEATURE3_TITLE": "Avocado Toast",
-      "FEATURE3_DESC": "Whole grain bread, smashed avo, poached egg, everything seasoning. 350 cal, 14g protein"
+      "ICON_1": "🍳",
+      "FEAT_1_TITLE": "Veggie Frittata",
+      "FEAT_1_DESC": "Eggs, spinach, bell peppers, feta. 280 cal, 22g protein per slice",
+      "ICON_2": "🫐",
+      "FEAT_2_TITLE": "Berry Yogurt Parfait",
+      "FEAT_2_DESC": "Greek yogurt layered with mixed berries and granola. 310 cal, 24g protein",
+      "ICON_3": "🥑",
+      "FEAT_3_TITLE": "Avocado Toast",
+      "FEAT_3_DESC": "Whole grain bread, smashed avo, poached egg, everything seasoning. 350 cal, 14g protein"
     }
   },
   {
@@ -121,14 +136,16 @@
     "date": "2026-05-13",
     "type": "feed",
     "template": "feed-macro-tip",
+    "caption": "Creatine is the most studied supplement in sports nutrition. Here's what you need to know.\n\n#Creatine #Supplements #NourishAI #StrengthTraining #MuscleGrowth",
     "data": {
-      "CATEGORY": "Supplements",
-      "HEADLINE": "Creatine: The Most Researched Supplement",
-      "BODY": "Creatine monohydrate is the most studied supplement in sports nutrition with proven benefits for strength, power, and muscle recovery. Safe, effective, and affordable.",
-      "STAT_NUMBER": "5g",
-      "STAT_LABEL": "Daily maintenance dose of creatine monohydrate",
-      "TIP_TITLE": "How to Take It",
-      "TIP_TEXT": "Take 5g daily with water — timing doesn't matter. No loading phase needed. Mix in your post-workout shake or morning coffee. Results appear after 2-4 weeks."
+      "TITLE_LINE1": "Creatine: The Most",
+      "TITLE_LINE2": "Researched Supplement",
+      "TIP1_EMOJI": "💊",
+      "TIP1_TEXT": "Take <strong>5g creatine monohydrate</strong> daily — timing doesn't matter",
+      "TIP2_EMOJI": "🚫",
+      "TIP2_TEXT": "<strong>No loading phase needed.</strong> Just 5g daily with water",
+      "TIP3_EMOJI": "📅",
+      "TIP3_TEXT": "Proven benefits appear after <strong>2-4 weeks</strong> of consistent use"
     }
   },
   {
@@ -136,14 +153,16 @@
     "date": "2026-05-15",
     "type": "feed",
     "template": "feed-macro-tip",
+    "caption": "Eating slowly reduces total intake by 10-15% naturally. Here's the science.\n\n#MindfulEating #NourishAI #EatSlow #NutritionHabits #PortionControl",
     "data": {
-      "CATEGORY": "Mindful Eating",
-      "HEADLINE": "Slow Down: The Power of Mindful Eating",
-      "BODY": "It takes 20 minutes for your brain to register fullness. Eating slowly reduces total intake by 10-15% naturally. Put your fork down between bites, chew thoroughly, and enjoy every meal.",
-      "STAT_NUMBER": "20min",
-      "STAT_LABEL": "For your brain to register satiety signals",
-      "TIP_TITLE": "The 20-Minute Meal Challenge",
-      "TIP_TEXT": "Set a timer for 20 minutes and try to make your meal last. No phone, no TV. Focus on textures and flavors. You'll eat less and enjoy more."
+      "TITLE_LINE1": "Slow Down: The Power",
+      "TITLE_LINE2": "of Mindful Eating",
+      "TIP1_EMOJI": "🧠",
+      "TIP1_TEXT": "It takes <strong>20 minutes</strong> for your brain to register fullness",
+      "TIP2_EMOJI": "📵",
+      "TIP2_TEXT": "<strong>No phone, no TV</strong> — focus on textures and flavors",
+      "TIP3_EMOJI": "⏱️",
+      "TIP3_TEXT": "Set a <strong>20-minute timer</strong> and make your meal last. You'll eat less."
     }
   },
   {
@@ -151,19 +170,21 @@
     "date": "2026-05-16",
     "type": "story",
     "template": "story-feature",
+    "caption": "NourishAI syncs with Apple Health for the complete fitness + nutrition picture.",
     "data": {
       "BADGE": "APPLE HEALTH",
-      "HEADLINE": "HealthKit Integration: The Full Picture",
+      "HEADLINE_1": "HealthKit Integration:",
+      "HEADLINE_2": "The Full Picture",
       "SUBTITLE": "NourishAI syncs with Apple Health to connect nutrition with your fitness data",
-      "FEATURE1_ICON": "1",
-      "FEATURE1_TITLE": "Auto-Sync Steps & Calories",
-      "FEATURE1_DESC": "Calories burned from workouts automatically adjust your daily nutrition targets",
-      "FEATURE2_ICON": "2",
-      "FEATURE2_TITLE": "Weight Trend Tracking",
-      "FEATURE2_DESC": "Scale readings from HealthKit feed directly into your progress charts",
-      "FEATURE3_ICON": "3",
-      "FEATURE3_TITLE": "Sleep + Nutrition Correlation",
-      "FEATURE3_DESC": "See how your evening meals affect sleep quality over time"
+      "ICON_1": "🏃",
+      "FEAT_1_TITLE": "Auto-Sync Steps & Calories",
+      "FEAT_1_DESC": "Calories burned from workouts automatically adjust your daily nutrition targets",
+      "ICON_2": "⚖️",
+      "FEAT_2_TITLE": "Weight Trend Tracking",
+      "FEAT_2_DESC": "Scale readings from HealthKit feed directly into your progress charts",
+      "ICON_3": "😴",
+      "FEAT_3_TITLE": "Sleep + Nutrition Correlation",
+      "FEAT_3_DESC": "See how your evening meals affect sleep quality over time"
     }
   },
   {
@@ -171,14 +192,16 @@
     "date": "2026-05-18",
     "type": "feed",
     "template": "feed-macro-tip",
+    "caption": "Batch cooking saves time, money, and willpower. Here's the 90-minute system.\n\n#MealPrepSunday #NourishAI #BatchCooking #MacroTracking #FitnessFood",
     "data": {
-      "CATEGORY": "Meal Prep",
-      "HEADLINE": "Sunday Meal Prep: The 90-Minute System",
-      "BODY": "Batch cooking saves time, money, and willpower. Prep 4-5 days of lunches and snacks in under 90 minutes. The key: choose recipes that share ingredients and reheat well.",
-      "STAT_NUMBER": "90min",
-      "STAT_LABEL": "To prep 5 days of meals",
-      "TIP_TITLE": "This Week's Prep List",
-      "TIP_TEXT": "Grill 2 lbs chicken breast, cook 3 cups rice, roast a sheet pan of mixed veggies, boil a dozen eggs, portion out Greek yogurt + berries in 5 containers."
+      "TITLE_LINE1": "Sunday Meal Prep:",
+      "TITLE_LINE2": "The 90-Minute System",
+      "TIP1_EMOJI": "⏱️",
+      "TIP1_TEXT": "Prep <strong>5 days of lunches and snacks</strong> in under 90 minutes",
+      "TIP2_EMOJI": "🍗",
+      "TIP2_TEXT": "Grill 2 lbs chicken, cook rice, <strong>roast a sheet pan of veggies</strong>",
+      "TIP3_EMOJI": "📱",
+      "TIP3_TEXT": "Scan once in NourishAI, then <strong>log saved meals</strong> all week in 1 tap"
     }
   },
   {
@@ -186,16 +209,19 @@
     "date": "2026-05-20",
     "type": "feed",
     "template": "feed-before-after",
+    "caption": "Underfueling is the #1 mistake athletes make. Here's what proper tracking looks like.\n\n#AthleteNutrition #NourishAI #FuelForPerformance #MacroTracking #GameDay",
     "data": {
-      "HEADLINE": "Collegiate Athlete: Fueling for Performance",
-      "BEFORE_LABEL": "Before Tracking Nutrition",
-      "BEFORE_STAT1": "Undereating on training days by 800+ cal",
-      "BEFORE_STAT2": "Constant fatigue by 3rd quarter",
-      "BEFORE_STAT3": "Frequent muscle cramps and slow recovery",
-      "AFTER_LABEL": "After 8 Weeks with NourishAI",
-      "AFTER_STAT1": "Properly fueling with 3,200 cal on game days",
-      "AFTER_STAT2": "Peak energy through entire game",
-      "AFTER_STAT3": "Recovery time cut in half, zero cramps"
+      "BADGE": "PERFORMANCE",
+      "HEADLINE_1": "Collegiate Athlete:",
+      "HEADLINE_2": "Fueling for Performance",
+      "BEFORE_CAL": "-800 cal/day",
+      "BEFORE_PRO": "Underfueling",
+      "BEFORE_TIME": "3rd Q fatigue",
+      "BEFORE_ACC": "Frequent cramps",
+      "AFTER_CAL": "3,200 on game",
+      "AFTER_PRO": "Properly fueled",
+      "AFTER_TIME": "Peak all game",
+      "AFTER_ACC": "Zero cramps"
     }
   },
   {
@@ -203,14 +229,16 @@
     "date": "2026-05-22",
     "type": "feed",
     "template": "feed-macro-tip",
+    "caption": "Not all proteins are equal. Here are the top sources ranked by quality.\n\n#ProteinSources #NourishAI #MuscleGrowth #MacroTracking #ProteinGoals",
     "data": {
-      "CATEGORY": "Protein",
-      "HEADLINE": "Protein Sources Ranked by Quality",
-      "BODY": "Not all proteins are equal. Complete proteins contain all 9 essential amino acids. Leucine content drives muscle protein synthesis. Animal sources are complete; plant sources often need combining.",
-      "STAT_NUMBER": "2.5g",
-      "STAT_LABEL": "Leucine threshold to trigger muscle growth",
-      "TIP_TITLE": "Top 5 Protein Sources",
-      "TIP_TEXT": "1) Eggs (the gold standard, 6g each). 2) Chicken breast (31g per 4oz). 3) Greek yogurt (20g per cup). 4) Wild salmon (25g per 4oz + omega-3s). 5) Lentils (18g per cup, plant-based)."
+      "TITLE_LINE1": "Protein Sources",
+      "TITLE_LINE2": "Ranked by Quality",
+      "TIP1_EMOJI": "🥇",
+      "TIP1_TEXT": "You need <strong>2.5g leucine</strong> per meal to trigger muscle growth",
+      "TIP2_EMOJI": "🥚",
+      "TIP2_TEXT": "Top 3: <strong>Eggs (6g)</strong>, chicken breast (31g/4oz), Greek yogurt (20g/cup)",
+      "TIP3_EMOJI": "🌱",
+      "TIP3_TEXT": "Plant-based? <strong>Combine legumes + grains</strong> for complete amino acids"
     }
   },
   {
@@ -218,6 +246,7 @@
     "date": "2026-05-24",
     "type": "reel",
     "template": "reel-ai-scan",
+    "caption": "AI scans a poke bowl in under 2 seconds. Every macro, instantly. 🤯\n\n#NourishAI #AIFoodScanner #PokeBowl #MacroTracking #FitTok",
     "data": {
       "FOOD_NAME": "Poke Bowl with Tuna, Edamame & Brown Rice",
       "CALORIES": "580",
@@ -231,19 +260,21 @@
     "date": "2026-05-25",
     "type": "story",
     "template": "story-feature",
+    "caption": "Enjoy your Memorial Day cookout without guilt. Here's the macro-smart playbook.",
     "data": {
       "BADGE": "MEMORIAL DAY",
-      "HEADLINE": "Macro-Friendly Cookout Guide",
+      "HEADLINE_1": "Macro-Friendly",
+      "HEADLINE_2": "Cookout Guide",
       "SUBTITLE": "Enjoy the holiday without derailing your nutrition goals",
-      "FEATURE1_ICON": "1",
-      "FEATURE1_TITLE": "Smart Protein Picks",
-      "FEATURE1_DESC": "Turkey burgers (93% lean), grilled chicken, or shrimp kabobs over fatty hot dogs",
-      "FEATURE2_ICON": "2",
-      "FEATURE2_TITLE": "Side Dish Swaps",
-      "FEATURE2_DESC": "Grilled corn on the cob, watermelon, or black bean salad instead of mayo-laden sides",
-      "FEATURE3_ICON": "3",
-      "FEATURE3_TITLE": "Enjoy Without Guilt",
-      "FEATURE3_DESC": "Log your cookout meal with NourishAI and adjust dinner to stay on track for the day"
+      "ICON_1": "🍗",
+      "FEAT_1_TITLE": "Smart Protein Picks",
+      "FEAT_1_DESC": "Turkey burgers (93% lean), grilled chicken, or shrimp kabobs over fatty hot dogs",
+      "ICON_2": "🌽",
+      "FEAT_2_TITLE": "Side Dish Swaps",
+      "FEAT_2_DESC": "Grilled corn on the cob, watermelon, or black bean salad instead of mayo-laden sides",
+      "ICON_3": "📱",
+      "FEAT_3_TITLE": "Enjoy Without Guilt",
+      "FEAT_3_DESC": "Log your cookout meal with NourishAI and adjust dinner to stay on track for the day"
     }
   },
   {
@@ -251,14 +282,16 @@
     "date": "2026-05-27",
     "type": "feed",
     "template": "feed-macro-tip",
+    "caption": "Chronic inflammation slows recovery and increases injury risk. Fight it with food.\n\n#AntiInflammatory #Recovery #NourishAI #NutritionForRecovery #FitnessFood",
     "data": {
-      "CATEGORY": "Recovery",
-      "HEADLINE": "Anti-Inflammatory Foods for Faster Recovery",
-      "BODY": "Chronic inflammation from training without proper nutrition slows recovery and increases injury risk. Certain foods naturally reduce inflammation and support repair.",
-      "STAT_NUMBER": "3-5",
-      "STAT_LABEL": "Servings of anti-inflammatory foods per day",
-      "TIP_TITLE": "Anti-Inflammatory Power Foods",
-      "TIP_TEXT": "Fatty fish (salmon, sardines), blueberries, turmeric with black pepper, tart cherry juice, leafy greens, walnuts, and extra virgin olive oil."
+      "TITLE_LINE1": "Anti-Inflammatory Foods",
+      "TITLE_LINE2": "for Faster Recovery",
+      "TIP1_EMOJI": "🐟",
+      "TIP1_TEXT": "Eat <strong>3-5 servings</strong> of anti-inflammatory foods per day",
+      "TIP2_EMOJI": "🫐",
+      "TIP2_TEXT": "Power foods: <strong>salmon, blueberries, turmeric</strong>, tart cherry juice",
+      "TIP3_EMOJI": "🥬",
+      "TIP3_TEXT": "Add <strong>leafy greens, walnuts</strong>, and extra virgin olive oil daily"
     }
   },
   {
@@ -266,16 +299,19 @@
     "date": "2026-05-29",
     "type": "feed",
     "template": "feed-before-after",
+    "caption": "Going plant-based doesn't mean losing gains. Track your macros and thrive.\n\n#PlantBased #VegetarianFitness #NourishAI #ProteinGoals #MacroTracking",
     "data": {
-      "HEADLINE": "Going Vegetarian Without Losing Gains",
-      "BEFORE_LABEL": "First Month Plant-Based",
-      "BEFORE_STAT1": "Protein dropped to 55g/day",
-      "BEFORE_STAT2": "Lost 3 lbs of muscle mass",
-      "BEFORE_STAT3": "Felt weak and foggy",
-      "AFTER_LABEL": "After NourishAI Plant Optimization",
-      "AFTER_STAT1": "Hitting 140g protein from plants + dairy",
-      "AFTER_STAT2": "Regained muscle, PR'd on squat",
-      "AFTER_STAT3": "Strategic combining: legumes + grains every meal"
+      "BADGE": "PLANT-BASED",
+      "HEADLINE_1": "Going Vegetarian",
+      "HEADLINE_2": "Without Losing Gains",
+      "BEFORE_CAL": "Random eating",
+      "BEFORE_PRO": "55g/day",
+      "BEFORE_TIME": "-3 lbs muscle",
+      "BEFORE_ACC": "Weak & foggy",
+      "AFTER_CAL": "Strategic plan",
+      "AFTER_PRO": "140g plants+dairy",
+      "AFTER_TIME": "Muscle regained",
+      "AFTER_ACC": "PR'd on squat"
     }
   },
   {
@@ -283,14 +319,16 @@
     "date": "2026-05-31",
     "type": "feed",
     "template": "feed-macro-tip",
+    "caption": "A healthy gut improves everything — nutrient absorption, mood, and body composition.\n\n#GutHealth #Microbiome #NourishAI #NutritionScience #HealthyGut",
     "data": {
-      "CATEGORY": "Gut Health",
-      "HEADLINE": "Your Gut Health Affects Everything",
-      "BODY": "A healthy gut microbiome improves nutrient absorption, immune function, mood, and even body composition. Feed your good bacteria with diverse fiber sources and fermented foods.",
-      "STAT_NUMBER": "30+",
-      "STAT_LABEL": "Different plant foods per week for optimal gut diversity",
-      "TIP_TITLE": "Gut-Friendly Daily Habits",
-      "TIP_TEXT": "Morning: probiotic yogurt or kefir. Lunch: add sauerkraut or kimchi. Dinner: include prebiotic foods (garlic, onions, asparagus). NourishAI tracks your plant food variety."
+      "TITLE_LINE1": "Your Gut Health",
+      "TITLE_LINE2": "Affects Everything",
+      "TIP1_EMOJI": "🌿",
+      "TIP1_TEXT": "Eat <strong>30+ different plant foods</strong> per week for gut diversity",
+      "TIP2_EMOJI": "🥛",
+      "TIP2_TEXT": "Morning: <strong>probiotic yogurt or kefir</strong> for good bacteria",
+      "TIP3_EMOJI": "🧅",
+      "TIP3_TEXT": "Add <strong>prebiotic foods</strong> daily: garlic, onions, asparagus"
     }
   }
 ]
