@@ -85,7 +85,7 @@ export default function AdminLoginPage() {
 
           <Link
             href="/admin/forgot-password"
-            className="block text-center text-sm text-gray-500 hover:text-brand-green transition-colors"
+            className="block text-center text-sm text-gray-500 hover:text-brand-green transition-colors min-h-[44px] flex items-center justify-center"
           >
             Forgot password?
           </Link>

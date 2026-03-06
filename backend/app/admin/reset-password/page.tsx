@@ -131,7 +131,7 @@ function ResetPasswordForm() {
 
       <Link
         href="/admin"
-        className="block text-center text-sm text-gray-500 hover:text-brand-green transition-colors min-h-[44px] flex items-center justify-center"
+        className="text-center text-sm text-gray-500 hover:text-brand-green transition-colors min-h-[44px] flex items-center justify-center"
       >
         Back to Login
       </Link>

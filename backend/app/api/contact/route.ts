@@ -128,14 +128,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Save to database
+    // Save raw data to database (no HTML escaping — DB stores plain text)
     try {
       const database = db();
       await database.insert(contactSubmissions).values({
-        name: escapeHtml(name.trim()),
+        name: name.trim(),
         email: email.trim().toLowerCase(),
-        subject: escapeHtml((subject || "General Inquiry").trim()),
-        message: escapeHtml(message.trim()),
+        subject: (subject || "General Inquiry").trim(),
+        message: message.trim(),
       });
     } catch (dbError) {
       console.error("DB save error (non-blocking):", dbError);

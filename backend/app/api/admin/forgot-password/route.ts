@@ -3,7 +3,7 @@ import { db } from "@/lib/db";
 import { adminUsers } from "@/lib/db/schema";
 import { eq, and } from "drizzle-orm";
 import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
-import crypto from "crypto";
+import { createResetToken } from "@/lib/admin-auth";
 import { Resend } from "resend";
 
 // Lazy Resend singleton (safe for SSG)
@@ -11,21 +11,6 @@ let _resend: Resend | null = null;
 function getResend() {
   if (!_resend) _resend = new Resend(process.env.RESEND_API_KEY);
   return _resend;
-}
-
-// In-memory token store: token -> { adminId, expiresAt }
-// Exported so reset-password route can access it
-export const resetTokens = new Map<
-  string,
-  { adminId: string; expiresAt: number }
->();
-
-// Clean up expired tokens periodically
-function cleanupTokens() {
-  const now = Date.now();
-  for (const [token, data] of resetTokens) {
-    if (now > data.expiresAt) resetTokens.delete(token);
-  }
 }
 
 const APP_URL =
@@ -164,10 +149,14 @@ export async function POST(request: NextRequest) {
 
     const normalizedEmail = email.toLowerCase().trim();
 
-    // Look up active admin by email
+    // Look up active admin by email (need passwordHash for HMAC token)
     const database = db();
     const [admin] = await database
-      .select({ id: adminUsers.id, email: adminUsers.email })
+      .select({
+        id: adminUsers.id,
+        email: adminUsers.email,
+        passwordHash: adminUsers.passwordHash,
+      })
       .from(adminUsers)
       .where(
         and(
@@ -178,15 +167,8 @@ export async function POST(request: NextRequest) {
       .limit(1);
 
     if (admin) {
-      // Clean up expired tokens before adding a new one
-      cleanupTokens();
-
-      // Generate a secure token
-      const token = crypto.randomBytes(32).toString("hex");
-      resetTokens.set(token, {
-        adminId: admin.id,
-        expiresAt: Date.now() + 15 * 60 * 1000, // 15 minutes
-      });
+      // Generate HMAC-based reset token (serverless-safe, self-validating)
+      const token = createResetToken(admin.id, admin.passwordHash);
 
       // Build reset URL
       const resetUrl = `${APP_URL}/admin/reset-password?token=${token}`;

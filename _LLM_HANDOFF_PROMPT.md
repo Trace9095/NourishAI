@@ -31,26 +31,34 @@ iOS App (SwiftUI)                   Marketing Website (Next.js 16)
 
 **Admin Dashboard:**
 ```
-Browser --> /admin (login page)
+Browser --> /admin (login page, "Forgot password?" link)
         --> /admin/dashboard (protected by middleware)
+        --> /admin/users (admin user CRUD — add/edit/deactivate)
+        --> /admin/forgot-password (sends reset email via Resend)
+        --> /admin/reset-password?token=... (validates token, sets new password)
         --> /api/admin/login (PBKDF2 verify)
         --> /api/admin/stats (dashboard data)
+        --> /api/admin/users (GET/POST/PATCH/DELETE with role checks)
+        --> /api/admin/forgot-password (rate limited, in-memory token, 15min expiry)
+        --> /api/admin/reset-password (token validation + PBKDF2 hash)
         --> /api/admin/setup (one-time seed)
 ```
 
 **Key principle:** iOS app is local-first (SwiftData). Server handles ONLY AI proxy, rate limiting, and subscription verification. No embedded API keys.
 
-## 3. Current State (After Session 73)
+## 3. Current State (After Session 74)
 
 ### What's Built and Live
 
-**Website (backend/):** 12 pages, 11 API routes + RSS feed, 15 components, 6 lib files, middleware. Live at nourishhealthai.com. Gold Standard 100% compliant. Admin dashboard with PBKDF2+HMAC auth, blog engine (5 articles), contact form (saves to DB), cookie consent, brand page, legal pages, branded 404, FAQ with CTA buttons.
+**Website (backend/):** 15 pages, 14 API routes + RSS feed, 15 components, 6 lib files, middleware. Live at nourishhealthai.com. Gold Standard 100% compliant (all 36 rules verified). Admin dashboard with full user management, forgot/reset password flow (Resend email), PBKDF2+HMAC auth, blog engine (8 articles), 34-question FAQ (6 categories), contact form (saves to DB), cookie consent, brand page, legal pages, branded 404.
 
 **iOS (ios/):** 21 Swift source files + Xcode project (project.pbxproj generated). All cross-file dependencies resolved. SubscriptionManager wired to StoreKit 2. All HealthKit calls use correct `logNutrition()` method. Needs opening in Xcode to set team and build.
 
 **Database:** 5 tables created via Drizzle migration (users, scan_usage, admin_users, blog_posts, contact_submissions).
 
-**Admin:** Super admin seeded (CEO@epicai.ai). Login works at /admin.
+**Admin:** Super admin seeded (CEO@epicai.ai, password: Trace87223!). Login at /admin. Users management at /admin/users.
+
+**Marketing:** 5 HTML templates + Playwright generation script. March (15 posts) + April (20 posts) content calendars with PNGs generated.
 
 **Env vars:** All 6 production env vars set in Vercel.
 

@@ -111,6 +111,19 @@
 | 3.31 | Complete favicon metadata in layout (ico, 192, 512) | DONE |
 | 3.32 | Truncate device IDs in admin stats response | DONE |
 | 3.33 | Fix blog Copy Link button (client component with clipboard) | DONE |
+| 3.34 | Admin users page (/admin/users — full CRUD) | DONE |
+| 3.35 | Forgot password flow (email + token reset via Resend) | DONE |
+| 3.36 | Reset password page (token validation + redirect) | DONE |
+| 3.37 | Admin users API (GET, POST, PATCH, DELETE with role checks) | DONE |
+| 3.38 | Dashboard nav bar with Users link | DONE |
+| 3.39 | Middleware protects /admin/users route | DONE |
+| 3.40 | Fix JSON parsing — strip markdown fences from Claude responses | DONE |
+| 3.41 | Fix barcode calorie sanity check (kJ/kcal swap detection) | DONE |
+| 3.42 | Expand FAQ to 34 questions across 6 categories | DONE |
+| 3.43 | Expand blog to 8 posts | DONE |
+| 3.44 | Marketing engine (5 HTML templates, Playwright PNG generation) | DONE |
+| 3.45 | March + April content calendars (35 posts total) | DONE |
+| 3.46 | Gold Standard audit — full 36 rules verified pass | DONE |
 
 ---
 

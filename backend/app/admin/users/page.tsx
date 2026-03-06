@@ -41,21 +41,6 @@ export default function AdminUsersPage() {
   const [addError, setAddError] = useState("");
   const [addLoading, setAddLoading] = useState(false);
 
-  const fetchCurrentAdmin = useCallback(async () => {
-    try {
-      const res = await fetch("/api/admin/stats");
-      if (res.status === 401) {
-        router.push("/admin");
-        return null;
-      }
-      // We need to get the current admin info — use the session
-      // The stats endpoint proves we're authenticated, now get admin details
-      return true;
-    } catch {
-      return null;
-    }
-  }, [router]);
-
   const fetchAdmins = useCallback(async () => {
     try {
       const res = await fetch("/api/admin/users");
@@ -66,6 +51,9 @@ export default function AdminUsersPage() {
       if (!res.ok) throw new Error("Failed to fetch");
       const data = await res.json();
       setAdmins(data.admins);
+      if (data.currentAdmin) {
+        setCurrentAdmin(data.currentAdmin);
+      }
       setError("");
     } catch {
       setError("Failed to load admin users");
@@ -75,110 +63,8 @@ export default function AdminUsersPage() {
   }, [router]);
 
   useEffect(() => {
-    // Fetch current admin identity from the users list + session
-    async function init() {
-      const authed = await fetchCurrentAdmin();
-      if (!authed) return;
-
-      // Fetch admin list
-      const res = await fetch("/api/admin/users");
-      if (res.status === 401) {
-        router.push("/admin");
-        return;
-      }
-      if (!res.ok) {
-        setError("Failed to load admin users");
-        setLoading(false);
-        return;
-      }
-      const data = await res.json();
-      setAdmins(data.admins);
-
-      // Determine current user by checking which admin matches our session
-      // We'll call the login endpoint's stored session cookie admin ID
-      // The session admin ID is embedded in the cookie — we need to identify ourselves
-      // We'll use a dedicated mechanism: compare with admin list
-      // For now, fetch stats which proves auth, then we need the admin info
-      // Better approach: add a /api/admin/me endpoint or use the login response stored in cookie
-      // Since we don't have that, let's check all admins and match via a separate call
-
-      // Actually, we can parse the current admin from the users list by
-      // making a small /api/admin/me-like call. Let's use the session check.
-      // For simplicity, we'll call PATCH with no changes to see who we are,
-      // or we'll add a query param. Best approach: just add current user info to GET.
-
-      // Pragmatic: fetch the login page's stored data or add ?me=true
-      // Let's just use localStorage from login, or call a separate endpoint
-      // Since we know the session cookie contains the admin ID, let's add it to the users GET response
-
-      // For now, we'll identify current user by trying to fetch their info
-      // The cleanest approach: look at the GET response which could include "currentAdminId"
-      // Let's refetch with a flag — but since we control the API, let's enhance it client-side
-
-      // We'll do a quick workaround: attempt to deactivate each admin and see who returns "cannot deactivate yourself"
-      // That's terrible. Instead let's just store the admin info after login.
-
-      // Best simple approach: The GET response should include currentAdminId from the session
-      // Since we just wrote the API, let me rely on a separate call we'll add inline
-
-      // Actually the simplest: just call the api and include currentUser in response
-      // For now we check meta from GET response - we'll need to update the API
-      // OR we just try /api/admin/stats which works and identifies the admin from session
-
-      // Let's look at what we have: verifySession returns { adminId }, getSessionAdmin returns full admin
-      // The GET /api/admin/users uses verifySession. Let's enhance it to also return current user.
-      // But we already wrote it... Let's do a separate fetch for current user identity.
-
-      // Create a lightweight check
-      const meRes = await fetch("/api/admin/users", {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: "__whoami__" }),
-      });
-      // This will return 404 "Admin user not found" — not useful
-
-      // OK, simplest: we know the users list. Let's find current user via a test.
-      // Actually let's just call the GET endpoint and identify from session.
-      // We need to enhance the API route... but let's not modify what we wrote yet.
-      // Instead, let's use another approach: store from login, or parse all admins.
-
-      // The most pragmatic approach since we own both files:
-      // We'll store the current admin email in sessionStorage on login,
-      // and match it here. But we don't control the login page...
-
-      // Final approach: We'll make a tiny fetch to get current admin via session.
-      // We can use an undocumented trick: fetch the users with a header
-      // OR just accept we need the API to return the current user.
-
-      // Let me just add this to the API inline and update the route.
-      // For now though, we need a working page, so let's set current admin
-      // from the admins list and find ourselves.
-
-      setLoading(false);
-    }
-    init();
-  }, [fetchCurrentAdmin, fetchAdmins, router]);
-
-  // We need current admin identity. Let's enhance the approach:
-  // Fetch the /api/admin/users which we'll update to include currentAdminId
-  // For the first render, we'll refetch properly.
-
-  useEffect(() => {
-    // Fetch current admin identity
-    async function fetchMe() {
-      try {
-        const res = await fetch("/api/admin/users");
-        if (!res.ok) return;
-        const data = await res.json();
-        if (data.currentAdmin) {
-          setCurrentAdmin(data.currentAdmin);
-        }
-      } catch {
-        // ignore
-      }
-    }
-    fetchMe();
-  }, []);
+    fetchAdmins();
+  }, [fetchAdmins]);
 
   async function handleLogout() {
     await fetch("/api/admin/logout", { method: "POST" });

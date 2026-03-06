@@ -97,7 +97,45 @@ export async function getSessionAdmin() {
       .from(adminUsers)
       .where(eq(adminUsers.id, session.adminId))
       .limit(1);
-    return admin || null;
+    if (!admin || !admin.isActive) return null;
+    return admin;
+  } catch {
+    return null;
+  }
+}
+
+// Password reset tokens: HMAC-based, self-validating (works on serverless)
+// Includes password hash prefix in HMAC so token is invalidated after password change
+export function createResetToken(adminId: string, passwordHash: string): string {
+  const expiresAt = Date.now() + 15 * 60 * 1000; // 15 minutes
+  const hashPrefix = passwordHash.slice(0, 16);
+  const payload = `reset:${adminId}:${expiresAt}:${hashPrefix}`;
+  const hmac = crypto.createHmac("sha256", getSecret()).update(payload).digest("hex");
+  return Buffer.from(`${adminId}:${expiresAt}:${hmac}`).toString("base64url");
+}
+
+export function verifyResetToken(
+  token: string,
+  passwordHash: string
+): { adminId: string } | null {
+  try {
+    const decoded = Buffer.from(token, "base64url").toString();
+    const parts = decoded.split(":");
+    if (parts.length !== 3) return null;
+    const [adminId, expiresStr, hmac] = parts;
+    const expiresAt = parseInt(expiresStr, 10);
+    if (isNaN(expiresAt) || Date.now() > expiresAt) return null;
+
+    const hashPrefix = passwordHash.slice(0, 16);
+    const payload = `reset:${adminId}:${expiresStr}:${hashPrefix}`;
+    const expectedHmac = crypto
+      .createHmac("sha256", getSecret())
+      .update(payload)
+      .digest("hex");
+    if (!crypto.timingSafeEqual(Buffer.from(hmac), Buffer.from(expectedHmac)))
+      return null;
+
+    return { adminId };
   } catch {
     return null;
   }

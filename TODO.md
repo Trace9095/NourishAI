@@ -71,8 +71,8 @@
 - [x] Create site.webmanifest
 - [x] Implement cookie consent (3-tier)
 - [x] Implement security headers in next.config.ts
-- [x] Add testimonials section (6 testimonials)
-- [x] Add FAQ section (8 questions with accordion)
+- [x] Add testimonials section (9 testimonials with star ratings, trust bar)
+- [x] Add FAQ section (34 questions in 6 categories with CTA buttons)
 - [x] Set up Vercel Analytics + Speed Insights
 
 ### Website — Admin Dashboard
@@ -82,6 +82,14 @@
 - [x] Build admin middleware (cookie check, redirect)
 - [x] Build admin API routes (login, logout, setup, stats)
 - [x] Add footer lock icon (Gold Standard pattern)
+- [x] Build admin users page (/admin/users — CRUD for admin accounts)
+- [x] Build forgot password flow (/admin/forgot-password + /admin/reset-password)
+- [x] Build admin users API (/api/admin/users — GET, POST, PATCH, DELETE)
+- [x] Build forgot password API (/api/admin/forgot-password — Resend email + token)
+- [x] Build reset password API (/api/admin/reset-password — token validation + PBKDF2)
+- [x] Add dashboard nav bar (Dashboard + Users links)
+- [x] Add "Forgot password?" link to admin login page
+- [x] Protect /admin/users route in middleware
 
 ### Website — API Routes (iOS Backend)
 - [x] Set up Drizzle ORM + Neon connection
@@ -117,8 +125,11 @@
 
 ### Marketing
 - [ ] Instagram launch content
-- [x] Blog SEO articles (5 seed posts)
+- [x] Blog SEO articles (8 seed posts)
 - [x] Social sharing OG images
+- [x] Marketing engine (HTML templates + Playwright PNG generation)
+- [x] March 2026 content calendar (15 posts — 7 feed, 3 before-after, 4 story, 1 reel)
+- [x] April 2026 content calendar (20 posts — 15 feed, 4 story, 1 reel)
 - [ ] App Store optimization (ASO)
 
 ---

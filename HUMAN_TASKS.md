@@ -11,7 +11,9 @@
 - [x] **Set ADMIN_SETUP_TOKEN env var:** Set to `nourishai-admin-setup-2026` in Vercel production
 - [x] **Set ADMIN_SESSION_SECRET env var:** Set in Vercel production for signing session cookies
 - [x] **Seed your admin account:** Super admin seeded (CEO@epicai.ai, super_admin role)
-  - Login at `/admin` with email `CEO@epicai.ai` + password `vLCbKRMBza7IzgqKlzekZQ==`
+  - Login at `/admin` with email `CEO@epicai.ai` + password `Trace87223!`
+  - **Admin users:** /admin/users — add Adam and other admins
+  - **Forgot password:** /admin/forgot-password (requires Resend domain verification)
 
 ## Xcode Project Setup
 
@@ -109,8 +111,10 @@
 ### Admin Login Credentials
 - **URL:** https://nourishhealthai.com/admin
 - **Email:** CEO@epicai.ai
-- **Password:** vLCbKRMBza7IzgqKlzekZQ==
+- **Password:** Trace87223! (changed via password reset)
 - **Role:** super_admin
+- **Users page:** /admin/users (can add Adam and other admins)
+- **Forgot password:** /admin/forgot-password (sends reset email via Resend)
 
 ### HealthKit Data
 **Reads:** Height, weight, biological sex, DOB, steps, active calories, sleep

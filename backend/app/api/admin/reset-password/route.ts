@@ -2,9 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { adminUsers } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
-import { hashPassword } from "@/lib/admin-auth";
+import { hashPassword, verifyResetToken } from "@/lib/admin-auth";
 import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
-import { resetTokens } from "../forgot-password/route";
 
 export async function POST(request: NextRequest) {
   try {
@@ -56,39 +55,61 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Look up token
-    const tokenData = resetTokens.get(token);
-    if (!tokenData) {
+    // Decode token to extract adminId for DB lookup
+    let adminId: string;
+    try {
+      const decoded = Buffer.from(token, "base64url").toString();
+      const parts = decoded.split(":");
+      if (parts.length !== 3) {
+        return NextResponse.json(
+          { error: "Invalid or expired reset link. Please request a new one." },
+          { status: 400 }
+        );
+      }
+      adminId = parts[0];
+    } catch {
       return NextResponse.json(
         { error: "Invalid or expired reset link. Please request a new one." },
         { status: 400 }
       );
     }
 
-    // Check expiry
-    if (Date.now() > tokenData.expiresAt) {
-      resetTokens.delete(token);
+    // Look up admin to get current passwordHash for HMAC verification
+    const database = db();
+    const [admin] = await database
+      .select({
+        id: adminUsers.id,
+        passwordHash: adminUsers.passwordHash,
+      })
+      .from(adminUsers)
+      .where(eq(adminUsers.id, adminId))
+      .limit(1);
+
+    if (!admin) {
       return NextResponse.json(
-        { error: "Reset link has expired. Please request a new one." },
+        { error: "Invalid or expired reset link. Please request a new one." },
         { status: 400 }
       );
     }
 
-    // Hash the new password
-    const passwordHash = hashPassword(password);
+    // Verify HMAC token (checks expiry, adminId, and password hash prefix)
+    const verified = verifyResetToken(token, admin.passwordHash);
+    if (!verified) {
+      return NextResponse.json(
+        { error: "Invalid or expired reset link. Please request a new one." },
+        { status: 400 }
+      );
+    }
 
-    // Update admin's password in the database
-    const database = db();
+    // Hash the new password and update
+    const newPasswordHash = hashPassword(password);
     await database
       .update(adminUsers)
       .set({
-        passwordHash,
+        passwordHash: newPasswordHash,
         updatedAt: new Date(),
       })
-      .where(eq(adminUsers.id, tokenData.adminId));
-
-    // Delete the used token
-    resetTokens.delete(token);
+      .where(eq(adminUsers.id, verified.adminId));
 
     return NextResponse.json({
       success: true,

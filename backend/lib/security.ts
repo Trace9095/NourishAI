@@ -34,7 +34,3 @@ export function handleCors(request: NextRequest): NextResponse | null {
   }
   return null;
 }
-
-export function rateLimitKey(deviceId: string): string {
-  return `rate:${deviceId}:${Math.floor(Date.now() / 30000)}`;
-}

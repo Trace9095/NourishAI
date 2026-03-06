@@ -25,7 +25,7 @@ NourishAI is an AI-powered nutrition tracking iOS app + marketing website. Targe
 
 ### Backend (Next.js 16 — Vercel root dir: `backend/`)
 
-**Pages (12):**
+**Pages (15):**
 - `app/page.tsx` — Landing page (hero, features, how-it-works, pricing, testimonials, FAQ, download CTA)
 - `app/features/page.tsx` — Detailed features with comparison table
 - `app/about/page.tsx` — About page with story, values, Epic AI
@@ -37,10 +37,13 @@ NourishAI is an AI-powered nutrition tracking iOS app + marketing website. Targe
 - `app/terms/page.tsx` — Terms of service
 - `app/accessibility/page.tsx` — Accessibility statement
 - `app/not-found.tsx` — Branded 404 with gradient orbs, quick nav
-- `app/admin/page.tsx` — Admin login (email + password)
+- `app/admin/page.tsx` — Admin login (email + password, forgot password link)
 - `app/admin/dashboard/page.tsx` — Full admin dashboard (12 KPIs, charts, tables, auto-refresh)
+- `app/admin/users/page.tsx` — Admin users management (CRUD, role badges, inline add form)
+- `app/admin/forgot-password/page.tsx` — Forgot password form (email input)
+- `app/admin/reset-password/page.tsx` — Reset password form (token validation, dual password input)
 
-**API Routes (11) + RSS Feed:**
+**API Routes (14) + RSS Feed:**
 - `api/analyze-food/route.ts` — Claude Haiku vision proxy (photo → macros)
 - `api/analyze-description/route.ts` — Text-based food analysis
 - `api/lookup-barcode/route.ts` — OpenFoodFacts API (free)
@@ -52,6 +55,9 @@ NourishAI is an AI-powered nutrition tracking iOS app + marketing website. Targe
 - `api/admin/logout/route.ts` — Session cookie destruction
 - `api/admin/setup/route.ts` — One-time admin seed (protected by ADMIN_SETUP_TOKEN)
 - `api/admin/stats/route.ts` — Dashboard data (users, scans, revenue, costs)
+- `api/admin/users/route.ts` — Admin user CRUD (GET, POST, PATCH, DELETE with role checks)
+- `api/admin/forgot-password/route.ts` — Password reset email (Resend + in-memory token, 15min expiry)
+- `api/admin/reset-password/route.ts` — Token validation + PBKDF2 password update
 
 **Components (15):**
 AnimateIn, BrandContent, ContactForm, CookieConsentBanner, DownloadCTA, FAQ, Features, Footer, Header, Hero, HowItWorks, MacroRings, Pricing, Stats, Testimonials
@@ -144,8 +150,11 @@ cd backend && npx next build     # Website
 
 ## Admin Dashboard
 
-- **Login:** `/admin` (email + password)
+- **Login:** `/admin` (email + password, "Forgot password?" link)
 - **Dashboard:** `/admin/dashboard` (protected by middleware cookie check)
+- **Users:** `/admin/users` (CRUD for admin accounts — add/edit/deactivate admins)
+- **Forgot Password:** `/admin/forgot-password` → sends email via Resend with reset token
+- **Reset Password:** `/admin/reset-password?token=...` → validates token, sets new password
 - **Setup:** POST `/api/admin/setup` with `ADMIN_SETUP_TOKEN` to seed first super_admin
 - **Roles:** super_admin, admin, viewer (pgEnum in schema)
 - **Features:** 12 KPI cards, scan/user charts (30-day), recent activity tables, auto-refresh 30s
@@ -161,6 +170,7 @@ cd backend && npx next build     # Website
 - Session 71: Security hardening (removed hardcoded session secret, fixed CORS), iOS fixes (ProgressView rename, servingSize type mismatch, WaterEntry model container, MealRow optional binding), FAQ CTA buttons, comprehensive code review via background agents
 - Session 72: Fixed all remaining code review findings. iOS: DashboardView #Predicate crash (Calendar not translatable), SubscriptionManager Task.detached Swift 6 violation, BarcodeScanView loading spinner state machine, AIFoodCameraView PhotosPicker wiring, SubscriptionView isPurchasing reset. Web: scan limit consistency (all scan types counted), input size limits, cooldown on analyze-description, CookieConsentBanner hidden on admin, complete favicon metadata, device ID truncation in admin stats, blog Copy Link client component.
 - Session 73: Generated Xcode project.pbxproj programmatically (all 21 Swift files, iOS 17, Swift 6, MainActor isolation). Set all Vercel env vars (ADMIN_SETUP_TOKEN, ADMIN_SESSION_SECRET). Ran Drizzle migration (5 tables). Seeded admin account (CEO@epicai.ai, super_admin). Verified admin login, website live at nourishhealthai.com, API routes responding.
+- Session 74: Admin users management (/admin/users with CRUD), forgot password flow (Resend email + token reset), fixed Claude JSON parsing (strip markdown fences), fixed barcode kJ/kcal swap detection, expanded FAQ to 34 questions (6 categories), expanded blog to 8 posts, marketing engine (5 templates + March/April calendars = 35 posts, 25 PNGs, 1 MP4). Full Gold Standard audit passed all 36 rules. Security headers verified live. All docs updated.
 - Remaining: Open project in Xcode (set team, build), Watch/Widget targets, StoreKit config, App Store Connect setup, payment testing, Resend domain verification
 
 ### Phase Status

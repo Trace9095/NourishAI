@@ -164,7 +164,7 @@ Only respond with valid JSON, no other text.`,
 
     const claudeData = await claudeResponse.json();
     const analysisText = claudeData.content?.[0]?.text ?? "";
-    const tokensUsed = claudeData.usage?.input_tokens + claudeData.usage?.output_tokens;
+    const tokensUsed = (claudeData.usage?.input_tokens ?? 0) + (claudeData.usage?.output_tokens ?? 0);
 
     await db().insert(scanUsage).values({
       userId: user.id,
