@@ -20,21 +20,21 @@ enum APIConfig {
 // MARK: - Brand Colors
 
 extension Color {
-    static let brandGreen = Color(hex: "34C759")
-    static let brandGreenDark = Color(hex: "2AA44A")
-    static let brandOrange = Color(hex: "FF9500")
-    static let brandDark = Color(hex: "0A0A14")
-    static let brandCard = Color(hex: "12121A")
-    static let brandBorder = Color(hex: "1E1E2E")
+    nonisolated static let brandGreen = Color(hex: "34C759")
+    nonisolated static let brandGreenDark = Color(hex: "2AA44A")
+    nonisolated static let brandOrange = Color(hex: "FF9500")
+    nonisolated static let brandDark = Color(hex: "0A0A14")
+    nonisolated static let brandCard = Color(hex: "12121A")
+    nonisolated static let brandBorder = Color(hex: "1E1E2E")
 
     // Macro colors
-    static let macroProtein = Color(hex: "FF6B6B")
-    static let macroCarbs = Color(hex: "4ECDC4")
-    static let macroFat = Color(hex: "FFE66D")
-    static let macroCalories = Color(hex: "FF9500")
-    static let macroWater = Color(hex: "5AC8FA")
+    nonisolated static let macroProtein = Color(hex: "FF6B6B")
+    nonisolated static let macroCarbs = Color(hex: "4ECDC4")
+    nonisolated static let macroFat = Color(hex: "FFE66D")
+    nonisolated static let macroCalories = Color(hex: "FF9500")
+    nonisolated static let macroWater = Color(hex: "5AC8FA")
 
-    init(hex: String) {
+    nonisolated init(hex: String) {
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int: UInt64 = 0
         Scanner(string: hex).scanHexInt64(&int)

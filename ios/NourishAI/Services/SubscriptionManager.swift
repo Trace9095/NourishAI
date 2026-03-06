@@ -14,7 +14,7 @@ final class SubscriptionManager {
         !purchasedProductIDs.isEmpty
     }
 
-    private var updateListenerTask: Task<Void, Error>?
+    nonisolated(unsafe) private var updateListenerTask: Task<Void, Error>?
 
     private init() {
         updateListenerTask = listenForTransactions()

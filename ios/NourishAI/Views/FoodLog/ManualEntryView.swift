@@ -136,16 +136,16 @@ struct ManualEntryView: View {
     private func saveEntry() {
         let entry = FoodEntry(
             name: foodName,
+            servingSize: servingSize.isEmpty ? "1 serving" : servingSize,
+            mealType: selectedMealType,
+            entryMethod: .manual,
             calories: Int(calories) ?? 0,
             protein: Double(protein) ?? 0,
             carbs: Double(carbs) ?? 0,
             fat: Double(fat) ?? 0,
             fiber: Double(fiber) ?? 0,
             sugar: Double(sugar) ?? 0,
-            sodium: 0,
-            servingSize: servingSize.isEmpty ? nil : servingSize,
-            mealType: selectedMealType,
-            entryMethod: .manual
+            sodium: 0
         )
 
         modelContext.insert(entry)

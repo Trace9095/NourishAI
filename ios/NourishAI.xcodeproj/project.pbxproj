@@ -28,6 +28,7 @@
 		A10001010000000000000019 /* SubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000019 /* SubscriptionView.swift */; };
 		A10001010000000000000020 /* MacroRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000020 /* MacroRingView.swift */; };
 		A10001010000000000000021 /* MealRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000021 /* MealRow.swift */; };
+		A10001010000000000000022 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000022 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		A10002010000000000000019 /* SubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionView.swift; sourceTree = "<group>"; };
 		A10002010000000000000020 /* MacroRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroRingView.swift; sourceTree = "<group>"; };
 		A10002010000000000000021 /* MealRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealRow.swift; sourceTree = "<group>"; };
+		A10002010000000000000022 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A10002010000000000000099 /* NourishAI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NourishAI.entitlements; sourceTree = "<group>"; };
 		A10003010000000000000001 /* NourishAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NourishAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -81,6 +83,7 @@
 				A10002010000000000000001 /* NourishAIApp.swift */,
 				A10002010000000000000002 /* ContentView.swift */,
 				A10002010000000000000003 /* Constants.swift */,
+				A10002010000000000000022 /* Assets.xcassets */,
 				A10002010000000000000099 /* NourishAI.entitlements */,
 				A10005010000000000000003 /* Models */,
 				A10005010000000000000004 /* Services */,
@@ -250,6 +253,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A10001010000000000000022 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

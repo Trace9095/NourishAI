@@ -268,16 +268,16 @@ struct BarcodeScanView: View {
     private func saveEntry(_ result: NourishAPIManager.BarcodeResponse) {
         let entry = FoodEntry(
             name: result.productName,
+            servingSize: result.servingSize ?? "1 serving",
+            mealType: selectedMealType,
+            entryMethod: .barcode,
             calories: result.calories,
             protein: result.protein,
             carbs: result.carbs,
             fat: result.fat,
             fiber: result.fiber ?? 0,
             sugar: result.sugar ?? 0,
-            sodium: 0,
-            servingSize: result.servingSize ?? "1 serving",
-            mealType: selectedMealType,
-            entryMethod: .barcode
+            sodium: 0
         )
 
         modelContext.insert(entry)

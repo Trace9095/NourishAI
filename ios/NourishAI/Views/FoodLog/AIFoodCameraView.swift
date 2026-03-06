@@ -302,16 +302,16 @@ struct AIFoodCameraView: View {
     private func saveFoodEntry(_ result: NourishAPIManager.FoodAnalysisResponse) {
         let entry = FoodEntry(
             name: result.foodName,
+            servingSize: result.servingSize ?? "1 serving",
+            mealType: selectedMealType,
+            entryMethod: .aiPhoto,
             calories: result.calories,
             protein: result.protein,
             carbs: result.carbs,
             fat: result.fat,
             fiber: result.fiber ?? 0,
             sugar: result.sugar ?? 0,
-            sodium: result.sodium ?? 0,
-            servingSize: result.servingSize ?? "1 serving",
-            mealType: selectedMealType,
-            entryMethod: .aiPhoto
+            sodium: result.sodium ?? 0
         )
 
         modelContext.insert(entry)
