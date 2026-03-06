@@ -118,7 +118,7 @@
 - [ ] Create subscription group + products
 - [ ] Configure StoreKit testing file in Xcode
 - [ ] Create app icon (all sizes)
-- [ ] Create App Store screenshots (6.7" + 6.1")
+- [ ] Create App Store screenshots (6.5" iPhone 11 Pro Max + 6.7" iPhone 14 Pro Max + 13" iPad Pro)
 - [ ] Write App Store description + keywords
 - [ ] TestFlight beta
 - [ ] App Store submission

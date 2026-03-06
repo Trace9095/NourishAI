@@ -141,16 +141,25 @@ def render_reel(template_name, data, output_path):
             browser = p.chromium.launch()
             page = browser.new_page(viewport={"width": width, "height": height})
             page.goto(f"file://{temp_html}")
+            page.wait_for_timeout(200)  # Let fonts load
 
-            # Capture frames
+            # Pause all CSS animations so we control timing exactly
+            page.evaluate("""() => {
+                document.getAnimations().forEach(a => a.pause());
+            }""")
+
+            # Capture frames by seeking animations to exact video time
             for i in range(total_frames):
                 frame_path = os.path.join(frames_dir, f"frame_{i:05d}.png")
-                # Wait for the animation to progress
-                ms = int((i / REEL_FPS) * 1000)
-                if i == 0:
-                    page.wait_for_timeout(100)
-                else:
-                    page.wait_for_timeout(int(1000 / REEL_FPS))
+                time_ms = (i / REEL_FPS) * 1000
+
+                # Seek all animations to exact time for this frame
+                page.evaluate(f"""(t) => {{
+                    document.getAnimations().forEach(a => {{
+                        a.currentTime = t;
+                    }});
+                }}""", time_ms)
+
                 page.screenshot(path=frame_path, type="png")
 
                 # Progress indicator

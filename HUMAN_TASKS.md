@@ -4,41 +4,28 @@
 
 ---
 
-## CRITICAL — Do These First
+## CRITICAL — Do These Next
 
-- [x] **Add domain to Vercel:** Dashboard > nourish-ai > Settings > Domains > Add `nourishhealthai.com`
-- [x] **Run Drizzle migration:** `cd backend && npx drizzle-kit push` — creates ALL tables (users, scan_usage, admin_users, blog_posts, contact_submissions)
-- [x] **Set ADMIN_SETUP_TOKEN env var:** Set to `nourishai-admin-setup-2026` in Vercel production
-- [x] **Set ADMIN_SESSION_SECRET env var:** Set in Vercel production for signing session cookies
-- [x] **Seed your admin account:** Super admin seeded (CEO@epicai.ai, super_admin role)
-  - Login at `/admin` with email `CEO@epicai.ai` + password `Trace87223!`
-  - **Admin users:** /admin/users — add Adam and other admins
-  - **Forgot password:** /admin/forgot-password (requires Resend domain verification)
+### App Store Connect Screenshots
+- [ ] **Install older simulator runtimes in Xcode:** Settings > Platforms > download iOS 17 runtime
+- [ ] **Add simulators for App Store screenshot sizes:**
+  - **iPhone 11 Pro Max** — produces 1242x2688 screenshots (6.5" required size)
+  - **iPhone 14 Pro Max** — produces 1284x2778 screenshots (6.7" required size)
+  - Add via: Window > Devices and Simulators > Simulators > + button
+- [ ] **Take App Store screenshots** on both simulators (portrait + landscape for each)
+- [ ] **iPad screenshots:** Use **iPad Pro 13-inch (M5)** for 13" iPad size (2064x2752)
 
-## Xcode Project Setup
-
-- [x] **Xcode project generated:** `ios/NourishAI.xcodeproj/project.pbxproj` created programmatically
-  - Bundle Identifier: `com.epicai.nourishai`
-  - iOS 17.0 deployment target, Swift 6.0
-  - All 21 Swift files registered in build phases
-  - HealthKit, App Groups, Camera/Photos entitlements configured
-- [x] **All Swift files in project:** 21 files registered in pbxproj
-
-### Swift files (21 total):
-**Root:** NourishAIApp.swift, ContentView.swift, Constants.swift
-**Models/** (3): UserProfile.swift, NutritionModels.swift, NutritionCalculator.swift
-**Services/** (3): NourishAPIManager.swift, HealthKitManager.swift, SubscriptionManager.swift
-**Views/Dashboard/** (1): DashboardView.swift
-**Views/FoodLog/** (5): FoodLogView.swift, AIFoodCameraView.swift, AIFoodChatView.swift, ManualEntryView.swift, BarcodeScanView.swift
-**Views/Onboarding/** (1): OnboardingContainerView.swift
-**Views/Progress/** (1): NutritionProgressView.swift (file on disk is ProgressView.swift — struct renamed inside)
-**Views/Settings/** (1): SettingsView.swift
-**Views/Subscription/** (1): SubscriptionView.swift
-**Components/** (2): MacroRingView.swift, MealRow.swift
-
-- [ ] **Open in Xcode:** Open `ios/NourishAI.xcodeproj` in Xcode
-  - Set your Apple Developer Team in Signing & Capabilities
-  - Build and fix any signing issues
+### Xcode Project
+- [x] Xcode project generated and builds successfully (BUILD SUCCEEDED)
+- [x] 25 Swift files compiled (all models, views, services, components)
+- [x] SettingsView made fully editable (Edit/Save/Cancel, macro targets, goal picker)
+- [ ] **Set your Apple Developer Team** in Signing & Capabilities
+- [ ] **Add 4 new Swift files to Xcode project:**
+  - MenuScanView.swift (Views/FoodLog/)
+  - FoodIdeasView.swift (Views/FoodLog/)
+  - RestaurantMapView.swift (Views/Discovery/)
+  - NutritionChatView.swift (Views/Chat/)
+  - Right-click folder > Add Files to "NourishAI" > select each .swift file
 - [ ] **Add Watch target:** File > New > Target > watchOS > Watch App
 - [ ] **Add Widget target:** File > New > Target > iOS > Widget Extension
 - [ ] **Verify capabilities in Xcode:**
@@ -46,83 +33,90 @@
   - In-App Purchase (iOS)
   - App Groups: `group.com.epicai.nourishai` (iOS + Widget)
   - Push Notifications (iOS)
+- [ ] **Add NSLocationWhenInUseUsageDescription to Info.plist** (for RestaurantMapView)
 - [ ] **Create StoreKit config:** File > New > StoreKit Configuration File > `NourishAI.storekit`
+  - Add subscription group "NourishAI Pro"
+  - Add product: `com.nourishai.subscription.pro.monthly` ($7.99/month)
+  - Add product: `com.nourishai.subscription.pro.annual` ($39.99/year)
+  - Set in scheme: Edit Scheme > Run > Options > StoreKit Configuration
 
-## App Store Connect
-
+### App Store Connect
 - [ ] Register bundle IDs (`com.epicai.nourishai`, `.watchkitapp`, `.widget`)
 - [ ] Register app in App Store Connect
 - [ ] Create subscription group "NourishAI Pro" with monthly ($7.99) + annual ($39.99)
 - [ ] Add localizations (required for StoreKit)
 - [ ] Verify Paid Apps agreement is active
-- [ ] See `APPLE_SETUP_GUIDE.md` for full details
+- [ ] Write App Store description + keywords
+- [ ] Create app icon (all sizes)
+- [ ] Upload screenshots (6.5" + 6.7" iPhone, 13" iPad)
+- [ ] TestFlight beta upload
+- [ ] App Store submission
 
-## Payment Testing Checklist
+### Marketing Templates — Remaining Improvements
+- [ ] **Story template redesign** — stories look bad, need premium SVG icons instead of emojis
+- [ ] **Feed macro-tip template** — replace emoji icons with numbered SVG badges
+- [ ] **Reel templates** — replace inline emojis with SVG icons
+- [ ] **Hero rotating text** — homepage needs cycling text animation (Gold Standard #38)
+- [ ] **Blog [slug] dynamic OG image** — per-post OG images (Gold Standard #37)
+- [ ] **Regenerate all marketing assets** after template fixes (`python3 marketing/generate.py --force`)
 
-- [ ] **Create StoreKit configuration file** in Xcode: File > New > File > StoreKit Configuration File > `NourishAI.storekit`
-  - Do NOT sync with App Store Connect (use local testing first)
-  - Add subscription group "NourishAI Pro"
-  - Add product: `com.nourishai.subscription.pro.monthly` ($7.99/month)
-  - Add product: `com.nourishai.subscription.pro.annual` ($39.99/year)
-  - Optional: Add 7-day free trial for annual
-- [ ] **Set StoreKit config in scheme:** Edit Scheme > Run > Options > StoreKit Configuration > select `NourishAI.storekit`
-- [ ] **Test in Simulator:**
-  - Verify products load (SubscriptionView shows real prices)
-  - Test monthly purchase flow (approve -> dismiss paywall)
-  - Test annual purchase flow
-  - Test restore purchases
-  - Verify scan limit enforced for free tier (1/week)
-  - Verify unlimited scans after subscribing
-  - Test subscription expiry (StoreKit config allows time acceleration)
-- [ ] **Sandbox testing:** Create sandbox Apple ID in App Store Connect > Users & Access > Sandbox Testers
-- [ ] **TestFlight testing:** Upload build, invite testers, verify payment flow end-to-end
+### DNS & Services
+- [x] Domain: nourishhealthai.com (LIVE on Vercel)
+- [ ] **Verify Resend domain:** Add `nourishhealthai.com` in Resend Dashboard (for password reset emails)
+- [ ] **Create Instagram account** for NourishAI
 
-## Domain & DNS
+---
 
-- [x] Purchase domain: nourishhealthai.com
-- [x] Point DNS to Vercel in GoDaddy
-- [x] **Add domain in Vercel Dashboard**
-- [x] Verify SSL certificate (site loads over HTTPS)
+## COMPLETED
 
-## Marketing
+### Infrastructure
+- [x] GitHub repo (Trace9095/NourishAI)
+- [x] Vercel project (`nourish-ai`)
+- [x] Neon PostgreSQL (5 tables migrated)
+- [x] All env vars set (ANTHROPIC_API_KEY, RESEND_API_KEY, DATABASE_URL, NEXT_PUBLIC_APP_URL, ADMIN_SETUP_TOKEN, ADMIN_SESSION_SECRET)
+- [x] Admin account seeded (CEO@epicai.ai, super_admin)
+- [x] Domain purchased and configured
+- [x] SSL verified
 
-- [ ] Create Instagram account
-- [ ] App Store screenshots (after app built)
-- [ ] App Store description + keywords
-- [ ] App icon export (all sizes)
+### iOS App
+- [x] 25 Swift files on disk and in pbxproj
+- [x] All cross-file dependencies verified
+- [x] iOS app builds successfully (BUILD SUCCEEDED)
+- [x] Settings page fully editable (name, age, height, weight, goal, activity, macro targets)
+- [x] Recalculate Targets button (Mifflin-St Jeor BMR)
+- [x] HealthKit integration (height, weight, age pull)
 
-## Environment Variables (Vercel)
+### Marketing Engine
+- [x] 8 reel MP4s generated with correct timing (17s each, 30fps, 510 frames)
+- [x] Reel timing fix: Web Animations API pause+seek for frame-accurate capture
+- [x] 50 feed PNGs + 15 story PNGs generated
+- [x] 4 months of content calendars (March-June 2026, 68 total posts)
+- [x] Reels display correctly in admin Instagram calendar (`<video>` tag)
 
-| Variable | Status | Notes |
-|----------|--------|-------|
-| ANTHROPIC_API_KEY | SET | Shared with LiftLabPro |
-| RESEND_API_KEY | SET | For email sending |
-| DATABASE_URL | SET | Auto by Neon integration |
-| NEXT_PUBLIC_APP_URL | SET | `https://nourishhealthai.com` |
-| ADMIN_SETUP_TOKEN | SET | `nourishai-admin-setup-2026` |
-| ADMIN_SESSION_SECRET | SET | Random string for session signing |
-
-- [ ] **Verify Resend domain:** Add `nourishhealthai.com` in Resend Dashboard
+### Website
+- [x] 16 pages (landing, features, about, blog, contact, brand, privacy, terms, accessibility, 404, admin suite)
+- [x] 17 API routes (AI vision, barcode, subscriptions, admin CRUD, chat, menu scan, food ideas)
+- [x] Gold Standard compliant (24/27 — 3 gaps noted above in remaining improvements)
+- [x] Blog: 10 posts with category filters
+- [x] Admin dashboard: 12 KPIs, charts, auto-refresh
 
 ---
 
 ## Notes
 
-### Admin Login Credentials
+### Admin Login
 - **URL:** https://nourishhealthai.com/admin
 - **Email:** CEO@epicai.ai
-- **Password:** Trace87223! (changed via password reset)
+- **Password:** Trace87223!
 - **Role:** super_admin
-- **Users page:** /admin/users (can add Adam and other admins)
-- **Forgot password:** /admin/forgot-password (sends reset email via Resend)
+
+### App Store Screenshot Simulators
+| Required Size | Display | Simulator |
+|---|---|---|
+| 1242x2688 | 6.5" iPhone | **iPhone 11 Pro Max** (needs iOS 17 runtime) |
+| 1284x2778 | 6.7" iPhone | **iPhone 14 Pro Max** (needs iOS 17 runtime) |
+| 2064x2752 | 13" iPad | **iPad Pro 13-inch (M5)** |
 
 ### HealthKit Data
 **Reads:** Height, weight, biological sex, DOB, steps, active calories, sleep
 **Writes:** Dietary energy, protein, carbs, fat, fiber, sugar, sodium, water, body mass
-
-### Database Tables (migration complete)
-- `users` — iOS app device registrations
-- `scan_usage` — AI scan tracking and rate limiting
-- `admin_users` — Dashboard admin accounts with roles (super_admin, admin, viewer)
-- `blog_posts` — Blog content (currently using static file, DB ready for future)
-- `contact_submissions` — Contact form entries
