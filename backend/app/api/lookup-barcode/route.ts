@@ -77,6 +77,18 @@ export async function GET(request: NextRequest) {
       tokensUsed: 0,
     });
 
+    // Sanity check: if kcal > 900/100g, the data is likely swapped with kJ
+    let calories = Math.round(n["energy-kcal_100g"] ?? n["energy-kcal"] ?? 0);
+    if (calories > 900) {
+      // Likely kJ value in kcal field — convert or use kJ field
+      const kj = n["energy-kj_100g"] ?? n["energy_100g"] ?? 0;
+      if (kj > 0 && kj < calories) {
+        calories = Math.round(kj / 4.184);
+      } else {
+        calories = Math.round(calories / 4.184);
+      }
+    }
+
     return NextResponse.json(
       {
         product: {
@@ -85,7 +97,7 @@ export async function GET(request: NextRequest) {
           servingSize: p.serving_size ?? "100g",
           imageUrl: p.image_url ?? null,
           nutrition: {
-            calories: Math.round(n["energy-kcal_100g"] ?? n["energy-kcal"] ?? 0),
+            calories,
             protein: Math.round((n.proteins_100g ?? n.proteins ?? 0) * 10) / 10,
             carbs: Math.round((n.carbohydrates_100g ?? n.carbohydrates ?? 0) * 10) / 10,
             fat: Math.round((n.fat_100g ?? n.fat ?? 0) * 10) / 10,

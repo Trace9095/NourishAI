@@ -6,7 +6,7 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Protect admin dashboard routes (not the login page itself)
-  if (pathname.startsWith("/admin/dashboard")) {
+  if (pathname.startsWith("/admin/dashboard") || pathname.startsWith("/admin/users")) {
     const session = request.cookies.get(COOKIE_NAME);
     if (!session?.value) {
       const loginUrl = new URL("/admin", request.url);

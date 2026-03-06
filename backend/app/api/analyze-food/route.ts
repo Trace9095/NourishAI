@@ -196,7 +196,9 @@ Only respond with valid JSON, no other text.`,
     // Parse Claude's response
     let analysis;
     try {
-      analysis = JSON.parse(analysisText);
+      // Strip markdown code fences if present
+      const cleaned = analysisText.replace(/^```(?:json)?\s*/i, "").replace(/\s*```\s*$/i, "").trim();
+      analysis = JSON.parse(cleaned);
     } catch {
       analysis = { raw: analysisText, parseError: true };
     }

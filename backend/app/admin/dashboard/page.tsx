@@ -116,7 +116,10 @@ export default function AdminDashboardPage() {
             <h1 className="font-[family-name:var(--font-outfit)] text-lg font-bold">Admin Dashboard</h1>
             <span className="text-xs text-gray-600 ml-2 hidden md:inline">Auto-refreshes every 30s</span>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
+            <Link href="/admin/users" className="text-sm text-gray-400 hover:text-white transition-colors min-h-[44px] px-3 flex items-center gap-1.5">
+              <UsersIcon /> <span className="hidden md:inline">Users</span>
+            </Link>
             <button onClick={fetchStats} className="text-sm text-gray-400 hover:text-white transition-colors min-h-[44px] px-3 flex items-center gap-2">
               <RefreshIcon /> Refresh
             </button>
