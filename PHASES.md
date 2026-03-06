@@ -61,6 +61,10 @@
 | 2.12 | Fix SubscriptionIDs → SubscriptionProductID | DONE |
 | 2.13 | Fix BarcodeResponse convenience accessors | DONE |
 | 2.14 | Fix DashboardMealRow naming conflict | DONE |
+| 2.15 | Fix ProgressView → NutritionProgressView (SwiftUI name conflict) | DONE |
+| 2.16 | Fix servingSize String? type mismatch in 3 views | DONE |
+| 2.17 | Fix MealRow optional binding on non-optional | DONE |
+| 2.18 | Add WaterEntry to SwiftData model container | DONE |
 
 ---
 
@@ -93,6 +97,9 @@
 | 3.21 | Contact form saves to DB | DONE |
 | 3.22 | Blog posts in sitemap | DONE |
 | 3.23 | id="main-content" on all pages | DONE |
+| 3.24 | Remove hardcoded session secret fallback | DONE |
+| 3.25 | Fix CORS empty-string origin handling | DONE |
+| 3.26 | FAQ CTA buttons on contact page | DONE |
 
 ---
 
