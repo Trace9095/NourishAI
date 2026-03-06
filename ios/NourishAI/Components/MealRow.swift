@@ -51,6 +51,10 @@ struct MealRow: View {
         }
         .padding(12)
         .background(Color.brandCard)
-        .clipShape(RoundedRectangle(cornerRadius: 10))
+        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .overlay(
+            RoundedRectangle(cornerRadius: 12)
+                .strokeBorder(Color.white.opacity(0.1), lineWidth: 1)
+        )
     }
 }

@@ -48,9 +48,14 @@ struct FoodLogView: View {
         DatePicker("Date", selection: $selectedDate, displayedComponents: .date)
             .datePickerStyle(.compact)
             .tint(.brandGreen)
+            .foregroundColor(.white)
             .padding()
             .background(Color.brandCard)
             .clipShape(RoundedRectangle(cornerRadius: Layout.cornerRadius))
+            .overlay(
+                RoundedRectangle(cornerRadius: Layout.cornerRadius)
+                    .strokeBorder(Color.white.opacity(0.1), lineWidth: 1)
+            )
     }
 
     private var dailySummary: some View {
@@ -125,5 +130,9 @@ struct MacroChip: View {
         .padding(.vertical, 10)
         .background(color.opacity(0.1))
         .clipShape(RoundedRectangle(cornerRadius: 10))
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .strokeBorder(color.opacity(0.2), lineWidth: 1)
+        )
     }
 }

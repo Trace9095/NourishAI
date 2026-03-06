@@ -12,35 +12,42 @@ struct SettingsView: View {
         NavigationStack {
             List {
                 // Profile section
-                Section("Profile") {
+                Section {
                     if let profile {
-                        LabeledContent("Name", value: profile.name)
-                        LabeledContent("Age", value: "\(profile.age)")
-                        LabeledContent("Height", value: "\(Int(profile.heightCm)) cm")
-                        LabeledContent("Weight", value: "\(Int(profile.weightKg)) kg")
-                        LabeledContent("Goal", value: profile.nutritionGoal.displayName)
-                        LabeledContent("Activity", value: profile.activityLevel.displayName)
+                        settingsRow("Name", value: profile.name)
+                        settingsRow("Age", value: "\(profile.age)")
+                        settingsRow("Height", value: "\(Int(profile.heightCm)) cm")
+                        settingsRow("Weight", value: "\(Int(profile.weightKg)) kg")
+                        settingsRow("Goal", value: profile.nutritionGoal.displayName)
+                        settingsRow("Activity", value: profile.activityLevel.displayName)
                     }
+                } header: {
+                    Text("Profile").foregroundColor(.gray)
                 }
+                .listRowBackground(Color.brandCard)
 
                 // Targets section
-                Section("Daily Targets") {
+                Section {
                     if let profile {
-                        LabeledContent("Calories", value: "\(profile.targetCalories) kcal")
-                        LabeledContent("Protein", value: "\(profile.targetProtein)g")
-                        LabeledContent("Carbs", value: "\(profile.targetCarbs)g")
-                        LabeledContent("Fat", value: "\(profile.targetFat)g")
-                        LabeledContent("Water", value: "\(profile.targetWaterMl) ml")
+                        settingsRow("Calories", value: "\(profile.targetCalories) kcal", color: .macroCalories)
+                        settingsRow("Protein", value: "\(profile.targetProtein)g", color: .macroProtein)
+                        settingsRow("Carbs", value: "\(profile.targetCarbs)g", color: .macroCarbs)
+                        settingsRow("Fat", value: "\(profile.targetFat)g", color: .macroFat)
+                        settingsRow("Water", value: "\(profile.targetWaterMl) ml", color: .macroWater)
                     }
+                } header: {
+                    Text("Daily Targets").foregroundColor(.gray)
                 }
+                .listRowBackground(Color.brandCard)
 
                 // Integrations
-                Section("Integrations") {
+                Section {
                     Button {
                         requestHealthKit()
                     } label: {
                         HStack {
                             Label("Apple Health", systemImage: "heart.fill")
+                                .foregroundColor(.macroProtein)
                             Spacer()
                             if profile?.healthKitEnabled == true {
                                 Image(systemName: "checkmark.circle.fill")
@@ -52,10 +59,13 @@ struct SettingsView: View {
                         }
                     }
                     .frame(minHeight: Layout.minTouchTarget)
+                } header: {
+                    Text("Integrations").foregroundColor(.gray)
                 }
+                .listRowBackground(Color.brandCard)
 
                 // Subscription
-                Section("Subscription") {
+                Section {
                     Button {
                         showSubscription = true
                     } label: {
@@ -68,26 +78,49 @@ struct SettingsView: View {
                         }
                     }
                     .frame(minHeight: Layout.minTouchTarget)
+                } header: {
+                    Text("Subscription").foregroundColor(.gray)
                 }
+                .listRowBackground(Color.brandCard)
 
                 // About
-                Section("About") {
-                    LabeledContent("Version", value: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0")
+                Section {
+                    settingsRow("Version", value: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0")
                     Link("Privacy Policy", destination: URL(string: "https://nourishhealthai.com/privacy")!)
+                        .foregroundColor(.brandGreen)
                         .frame(minHeight: Layout.minTouchTarget)
                     Link("Terms of Service", destination: URL(string: "https://nourishhealthai.com/terms")!)
+                        .foregroundColor(.brandGreen)
                         .frame(minHeight: Layout.minTouchTarget)
                     HStack {
                         Text("Built by")
+                            .foregroundColor(.gray)
                         Link("Epic AI", destination: URL(string: "https://epicai.ai")!)
                             .foregroundColor(.brandGreen)
                     }
+                } header: {
+                    Text("About").foregroundColor(.gray)
                 }
+                .listRowBackground(Color.brandCard)
             }
+            .scrollContentBackground(.hidden)
+            .background(Color.brandDark)
             .navigationTitle("Settings")
+            .foregroundColor(.white)
             .sheet(isPresented: $showSubscription) {
                 SubscriptionView()
             }
+        }
+    }
+
+    private func settingsRow(_ label: String, value: String, color: Color = .white) -> some View {
+        HStack {
+            Text(label)
+                .foregroundColor(.gray)
+            Spacer()
+            Text(value)
+                .foregroundColor(color)
+                .fontWeight(.medium)
         }
     }
 

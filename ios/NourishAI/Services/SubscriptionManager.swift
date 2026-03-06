@@ -14,14 +14,10 @@ final class SubscriptionManager {
         !purchasedProductIDs.isEmpty
     }
 
-    nonisolated(unsafe) private var updateListenerTask: Task<Void, Error>?
+    private var updateListenerTask: Task<Void, Error>?
 
     private init() {
         updateListenerTask = listenForTransactions()
-    }
-
-    deinit {
-        updateListenerTask?.cancel()
     }
 
     // MARK: - Load Products
