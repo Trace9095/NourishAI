@@ -1,0 +1,513 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A10001010000000000000001 /* NourishAIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000001 /* NourishAIApp.swift */; };
+		A10001010000000000000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000002 /* ContentView.swift */; };
+		A10001010000000000000003 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000003 /* Constants.swift */; };
+		A10001010000000000000004 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000004 /* UserProfile.swift */; };
+		A10001010000000000000005 /* NutritionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000005 /* NutritionModels.swift */; };
+		A10001010000000000000006 /* NutritionCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000006 /* NutritionCalculator.swift */; };
+		A10001010000000000000007 /* NourishAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000007 /* NourishAPIManager.swift */; };
+		A10001010000000000000008 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000008 /* HealthKitManager.swift */; };
+		A10001010000000000000009 /* SubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000009 /* SubscriptionManager.swift */; };
+		A10001010000000000000010 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000010 /* DashboardView.swift */; };
+		A10001010000000000000011 /* FoodLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000011 /* FoodLogView.swift */; };
+		A10001010000000000000012 /* AIFoodCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000012 /* AIFoodCameraView.swift */; };
+		A10001010000000000000013 /* AIFoodChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000013 /* AIFoodChatView.swift */; };
+		A10001010000000000000014 /* ManualEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000014 /* ManualEntryView.swift */; };
+		A10001010000000000000015 /* BarcodeScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000015 /* BarcodeScanView.swift */; };
+		A10001010000000000000016 /* OnboardingContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000016 /* OnboardingContainerView.swift */; };
+		A10001010000000000000017 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000017 /* ProgressView.swift */; };
+		A10001010000000000000018 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000018 /* SettingsView.swift */; };
+		A10001010000000000000019 /* SubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000019 /* SubscriptionView.swift */; };
+		A10001010000000000000020 /* MacroRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000020 /* MacroRingView.swift */; };
+		A10001010000000000000021 /* MealRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000021 /* MealRow.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A10003010000000000000001 /* NourishAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NourishAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A10002010000000000000001 /* NourishAIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NourishAIApp.swift; sourceTree = "<group>"; };
+		A10002010000000000000002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A10002010000000000000003 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A10002010000000000000004 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		A10002010000000000000005 /* NutritionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionModels.swift; sourceTree = "<group>"; };
+		A10002010000000000000006 /* NutritionCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionCalculator.swift; sourceTree = "<group>"; };
+		A10002010000000000000007 /* NourishAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NourishAPIManager.swift; sourceTree = "<group>"; };
+		A10002010000000000000008 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
+		A10002010000000000000009 /* SubscriptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionManager.swift; sourceTree = "<group>"; };
+		A10002010000000000000010 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		A10002010000000000000011 /* FoodLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodLogView.swift; sourceTree = "<group>"; };
+		A10002010000000000000012 /* AIFoodCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIFoodCameraView.swift; sourceTree = "<group>"; };
+		A10002010000000000000013 /* AIFoodChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIFoodChatView.swift; sourceTree = "<group>"; };
+		A10002010000000000000014 /* ManualEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualEntryView.swift; sourceTree = "<group>"; };
+		A10002010000000000000015 /* BarcodeScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScanView.swift; sourceTree = "<group>"; };
+		A10002010000000000000016 /* OnboardingContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerView.swift; sourceTree = "<group>"; };
+		A10002010000000000000017 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		A10002010000000000000018 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A10002010000000000000019 /* SubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionView.swift; sourceTree = "<group>"; };
+		A10002010000000000000020 /* MacroRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroRingView.swift; sourceTree = "<group>"; };
+		A10002010000000000000021 /* MealRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealRow.swift; sourceTree = "<group>"; };
+		A10002010000000000000099 /* NourishAI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NourishAI.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A10004010000000000000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A10005010000000000000001 = {
+			isa = PBXGroup;
+			children = (
+				A10005010000000000000002 /* NourishAI */,
+				A10005010000000000000099 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A10005010000000000000099 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A10003010000000000000001 /* NourishAI.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A10005010000000000000002 /* NourishAI */ = {
+			isa = PBXGroup;
+			children = (
+				A10002010000000000000001 /* NourishAIApp.swift */,
+				A10002010000000000000002 /* ContentView.swift */,
+				A10002010000000000000003 /* Constants.swift */,
+				A10002010000000000000099 /* NourishAI.entitlements */,
+				A10005010000000000000003 /* Models */,
+				A10005010000000000000004 /* Services */,
+				A10005010000000000000005 /* Views */,
+				A10005010000000000000011 /* Components */,
+			);
+			path = NourishAI;
+			sourceTree = "<group>";
+		};
+		A10005010000000000000003 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A10002010000000000000004 /* UserProfile.swift */,
+				A10002010000000000000005 /* NutritionModels.swift */,
+				A10002010000000000000006 /* NutritionCalculator.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A10005010000000000000004 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A10002010000000000000007 /* NourishAPIManager.swift */,
+				A10002010000000000000008 /* HealthKitManager.swift */,
+				A10002010000000000000009 /* SubscriptionManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A10005010000000000000005 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A10005010000000000000006 /* Dashboard */,
+				A10005010000000000000007 /* FoodLog */,
+				A10005010000000000000008 /* Onboarding */,
+				A10005010000000000000009 /* Progress */,
+				A10005010000000000000010 /* Settings */,
+				A10005010000000000000012 /* Subscription */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A10005010000000000000006 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				A10002010000000000000010 /* DashboardView.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		A10005010000000000000007 /* FoodLog */ = {
+			isa = PBXGroup;
+			children = (
+				A10002010000000000000011 /* FoodLogView.swift */,
+				A10002010000000000000012 /* AIFoodCameraView.swift */,
+				A10002010000000000000013 /* AIFoodChatView.swift */,
+				A10002010000000000000014 /* ManualEntryView.swift */,
+				A10002010000000000000015 /* BarcodeScanView.swift */,
+			);
+			path = FoodLog;
+			sourceTree = "<group>";
+		};
+		A10005010000000000000008 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				A10002010000000000000016 /* OnboardingContainerView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		A10005010000000000000009 /* Progress */ = {
+			isa = PBXGroup;
+			children = (
+				A10002010000000000000017 /* ProgressView.swift */,
+			);
+			path = Progress;
+			sourceTree = "<group>";
+		};
+		A10005010000000000000010 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A10002010000000000000018 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		A10005010000000000000011 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A10002010000000000000020 /* MacroRingView.swift */,
+				A10002010000000000000021 /* MealRow.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		A10005010000000000000012 /* Subscription */ = {
+			isa = PBXGroup;
+			children = (
+				A10002010000000000000019 /* SubscriptionView.swift */,
+			);
+			path = Subscription;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A10006010000000000000001 /* NourishAI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A10008010000000000000003 /* Build configuration list for PBXNativeTarget "NourishAI" */;
+			buildPhases = (
+				A10007010000000000000001 /* Sources */,
+				A10004010000000000000001 /* Frameworks */,
+				A10007010000000000000002 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NourishAI;
+			productName = NourishAI;
+			productReference = A10003010000000000000001 /* NourishAI.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A10009010000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					A10006010000000000000001 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = A10008010000000000000001 /* Build configuration list for PBXProject "NourishAI" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A10005010000000000000001;
+			productRefGroup = A10005010000000000000099 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A10006010000000000000001 /* NourishAI */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A10007010000000000000002 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A10007010000000000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10001010000000000000001 /* NourishAIApp.swift in Sources */,
+				A10001010000000000000002 /* ContentView.swift in Sources */,
+				A10001010000000000000003 /* Constants.swift in Sources */,
+				A10001010000000000000004 /* UserProfile.swift in Sources */,
+				A10001010000000000000005 /* NutritionModels.swift in Sources */,
+				A10001010000000000000006 /* NutritionCalculator.swift in Sources */,
+				A10001010000000000000007 /* NourishAPIManager.swift in Sources */,
+				A10001010000000000000008 /* HealthKitManager.swift in Sources */,
+				A10001010000000000000009 /* SubscriptionManager.swift in Sources */,
+				A10001010000000000000010 /* DashboardView.swift in Sources */,
+				A10001010000000000000011 /* FoodLogView.swift in Sources */,
+				A10001010000000000000012 /* AIFoodCameraView.swift in Sources */,
+				A10001010000000000000013 /* AIFoodChatView.swift in Sources */,
+				A10001010000000000000014 /* ManualEntryView.swift in Sources */,
+				A10001010000000000000015 /* BarcodeScanView.swift in Sources */,
+				A10001010000000000000016 /* OnboardingContainerView.swift in Sources */,
+				A10001010000000000000017 /* ProgressView.swift in Sources */,
+				A10001010000000000000018 /* SettingsView.swift in Sources */,
+				A10001010000000000000019 /* SubscriptionView.swift in Sources */,
+				A10001010000000000000020 /* MacroRingView.swift in Sources */,
+				A10001010000000000000021 /* MealRow.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A10008020000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		A10008020000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 6.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A10008020000000000000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NourishAI/NourishAI.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = NourishAI;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSCameraUsageDescription = "NourishAI uses your camera to scan food and identify nutritional information.";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "NourishAI reads your health data to provide personalized nutrition recommendations.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "NourishAI logs your nutrition data to Apple Health for a complete health picture.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "NourishAI accesses your photo library to analyze food photos for nutritional information.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.epicai.nourishai;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A10008020000000000000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NourishAI/NourishAI.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = NourishAI;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSCameraUsageDescription = "NourishAI uses your camera to scan food and identify nutritional information.";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "NourishAI reads your health data to provide personalized nutrition recommendations.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "NourishAI logs your nutrition data to Apple Health for a complete health picture.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "NourishAI accesses your photo library to analyze food photos for nutritional information.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.epicai.nourishai;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A10008010000000000000001 /* Build configuration list for PBXProject "NourishAI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A10008020000000000000001 /* Debug */,
+				A10008020000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A10008010000000000000003 /* Build configuration list for PBXNativeTarget "NourishAI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A10008020000000000000003 /* Debug */,
+				A10008020000000000000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A10009010000000000000001 /* Project object */;
+}
