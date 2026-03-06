@@ -21,6 +21,14 @@ const FAQS = [
         q: "Does NourishAI calculate my macro targets automatically?",
         a: "Yes. During onboarding, you'll enter your height, weight, age, activity level, and goal (cut, maintain, or bulk). NourishAI uses the Mifflin-St Jeor equation for BMR, applies an activity multiplier for TDEE, then splits into protein, carbs, and fat targets. You can manually adjust these anytime in Settings.",
       },
+      {
+        q: "Do I need to weigh my food?",
+        a: "No. The AI photo scanner estimates portion sizes visually. For packaged foods, the barcode scanner pulls exact nutrition data. You can also use standard portions like \"1 cup\" or \"1 medium apple\" when typing descriptions. Of course, using a food scale will always be more accurate — but NourishAI is designed to make tracking easy even without one.",
+      },
+      {
+        q: "Can I use NourishAI if I'm a complete beginner?",
+        a: "Absolutely. The onboarding flow walks you through everything: setting your goal, entering your body info, and understanding your personalized macro targets. You don't need to know anything about macros before you start — the app teaches you as you go. Most users are comfortable within the first day.",
+      },
     ],
   },
   {
@@ -41,8 +49,49 @@ const FAQS = [
       {
         q: "What about the barcode scanner?",
         a: "The barcode scanner uses OpenFoodFacts, a free database covering 500K+ packaged products worldwide. Just point your camera at any barcode and get instant nutrition data. This feature is completely free and doesn't count against your AI scan limit.",
-        link: "#features",
+        link: "/features",
         linkText: "See All Features",
+      },
+      {
+        q: "Can I scan a restaurant menu?",
+        a: "Not yet — but it's on our roadmap. Currently, the best approach for restaurant meals is to snap a photo of your plate when it arrives, or use the text description feature to type what you ordered (e.g., \"Chipotle burrito bowl with chicken, brown rice, black beans, fajita veggies, and guacamole\"). The AI handles complex restaurant dishes well.",
+      },
+      {
+        q: "What if the AI gets a food item wrong?",
+        a: "You can edit any scanned result before saving. Tap on any value — calories, protein, carbs, or fat — to adjust it. Over time, you'll get a sense of which foods the AI nails (most of them) and which need a quick tweak. The manual edit takes just a few seconds.",
+      },
+      {
+        q: "Does each scan count against my weekly limit?",
+        a: "AI photo scans and text description scans both count toward your limit. Barcode scans are always free and unlimited. On the free plan you get 1 AI scan per week. Pro users get unlimited AI scans with a short 30-second cooldown between scans.",
+      },
+    ],
+  },
+  {
+    category: "Nutrition & Goals",
+    items: [
+      {
+        q: "What nutrition goals does NourishAI support?",
+        a: "NourishAI supports three primary goals: Cut (fat loss with muscle preservation), Maintain (body recomposition at maintenance calories), and Bulk (muscle gain with a calorie surplus). Each goal adjusts your calorie target and macro split accordingly — higher protein for cutting, more carbs for bulking.",
+      },
+      {
+        q: "How does NourishAI calculate my calorie target?",
+        a: "We use the Mifflin-St Jeor equation (the most accurate BMR formula validated by research) combined with your activity level to calculate your Total Daily Energy Expenditure (TDEE). Then we apply a deficit or surplus based on your goal: typically -500 calories for cutting, +300 for bulking, or maintenance at TDEE.",
+      },
+      {
+        q: "Can I track water intake?",
+        a: "Yes. NourishAI includes a water tracking feature with quick-add buttons for common amounts (8oz glass, 16oz bottle, custom). Your daily water goal is calculated based on your body weight. The Apple Watch companion makes it easy to log water throughout the day.",
+      },
+      {
+        q: "Does NourishAI track micronutrients like vitamins and minerals?",
+        a: "Currently, NourishAI focuses on macronutrients (protein, carbs, fat) and calories — the metrics that matter most for body composition. Fiber and sugar tracking are included. Detailed micronutrient tracking (vitamins, minerals, amino acids) is on our roadmap for a future update.",
+      },
+      {
+        q: "Can I adjust my macro targets manually?",
+        a: "Yes. While NourishAI calculates recommended targets during onboarding, you can override any value in Settings. Want more protein on training days? Prefer a higher fat ratio? Set whatever targets work for your approach — the dashboard will track your progress against your custom numbers.",
+      },
+      {
+        q: "Is NourishAI good for intermittent fasting?",
+        a: "Yes. NourishAI tracks what you eat, not when you eat. Your daily macro targets remain the same regardless of your eating window. The daily view shows all your meals with timestamps, so you can easily see your intake pattern. There's no rigid meal scheduling that conflicts with IF protocols.",
       },
     ],
   },
@@ -63,6 +112,14 @@ const FAQS = [
         q: "What data does NourishAI collect?",
         a: "We collect only what's necessary to provide the service: your device ID for rate limiting and subscription verification, and AI scan usage counts. Your actual nutrition data, food logs, body measurements, and health information stay on your device. We have no access to it.",
       },
+      {
+        q: "Are my food photos stored on your servers?",
+        a: "No. When you take a photo for AI analysis, it's sent to our secure server, processed by the AI model, and immediately discarded. We do not store, save, or log your food photos. The only thing we record is that a scan was performed (for rate limiting purposes).",
+      },
+      {
+        q: "Can I delete all my data?",
+        a: "Yes. Since your nutrition data lives entirely on your device, deleting the app removes all your data permanently. For your server-side account (device ID and scan count), you can request deletion by emailing us. We'll remove your record within 48 hours.",
+      },
     ],
   },
   {
@@ -81,6 +138,14 @@ const FAQS = [
       {
         q: "Is there a free trial?",
         a: "The annual plan includes a 7-day free trial so you can experience all Pro features risk-free. You won't be charged until the trial ends, and you can cancel anytime during the trial period with no charge.",
+      },
+      {
+        q: "What happens to my data if I downgrade from Pro to Free?",
+        a: "Nothing — all your logged meals, macro history, and progress data stay on your device regardless of your subscription status. You'll just lose access to Pro features like unlimited AI scans and the Apple Watch app. You can upgrade again anytime to restore those features.",
+      },
+      {
+        q: "Do you offer student or military discounts?",
+        a: "We're exploring discounted pricing for students and military personnel. In the meantime, the annual plan ($39.99/yr) saves you over 58% compared to monthly — that works out to just $3.33/month for unlimited AI-powered nutrition tracking.",
       },
     ],
   },
@@ -102,6 +167,24 @@ const FAQS = [
       {
         q: "What devices are supported?",
         a: "NourishAI requires iOS 17 or later and runs on iPhone. The Apple Watch companion app requires watchOS 10+. We're designed to take full advantage of Apple's latest technologies including SwiftData, HealthKit, and StoreKit 2.",
+      },
+      {
+        q: "Is there an Android version?",
+        a: "Not currently. NourishAI is iOS-only, built natively in Swift to deliver the best possible experience. An Android version is something we'll consider based on demand — if you'd like to see it, let us know on our contact page.",
+        link: "/contact",
+        linkText: "Request Android",
+      },
+      {
+        q: "Can I export my nutrition data?",
+        a: "Your nutrition data syncs to Apple Health, which supports data export. Direct CSV/PDF export from within NourishAI is on our feature roadmap. In the meantime, you can view all your historical data in the Progress tab.",
+      },
+      {
+        q: "Does NourishAI support iOS Widgets?",
+        a: "Yes! NourishAI includes home screen widgets in small, medium, and large sizes. The widgets display your daily calorie and macro progress at a glance — no need to open the app to check how you're tracking. Available with the Pro plan.",
+      },
+      {
+        q: "Can I save favorite foods for quick logging?",
+        a: "Yes. Pro users can save frequently eaten foods and meals for one-tap logging. If you eat the same breakfast every morning, save it once and log it instantly going forward. Saved meals remember the exact portion and macro breakdown.",
       },
     ],
   },

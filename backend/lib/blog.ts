@@ -434,6 +434,197 @@ export const blogPosts: BlogPost[] = [
 <p>Use NourishAI's saved meals and recipe features to store your prep creations. Once logged, they're one tap away forever. That's the real power of combining meal prep with smart tracking technology: the system works for you instead of against you.</p>
 `,
   },
+  {
+    slug: "how-much-protein-do-you-actually-need-per-day",
+    title: "How Much Protein Do You Actually Need Per Day?",
+    excerpt:
+      "The internet says everything from 50g to 300g. Here's what the science actually says about daily protein requirements for muscle building, fat loss, and general health.",
+    author: "NourishAI Team",
+    category: "Nutrition",
+    tags: ["protein", "muscle building", "nutrition science", "daily intake"],
+    publishedAt: "2026-03-01",
+    readTime: 8,
+    content: `
+<p>Open any fitness forum and you'll find wildly different opinions on how much protein you need. Some say 1 gram per pound of bodyweight. Others swear by 0.8 grams per kilogram. A few insist on 2+ grams per pound. The disagreement is exhausting — but the research is actually clearer than the internet makes it seem.</p>
+
+<h2>The Scientific Consensus</h2>
+
+<p>The most comprehensive meta-analysis on protein intake and muscle growth was published in the <em>British Journal of Sports Medicine</em> in 2018. After reviewing 49 studies with 1,863 participants, the researchers found that the optimal protein intake for maximizing muscle gains during resistance training is approximately <strong>1.6 grams per kilogram of bodyweight per day</strong> (about 0.73g per pound).</p>
+
+<p>Importantly, the study found no additional benefit beyond 2.2g/kg/day. So if you weigh 180 lbs (82 kg), you're looking at roughly <strong>131–180g of protein per day</strong> as your optimal range.</p>
+
+<h2>But Context Matters</h2>
+
+<p>That 1.6g/kg number is an average for resistance-trained individuals in a calorie surplus or at maintenance. Your situation might call for different amounts:</p>
+
+<ul>
+<li><strong>Cutting (calorie deficit):</strong> Higher protein helps preserve muscle mass. Aim for 2.0–2.4g/kg. When you're in a deficit, your body is more likely to break down muscle for energy, and higher protein intake counteracts this.</li>
+<li><strong>Bulking (calorie surplus):</strong> 1.6–2.0g/kg is sufficient. The extra calories from carbs and fat are doing some of the muscle-sparing work for you.</li>
+<li><strong>General health (no specific fitness goal):</strong> The RDA of 0.8g/kg is a <em>minimum</em> to avoid deficiency, not an optimal target. Most nutritionists now recommend at least 1.2g/kg for general health, especially for adults over 50.</li>
+<li><strong>Endurance athletes:</strong> 1.2–1.6g/kg is typically sufficient. Endurance training doesn't create the same muscle protein synthesis demands as resistance training.</li>
+</ul>
+
+<h2>Common Protein Myths</h2>
+
+<p><strong>Myth: You can only absorb 30g of protein per meal.</strong> This has been debunked repeatedly. Your body will absorb all the protein you eat — it just takes longer with larger amounts. A 2023 study showed that even 100g of protein in a single meal was fully utilized for muscle protein synthesis, though the process took longer than with smaller doses.</p>
+
+<p><strong>Myth: Too much protein damages your kidneys.</strong> In healthy individuals with no pre-existing kidney disease, there is no evidence that high protein intake causes kidney damage. A 2018 study followed resistance-trained men consuming 2.5–3.3g/kg/day for over a year with no adverse effects on kidney function.</p>
+
+<p><strong>Myth: Plant protein doesn't count.</strong> Plant proteins are often called "incomplete" because individual sources may lack certain amino acids. But if you eat a variety of plant proteins throughout the day — beans, lentils, tofu, tempeh, seitan, grains — you'll get all essential amino acids. The key is variety and total daily intake, not individual meal completeness.</p>
+
+<h2>Practical Protein Distribution</h2>
+
+<p>While total daily protein matters most, distributing it across 3–5 meals can optimize muscle protein synthesis. A good rule of thumb: aim for at least <strong>25–40g of protein per meal</strong>, with larger people and those in a deficit skewing toward the higher end.</p>
+
+<p>Here's what 40g of protein looks like from common sources:</p>
+<ul>
+<li>5.5 oz chicken breast (about 170g)</li>
+<li>6 oz salmon fillet</li>
+<li>5 large eggs + 2 egg whites</li>
+<li>1.5 cups Greek yogurt</li>
+<li>1 scoop whey protein + 1 cup cottage cheese</li>
+<li>1.5 cups cooked lentils + 1 cup edamame</li>
+</ul>
+
+<h2>How NourishAI Makes This Easy</h2>
+
+<p>The hardest part of hitting your protein target isn't knowing the number — it's tracking whether you're actually reaching it. NourishAI's macro dashboard shows your protein progress in real-time throughout the day. Snap a photo of your meal and instantly see how much protein you've logged versus your daily target. No manual calculations, no food scale required for every meal. The AI handles the estimation so you can focus on eating well.</p>
+
+<p>Set your protein target based on the guidelines above, and let NourishAI keep you accountable. The app calculates personalized macro targets during onboarding based on your body composition, activity level, and goals — so you don't have to do any of this math yourself.</p>
+`,
+  },
+  {
+    slug: "calorie-counting-apps-compared-2026",
+    title: "The Best Calorie Counting Apps in 2026: An Honest Comparison",
+    excerpt:
+      "MyFitnessPal, Cronometer, MacroFactor, Lose It, and NourishAI — we break down the pros and cons of each popular nutrition tracker so you can pick the right one.",
+    author: "NourishAI Team",
+    category: "Technology",
+    tags: ["calorie counting", "app comparison", "MyFitnessPal", "macro tracking"],
+    publishedAt: "2026-03-04",
+    readTime: 9,
+    content: `
+<p>Choosing a calorie counting app in 2026 is harder than it should be. There are dozens of options, each with different strengths, pricing models, and approaches to food logging. After using every major nutrition app extensively, here's an honest breakdown of what each does well and where they fall short.</p>
+
+<h2>MyFitnessPal</h2>
+
+<p><strong>Price:</strong> Free with ads, Premium $19.99/month</p>
+
+<p><strong>Pros:</strong> The largest food database in the world (14M+ foods). Nearly every packaged food and restaurant chain item is already in the system. Strong community features and recipe import tool. Apple Watch app. Integrates with almost every fitness device and app.</p>
+
+<p><strong>Cons:</strong> The user-submitted database means many entries contain errors — incorrect macro data that can throw off your tracking significantly. The free tier is increasingly limited and ad-heavy. The barcode scanner sometimes pulls incorrect entries. Premium is expensive for what you get. The UI feels dated despite recent redesigns.</p>
+
+<p><strong>Best for:</strong> People who eat a lot of packaged/restaurant food and want the largest possible database.</p>
+
+<h2>Cronometer</h2>
+
+<p><strong>Price:</strong> Free with ads, Gold $49.99/year</p>
+
+<p><strong>Pros:</strong> Verified, lab-sourced nutrition data (no user-submitted entries). Tracks 82+ micronutrients including vitamins, minerals, and amino acids. Excellent for people with specific dietary needs or restrictions. Clean, data-forward interface. HIPAA compliant.</p>
+
+<p><strong>Cons:</strong> Smaller food database than MyFitnessPal. Manual entry is more cumbersome. No AI features. The interface prioritizes data density over ease of use, which can overwhelm casual trackers. Community features are minimal.</p>
+
+<p><strong>Best for:</strong> Data-driven trackers who care about micronutrient accuracy and want verified nutrition data.</p>
+
+<h2>MacroFactor</h2>
+
+<p><strong>Price:</strong> $71.99/year (no free tier)</p>
+
+<p><strong>Pros:</strong> Algorithm-based calorie recommendations that adapt based on your actual weight trends. Verified food database. Excellent coaching features that adjust your targets weekly based on progress. Built by researchers who actually understand nutrition science.</p>
+
+<p><strong>Cons:</strong> No free tier — you're paying before you try it. No AI photo scanning. The adaptive algorithm needs 2–3 weeks of data before it starts making useful recommendations. Smaller food database. No Apple Watch app.</p>
+
+<p><strong>Best for:</strong> Serious fitness enthusiasts who want data-driven, adaptive calorie recommendations.</p>
+
+<h2>Lose It!</h2>
+
+<p><strong>Price:</strong> Free, Premium $39.99/year</p>
+
+<p><strong>Pros:</strong> Very beginner-friendly interface. Good barcode scanner. Snap-It AI food recognition (in Premium). Affordable premium tier. Built-in meal planning. Social challenges and group features.</p>
+
+<p><strong>Cons:</strong> AI recognition accuracy is hit-or-miss. Macro tracking is secondary to calorie focus. Database has the same user-submitted accuracy issues as MyFitnessPal. Limited micronutrient tracking. Analytics are basic compared to MacroFactor or Cronometer.</p>
+
+<p><strong>Best for:</strong> Casual dieters focused primarily on calorie counting with a simple, friendly interface.</p>
+
+<h2>NourishAI</h2>
+
+<p><strong>Price:</strong> Free (1 AI scan/week), Pro $7.99/month or $39.99/year</p>
+
+<p><strong>Pros:</strong> Advanced AI food recognition powered by Claude (one of the most capable AI models available). Instant macro breakdown from a single photo — no searching through databases. Local-first data storage for privacy. Apple HealthKit integration. Clean, modern interface designed for fitness-focused people. Barcode scanning included free. Manual entry for precision when needed.</p>
+
+<p><strong>Cons:</strong> Newer app with a smaller community. No social or challenge features (yet). AI accuracy depends on photo quality and lighting. No web app — iOS only. Micronutrient tracking is not as detailed as Cronometer.</p>
+
+<p><strong>Best for:</strong> Gym-goers and macro trackers who want the fastest, most frictionless logging experience with state-of-the-art AI accuracy.</p>
+
+<h2>The Bottom Line</h2>
+
+<p>There's no single "best" app — it depends on what you value most. If database size matters, MyFitnessPal wins. If micronutrient accuracy is paramount, choose Cronometer. If you want adaptive coaching, MacroFactor is unmatched. If you're a casual dieter, Lose It keeps things simple.</p>
+
+<p>But if you're tired of searching through databases and want the fastest path from plate to logged — snap a photo and move on with your day — NourishAI's AI-first approach is the future of food tracking. The friction of manual logging is the #1 reason people quit tracking their nutrition. Removing that friction changes everything.</p>
+`,
+  },
+  {
+    slug: "intermittent-fasting-and-macro-tracking-complete-guide",
+    title: "Intermittent Fasting + Macro Tracking: The Complete Guide",
+    excerpt:
+      "Can you combine intermittent fasting with macro tracking? Absolutely — and it might be the most effective nutrition strategy for body recomposition. Here's how to do it right.",
+    author: "NourishAI Team",
+    category: "Fitness",
+    tags: ["intermittent fasting", "macros", "body recomposition", "meal timing"],
+    publishedAt: "2026-02-25",
+    readTime: 8,
+    content: `
+<p>Intermittent fasting (IF) and macro tracking are two of the most popular nutrition strategies in the fitness world. Each one works well on its own — but combining them creates a powerful system for body recomposition that's both flexible and sustainable. The key is understanding how they complement each other instead of treating them as competing approaches.</p>
+
+<h2>Why They Work Together</h2>
+
+<p>Macro tracking tells you <em>what</em> to eat. Intermittent fasting tells you <em>when</em> to eat. Neither one invalidates the other. In fact, IF can make macro tracking easier because you're fitting your daily targets into fewer, larger meals — which means fewer logging sessions and bigger, more satisfying portions at each meal.</p>
+
+<p>Think about it: hitting 180g of protein across six small meals means each meal needs 30g of protein. That's doable but requires constant attention. Hitting 180g across three meals during an 8-hour eating window means 60g per meal. Those larger protein portions are easier to plan and more satisfying to eat.</p>
+
+<h2>Popular IF Protocols for Lifters</h2>
+
+<ul>
+<li><strong>16:8</strong> — 16 hours fasting, 8-hour eating window. The most popular and sustainable for most people. Example: eat from 12pm to 8pm. This naturally skips breakfast and allows for a large lunch, afternoon snack, and dinner.</li>
+<li><strong>18:6</strong> — A tighter window that works well for people who naturally aren't hungry in the morning. Example: eat from 1pm to 7pm.</li>
+<li><strong>20:4 (Warrior Diet)</strong> — One large meal with a small snack. Aggressive but effective for some. Challenging to hit protein targets in such a short window.</li>
+<li><strong>5:2</strong> — Eat normally 5 days, restrict to 500–600 calories 2 days. Less common in fitness circles because the low-calorie days can impair training performance.</li>
+</ul>
+
+<p>For most lifters combining IF with macro tracking, <strong>16:8 is the sweet spot</strong>. It's restrictive enough to create structure but flexible enough to fit social meals, training schedules, and adequate protein intake.</p>
+
+<h2>Setting Your Macros for IF</h2>
+
+<p>Your total daily macro targets don't change just because you're fasting. If your goal requires 2,400 calories with 180g protein, 260g carbs, and 75g fat, those numbers stay the same whether you eat them across 16 hours or 8 hours.</p>
+
+<p>What changes is <strong>meal structure</strong>. Here's a sample 16:8 day for someone targeting 2,400 calories:</p>
+
+<ul>
+<li><strong>12:00pm — Meal 1 (800 cal):</strong> 6oz chicken breast, 1.5 cups rice, mixed vegetables, 1 tbsp olive oil. (55g protein, 85g carbs, 22g fat)</li>
+<li><strong>3:30pm — Meal 2 (600 cal):</strong> Protein shake with banana, oats, and peanut butter. (45g protein, 65g carbs, 18g fat)</li>
+<li><strong>7:00pm — Meal 3 (800 cal):</strong> 8oz salmon, sweet potato, asparagus, side salad with dressing. (50g protein, 75g carbs, 28g fat)</li>
+<li><strong>7:45pm — Snack (200 cal):</strong> Greek yogurt with berries. (30g protein, 25g carbs, 2g fat)</li>
+</ul>
+
+<p><strong>Total:</strong> 2,400 cal | 180g protein | 250g carbs | 70g fat</p>
+
+<h2>Common Mistakes to Avoid</h2>
+
+<p><strong>1. Under-eating protein during the eating window.</strong> This is the #1 mistake. When you compress eating into fewer hours, it's easy to fill up on carbs and fats and fall short on protein. Plan your protein sources first, then fill in carbs and fats around them.</p>
+
+<p><strong>2. Breaking the fast with junk.</strong> After 16 hours of not eating, your first meal sets the tone for the rest of the window. A high-protein, moderate-carb first meal keeps blood sugar stable and prevents the "feast mode" mentality that leads to overeating.</p>
+
+<p><strong>3. Training fasted without BCAAs or EAAs.</strong> If you train during the fasting window, consider 10g of essential amino acids (EAAs) before or during your workout. This provides the building blocks for muscle protein synthesis without significantly breaking your fast.</p>
+
+<p><strong>4. Being too rigid with the window.</strong> If your eating window is 12–8pm but you have a dinner at 8:30pm one night, shift your window. IF is a tool, not a religion. The macro targets matter more than the exact timing.</p>
+
+<h2>Tracking IF + Macros with NourishAI</h2>
+
+<p>NourishAI makes this combination particularly seamless. During your eating window, snap a photo of each meal and the AI instantly logs your macros. The dashboard shows your running totals so you can see exactly how much protein, carbs, and fat you still need to fit into your remaining eating window. No searching through databases, no weighing every ingredient — just eat, snap, and track.</p>
+
+<p>The daily progress rings give you at-a-glance visibility into whether you're on pace to hit your targets before your eating window closes. If you're 30g short on protein with one meal left, you know to prioritize a protein-heavy final meal.</p>
+`,
+  },
 ];
 
 /**

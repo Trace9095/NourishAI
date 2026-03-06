@@ -15,11 +15,11 @@
 - [x] Add Neon PostgreSQL via Vercel Integration
 - [x] Set env vars (ANTHROPIC_API_KEY, RESEND_API_KEY, DATABASE_URL, NEXT_PUBLIC_APP_URL)
 - [x] Purchase domain (nourishhealthai.com)
-- [ ] Add domain to Vercel Dashboard
-- [ ] Set ADMIN_SETUP_TOKEN env var in Vercel
-- [ ] Set ADMIN_SESSION_SECRET env var in Vercel
-- [ ] Run Drizzle migration (`npx drizzle-kit push`)
-- [ ] Seed admin account via POST /api/admin/setup
+- [x] Add domain to Vercel Dashboard
+- [x] Set ADMIN_SETUP_TOKEN env var in Vercel
+- [x] Set ADMIN_SESSION_SECRET env var in Vercel
+- [x] Run Drizzle migration (`npx drizzle-kit push`)
+- [x] Seed admin account via POST /api/admin/setup
 
 ### iOS App — Models & Services
 - [ ] Create Xcode project with targets (iOS, Watch, Widget) — TRACE MUST DO IN XCODE UI
@@ -73,7 +73,7 @@
 - [x] Implement security headers in next.config.ts
 - [x] Add testimonials section (6 testimonials)
 - [x] Add FAQ section (8 questions with accordion)
-- [ ] Set up Vercel Analytics
+- [x] Set up Vercel Analytics + Speed Insights
 
 ### Website — Admin Dashboard
 - [x] Build admin login page (/admin)
