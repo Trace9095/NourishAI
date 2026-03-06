@@ -214,6 +214,159 @@ final class NourishAPIManager {
         return try JSONDecoder().decode(BarcodeResponse.self, from: data)
     }
 
+    // MARK: - Analyze Menu Photo
+
+    struct MenuItemAnalysis: Codable, Sendable {
+        let name: String
+        let estimatedCalories: Int
+        let estimatedProtein: Double
+        let estimatedCarbs: Double
+        let estimatedFat: Double
+        let healthScore: Int
+        let healthNotes: String?
+    }
+
+    struct MenuAnalysisResponse: Codable, Sendable {
+        let items: [MenuItemAnalysis]
+        let healthiestPicks: [String]
+        let totalItemsFound: Int
+    }
+
+    func analyzeMenu(image: UIImage) async throws -> MenuAnalysisResponse {
+        guard let imageData = image.jpegData(compressionQuality: 0.8) else {
+            throw APIError.invalidImage
+        }
+
+        let base64 = imageData.base64EncodedString()
+        let url = URL(string: APIConfig.analyzeMenu)!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(deviceId, forHTTPHeaderField: "X-Device-ID")
+
+        let body: [String: String] = [
+            "imageBase64": base64,
+            "mediaType": "image/jpeg",
+        ]
+        request.httpBody = try JSONEncoder().encode(body)
+
+        let (data, response) = try await URLSession.shared.data(for: request)
+        let httpResponse = response as? HTTPURLResponse
+
+        if httpResponse?.statusCode == 403 {
+            throw APIError.scanLimitReached
+        }
+        if httpResponse?.statusCode == 429 {
+            throw APIError.cooldownActive
+        }
+        guard let statusCode = httpResponse?.statusCode, statusCode < 300 else {
+            throw APIError.analysisServerError
+        }
+
+        return try JSONDecoder().decode(MenuAnalysisResponse.self, from: data)
+    }
+
+    // MARK: - Food Suggestions
+
+    struct FoodSuggestion: Codable, Sendable {
+        let name: String
+        let description: String
+        let calories: Int
+        let protein: Double
+        let carbs: Double
+        let fat: Double
+        let prepTime: Int
+        let difficulty: String
+    }
+
+    struct FoodSuggestionsResponse: Codable, Sendable {
+        let suggestions: [FoodSuggestion]
+    }
+
+    func getSuggestions(
+        remainingCalories: Int,
+        remainingProtein: Double,
+        remainingCarbs: Double,
+        remainingFat: Double,
+        timeOfDay: String,
+        preferences: [String]? = nil
+    ) async throws -> FoodSuggestionsResponse {
+        let url = URL(string: APIConfig.suggestFoods)!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(deviceId, forHTTPHeaderField: "X-Device-ID")
+
+        var bodyDict: [String: Any] = [
+            "remainingCalories": remainingCalories,
+            "remainingProtein": remainingProtein,
+            "remainingCarbs": remainingCarbs,
+            "remainingFat": remainingFat,
+            "timeOfDay": timeOfDay,
+        ]
+        if let prefs = preferences {
+            bodyDict["preferences"] = prefs
+        }
+        request.httpBody = try JSONSerialization.data(withJSONObject: bodyDict)
+
+        let (data, response) = try await URLSession.shared.data(for: request)
+        let httpResponse = response as? HTTPURLResponse
+
+        if httpResponse?.statusCode == 429 {
+            throw APIError.rateLimitExceeded
+        }
+        guard let statusCode = httpResponse?.statusCode, statusCode < 300 else {
+            throw APIError.analysisServerError
+        }
+
+        return try JSONDecoder().decode(FoodSuggestionsResponse.self, from: data)
+    }
+
+    // MARK: - Nutrition Chat
+
+    struct ChatResponse: Codable, Sendable {
+        let reply: String
+        let tokensUsed: Int?
+    }
+
+    func sendChatMessage(
+        message: String,
+        context: ChatContext? = nil
+    ) async throws -> ChatResponse {
+        let url = URL(string: APIConfig.chat)!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(deviceId, forHTTPHeaderField: "X-Device-ID")
+
+        var bodyDict: [String: Any] = ["message": message]
+        if let ctx = context {
+            var ctxDict: [String: Any] = [:]
+            if let dc = ctx.dailyCalories { ctxDict["dailyCalories"] = dc }
+            if let dp = ctx.dailyProtein { ctxDict["dailyProtein"] = dp }
+            if let dcb = ctx.dailyCarbs { ctxDict["dailyCarbs"] = dcb }
+            if let df = ctx.dailyFat { ctxDict["dailyFat"] = df }
+            if let tc = ctx.targetCalories { ctxDict["targetCalories"] = tc }
+            if let tp = ctx.targetProtein { ctxDict["targetProtein"] = tp }
+            if let gt = ctx.goalType { ctxDict["goalType"] = gt }
+            if let rf = ctx.recentFoods { ctxDict["recentFoods"] = rf }
+            bodyDict["context"] = ctxDict
+        }
+        request.httpBody = try JSONSerialization.data(withJSONObject: bodyDict)
+
+        let (data, response) = try await URLSession.shared.data(for: request)
+        let httpResponse = response as? HTTPURLResponse
+
+        if httpResponse?.statusCode == 429 {
+            throw APIError.chatLimitReached
+        }
+        guard let statusCode = httpResponse?.statusCode, statusCode < 300 else {
+            throw APIError.analysisServerError
+        }
+
+        return try JSONDecoder().decode(ChatResponse.self, from: data)
+    }
+
     // MARK: - Scan Count
 
     struct ScanCountResponse: Codable, Sendable {
@@ -274,6 +427,8 @@ enum APIError: LocalizedError, Sendable {
     case productNotFound
     case barcodeLookupFailed
     case subscriptionVerificationFailed
+    case rateLimitExceeded
+    case chatLimitReached
     case networkError
 
     var errorDescription: String? {
@@ -286,7 +441,22 @@ enum APIError: LocalizedError, Sendable {
         case .productNotFound: return "Product not found in database"
         case .barcodeLookupFailed: return "Barcode lookup failed"
         case .subscriptionVerificationFailed: return "Could not verify subscription"
+        case .rateLimitExceeded: return "Too many requests. Please try again later."
+        case .chatLimitReached: return "Daily chat limit reached. Upgrade to Pro for unlimited."
         case .networkError: return "Network connection error"
         }
     }
+}
+
+// MARK: - Chat Context
+
+struct ChatContext: Sendable {
+    let dailyCalories: Int?
+    let dailyProtein: Double?
+    let dailyCarbs: Double?
+    let dailyFat: Double?
+    let targetCalories: Int?
+    let targetProtein: Int?
+    let goalType: String?
+    let recentFoods: [String]?
 }

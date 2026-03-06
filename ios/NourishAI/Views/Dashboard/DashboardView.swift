@@ -38,6 +38,39 @@ struct DashboardView: View {
                     // Quick stats
                     quickStatsRow
 
+                    // Discover restaurants
+                    NavigationLink {
+                        RestaurantMapView()
+                    } label: {
+                        HStack(spacing: 14) {
+                            Image(systemName: "mappin.and.ellipse")
+                                .font(.title2)
+                                .foregroundColor(.brandGreen)
+                                .frame(width: 44, height: 44)
+                                .background(Color.brandGreen.opacity(0.1))
+                                .clipShape(RoundedRectangle(cornerRadius: 12))
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("Nearby Restaurants")
+                                    .font(.subheadline.weight(.semibold))
+                                    .foregroundColor(.white)
+                                Text("Find healthy options near you")
+                                    .font(.caption)
+                                    .foregroundColor(.gray)
+                            }
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .font(.caption)
+                                .foregroundColor(.gray)
+                        }
+                        .padding(16)
+                        .background(Color.brandCard)
+                        .clipShape(RoundedRectangle(cornerRadius: Layout.cornerRadius))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: Layout.cornerRadius)
+                                .strokeBorder(Color.white.opacity(0.1), lineWidth: 1)
+                        )
+                    }
+
                     // Recent meals
                     recentMealsSection
                 }
@@ -422,6 +455,30 @@ struct AddFoodSheet: View {
                         subtitle: "Enter macros manually"
                     ) {
                         ManualEntryView()
+                    }
+                    addFoodRow(
+                        icon: "doc.text.magnifyingglass",
+                        color: .macroProtein,
+                        title: "Scan Restaurant Menu",
+                        subtitle: "Get health insights for menu items"
+                    ) {
+                        MenuScanView()
+                    }
+                    addFoodRow(
+                        icon: "lightbulb.fill",
+                        color: .brandOrange,
+                        title: "Food Ideas",
+                        subtitle: "AI suggestions based on remaining macros"
+                    ) {
+                        FoodIdeasView()
+                    }
+                    addFoodRow(
+                        icon: "bubble.left.and.bubble.right.fill",
+                        color: .brandGreen,
+                        title: "Ask AI Nutritionist",
+                        subtitle: "Chat about your nutrition goals"
+                    ) {
+                        NutritionChatView()
                     }
                 }
                 .listRowBackground(Color.brandCard)

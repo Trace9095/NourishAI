@@ -15,6 +15,9 @@ enum APIConfig {
     static let lookupBarcode = "\(baseURL)/lookup-barcode"
     static let scanCount = "\(baseURL)/scan-count"
     static let verifySubscription = "\(baseURL)/verify-subscription"
+    static let analyzeMenu = "\(baseURL)/analyze-menu"
+    static let suggestFoods = "\(baseURL)/suggest-foods"
+    static let chat = "\(baseURL)/chat"
 }
 
 // MARK: - Brand Colors
