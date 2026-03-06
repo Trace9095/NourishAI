@@ -16,8 +16,8 @@ struct SettingsView: View {
                     if let profile {
                         settingsRow("Name", value: profile.name)
                         settingsRow("Age", value: "\(profile.age)")
-                        settingsRow("Height", value: "\(Int(profile.heightCm)) cm")
-                        settingsRow("Weight", value: "\(Int(profile.weightKg)) kg")
+                        settingsRow("Height", value: formatHeight(cm: profile.heightCm))
+                        settingsRow("Weight", value: formatWeight(kg: profile.weightKg))
                         settingsRow("Goal", value: profile.nutritionGoal.displayName)
                         settingsRow("Activity", value: profile.activityLevel.displayName)
                     }
@@ -33,7 +33,7 @@ struct SettingsView: View {
                         settingsRow("Protein", value: "\(profile.targetProtein)g", color: .macroProtein)
                         settingsRow("Carbs", value: "\(profile.targetCarbs)g", color: .macroCarbs)
                         settingsRow("Fat", value: "\(profile.targetFat)g", color: .macroFat)
-                        settingsRow("Water", value: "\(profile.targetWaterMl) ml", color: .macroWater)
+                        settingsRow("Water", value: formatWater(ml: profile.targetWaterMl), color: .macroWater)
                     }
                 } header: {
                     Text("Daily Targets").foregroundColor(.gray)
@@ -73,8 +73,17 @@ struct SettingsView: View {
                             Label("NourishAI Pro", systemImage: "star.fill")
                                 .foregroundColor(.brandOrange)
                             Spacer()
-                            Text(profile?.subscriptionTier == "pro" ? "Active" : "Upgrade")
-                                .foregroundColor(.brandGreen)
+                            if profile?.subscriptionTier == "pro" {
+                                HStack(spacing: 4) {
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .foregroundColor(.brandGreen)
+                                    Text("Active")
+                                        .foregroundColor(.brandGreen)
+                                }
+                            } else {
+                                Text("Upgrade")
+                                    .foregroundColor(.brandGreen)
+                            }
                         }
                     }
                     .frame(minHeight: Layout.minTouchTarget)
@@ -122,6 +131,23 @@ struct SettingsView: View {
                 .foregroundColor(color)
                 .fontWeight(.medium)
         }
+    }
+
+    private func formatHeight(cm: Double) -> String {
+        let totalInches = cm / 2.54
+        let feet = Int(totalInches) / 12
+        let inches = Int(totalInches) % 12
+        return "\(feet)'\(inches)\""
+    }
+
+    private func formatWeight(kg: Double) -> String {
+        let lbs = Int(kg * 2.20462)
+        return "\(lbs) lbs"
+    }
+
+    private func formatWater(ml: Int) -> String {
+        let oz = Double(ml) / 29.5735
+        return String(format: "%.0f oz", oz)
     }
 
     private func requestHealthKit() {

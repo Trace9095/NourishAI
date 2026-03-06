@@ -19,6 +19,7 @@ struct ContentView: View {
                 OnboardingContainerView(showOnboarding: $showOnboarding)
             }
         }
+        .preferredColorScheme(.dark)
         .onAppear {
             if !hasCompletedOnboarding {
                 showOnboarding = true
