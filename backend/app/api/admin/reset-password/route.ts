@@ -45,7 +45,8 @@ export async function POST(request: NextRequest) {
       admin: result[0],
     });
   } catch (error) {
-    console.error("Password reset error:", error);
-    return NextResponse.json({ error: "Server error" }, { status: 500 });
+    const msg = error instanceof Error ? error.message : String(error);
+    console.error("Password reset error:", msg, error);
+    return NextResponse.json({ error: "Server error", detail: msg }, { status: 500 });
   }
 }
