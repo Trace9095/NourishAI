@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { CookieConsentBanner } from "@/components/CookieConsentBanner";
 import "./globals.css";
 
@@ -122,6 +123,7 @@ export default function RootLayout({
         </a>
         {children}
         <CookieConsentBanner />
+        <Analytics />
       </body>
     </html>
   );
