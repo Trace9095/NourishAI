@@ -1,99 +1,277 @@
-{
-  "brand": "NourishAI",
-  "month": "March 2026",
-  "posts": [
-    {
-      "id": "nai-2026-03-06-protein-tip",
-      "date": "2026-03-06",
-      "template": "feed-macro-tip",
-      "type": "feed",
-      "caption": "Struggling to hit your protein? Here are 3 easy wins 💪\n\n#NourishAI #MacroTracking #ProteinGoals #FitnessNutrition #MealPrep",
-      "data": {
-        "TITLE_LINE1": "3 Ways to Hit",
-        "TITLE_LINE2": "Your Protein Goal",
-        "TIP1_EMOJI": "🥚",
-        "TIP1_TEXT": "Start with <strong>30g protein</strong> at breakfast. <span class='green'>Eggs + Greek yogurt</span> is the easiest combo.",
-        "TIP2_EMOJI": "🥤",
-        "TIP2_TEXT": "Add a <strong>protein shake</strong> between meals. That's an easy <span class='red'>25-30g</span> without cooking.",
-        "TIP3_EMOJI": "🍗",
-        "TIP3_TEXT": "Double your dinner protein. <span class='orange'>8oz chicken</span> instead of 4oz = 25g extra."
-      }
-    },
-    {
-      "id": "nai-2026-03-08-calorie-myth",
-      "date": "2026-03-08",
-      "template": "feed-macro-tip",
-      "type": "feed",
-      "caption": "Stop believing these calorie myths ❌\n\nTrack smarter, not harder.\n\n#NourishAI #CalorieTracking #NutritionFacts #FitnessTips",
-      "data": {
-        "TITLE_LINE1": "3 Calorie Myths",
-        "TITLE_LINE2": "Killing Your Cut",
-        "TIP1_EMOJI": "❌",
-        "TIP1_TEXT": "<strong>\"Eating less = faster results.\"</strong> Too big a deficit <span class='red'>kills muscle</span> and tanks metabolism.",
-        "TIP2_EMOJI": "❌",
-        "TIP2_TEXT": "<strong>\"All calories are equal.\"</strong> <span class='green'>200 cal of chicken</span> hits different than 200 cal of candy.",
-        "TIP3_EMOJI": "❌",
-        "TIP3_TEXT": "<strong>\"You can eyeball portions.\"</strong> Most people are off by <span class='orange'>40-60%</span>. Track it."
-      }
-    },
-    {
-      "id": "nai-2026-03-10-ai-scan-reel",
-      "date": "2026-03-10",
-      "template": "reel-ai-scan",
-      "type": "reel",
-      "caption": "Just snap a photo and NourishAI does the rest 🤯📸\n\nAI-powered macro tracking — no more guessing.\n\nFree on the App Store 🔗\n\n#NourishAI #AIFitness #MacroTracker #FoodScanner #GymTok #FitTok",
-      "data": {}
-    },
-    {
-      "id": "nai-2026-03-12-meal-prep",
-      "date": "2026-03-12",
-      "template": "feed-macro-tip",
-      "type": "feed",
-      "caption": "Sunday meal prep hits different when you know your macros 🔥\n\n#MealPrep #MacroFriendly #NourishAI #ProteinMeals",
-      "data": {
-        "TITLE_LINE1": "Meal Prep That",
-        "TITLE_LINE2": "Hits Your Macros",
-        "TIP1_EMOJI": "📋",
-        "TIP1_TEXT": "<strong>Plan before you shop.</strong> Set your <span class='green'>weekly macro targets</span> in NourishAI first.",
-        "TIP2_EMOJI": "⚖️",
-        "TIP2_TEXT": "<strong>Weigh everything once.</strong> Prep <span class='orange'>5 identical containers</span> = zero daily decisions.",
-        "TIP3_EMOJI": "📸",
-        "TIP3_TEXT": "<strong>Scan new meals with AI.</strong> Snap a photo and <span class='red'>save to favorites</span> for instant relogging."
-      }
-    },
-    {
-      "id": "nai-2026-03-14-bulk-cut",
-      "date": "2026-03-14",
-      "template": "feed-macro-tip",
-      "type": "feed",
-      "caption": "Bulking vs Cutting — the numbers that actually matter 📊\n\n#BulkingTips #CuttingTips #NourishAI #Macros #Bodybuilding",
-      "data": {
-        "TITLE_LINE1": "Bulk vs Cut:",
-        "TITLE_LINE2": "Know Your Numbers",
-        "TIP1_EMOJI": "📈",
-        "TIP1_TEXT": "<strong>Bulking?</strong> Aim for <span class='green'>+15% surplus</span>. More than that = unnecessary fat gain.",
-        "TIP2_EMOJI": "📉",
-        "TIP2_TEXT": "<strong>Cutting?</strong> Stay at <span class='orange'>-20% deficit</span>. Slower cuts preserve more muscle.",
-        "TIP3_EMOJI": "🎯",
-        "TIP3_TEXT": "<strong>Either way:</strong> Hit <span class='red'>1g protein per lb</span> bodyweight. Non-negotiable."
-      }
-    },
-    {
-      "id": "nai-2026-03-17-water-tip",
-      "date": "2026-03-17",
-      "template": "feed-macro-tip",
-      "type": "feed",
-      "caption": "Water intake is the most underrated performance hack 💧\n\n#Hydration #FitnessHacks #NourishAI #WaterIntake",
-      "data": {
-        "TITLE_LINE1": "Why Your Gains",
-        "TITLE_LINE2": "Need More Water",
-        "TIP1_EMOJI": "💧",
-        "TIP1_TEXT": "<strong>Dehydration = weaker lifts.</strong> Even <span class='red'>2% dehydrated</span> drops strength by 20%.",
-        "TIP2_EMOJI": "⚡",
-        "TIP2_TEXT": "<strong>Protein needs water.</strong> High protein diets need <span class='green'>100+ oz/day</span> for kidney health.",
-        "TIP3_EMOJI": "📱",
-        "TIP3_TEXT": "<strong>Track it.</strong> NourishAI's water tracker makes it <span class='orange'>dead simple</span> to stay on top."
-      }
+[
+  {
+    "id": "nai-2026-03-06-protein-tip",
+    "date": "2026-03-06",
+    "template": "feed-macro-tip",
+    "type": "feed",
+    "caption": "Protein is the king of macros for muscle growth. Here's the research-backed target most people miss.\n\n#NourishAI #MacroTracking #ProteinGoals #FitnessNutrition #GymLife #MealPrep #NutritionTips",
+    "data": {
+      "BADGE": "MACRO TIP",
+      "HEADLINE": "Are You Getting\nEnough Protein?",
+      "TIP_1_EMOJI": "🎯",
+      "TIP_1": "Aim for 0.8-1g per pound of bodyweight daily",
+      "TIP_2_EMOJI": "🥩",
+      "TIP_2": "Split across 4-5 meals for optimal absorption",
+      "TIP_3_EMOJI": "⏰",
+      "TIP_3": "Hit 30-40g within 2 hours post-workout"
     }
-  ]
-}
+  },
+  {
+    "id": "nai-2026-03-08-calorie-myth",
+    "date": "2026-03-08",
+    "template": "feed-macro-tip",
+    "type": "feed",
+    "caption": "Stop believing everything you hear about calories. Here's what the science actually says.\n\n#CalorieMyths #NutritionFacts #NourishAI #FitnessTips #MacroTracking #HealthyEating",
+    "data": {
+      "BADGE": "MYTH BUSTER",
+      "HEADLINE": "3 Calorie Myths\nHolding You Back",
+      "TIP_1_EMOJI": "❌",
+      "TIP_1": "Eating after 8pm does NOT make you gain fat",
+      "TIP_2_EMOJI": "❌",
+      "TIP_2": "All calories are NOT created equal for body comp",
+      "TIP_3_EMOJI": "❌",
+      "TIP_3": "Skipping meals does NOT boost your metabolism"
+    }
+  },
+  {
+    "id": "nai-2026-03-10-before-after",
+    "date": "2026-03-10",
+    "template": "feed-before-after",
+    "type": "feed",
+    "caption": "This is what consistent macro tracking looks like. Your nutrition data before vs after using NourishAI.\n\n#TransformationTuesday #MacroTracking #NourishAI #FitnessJourney #NutritionTracking #GymResults",
+    "data": {
+      "BADGE": "RESULTS",
+      "HEADLINE_1": "What Consistent",
+      "HEADLINE_2": "Tracking Looks Like",
+      "BEFORE_CAL": "~2,800?",
+      "BEFORE_PRO": "~90g?",
+      "BEFORE_TIME": "15 min/day",
+      "BEFORE_ACC": "Guessing",
+      "AFTER_CAL": "2,777",
+      "AFTER_PRO": "205g",
+      "AFTER_TIME": "30 sec/day",
+      "AFTER_ACC": "95%+ AI"
+    }
+  },
+  {
+    "id": "nai-2026-03-11-story-ai",
+    "date": "2026-03-11",
+    "template": "story-feature",
+    "type": "story",
+    "caption": "Swipe up to download NourishAI — the fastest way to track your macros.",
+    "data": {
+      "BADGE": "NEW APP",
+      "HEADLINE_1": "Track Macros",
+      "HEADLINE_2": "In Seconds",
+      "SUBTITLE": "NourishAI uses AI to analyze your food from a single photo.",
+      "ICON_1": "📸",
+      "FEAT_1_TITLE": "AI Photo Scanning",
+      "FEAT_1_DESC": "Snap a photo, get instant macros",
+      "ICON_2": "📊",
+      "FEAT_2_TITLE": "Smart Dashboard",
+      "FEAT_2_DESC": "Calories, protein, carbs, fat at a glance",
+      "ICON_3": "⌚",
+      "FEAT_3_TITLE": "Apple Watch",
+      "FEAT_3_DESC": "Check macros right from your wrist"
+    }
+  },
+  {
+    "id": "nai-2026-03-12-meal-prep",
+    "date": "2026-03-12",
+    "template": "feed-macro-tip",
+    "type": "feed",
+    "caption": "Sunday meal prep is the cheat code. Here's how to set up your week for macro success.\n\n#MealPrep #MealPrepSunday #NourishAI #MacroTracking #FitnessFood #HealthyMeals",
+    "data": {
+      "BADGE": "MEAL PREP",
+      "HEADLINE": "Meal Prep Like\na Pro Athlete",
+      "TIP_1_EMOJI": "📦",
+      "TIP_1": "Cook 3 proteins + 2 carb sources on Sunday",
+      "TIP_2_EMOJI": "📸",
+      "TIP_2": "Scan each meal once — save as a favorite",
+      "TIP_3_EMOJI": "🔁",
+      "TIP_3": "Log saved meals all week in 1 tap"
+    }
+  },
+  {
+    "id": "nai-2026-03-13-story-barcode",
+    "date": "2026-03-13",
+    "template": "story-feature",
+    "type": "story",
+    "caption": "Did you know the barcode scanner is completely FREE? No limits, no subscription needed.",
+    "data": {
+      "BADGE": "FREE FEATURE",
+      "HEADLINE_1": "Scan Any",
+      "HEADLINE_2": "Barcode. Free.",
+      "SUBTITLE": "500K+ products. Instant nutrition data. Zero cost.",
+      "ICON_1": "📱",
+      "FEAT_1_TITLE": "Point & Scan",
+      "FEAT_1_DESC": "Works on any packaged food",
+      "ICON_2": "🆓",
+      "FEAT_2_TITLE": "Always Free",
+      "FEAT_2_DESC": "Unlimited scans, no subscription",
+      "ICON_3": "⚡",
+      "FEAT_3_TITLE": "Instant Results",
+      "FEAT_3_DESC": "Calories, protein, carbs, fat in seconds"
+    }
+  },
+  {
+    "id": "nai-2026-03-14-bulk-cut",
+    "date": "2026-03-14",
+    "template": "feed-macro-tip",
+    "type": "feed",
+    "caption": "Bulk vs cut — the macro targets change. Here's the quick guide.\n\n#BulkingAndCutting #MacroTargets #NourishAI #FitnessGoals #BodyRecomp #GymTips",
+    "data": {
+      "BADGE": "GUIDE",
+      "HEADLINE": "Bulk vs Cut:\nMacro Targets",
+      "TIP_1_EMOJI": "💪",
+      "TIP_1": "Bulk: 1g protein/lb, surplus of 300-500 cal",
+      "TIP_2_EMOJI": "🔥",
+      "TIP_2": "Cut: 1.2g protein/lb, deficit of 400-600 cal",
+      "TIP_3_EMOJI": "⚖️",
+      "TIP_3": "Maintain: 1g protein/lb, eat at TDEE"
+    }
+  },
+  {
+    "id": "nai-2026-03-16-reel-scan",
+    "date": "2026-03-16",
+    "template": "reel-ai-scan",
+    "type": "reel",
+    "caption": "This is how fast NourishAI tracks your macros. One photo. Instant results. 🤯\n\n#NourishAI #AIFoodScanner #MacroTracking #FitTok #GymTok #NutritionApp #FitnessApp",
+    "data": {}
+  },
+  {
+    "id": "nai-2026-03-17-water-tip",
+    "date": "2026-03-17",
+    "template": "feed-macro-tip",
+    "type": "feed",
+    "caption": "Water is the most underrated macro in your toolkit. Here's what most athletes get wrong.\n\n#HydrationTips #WaterIntake #NourishAI #FitnessHydration #DrinkMoreWater #AthleteTips",
+    "data": {
+      "BADGE": "HYDRATION",
+      "HEADLINE": "You're Probably\nNot Drinking Enough",
+      "TIP_1_EMOJI": "💧",
+      "TIP_1": "Aim for half your bodyweight (lbs) in ounces",
+      "TIP_2_EMOJI": "🏋️",
+      "TIP_2": "Add 16-24 oz for every hour of training",
+      "TIP_3_EMOJI": "📱",
+      "TIP_3": "Track water intake in NourishAI dashboard"
+    }
+  },
+  {
+    "id": "nai-2026-03-19-before-after-time",
+    "date": "2026-03-19",
+    "template": "feed-before-after",
+    "type": "feed",
+    "caption": "How much time are you wasting on food logging? NourishAI cuts it down to seconds.\n\n#TimeManagement #MacroTracking #NourishAI #Productivity #FitnessHack #SmartNutrition",
+    "data": {
+      "BADGE": "TIME SAVER",
+      "HEADLINE_1": "Stop Wasting Time",
+      "HEADLINE_2": "On Food Logging",
+      "BEFORE_CAL": "Manual DB",
+      "BEFORE_PRO": "Search & Scroll",
+      "BEFORE_TIME": "15+ min/day",
+      "BEFORE_ACC": "Often wrong",
+      "AFTER_CAL": "AI Photo",
+      "AFTER_PRO": "Snap & Done",
+      "AFTER_TIME": "30 sec/day",
+      "AFTER_ACC": "95%+ accurate"
+    }
+  },
+  {
+    "id": "nai-2026-03-21-story-privacy",
+    "date": "2026-03-21",
+    "template": "story-feature",
+    "type": "story",
+    "caption": "Your nutrition data stays on YOUR device. Not our servers. Not the cloud. Yours.",
+    "data": {
+      "BADGE": "PRIVACY FIRST",
+      "HEADLINE_1": "Your Data.",
+      "HEADLINE_2": "Your Device.",
+      "SUBTITLE": "NourishAI stores everything locally. We never see your food logs.",
+      "ICON_1": "🔒",
+      "FEAT_1_TITLE": "Local Storage",
+      "FEAT_1_DESC": "All data stays on your iPhone",
+      "ICON_2": "🚫",
+      "FEAT_2_TITLE": "No Cloud Accounts",
+      "FEAT_2_DESC": "No signup, no login, no tracking",
+      "ICON_3": "🗑️",
+      "FEAT_3_TITLE": "Images Discarded",
+      "FEAT_3_DESC": "AI photos processed and deleted instantly"
+    }
+  },
+  {
+    "id": "nai-2026-03-23-macro-tip-fiber",
+    "date": "2026-03-23",
+    "template": "feed-macro-tip",
+    "type": "feed",
+    "caption": "Fiber is the forgotten macro. Here's why it matters more than you think for body comp.\n\n#FiberIntake #NutritionTips #NourishAI #GutHealth #MacroTracking #HealthyDigestion",
+    "data": {
+      "BADGE": "NUTRITION",
+      "HEADLINE": "The Forgotten\nMacro: Fiber",
+      "TIP_1_EMOJI": "🥦",
+      "TIP_1": "Aim for 25-35g of fiber per day minimum",
+      "TIP_2_EMOJI": "🧠",
+      "TIP_2": "Fiber keeps you full — crucial during a cut",
+      "TIP_3_EMOJI": "📈",
+      "TIP_3": "Track it in NourishAI alongside your macros"
+    }
+  },
+  {
+    "id": "nai-2026-03-25-before-after-accuracy",
+    "date": "2026-03-25",
+    "template": "feed-before-after",
+    "type": "feed",
+    "caption": "Guessing your macros vs actually knowing them. The difference is everything.\n\n#MacroAccuracy #NourishAI #FitnessResults #NutritionTracking #StopGuessing #AIFood",
+    "data": {
+      "BADGE": "ACCURACY",
+      "HEADLINE_1": "Guessing vs",
+      "HEADLINE_2": "Actually Knowing",
+      "BEFORE_CAL": "~2,500?",
+      "BEFORE_PRO": "~120g?",
+      "BEFORE_TIME": "Eyeballing",
+      "BEFORE_ACC": "±500 cal off",
+      "AFTER_CAL": "2,483",
+      "AFTER_PRO": "187g",
+      "AFTER_TIME": "AI Verified",
+      "AFTER_ACC": "±50 cal"
+    }
+  },
+  {
+    "id": "nai-2026-03-28-story-free",
+    "date": "2026-03-28",
+    "template": "story-feature",
+    "type": "story",
+    "caption": "NourishAI is free to download. No credit card. No trial. Just start tracking.",
+    "data": {
+      "BADGE": "100% FREE",
+      "HEADLINE_1": "Start Tracking",
+      "HEADLINE_2": "For Free. Today.",
+      "SUBTITLE": "Manual logging, barcode scanner, and dashboard — all free forever.",
+      "ICON_1": "✅",
+      "FEAT_1_TITLE": "Manual Entry",
+      "FEAT_1_DESC": "Log any meal by typing it in",
+      "ICON_2": "📊",
+      "FEAT_2_TITLE": "Full Dashboard",
+      "FEAT_2_DESC": "Calories, macros, progress charts",
+      "ICON_3": "🔓",
+      "FEAT_3_TITLE": "No Paywall",
+      "FEAT_3_DESC": "Core features are free forever"
+    }
+  },
+  {
+    "id": "nai-2026-03-30-macro-tip-carbs",
+    "date": "2026-03-30",
+    "template": "feed-macro-tip",
+    "type": "feed",
+    "caption": "Carbs aren't the enemy. They're your training fuel. Here's how to use them right.\n\n#CarbCycling #MacroTips #NourishAI #FitnessNutrition #TrainingFuel #GymFood",
+    "data": {
+      "BADGE": "CARB GUIDE",
+      "HEADLINE": "Carbs Are Your\nTraining Fuel",
+      "TIP_1_EMOJI": "⚡",
+      "TIP_1": "Higher carbs on training days, lower on rest",
+      "TIP_2_EMOJI": "🍚",
+      "TIP_2": "Time your biggest carb meal post-workout",
+      "TIP_3_EMOJI": "📊",
+      "TIP_3": "Track carb timing with NourishAI meal log"
+    }
+  }
+]

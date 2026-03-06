@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap');
+  body {
+    width: 1080px; height: 1080px;
+    background: #0A0A14;
+    font-family: 'Outfit', sans-serif;
+    overflow: hidden;
+    position: relative;
+  }
+  /* Ambient glow */
+  .glow-1 { position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, rgba(52,199,89,0.08) 0%, transparent 70%); top: -100px; right: -50px; }
+  .glow-2 { position: absolute; width: 300px; height: 300px; background: radial-gradient(circle, rgba(255,149,0,0.06) 0%, transparent 70%); bottom: 50px; left: -50px; }
+  /* Grain */
+  .grain { position: absolute; inset: 0; opacity: 0.03; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+  .badge {
+    position: absolute; top: 48px; left: 48px;
+    background: rgba(52,199,89,0.15); border: 1px solid rgba(52,199,89,0.3);
+    color: #34C759; font-size: 13px; font-weight: 700;
+    padding: 8px 18px; border-radius: 20px;
+    letter-spacing: 2px; text-transform: uppercase;
+  }
+  .headline {
+    position: absolute; top: 130px; left: 48px; right: 48px;
+    font-size: 52px; font-weight: 800; color: white;
+    line-height: 1.15;
+  }
+  .headline span { color: #34C759; }
+
+  .split {
+    position: absolute; top: 340px; left: 48px; right: 48px;
+    display: flex; gap: 20px;
+  }
+  .split-card {
+    flex: 1; background: #12121A; border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px; padding: 28px; position: relative;
+  }
+  .split-label {
+    font-size: 12px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 16px;
+  }
+  .split-card.before .split-label { color: #FF6B6B; }
+  .split-card.after .split-label { color: #34C759; }
+
+  .stat-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .stat-row:last-child { border-bottom: none; }
+  .stat-name { color: rgba(255,255,255,0.5); font-size: 15px; }
+  .stat-val { color: white; font-size: 18px; font-weight: 700; }
+  .stat-val.bad { color: #FF6B6B; }
+  .stat-val.good { color: #34C759; }
+
+  .arrow {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 48px; height: 48px; background: #34C759; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 10; box-shadow: 0 0 30px rgba(52,199,89,0.4);
+  }
+  .arrow svg { width: 24px; height: 24px; }
+
+  .bottom-bar {
+    position: absolute; bottom: 48px; left: 48px; right: 48px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo-area { display: flex; align-items: center; gap: 10px; }
+  .logo-dot { width: 32px; height: 32px; background: rgba(52,199,89,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .logo-text { color: white; font-size: 18px; font-weight: 700; }
+  .logo-text span { color: #34C759; }
+  .tagline { color: rgba(255,255,255,0.4); font-size: 14px; }
+</style>
+</head><body>
+  <div class="glow-1"></div>
+  <div class="glow-2"></div>
+  <div class="grain"></div>
+
+  <div class="badge">{{BADGE}}</div>
+  <div class="headline">{{HEADLINE_1}}<br><span>{{HEADLINE_2}}</span></div>
+
+  <div class="split">
+    <div class="split-card before">
+      <div class="split-label">Before</div>
+      <div class="stat-row"><span class="stat-name">Calories</span><span class="stat-val bad">{{BEFORE_CAL}}</span></div>
+      <div class="stat-row"><span class="stat-name">Protein</span><span class="stat-val bad">{{BEFORE_PRO}}</span></div>
+      <div class="stat-row"><span class="stat-name">Tracking Time</span><span class="stat-val bad">{{BEFORE_TIME}}</span></div>
+      <div class="stat-row"><span class="stat-name">Accuracy</span><span class="stat-val bad">{{BEFORE_ACC}}</span></div>
+    </div>
+    <div class="arrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </div>
+    <div class="split-card after">
+      <div class="split-label">After NourishAI</div>
+      <div class="stat-row"><span class="stat-name">Calories</span><span class="stat-val good">{{AFTER_CAL}}</span></div>
+      <div class="stat-row"><span class="stat-name">Protein</span><span class="stat-val good">{{AFTER_PRO}}</span></div>
+      <div class="stat-row"><span class="stat-name">Tracking Time</span><span class="stat-val good">{{AFTER_TIME}}</span></div>
+      <div class="stat-row"><span class="stat-name">Accuracy</span><span class="stat-val good">{{AFTER_ACC}}</span></div>
+    </div>
+  </div>
+
+  <div class="bottom-bar">
+    <div class="logo-area">
+      <div class="logo-dot">
+        <svg width="18" height="18" viewBox="0 0 32 32" fill="none"><path d="M16 3c-6.5 3.5-11 10.5-11 17.5 0 3.8 1.7 7 4.8 9.1 1.8-5.2 4.4-9.4 6.2-11.6 1.8 2.2 4.4 6.4 6.2 11.6 3.1-2.1 4.8-5.3 4.8-9.1C27 13.5 22.5 6.5 16 3z" fill="#34C759"/><circle cx="16" cy="27" r="2" fill="#FF9500"/></svg>
+      </div>
+      <div class="logo-text">Nourish<span>AI</span></div>
+    </div>
+    <div class="tagline">Free on the App Store</div>
+  </div>
+</body></html>

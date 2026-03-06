@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { CookieConsentBanner } from "@/components/CookieConsentBanner";
 import "./globals.css";
 
@@ -74,7 +75,6 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
 };
 
-// Static JSON-LD — hardcoded content, no user input, safe to serialize
 const jsonLdString = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "MobileApplication",
@@ -124,6 +124,7 @@ export default function RootLayout({
         {children}
         <CookieConsentBanner />
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

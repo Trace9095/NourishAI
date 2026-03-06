@@ -47,7 +47,7 @@ def load_calendars():
     for cal_file in sorted(glob.glob(os.path.join(CALENDAR_DIR, "*.json"))):
         with open(cal_file, "r") as f:
             cal = json.load(f)
-            posts.extend(cal.get("posts", []))
+            posts.extend(cal if isinstance(cal, list) else cal.get("posts", []))
     return posts
 
 
