@@ -29,6 +29,10 @@
 		A10001010000000000000020 /* MacroRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000020 /* MacroRingView.swift */; };
 		A10001010000000000000021 /* MealRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000021 /* MealRow.swift */; };
 		A10001010000000000000022 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000022 /* Assets.xcassets */; };
+		A10001010000000000000023 /* MenuScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000023 /* MenuScanView.swift */; };
+		A10001010000000000000024 /* FoodIdeasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000024 /* FoodIdeasView.swift */; };
+		A10001010000000000000025 /* RestaurantMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000025 /* RestaurantMapView.swift */; };
+		A10001010000000000000026 /* NutritionChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000026 /* NutritionChatView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +58,10 @@
 		A10002010000000000000020 /* MacroRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroRingView.swift; sourceTree = "<group>"; };
 		A10002010000000000000021 /* MealRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealRow.swift; sourceTree = "<group>"; };
 		A10002010000000000000022 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A10002010000000000000023 /* MenuScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScanView.swift; sourceTree = "<group>"; };
+		A10002010000000000000024 /* FoodIdeasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodIdeasView.swift; sourceTree = "<group>"; };
+		A10002010000000000000025 /* RestaurantMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantMapView.swift; sourceTree = "<group>"; };
+		A10002010000000000000026 /* NutritionChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionChatView.swift; sourceTree = "<group>"; };
 		A10002010000000000000099 /* NourishAI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NourishAI.entitlements; sourceTree = "<group>"; };
 		A10003010000000000000001 /* NourishAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NourishAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -118,6 +126,8 @@
 			children = (
 				A10005010000000000000006 /* Dashboard */,
 				A10005010000000000000007 /* FoodLog */,
+				A10005010000000000000013 /* Discovery */,
+				A10005010000000000000014 /* Chat */,
 				A10005010000000000000008 /* Onboarding */,
 				A10005010000000000000009 /* Progress */,
 				A10005010000000000000010 /* Settings */,
@@ -142,6 +152,8 @@
 				A10002010000000000000013 /* AIFoodChatView.swift */,
 				A10002010000000000000014 /* ManualEntryView.swift */,
 				A10002010000000000000015 /* BarcodeScanView.swift */,
+				A10002010000000000000023 /* MenuScanView.swift */,
+				A10002010000000000000024 /* FoodIdeasView.swift */,
 			);
 			path = FoodLog;
 			sourceTree = "<group>";
@@ -185,6 +197,22 @@
 				A10002010000000000000019 /* SubscriptionView.swift */,
 			);
 			path = Subscription;
+			sourceTree = "<group>";
+		};
+		A10005010000000000000013 /* Discovery */ = {
+			isa = PBXGroup;
+			children = (
+				A10002010000000000000025 /* RestaurantMapView.swift */,
+			);
+			path = Discovery;
+			sourceTree = "<group>";
+		};
+		A10005010000000000000014 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				A10002010000000000000026 /* NutritionChatView.swift */,
+			);
+			path = Chat;
 			sourceTree = "<group>";
 		};
 		A10005010000000000000099 /* Products */ = {
@@ -285,6 +313,10 @@
 				A10001010000000000000019 /* SubscriptionView.swift in Sources */,
 				A10001010000000000000020 /* MacroRingView.swift in Sources */,
 				A10001010000000000000021 /* MealRow.swift in Sources */,
+				A10001010000000000000023 /* MenuScanView.swift in Sources */,
+				A10001010000000000000024 /* FoodIdeasView.swift in Sources */,
+				A10001010000000000000025 /* RestaurantMapView.swift in Sources */,
+				A10001010000000000000026 /* NutritionChatView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,6 +460,7 @@
 				INFOPLIST_KEY_NSCameraUsageDescription = "NourishAI uses your camera to scan food and identify nutritional information.";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "NourishAI reads your health data to provide personalized nutrition recommendations.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "NourishAI logs your nutrition data to Apple Health for a complete health picture.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "NourishAI uses your location to find nearby restaurants with healthy options.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "NourishAI accesses your photo library to analyze food photos for nutritional information.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -467,6 +500,7 @@
 				INFOPLIST_KEY_NSCameraUsageDescription = "NourishAI uses your camera to scan food and identify nutritional information.";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "NourishAI reads your health data to provide personalized nutrition recommendations.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "NourishAI logs your nutrition data to Apple Health for a complete health picture.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "NourishAI uses your location to find nearby restaurants with healthy options.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "NourishAI accesses your photo library to analyze food photos for nutritional information.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
