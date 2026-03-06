@@ -3,6 +3,7 @@ import { db } from "@/lib/db";
 import { users } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import { handleCors, corsHeaders } from "@/lib/security";
+import { checkRateLimit } from "@/lib/rate-limit";
 
 export async function OPTIONS(request: NextRequest) {
   return handleCors(request) ?? NextResponse.json(null, { status: 204 });
@@ -14,10 +15,19 @@ export async function POST(request: NextRequest) {
 
   try {
     const deviceId = request.headers.get("x-device-id");
-    if (!deviceId) {
+    if (!deviceId || typeof deviceId !== "string") {
       return NextResponse.json(
         { error: "Missing device ID" },
         { status: 401, headers: corsHeaders(request) }
+      );
+    }
+
+    // Rate limit: 20 verifications per hour per device (prevents abuse)
+    const limit = checkRateLimit(`verify-sub:${deviceId}`, 20, 60 * 60 * 1000);
+    if (!limit.allowed) {
+      return NextResponse.json(
+        { error: "Too many verification attempts" },
+        { status: 429, headers: corsHeaders(request) }
       );
     }
 
@@ -43,7 +53,21 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Validate product ID
+    // Validate types
+    if (typeof transactionId !== "string" || transactionId.length > 200) {
+      return NextResponse.json(
+        { error: "Invalid transaction ID" },
+        { status: 400, headers: corsHeaders(request) }
+      );
+    }
+    if (typeof productId !== "string" || productId.length > 100) {
+      return NextResponse.json(
+        { error: "Invalid product ID" },
+        { status: 400, headers: corsHeaders(request) }
+      );
+    }
+
+    // Validate product ID against whitelist
     const validProducts = [
       "com.nourishai.subscription.pro.monthly",
       "com.nourishai.subscription.pro.annual",
@@ -56,10 +80,30 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Validate expiry date if provided
+    let expiresAt: Date | null = null;
+    if (expiresDate) {
+      expiresAt = new Date(expiresDate);
+      if (isNaN(expiresAt.getTime())) {
+        return NextResponse.json(
+          { error: "Invalid expiry date" },
+          { status: 400, headers: corsHeaders(request) }
+        );
+      }
+      // Reject expiry dates more than 2 years in the future (sanity check)
+      const maxFuture = new Date();
+      maxFuture.setFullYear(maxFuture.getFullYear() + 2);
+      if (expiresAt > maxFuture) {
+        return NextResponse.json(
+          { error: "Invalid expiry date" },
+          { status: 400, headers: corsHeaders(request) }
+        );
+      }
+    }
+
     // TODO: Integrate Apple App Store Server API for server-side receipt verification
     // before going to production. Currently trusts client-side StoreKit 2 verification.
     // See: https://developer.apple.com/documentation/appstoreserverapi
-    const expiresAt = expiresDate ? new Date(expiresDate) : null;
 
     await db()
       .update(users)
