@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>NourishAI — Stat</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1080px;
+    height: 1080px;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: #0A0A14;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card {
+    width: 1080px;
+    height: 1080px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 72px;
+    overflow: hidden;
+  }
+
+  /* Dot grid background pattern */
+  .dot-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle, rgba(52, 199, 89, 0.07) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+  }
+
+  /* Radial glow behind the stat */
+  .glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(52, 199, 89, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* Category badge */
+  .category-badge {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    border: 1.5px solid rgba(52, 199, 89, 0.4);
+    border-radius: 100px;
+    background: rgba(52, 199, 89, 0.06);
+    margin-bottom: auto;
+    margin-top: 20px;
+  }
+  .category-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #34C759;
+  }
+  .category-text {
+    font-size: 16px;
+    font-weight: 600;
+    color: #34C759;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  /* Stat number */
+  .stat-number {
+    position: relative;
+    z-index: 1;
+    font-size: 180px;
+    font-weight: 800;
+    color: #34C759;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  /* Stat label */
+  .stat-label {
+    position: relative;
+    z-index: 1;
+    font-size: 38px;
+    font-weight: 700;
+    color: #FFFFFF;
+    text-align: center;
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  /* Description */
+  .description {
+    position: relative;
+    z-index: 1;
+    font-size: 22px;
+    font-weight: 400;
+    color: #9CA3AF;
+    text-align: center;
+    line-height: 1.5;
+    max-width: 720px;
+    margin-bottom: auto;
+  }
+
+  /* Bottom bar */
+  .bottom-bar {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 32px;
+    border-top: 1px solid rgba(52, 199, 89, 0.15);
+  }
+
+  /* Branding */
+  .branding {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .logo-circle {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: #34C759;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .logo-icon {
+    width: 26px;
+    height: 26px;
+  }
+  .brand-name {
+    font-size: 22px;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 0.03em;
+  }
+
+  /* Accent pills on right */
+  .accent-pills {
+    display: flex;
+    gap: 8px;
+  }
+  .pill {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(52, 199, 89, 0.3);
+  }
+  .pill.active {
+    background: #34C759;
+    width: 24px;
+    border-radius: 4px;
+  }
+
+  /* Horizontal accent lines */
+  .accent-line-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #34C759 0%, rgba(52, 199, 89, 0) 60%);
+  }
+  .accent-line-bottom {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(270deg, #34C759 0%, rgba(52, 199, 89, 0) 60%);
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <!-- Background elements -->
+    <div class="dot-grid"></div>
+    <div class="glow"></div>
+    <div class="accent-line-top"></div>
+    <div class="accent-line-bottom"></div>
+
+    <!-- Category badge -->
+    <div class="category-badge">
+      <div class="category-dot"></div>
+      <span class="category-text">{{CATEGORY}}</span>
+    </div>
+
+    <!-- Stat number -->
+    <div class="stat-number">{{STAT_NUMBER}}</div>
+
+    <!-- Stat label -->
+    <div class="stat-label">{{STAT_LABEL}}</div>
+
+    <!-- Description -->
+    <div class="description">{{DESCRIPTION}}</div>
+
+    <!-- Bottom bar -->
+    <div class="bottom-bar">
+      <div class="branding">
+        <div class="logo-circle">
+          <!-- Leaf icon -->
+          <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17 8C8 10 5.9 16.17 3.82 21.34"/>
+            <path d="M17 8A14 14 0 0 0 21 3c-4.27.68-8.43 2.49-10.86 5.14"/>
+            <path d="M17 8c0 0-2.69 1.08-5.14 2.86A14.11 14.11 0 0 0 7 17"/>
+          </svg>
+        </div>
+        <div class="brand-name">NourishAI</div>
+      </div>
+      <div class="accent-pills">
+        <div class="pill"></div>
+        <div class="pill"></div>
+        <div class="pill active"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

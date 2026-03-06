@@ -1,14 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Accessibility Statement",
-  description: "NourishAI accessibility commitment.",
+  description: "NourishAI accessibility commitment — our pledge to make nutrition tracking accessible to everyone.",
 };
 
 export default function AccessibilityPage() {
   return (
-    <main id="main-content" className="min-h-screen pt-24 pb-16 px-6">
+    <>
+      <Header />
+      <main id="main-content" className="min-h-screen pt-24 pb-16 px-6">
       <div className="mx-auto max-w-3xl">
         <Link href="/" className="text-sm text-brand-green hover:underline mb-8 inline-block min-h-[44px] flex items-center">&larr; Back to Home</Link>
         <h1 className="font-[family-name:var(--font-outfit)] text-4xl font-extrabold text-white mb-8">Accessibility Statement</h1>
@@ -40,5 +44,7 @@ export default function AccessibilityPage() {
         </div>
       </div>
     </main>
+      <Footer />
+    </>
   );
 }

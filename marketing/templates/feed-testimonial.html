@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>NourishAI — Testimonial</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1080px;
+    height: 1080px;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: #0A0A14;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card {
+    width: 1080px;
+    height: 1080px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 72px;
+  }
+
+  /* Green accent line — left edge */
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 4px;
+    height: calc(100% - 120px);
+    background: linear-gradient(180deg, #34C759 0%, rgba(52, 199, 89, 0.15) 100%);
+    border-radius: 0 2px 2px 0;
+  }
+
+  /* Subtle corner accents */
+  .corner-tl, .corner-br {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    border-color: rgba(52, 199, 89, 0.25);
+    border-style: solid;
+  }
+  .corner-tl {
+    top: 40px;
+    left: 40px;
+    border-width: 2px 0 0 2px;
+  }
+  .corner-br {
+    bottom: 40px;
+    right: 40px;
+    border-width: 0 2px 2px 0;
+  }
+
+  /* Opening quote mark */
+  .quote-mark {
+    font-size: 160px;
+    line-height: 1;
+    color: #34C759;
+    font-weight: 700;
+    margin-bottom: -24px;
+    opacity: 0.9;
+    align-self: flex-start;
+    margin-left: 8px;
+  }
+
+  /* Quote text */
+  .quote-text {
+    font-size: 42px;
+    font-weight: 600;
+    line-height: 1.35;
+    color: #FFFFFF;
+    text-align: left;
+    margin-bottom: 48px;
+    width: 100%;
+    letter-spacing: -0.01em;
+  }
+
+  /* Star rating */
+  .stars {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 28px;
+    align-self: flex-start;
+  }
+  .star {
+    width: 28px;
+    height: 28px;
+  }
+
+  /* Author block */
+  .author-block {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-self: flex-start;
+    margin-bottom: auto;
+  }
+  .author-name {
+    font-size: 24px;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 0.02em;
+  }
+  .author-subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    color: #9CA3AF;
+  }
+
+  /* Divider */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(52, 199, 89, 0.4) 0%, rgba(52, 199, 89, 0.05) 100%);
+    margin-top: auto;
+    margin-bottom: 32px;
+  }
+
+  /* Bottom branding */
+  .branding {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    align-self: flex-start;
+  }
+  .logo-circle {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: #34C759;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .logo-icon {
+    width: 26px;
+    height: 26px;
+  }
+  .brand-name {
+    font-size: 22px;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 0.03em;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="corner-tl"></div>
+    <div class="corner-br"></div>
+
+    <!-- Quote mark -->
+    <div class="quote-mark">&ldquo;</div>
+
+    <!-- Testimonial quote -->
+    <div class="quote-text">{{QUOTE}}</div>
+
+    <!-- Star rating — 5 stars -->
+    <div class="stars">
+      <svg class="star" viewBox="0 0 24 24" fill="#FF9500" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/>
+      </svg>
+      <svg class="star" viewBox="0 0 24 24" fill="#FF9500" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/>
+      </svg>
+      <svg class="star" viewBox="0 0 24 24" fill="#FF9500" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/>
+      </svg>
+      <svg class="star" viewBox="0 0 24 24" fill="#FF9500" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/>
+      </svg>
+      <svg class="star" viewBox="0 0 24 24" fill="#FF9500" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/>
+      </svg>
+    </div>
+
+    <!-- Author info -->
+    <div class="author-block">
+      <div class="author-name">{{AUTHOR}}</div>
+      <div class="author-subtitle">{{SUBTITLE}}</div>
+    </div>
+
+    <!-- Divider -->
+    <div class="divider"></div>
+
+    <!-- Branding -->
+    <div class="branding">
+      <div class="logo-circle">
+        <!-- Leaf icon -->
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17 8C8 10 5.9 16.17 3.82 21.34"/>
+          <path d="M17 8A14 14 0 0 0 21 3c-4.27.68-8.43 2.49-10.86 5.14"/>
+          <path d="M17 8c0 0-2.69 1.08-5.14 2.86A14.11 14.11 0 0 0 7 17"/>
+        </svg>
+      </div>
+      <div class="brand-name">NourishAI</div>
+    </div>
+  </div>
+</body>
+</html>

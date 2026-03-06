@@ -1,0 +1,310 @@
+[
+  {
+    "id": "nai-2026-04-01-post-workout-protein-window",
+    "type": "feed",
+    "template": "feed-macro-tip",
+    "data": {
+      "CATEGORY": "Recovery Nutrition",
+      "HEADLINE": "The Post-Workout Protein Window",
+      "BODY": "Your muscles are most receptive to protein within 30-60 minutes after training. Prioritize a fast-digesting source like whey or a protein shake to kickstart recovery.",
+      "STAT_NUMBER": "30g",
+      "STAT_LABEL": "Optimal post-workout protein dose",
+      "TIP_TITLE": "Quick Recovery Shake",
+      "TIP_TEXT": "Blend 1 scoop whey, 1 banana, 1 cup milk, and a handful of spinach for a complete post-workout recovery drink."
+    }
+  },
+  {
+    "id": "nai-2026-04-02-hydration-myths-busted",
+    "type": "feed",
+    "template": "feed-macro-tip",
+    "data": {
+      "CATEGORY": "Hydration",
+      "HEADLINE": "5 Hydration Myths Busted",
+      "BODY": "You don't need 8 glasses a day. Your water needs depend on body weight, activity level, and climate. Clear urine isn't always better — pale yellow is the sweet spot.",
+      "STAT_NUMBER": "75%",
+      "STAT_LABEL": "of Americans are chronically dehydrated",
+      "TIP_TITLE": "Hydration Check",
+      "TIP_TEXT": "Weigh yourself before and after exercise. For every pound lost, drink 16-20 oz of water to rehydrate properly."
+    }
+  },
+  {
+    "id": "nai-2026-04-03-spring-fitness-kickoff",
+    "type": "story",
+    "template": "story-feature",
+    "data": {
+      "BADGE": "SPRING FITNESS",
+      "HEADLINE": "Your Spring Fitness Nutrition Reset",
+      "SUBTITLE": "Fuel your outdoor workouts with smarter eating habits this April",
+      "FEATURE1_ICON": "🌱",
+      "FEATURE1_TITLE": "Seasonal Produce",
+      "FEATURE1_DESC": "Load up on asparagus, peas, and strawberries for peak nutrient density",
+      "FEATURE2_ICON": "⚡",
+      "FEATURE2_TITLE": "Energy Timing",
+      "FEATURE2_DESC": "Eat your largest carb meal 2-3 hours before outdoor training sessions",
+      "FEATURE3_ICON": "💧",
+      "FEATURE3_TITLE": "Warm Weather Hydration",
+      "FEATURE3_DESC": "Add electrolytes when exercising outdoors for more than 45 minutes"
+    }
+  },
+  {
+    "id": "nai-2026-04-05-meal-timing-matters",
+    "type": "feed",
+    "template": "feed-macro-tip",
+    "data": {
+      "CATEGORY": "Meal Timing",
+      "HEADLINE": "Does Meal Timing Really Matter?",
+      "BODY": "Total daily intake matters most, but strategic timing can optimize performance and recovery. Spread protein across 4-5 meals for maximum muscle protein synthesis.",
+      "STAT_NUMBER": "4-5",
+      "STAT_LABEL": "Ideal protein feedings per day",
+      "TIP_TITLE": "Timing Framework",
+      "TIP_TEXT": "Eat every 3-4 hours: breakfast within 1 hour of waking, pre-workout 2 hours before, post-workout within 1 hour, and a casein-rich snack before bed."
+    }
+  },
+  {
+    "id": "nai-2026-04-06-before-after-tracking",
+    "type": "feed",
+    "template": "feed-before-after",
+    "data": {
+      "HEADLINE": "30 Days of AI-Tracked Nutrition",
+      "BEFORE_LABEL": "Before NourishAI",
+      "BEFORE_STAT1": "Skipped breakfast 4x/week",
+      "BEFORE_STAT2": "Averaged 62g protein/day",
+      "BEFORE_STAT3": "No idea about micronutrient gaps",
+      "AFTER_LABEL": "After NourishAI",
+      "AFTER_STAT1": "Consistent morning fueling",
+      "AFTER_STAT2": "Hitting 130g protein/day",
+      "AFTER_STAT3": "Identified Vitamin D & iron deficiency"
+    }
+  },
+  {
+    "id": "nai-2026-04-08-healthy-fats-guide",
+    "type": "feed",
+    "template": "feed-macro-tip",
+    "data": {
+      "CATEGORY": "Healthy Fats",
+      "HEADLINE": "Stop Fearing Fat: A Macro Guide",
+      "BODY": "Dietary fat is essential for hormone production, brain function, and vitamin absorption. Aim for 25-35% of total calories from fat, prioritizing unsaturated sources.",
+      "STAT_NUMBER": "0.4g",
+      "STAT_LABEL": "Fat per lb of bodyweight (minimum)",
+      "TIP_TITLE": "Fat Source Swaps",
+      "TIP_TEXT": "Replace butter with avocado oil for cooking, snack on almonds instead of chips, and add ground flaxseed to smoothies for omega-3s."
+    }
+  },
+  {
+    "id": "nai-2026-04-09-before-after-meal-prep",
+    "type": "feed",
+    "template": "feed-before-after",
+    "data": {
+      "HEADLINE": "Meal Prep: Chaos vs. System",
+      "BEFORE_LABEL": "Without a Plan",
+      "BEFORE_STAT1": "Spent $87/week on takeout",
+      "BEFORE_STAT2": "Averaged 2,800 cal/day (untracked)",
+      "BEFORE_STAT3": "Decision fatigue at every meal",
+      "AFTER_LABEL": "With NourishAI Meal Plans",
+      "AFTER_STAT1": "Grocery bill dropped to $55/week",
+      "AFTER_STAT2": "Consistent 2,100 cal/day on target",
+      "AFTER_STAT3": "5 meals prepped every Sunday in 90 min"
+    }
+  },
+  {
+    "id": "nai-2026-04-10-ai-food-scan",
+    "type": "reel",
+    "template": "reel-ai-scan",
+    "data": {
+      "FOOD_NAME": "Grilled Chicken Bowl with Quinoa & Roasted Veggies",
+      "CALORIES": "520",
+      "PROTEIN": "42g",
+      "CARBS": "48g",
+      "FAT": "16g"
+    }
+  },
+  {
+    "id": "nai-2026-04-11-high-protein-breakfast",
+    "type": "feed",
+    "template": "feed-macro-tip",
+    "data": {
+      "CATEGORY": "Breakfast Ideas",
+      "HEADLINE": "5 High-Protein Breakfasts Under 400 Cal",
+      "BODY": "Starting your day with 30g+ protein reduces cravings, stabilizes blood sugar, and supports lean muscle. These quick options take under 10 minutes.",
+      "STAT_NUMBER": "30g+",
+      "STAT_LABEL": "Protein target for your first meal",
+      "TIP_TITLE": "Top Pick: Greek Yogurt Bowl",
+      "TIP_TEXT": "1 cup plain Greek yogurt (20g protein) + 1 scoop protein powder (25g) + berries + 1 tbsp chia seeds = 380 cal, 48g protein."
+    }
+  },
+  {
+    "id": "nai-2026-04-13-fiber-importance",
+    "type": "feed",
+    "template": "feed-macro-tip",
+    "data": {
+      "CATEGORY": "Fiber & Digestion",
+      "HEADLINE": "The Forgotten Macro: Fiber",
+      "BODY": "Most people eat only 15g of fiber daily — half the recommended amount. Fiber supports gut health, satiety, blood sugar control, and heart health.",
+      "STAT_NUMBER": "28-34g",
+      "STAT_LABEL": "Daily fiber recommendation",
+      "TIP_TITLE": "Easy Fiber Adds",
+      "TIP_TEXT": "Add 1 cup of lentils (15g fiber), swap white rice for black beans, and eat fruit whole instead of juiced. Build up gradually to avoid bloating."
+    }
+  },
+  {
+    "id": "nai-2026-04-14-feature-scan-log",
+    "type": "story",
+    "template": "story-feature",
+    "data": {
+      "BADGE": "NEW FEATURE",
+      "HEADLINE": "Scan. Log. Learn. In Seconds.",
+      "SUBTITLE": "NourishAI's camera scans your plate and logs every macro instantly",
+      "FEATURE1_ICON": "📸",
+      "FEATURE1_TITLE": "Point & Scan",
+      "FEATURE1_DESC": "AI identifies foods on your plate with 95% accuracy in under 2 seconds",
+      "FEATURE2_ICON": "📊",
+      "FEATURE2_TITLE": "Instant Breakdown",
+      "FEATURE2_DESC": "See calories, protein, carbs, fat, and micronutrients immediately",
+      "FEATURE3_ICON": "🧠",
+      "FEATURE3_TITLE": "Smart Suggestions",
+      "FEATURE3_DESC": "Get real-time tips to balance your meal based on daily targets"
+    }
+  },
+  {
+    "id": "nai-2026-04-15-sugar-vs-complex-carbs",
+    "type": "feed",
+    "template": "feed-macro-tip",
+    "data": {
+      "CATEGORY": "Carbohydrates",
+      "HEADLINE": "Simple Sugar vs. Complex Carbs",
+      "BODY": "Not all carbs are created equal. Simple sugars spike blood glucose and crash energy, while complex carbs provide sustained fuel. Choose whole grains, legumes, and starchy vegetables.",
+      "STAT_NUMBER": "50%",
+      "STAT_LABEL": "of daily calories should come from quality carbs",
+      "TIP_TITLE": "Smart Carb Swaps",
+      "TIP_TEXT": "White bread to sourdough. Sugary cereal to steel-cut oats. Candy to dates with almond butter. Soda to sparkling water with citrus."
+    }
+  },
+  {
+    "id": "nai-2026-04-16-before-after-energy",
+    "type": "feed",
+    "template": "feed-before-after",
+    "data": {
+      "HEADLINE": "Energy Levels: Tracked & Transformed",
+      "BEFORE_LABEL": "Before Tracking",
+      "BEFORE_STAT1": "3pm energy crashes daily",
+      "BEFORE_STAT2": "Relied on 4 cups of coffee",
+      "BEFORE_STAT3": "Inconsistent sleep quality",
+      "AFTER_LABEL": "After 6 Weeks with NourishAI",
+      "AFTER_STAT1": "Steady energy from balanced meals",
+      "AFTER_STAT2": "Down to 1-2 cups of coffee",
+      "AFTER_STAT3": "Sleep score improved by 22%"
+    }
+  },
+  {
+    "id": "nai-2026-04-18-pre-workout-fueling",
+    "type": "feed",
+    "template": "feed-macro-tip",
+    "data": {
+      "CATEGORY": "Pre-Workout",
+      "HEADLINE": "What to Eat Before You Train",
+      "BODY": "The right pre-workout meal maximizes performance and prevents fatigue. Focus on easily digestible carbs with moderate protein 2-3 hours before, or a small snack 30-45 minutes before.",
+      "STAT_NUMBER": "1-4g",
+      "STAT_LABEL": "Carbs per kg bodyweight pre-workout",
+      "TIP_TITLE": "30-Minute Pre-Workout Snack",
+      "TIP_TEXT": "A banana with 1 tbsp peanut butter, or a rice cake with honey and a pinch of salt. Keep fat and fiber low to avoid stomach issues."
+    }
+  },
+  {
+    "id": "nai-2026-04-19-feature-weekly-report",
+    "type": "story",
+    "template": "story-feature",
+    "data": {
+      "BADGE": "INSIGHTS",
+      "HEADLINE": "Your Weekly Nutrition Report Card",
+      "SUBTITLE": "NourishAI analyzes 7 days of data to show you exactly where to improve",
+      "FEATURE1_ICON": "📈",
+      "FEATURE1_TITLE": "Trend Analysis",
+      "FEATURE1_DESC": "See your macro consistency, calorie trends, and nutrient gaps at a glance",
+      "FEATURE2_ICON": "🎯",
+      "FEATURE2_TITLE": "Goal Progress",
+      "FEATURE2_DESC": "Track your weekly averages against protein, calorie, and fiber targets",
+      "FEATURE3_ICON": "💡",
+      "FEATURE3_TITLE": "Actionable Tips",
+      "FEATURE3_DESC": "AI-generated recommendations based on your actual eating patterns"
+    }
+  },
+  {
+    "id": "nai-2026-04-20-snacking-smart",
+    "type": "feed",
+    "template": "feed-macro-tip",
+    "data": {
+      "CATEGORY": "Smart Snacking",
+      "HEADLINE": "Snacking Smart: Fuel, Don't Fill",
+      "BODY": "Strategic snacking bridges meals and prevents overeating. Pair protein with fiber for satiety — avoid snacking out of boredom. Plan your snacks like you plan your meals.",
+      "STAT_NUMBER": "150-250",
+      "STAT_LABEL": "Calorie range for balanced snacks",
+      "TIP_TITLE": "Top 3 Macro-Balanced Snacks",
+      "TIP_TEXT": "1) Cottage cheese + cucumber (20g protein, 120 cal). 2) Apple + 2 tbsp almond butter (8g protein, 250 cal). 3) Turkey roll-ups with hummus (18g protein, 180 cal)."
+    }
+  },
+  {
+    "id": "nai-2026-04-22-before-after-grocery",
+    "type": "feed",
+    "template": "feed-before-after",
+    "data": {
+      "HEADLINE": "Grocery Shopping: Guessing vs. Guided",
+      "BEFORE_LABEL": "Shopping Without a Plan",
+      "BEFORE_STAT1": "Impulse buys added $30/trip",
+      "BEFORE_STAT2": "40% of fresh produce went to waste",
+      "BEFORE_STAT3": "Pantry full but nothing to cook",
+      "AFTER_LABEL": "Shopping with NourishAI List",
+      "AFTER_STAT1": "Auto-generated list from meal plan",
+      "AFTER_STAT2": "Under 5% food waste weekly",
+      "AFTER_STAT3": "Every item maps to a planned recipe"
+    }
+  },
+  {
+    "id": "nai-2026-04-24-restaurant-ordering",
+    "type": "feed",
+    "template": "feed-macro-tip",
+    "data": {
+      "CATEGORY": "Dining Out",
+      "HEADLINE": "Order Smarter at Any Restaurant",
+      "BODY": "Eating out doesn't mean blowing your macros. Scan the menu with NourishAI before you order. Focus on grilled proteins, ask for dressings on the side, and skip the bread basket.",
+      "STAT_NUMBER": "2x",
+      "STAT_LABEL": "Restaurant portions vs. recommended serving",
+      "TIP_TITLE": "Restaurant Ordering Framework",
+      "TIP_TEXT": "Pick a protein first, add two veggie sides, request sauce on the side, and drink water before the meal. Box half the entree immediately if portions are large."
+    }
+  },
+  {
+    "id": "nai-2026-04-26-before-after-supplements",
+    "type": "feed",
+    "template": "feed-before-after",
+    "data": {
+      "HEADLINE": "Supplements: Random vs. Data-Driven",
+      "BEFORE_LABEL": "Before NourishAI Analysis",
+      "BEFORE_STAT1": "Took 6 random supplements daily",
+      "BEFORE_STAT2": "Spent $120/month on guesswork",
+      "BEFORE_STAT3": "No idea what was actually needed",
+      "AFTER_LABEL": "After Nutrient Gap Analysis",
+      "AFTER_STAT1": "Narrowed to 3 targeted supplements",
+      "AFTER_STAT2": "Reduced supplement spend to $45/month",
+      "AFTER_STAT3": "Vitamin D, magnesium, and omega-3 — confirmed gaps"
+    }
+  },
+  {
+    "id": "nai-2026-04-28-sleep-and-nutrition",
+    "type": "story",
+    "template": "story-feature",
+    "data": {
+      "BADGE": "RECOVERY",
+      "HEADLINE": "Sleep Better by Eating Smarter",
+      "SUBTITLE": "Your evening nutrition directly impacts sleep quality and next-day performance",
+      "FEATURE1_ICON": "🌙",
+      "FEATURE1_TITLE": "Evening Carbs Help",
+      "FEATURE1_DESC": "Complex carbs at dinner boost serotonin and melatonin production for deeper sleep",
+      "FEATURE2_ICON": "🥛",
+      "FEATURE2_TITLE": "Casein Before Bed",
+      "FEATURE2_DESC": "Slow-digesting protein like cottage cheese supports overnight muscle recovery",
+      "FEATURE3_ICON": "🚫",
+      "FEATURE3_TITLE": "Cut the Late Caffeine",
+      "FEATURE3_DESC": "NourishAI flags caffeine intake after 2pm and tracks its impact on your sleep data"
+    }
+  }
+]

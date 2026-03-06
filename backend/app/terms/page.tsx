@@ -1,16 +1,20 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
-  description: "NourishAI terms of service.",
+  description: "NourishAI terms of service — usage terms, subscription billing, and acceptable use policies.",
 };
 
 export default function TermsPage() {
   return (
-    <main id="main-content" className="min-h-screen pt-24 pb-16 px-6">
-      <div className="mx-auto max-w-3xl">
-        <Link href="/" className="text-sm text-brand-green hover:underline mb-8 inline-block min-h-[44px] flex items-center">&larr; Back to Home</Link>
+    <>
+      <Header />
+      <main id="main-content" className="min-h-screen pt-24 pb-16 px-6">
+        <div className="mx-auto max-w-3xl">
+          <Link href="/" className="text-sm text-brand-green hover:underline mb-8 inline-block min-h-[44px] flex items-center">&larr; Back to Home</Link>
         <h1 className="font-[family-name:var(--font-outfit)] text-4xl font-extrabold text-white mb-8">Terms of Service</h1>
         <div className="prose prose-invert prose-gray max-w-none space-y-6 text-gray-400 text-sm leading-relaxed">
           <p><strong className="text-white">Last updated:</strong> March 2026</p>
@@ -45,5 +49,7 @@ export default function TermsPage() {
         </div>
       </div>
     </main>
+      <Footer />
+    </>
   );
 }
