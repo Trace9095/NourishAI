@@ -20,6 +20,7 @@ export const adminRoleEnum = pgEnum("admin_role", [
 export const users = pgTable("users", {
   id: uuid("id").primaryKey().defaultRandom(),
   deviceId: text("device_id").unique().notNull(),
+  pushToken: text("push_token"),
   subscriptionTier: text("subscription_tier").default("free").notNull(),
   subscriptionExpiresAt: timestamp("subscription_expires_at", { withTimezone: true }),
   createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),

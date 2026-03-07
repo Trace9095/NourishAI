@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { deviceId } = await request.json();
+    const { deviceId, pushToken } = await request.json();
 
     if (!deviceId || typeof deviceId !== "string" || deviceId.length < 10 || deviceId.length > 128) {
       return NextResponse.json(
@@ -47,6 +47,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Sanitize push token if provided (hex string from APNs)
+    const sanitizedPushToken = (typeof pushToken === "string" && /^[a-f0-9]{64}$/i.test(pushToken))
+      ? pushToken
+      : undefined;
+
     // Check if device already registered
     const existing = await db()
       .select()
@@ -55,6 +60,13 @@ export async function POST(request: NextRequest) {
       .limit(1);
 
     if (existing.length > 0) {
+      // Update push token if provided
+      if (sanitizedPushToken && existing[0].pushToken !== sanitizedPushToken) {
+        await db()
+          .update(users)
+          .set({ pushToken: sanitizedPushToken, updatedAt: new Date() })
+          .where(eq(users.deviceId, deviceId));
+      }
       return NextResponse.json(
         {
           userId: existing[0].id,
@@ -68,7 +80,7 @@ export async function POST(request: NextRequest) {
     // Create new user
     const [newUser] = await db()
       .insert(users)
-      .values({ deviceId })
+      .values({ deviceId, pushToken: sanitizedPushToken })
       .returning();
 
     return NextResponse.json(

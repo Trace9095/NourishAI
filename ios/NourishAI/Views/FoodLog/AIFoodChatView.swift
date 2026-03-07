@@ -308,14 +308,19 @@ struct AIFoodChatView: View {
             existing.totalProtein += entry.protein
             existing.totalCarbs += entry.carbs
             existing.totalFat += entry.fat
+            entry.dailyNutrition = existing
+            if existing.entries == nil { existing.entries = [] }
+            existing.entries?.append(entry)
         } else {
             let daily = DailyNutrition(
                 date: today,
                 totalCalories: entry.calories,
                 totalProtein: entry.protein,
                 totalCarbs: entry.carbs,
-                totalFat: entry.fat
+                totalFat: entry.fat,
+                entries: [entry]
             )
+            entry.dailyNutrition = daily
             modelContext.insert(daily)
         }
 

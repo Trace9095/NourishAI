@@ -714,13 +714,17 @@ struct OnboardingContainerView: View {
             targetCarbs: targets.carbs,
             targetFat: targets.fat,
             targetWaterMl: waterTarget,
-            onboardingComplete: true
+            onboardingComplete: true,
+            healthKitEnabled: true
         )
 
         modelContext.insert(profile)
 
         Task {
+            // Register device with backend
             try? await NourishAPIManager.shared.registerDevice()
+            // Request HealthKit access immediately
+            try? await HealthKitManager.shared.requestAuthorization()
         }
 
         showOnboarding = false

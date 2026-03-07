@@ -9,6 +9,7 @@ struct DashboardView: View {
     private var allWater: [DailyWaterIntake]
 
     @State private var showAddFood = false
+    @State private var showSubscription = false
     @State private var todaySteps: Double = 0
     @State private var todayActiveCalories: Double = 0
 
@@ -39,6 +40,45 @@ struct DashboardView: View {
 
                     // Quick stats
                     quickStatsRow
+
+                    // Pro upgrade banner (free users only)
+                    if profile?.subscriptionTier != "pro" {
+                        Button {
+                            showSubscription = true
+                        } label: {
+                            HStack(spacing: 14) {
+                                Image(systemName: "star.fill")
+                                    .font(.title2)
+                                    .foregroundColor(.brandOrange)
+                                    .frame(width: 44, height: 44)
+                                    .background(Color.brandOrange.opacity(0.1))
+                                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                                VStack(alignment: .leading, spacing: 2) {
+                                    Text("Upgrade to Pro")
+                                        .font(.subheadline.weight(.semibold))
+                                        .foregroundColor(.white)
+                                    Text("Unlimited AI scans & premium features")
+                                        .font(.caption)
+                                        .foregroundColor(.gray)
+                                }
+                                Spacer()
+                                Text("Try Free")
+                                    .font(.caption.weight(.semibold))
+                                    .foregroundColor(.brandDark)
+                                    .padding(.horizontal, 12)
+                                    .padding(.vertical, 6)
+                                    .background(Color.brandGreen)
+                                    .clipShape(Capsule())
+                            }
+                            .padding(16)
+                            .background(Color.brandCard)
+                            .clipShape(RoundedRectangle(cornerRadius: Layout.cornerRadius))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: Layout.cornerRadius)
+                                    .strokeBorder(Color.brandOrange.opacity(0.3), lineWidth: 1)
+                            )
+                        }
+                    }
 
                     // Discover restaurants
                     NavigationLink {
@@ -101,6 +141,9 @@ struct DashboardView: View {
             }
             .sheet(isPresented: $showAddFood) {
                 AddFoodSheet()
+            }
+            .sheet(isPresented: $showSubscription) {
+                SubscriptionView()
             }
             .task {
                 await fetchHealthKitData()

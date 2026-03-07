@@ -1,13 +1,17 @@
 import SwiftUI
+import SwiftData
 import StoreKit
 
 struct SubscriptionView: View {
     @Environment(\.dismiss) private var dismiss
+    @Query private var profiles: [UserProfile]
     @State private var subscriptionManager = SubscriptionManager.shared
 
     @State private var selectedPlan: Plan = .annual
     @State private var isPurchasing = false
     @State private var errorMessage: String?
+
+    private var profile: UserProfile? { profiles.first }
 
     enum Plan {
         case monthly, annual
@@ -248,6 +252,9 @@ struct SubscriptionView: View {
             let success = try await subscriptionManager.purchase(product)
             isPurchasing = false
             if success {
+                // Update profile immediately so UI reflects pro status
+                profile?.subscriptionTier = "pro"
+                profile?.subscriptionExpiresAt = await subscriptionManager.currentSubscriptionExpiry
                 dismiss()
             }
         } catch {

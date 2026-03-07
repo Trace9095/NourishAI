@@ -1,5 +1,6 @@
 import SwiftUI
 import SwiftData
+import StoreKit
 
 struct SettingsView: View {
     @Environment(\.openURL) private var openURL
@@ -147,29 +148,18 @@ struct SettingsView: View {
 
                 // Subscription
                 Section {
-                    Button {
-                        showSubscription = true
-                    } label: {
+                    if profile?.subscriptionTier == "pro" {
                         HStack {
                             Label("NourishAI Pro", systemImage: "star.fill")
                                 .foregroundColor(.brandOrange)
                             Spacer()
-                            if profile?.subscriptionTier == "pro" {
-                                HStack(spacing: 4) {
-                                    Image(systemName: "checkmark.circle.fill")
-                                        .foregroundColor(.brandGreen)
-                                    Text("Active")
-                                        .foregroundColor(.brandGreen)
-                                }
-                            } else {
-                                Text("Upgrade")
+                            HStack(spacing: 4) {
+                                Image(systemName: "checkmark.circle.fill")
+                                    .foregroundColor(.brandGreen)
+                                Text("Active")
                                     .foregroundColor(.brandGreen)
                             }
                         }
-                    }
-                    .frame(minHeight: Layout.minTouchTarget)
-
-                    if profile?.subscriptionTier == "pro" {
                         if let planName = currentPlanName {
                             settingsRow("Plan", value: planName, color: .brandOrange)
                         }
@@ -188,6 +178,38 @@ struct SettingsView: View {
                                 Image(systemName: "arrow.up.forward")
                                     .font(.caption)
                                     .foregroundColor(.gray)
+                            }
+                        }
+                        .frame(minHeight: Layout.minTouchTarget)
+                    } else {
+                        // Upgrade CTA for free users
+                        Button {
+                            showSubscription = true
+                        } label: {
+                            VStack(spacing: 12) {
+                                HStack {
+                                    Image(systemName: "star.fill")
+                                        .font(.title2)
+                                        .foregroundColor(.brandOrange)
+                                    VStack(alignment: .leading, spacing: 2) {
+                                        Text("Upgrade to Pro")
+                                            .font(.headline)
+                                            .foregroundColor(.white)
+                                        Text("Unlimited AI scans, premium chat, and more")
+                                            .font(.caption)
+                                            .foregroundColor(.gray)
+                                    }
+                                    Spacer()
+                                }
+                                HStack {
+                                    Text("Start Free Trial")
+                                        .font(.subheadline.weight(.semibold))
+                                        .foregroundColor(.brandDark)
+                                        .frame(maxWidth: .infinity)
+                                        .padding(.vertical, 10)
+                                        .background(Color.brandGreen)
+                                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                                }
                             }
                         }
                         .frame(minHeight: Layout.minTouchTarget)
@@ -246,10 +268,12 @@ struct SettingsView: View {
                 SubscriptionView()
             }
             .task {
-                // Fetch current subscription details
-                subscriptionExpiry = await SubscriptionManager.shared.currentSubscriptionExpiry
-                if let productID = await SubscriptionManager.shared.currentProductID {
-                    currentPlanName = productID.contains("annual") ? "Pro Annual" : "Pro Monthly"
+                await refreshSubscriptionDetails()
+            }
+            .onChange(of: showSubscription) { _, isShowing in
+                if !isShowing {
+                    // Refresh subscription details when paywall sheet closes
+                    Task { await refreshSubscriptionDetails() }
                 }
             }
         }
@@ -345,6 +369,13 @@ struct SettingsView: View {
     private func formatWater(ml: Int) -> String {
         let oz = Double(ml) / 29.5735
         return String(format: "%.0f oz", oz)
+    }
+
+    private func refreshSubscriptionDetails() async {
+        subscriptionExpiry = await SubscriptionManager.shared.currentSubscriptionExpiry
+        if let productID = await SubscriptionManager.shared.currentProductID {
+            currentPlanName = productID.contains("annual") ? "Pro Annual" : "Pro Monthly"
+        }
     }
 
     private func requestHealthKit() {

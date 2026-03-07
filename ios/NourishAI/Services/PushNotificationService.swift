@@ -45,35 +45,36 @@ final class PushNotificationService: ObservableObject {
     func registerDeviceToken(_ token: String) async {
         guard !token.isEmpty else { return }
 
-        let deviceInfo = DeviceRegistration(
-            deviceToken: token,
-            platform: "ios",
-            appVersion: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.0",
-            osVersion: UIDevice.current.systemVersion,
-            deviceModel: UIDevice.current.model,
-            timezone: TimeZone.current.identifier,
-            locale: Locale.current.identifier
-        )
+        // Get the app's device UUID (same one NourishAPIManager uses)
+        let appDeviceId: String = {
+            if let stored = UserDefaults.standard.string(forKey: "nourishai_device_id") {
+                return stored
+            }
+            let newId = UUID().uuidString
+            UserDefaults.standard.set(newId, forKey: "nourishai_device_id")
+            return newId
+        }()
 
         do {
-            guard let url = URL(string: APIConfig.baseURL.replacingOccurrences(of: "/api", with: "") + "/api/device/register") else { return }
+            guard let url = URL(string: APIConfig.registerDevice) else { return }
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.httpBody = try JSONEncoder().encode(deviceInfo)
 
-            let (data, response) = try await URLSession.shared.data(for: request)
+            let body: [String: String] = [
+                "deviceId": appDeviceId,
+                "pushToken": token,
+            ]
+            request.httpBody = try JSONEncoder().encode(body)
 
-            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
-                if let result = try? JSONDecoder().decode(DeviceRegistrationResponse.self, from: data),
-                   let deviceId = result.deviceId {
-                    try? KeychainService.saveString(deviceId, forKey: KeychainService.Keys.deviceId)
-                }
-                print("[NourishAI] Device token registered successfully")
+            let (_, response) = try await URLSession.shared.data(for: request)
+
+            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode < 300 {
+                print("[NourishAI] Push token registered successfully")
                 isRegistered = true
             }
         } catch {
-            print("[NourishAI] Device token registration error: \(error.localizedDescription)")
+            print("[NourishAI] Push token registration error: \(error.localizedDescription)")
         }
     }
 
@@ -157,23 +158,6 @@ final class PushNotificationService: ObservableObject {
     func cancelAllReminders() {
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
     }
-}
-
-// MARK: - Models
-
-private struct DeviceRegistration: Codable {
-    let deviceToken: String
-    let platform: String
-    let appVersion: String
-    let osVersion: String
-    let deviceModel: String
-    let timezone: String
-    let locale: String
-}
-
-private struct DeviceRegistrationResponse: Decodable {
-    let success: Bool
-    let deviceId: String?
 }
 
 // MARK: - Notification Action Handler
