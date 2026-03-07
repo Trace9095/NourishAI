@@ -68,6 +68,7 @@
 		A10002010000000000000027 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		A10002010000000000000028 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A10002010000000000000029 /* PushNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationService.swift; sourceTree = "<group>"; };
+		A10002010000000000000030 /* NourishAI.storekit */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = NourishAI.storekit; sourceTree = "<group>"; };
 		A10002010000000000000099 /* NourishAI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NourishAI.entitlements; sourceTree = "<group>"; };
 		A10003010000000000000001 /* NourishAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NourishAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -99,6 +100,7 @@
 				A10002010000000000000003 /* Constants.swift */,
 				A10002010000000000000022 /* Assets.xcassets */,
 				A10002010000000000000099 /* NourishAI.entitlements */,
+				A10002010000000000000030 /* NourishAI.storekit */,
 				A10005010000000000000003 /* Models */,
 				A10005010000000000000004 /* Services */,
 				A10005010000000000000005 /* Views */,
