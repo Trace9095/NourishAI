@@ -90,10 +90,10 @@ body {
   padding: 80px 60px;
 }
 
-/* ---- Scene 1: Hook (0.2s - 1.8s) ---- */
+/* ---- Scene 1: Hook (0.3s - 3.0s) ---- */
 .scene-hook {
   opacity: 0;
-  animation: sceneIn 0.6s ease-out 0.2s forwards, sceneOut 0.5s ease-in 1.8s forwards;
+  animation: sceneIn 0.6s ease-out 0.3s forwards, sceneOut 0.5s ease-in 3.0s forwards;
 }
 .hook-pre {
   font-family: 'Outfit', sans-serif;
@@ -118,7 +118,7 @@ body {
 .hook-arrow {
   margin-top: 40px;
   opacity: 0;
-  animation: bounceDown 1s ease-in-out 0.8s infinite;
+  animation: bounceDown 1s ease-in-out 1.2s infinite;
 }
 @keyframes bounceDown {
   0%, 100% { transform: translateY(0); opacity: 0.6; }
@@ -133,13 +133,13 @@ body {
   letter-spacing: 4px;
   text-transform: uppercase;
   opacity: 0;
-  animation: fadeIn 0.5s ease-out 0.6s forwards;
+  animation: fadeIn 0.5s ease-out 1.0s forwards;
 }
 
-/* ---- Scene 2: Stats Ticker (2.1s - 4.6s) ---- */
+/* ---- Scene 2: Stats Ticker (3.5s - 7.5s) ---- */
 .scene-stats {
   opacity: 0;
-  animation: sceneIn 0.6s ease-out 2.1s forwards, sceneOut 0.5s ease-in 4.6s forwards;
+  animation: sceneIn 0.6s ease-out 3.5s forwards, sceneOut 0.5s ease-in 7.5s forwards;
 }
 /* Downloads counter */
 .stat-downloads {
@@ -153,7 +153,7 @@ body {
   color: #34C759;
   line-height: 1;
   opacity: 0;
-  animation: scaleIn 0.6s ease-out 2.5s forwards;
+  animation: scaleIn 0.6s ease-out 3.8s forwards;
 }
 .stat-label {
   font-size: 36px;
@@ -163,7 +163,7 @@ body {
   letter-spacing: 6px;
   text-transform: uppercase;
   opacity: 0;
-  animation: fadeIn 0.4s ease-out 2.7s forwards;
+  animation: fadeIn 0.4s ease-out 4.2s forwards;
 }
 /* Star rating */
 .stat-rating {
@@ -181,11 +181,11 @@ body {
 .star-svg {
   opacity: 0;
 }
-.star-svg:nth-child(1) { animation: starPop 0.3s ease-out 3.0s forwards; }
-.star-svg:nth-child(2) { animation: starPop 0.3s ease-out 3.15s forwards; }
-.star-svg:nth-child(3) { animation: starPop 0.3s ease-out 3.3s forwards; }
-.star-svg:nth-child(4) { animation: starPop 0.3s ease-out 3.45s forwards; }
-.star-svg:nth-child(5) { animation: starPop 0.3s ease-out 3.6s forwards; }
+.star-svg:nth-child(1) { animation: starPop 0.3s ease-out 4.5s forwards; }
+.star-svg:nth-child(2) { animation: starPop 0.3s ease-out 4.8s forwards; }
+.star-svg:nth-child(3) { animation: starPop 0.3s ease-out 5.1s forwards; }
+.star-svg:nth-child(4) { animation: starPop 0.3s ease-out 5.4s forwards; }
+.star-svg:nth-child(5) { animation: starPop 0.3s ease-out 5.7s forwards; }
 @keyframes starPop {
   0% { opacity: 0; transform: scale(0) rotate(-30deg); }
   70% { opacity: 1; transform: scale(1.2) rotate(5deg); }
@@ -198,7 +198,7 @@ body {
   color: white;
   line-height: 1;
   opacity: 0;
-  animation: scaleIn 0.5s ease-out 3.8s forwards;
+  animation: scaleIn 0.5s ease-out 6.0s forwards;
 }
 .rating-source {
   font-size: 24px;
@@ -206,7 +206,7 @@ body {
   letter-spacing: 3px;
   text-transform: uppercase;
   opacity: 0;
-  animation: fadeIn 0.4s ease-out 4.0s forwards;
+  animation: fadeIn 0.4s ease-out 6.4s forwards;
 }
 /* App Store badge */
 .appstore-badge {
@@ -218,7 +218,7 @@ body {
   border-radius: 18px;
   padding: 18px 40px;
   opacity: 0;
-  animation: slideUp 0.5s ease-out 4.2s forwards;
+  animation: slideUp 0.5s ease-out 6.8s forwards;
 }
 .appstore-icon {
   width: 40px;
@@ -237,10 +237,10 @@ body {
   font-weight: 700;
 }
 
-/* ---- Scene 3: Testimonials (4.9s - 6.8s) ---- */
+/* ---- Scene 3: Testimonials (8.0s - 11.5s) ---- */
 .scene-testimonials {
   opacity: 0;
-  animation: sceneIn 0.6s ease-out 4.9s forwards, sceneOut 0.5s ease-in 6.8s forwards;
+  animation: sceneIn 0.6s ease-out 8.0s forwards, sceneOut 0.5s ease-in 11.5s forwards;
   justify-content: center;
 }
 .testimonials-title {
@@ -264,9 +264,9 @@ body {
   margin-bottom: 24px;
   opacity: 0;
 }
-.testimonial-card:nth-child(2) { animation: slideUp 0.5s ease-out 5.15s forwards; }
-.testimonial-card:nth-child(3) { animation: slideUp 0.5s ease-out 5.35s forwards; }
-.testimonial-card:nth-child(4) { animation: slideUp 0.5s ease-out 5.55s forwards; }
+.testimonial-card:nth-child(2) { animation: slideUp 0.5s ease-out 8.3s forwards; }
+.testimonial-card:nth-child(3) { animation: slideUp 0.5s ease-out 8.7s forwards; }
+.testimonial-card:nth-child(4) { animation: slideUp 0.5s ease-out 9.1s forwards; }
 .testimonial-stars {
   display: flex;
   gap: 6px;
@@ -314,10 +314,10 @@ body {
   margin-left: auto;
 }
 
-/* ---- Scene 4: CTA (7.0s - 9.0s) ---- */
+/* ---- Scene 4: CTA (12.0s - 15.0s) ---- */
 .scene-cta {
   opacity: 0;
-  animation: sceneIn 0.8s ease-out 7.0s forwards;
+  animation: sceneIn 0.8s ease-out 12.0s forwards;
 }
 .cta-logo {
   font-family: 'Outfit', sans-serif;
@@ -344,7 +344,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 3px;
   box-shadow: 0 12px 40px rgba(52,199,89,0.4);
-  animation: pulse 2s ease-in-out 7.5s infinite;
+  animation: pulse 2s ease-in-out 12.5s infinite;
   position: relative;
   overflow: hidden;
 }
@@ -353,7 +353,7 @@ body {
   position: absolute;
   top: 0; left: -100%; width: 60%; height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
-  animation: shimmer 3s ease-in-out 7.5s infinite;
+  animation: shimmer 3s ease-in-out 12.5s infinite;
 }
 .cta-free {
   font-size: 22px;
@@ -366,7 +366,7 @@ body {
   gap: 12px;
   margin-top: 32px;
   opacity: 0;
-  animation: fadeIn 0.5s ease-out 7.8s forwards;
+  animation: fadeIn 0.5s ease-out 13.0s forwards;
 }
 .cta-avatar-stack {
   display: flex;

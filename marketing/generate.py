@@ -37,7 +37,7 @@ OUTPUT_DIR = os.path.join(SCRIPT_DIR, "output")
 FEED_SIZE = (1080, 1080)
 STORY_SIZE = (1080, 1920)
 REEL_SIZE = (1080, 1920)
-REEL_DURATION = 9  # seconds
+REEL_DURATION = 15  # seconds
 REEL_FPS = 30
 
 

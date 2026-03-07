@@ -91,10 +91,10 @@ body {
   padding: 80px 60px;
 }
 
-/* ---- Scene 1: Hook (0.2s - 1.8s) ---- */
+/* ---- Scene 1: Hook (0.3s - 3.0s) ---- */
 .scene-hook {
   opacity: 0;
-  animation: sceneIn 0.6s ease-out 0.2s forwards, sceneOut 0.5s ease-in 1.8s forwards;
+  animation: sceneIn 0.6s ease-out 0.3s forwards, sceneOut 0.5s ease-in 3.0s forwards;
 }
 .hook-text {
   font-family: 'Outfit', sans-serif;
@@ -118,10 +118,10 @@ body {
   text-transform: uppercase;
 }
 
-/* ---- Scene 2: Protein Ring (2.1s - 4.6s) ---- */
+/* ---- Scene 2: Protein Ring (3.5s - 7.5s) ---- */
 .scene-ring {
   opacity: 0;
-  animation: sceneIn 0.6s ease-out 2.1s forwards, sceneOut 0.5s ease-in 4.6s forwards;
+  animation: sceneIn 0.6s ease-out 3.5s forwards, sceneOut 0.5s ease-in 7.5s forwards;
 }
 
 .ring-container {
@@ -151,7 +151,7 @@ body {
   stroke-linecap: round;
   stroke-dasharray: 1100;
   stroke-dashoffset: 1100;
-  animation: proteinRingFill 3s ease-out 2.4s forwards;
+  animation: proteinRingFill 3s ease-out 4.0s forwards;
   filter: drop-shadow(0 0 12px rgba(255,107,107,0.5));
 }
 @keyframes proteinRingFill {
@@ -172,7 +172,7 @@ body {
   color: white;
   line-height: 1;
   opacity: 0;
-  animation: scaleIn 0.5s ease-out 3.0s forwards;
+  animation: scaleIn 0.5s ease-out 5.0s forwards;
 }
 .ring-unit {
   font-family: 'Outfit', sans-serif;
@@ -185,7 +185,7 @@ body {
   color: rgba(255,255,255,0.35);
   margin-top: 4px;
   opacity: 0;
-  animation: fadeIn 0.4s ease-out 3.2s forwards;
+  animation: fadeIn 0.4s ease-out 5.3s forwards;
 }
 
 /* Glow ring pulse */
@@ -196,7 +196,7 @@ body {
   border-radius: 50%;
   border: 2px solid rgba(255,107,107,0.2);
   opacity: 0;
-  animation: ringGlow 2s ease-in-out 3.5s infinite;
+  animation: ringGlow 2s ease-in-out 5.8s infinite;
 }
 @keyframes ringGlow {
   0%, 100% { transform: scale(1); opacity: 0; }
@@ -249,19 +249,19 @@ body {
 
 .food-card-1 {
   top: 0; left: 0; right: 50%;
-  animation: slideFromLeft 0.5s ease-out 3.4s forwards;
+  animation: slideFromLeft 0.5s ease-out 5.6s forwards;
 }
 .food-card-2 {
   top: 0; left: 50%; right: 0;
-  animation: slideFromRight 0.5s ease-out 3.6s forwards;
+  animation: slideFromRight 0.5s ease-out 5.9s forwards;
 }
 .food-card-3 {
   top: 90px; left: 0; right: 50%;
-  animation: slideFromLeft 0.5s ease-out 3.8s forwards;
+  animation: slideFromLeft 0.5s ease-out 6.2s forwards;
 }
 .food-card-4 {
   top: 90px; left: 50%; right: 0;
-  animation: slideFromRight 0.5s ease-out 4.0s forwards;
+  animation: slideFromRight 0.5s ease-out 6.5s forwards;
 }
 
 @keyframes slideFromLeft {
@@ -287,10 +287,10 @@ body {
   height: 360px;
 }
 
-/* ---- Scene 3: Achievement (4.9s - 6.8s) ---- */
+/* ---- Scene 3: Achievement (8.0s - 11.5s) ---- */
 .scene-achieve {
   opacity: 0;
-  animation: sceneIn 0.8s ease-out 4.9s forwards, sceneOut 0.5s ease-in 6.8s forwards;
+  animation: sceneIn 0.8s ease-out 8.0s forwards, sceneOut 0.5s ease-in 11.5s forwards;
 }
 .achieve-number {
   font-family: 'Outfit', sans-serif;
@@ -318,7 +318,7 @@ body {
   padding: 24px 48px;
   box-shadow: 0 0 60px rgba(52,199,89,0.15);
   opacity: 0;
-  animation: scaleIn 0.5s ease-out 5.3s forwards;
+  animation: scaleIn 0.5s ease-out 8.7s forwards;
 }
 .badge-check {
   width: 60px;
@@ -342,7 +342,7 @@ body {
   color: rgba(255,255,255,0.4);
   margin-top: 36px;
   opacity: 0;
-  animation: fadeIn 0.4s ease-out 5.5s forwards;
+  animation: fadeIn 0.4s ease-out 9.1s forwards;
 }
 
 /* Confetti dots */
@@ -351,26 +351,26 @@ body {
   border-radius: 50%;
   opacity: 0;
 }
-.confetti-1 { width: 10px; height: 10px; background: #FF6B6B; top: 25%; left: 12%; animation: confettiIn 0.4s ease-out 5.1s forwards; }
-.confetti-2 { width: 8px; height: 8px; background: #34C759; top: 18%; right: 15%; animation: confettiIn 0.4s ease-out 5.2s forwards; }
-.confetti-3 { width: 12px; height: 12px; background: #FF9500; top: 30%; right: 20%; animation: confettiIn 0.4s ease-out 5.3s forwards; }
-.confetti-4 { width: 7px; height: 7px; background: #4ECDC4; top: 22%; left: 25%; animation: confettiIn 0.4s ease-out 5.4s forwards; }
-.confetti-5 { width: 9px; height: 9px; background: #FFE66D; bottom: 30%; left: 10%; animation: confettiIn 0.4s ease-out 5.5s forwards; }
-.confetti-6 { width: 11px; height: 11px; background: #5AC8FA; bottom: 25%; right: 12%; animation: confettiIn 0.4s ease-out 5.6s forwards; }
-.confetti-7 { width: 8px; height: 8px; background: #FF6B6B; bottom: 35%; left: 22%; animation: confettiIn 0.4s ease-out 5.7s forwards; }
-.confetti-8 { width: 10px; height: 10px; background: #34C759; bottom: 28%; right: 25%; animation: confettiIn 0.4s ease-out 5.8s forwards; }
-.confetti-9 { width: 6px; height: 6px; background: #FF9500; top: 35%; left: 18%; animation: confettiIn 0.4s ease-out 5.9s forwards; }
-.confetti-10 { width: 9px; height: 9px; background: #4ECDC4; top: 28%; right: 10%; animation: confettiIn 0.4s ease-out 6.0s forwards; }
+.confetti-1 { width: 10px; height: 10px; background: #FF6B6B; top: 25%; left: 12%; animation: confettiIn 0.4s ease-out 8.3s forwards; }
+.confetti-2 { width: 8px; height: 8px; background: #34C759; top: 18%; right: 15%; animation: confettiIn 0.4s ease-out 8.5s forwards; }
+.confetti-3 { width: 12px; height: 12px; background: #FF9500; top: 30%; right: 20%; animation: confettiIn 0.4s ease-out 8.8s forwards; }
+.confetti-4 { width: 7px; height: 7px; background: #4ECDC4; top: 22%; left: 25%; animation: confettiIn 0.4s ease-out 9.0s forwards; }
+.confetti-5 { width: 9px; height: 9px; background: #FFE66D; bottom: 30%; left: 10%; animation: confettiIn 0.4s ease-out 9.2s forwards; }
+.confetti-6 { width: 11px; height: 11px; background: #5AC8FA; bottom: 25%; right: 12%; animation: confettiIn 0.4s ease-out 9.5s forwards; }
+.confetti-7 { width: 8px; height: 8px; background: #FF6B6B; bottom: 35%; left: 22%; animation: confettiIn 0.4s ease-out 9.7s forwards; }
+.confetti-8 { width: 10px; height: 10px; background: #34C759; bottom: 28%; right: 25%; animation: confettiIn 0.4s ease-out 10.0s forwards; }
+.confetti-9 { width: 6px; height: 6px; background: #FF9500; top: 35%; left: 18%; animation: confettiIn 0.4s ease-out 10.2s forwards; }
+.confetti-10 { width: 9px; height: 9px; background: #4ECDC4; top: 28%; right: 10%; animation: confettiIn 0.4s ease-out 10.5s forwards; }
 
 @keyframes confettiIn {
   from { opacity: 0; transform: scale(0) rotate(0deg); }
   to { opacity: 0.8; transform: scale(1) rotate(180deg); }
 }
 
-/* ---- Scene 4: CTA (7.0s - 9.0s) ---- */
+/* ---- Scene 4: CTA (12.0s - 15.0s) ---- */
 .scene-cta {
   opacity: 0;
-  animation: sceneIn 0.8s ease-out 7.0s forwards;
+  animation: sceneIn 0.8s ease-out 12.0s forwards;
 }
 .cta-logo {
   font-family: 'Outfit', sans-serif;
@@ -397,7 +397,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 3px;
   box-shadow: 0 12px 40px rgba(52,199,89,0.4);
-  animation: pulse 2s ease-in-out 7.5s infinite;
+  animation: pulse 2s ease-in-out 12.5s infinite;
   position: relative;
   overflow: hidden;
 }
@@ -406,7 +406,7 @@ body {
   position: absolute;
   top: 0; left: -100%; width: 60%; height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
-  animation: shimmer 3s ease-in-out 7.5s infinite;
+  animation: shimmer 3s ease-in-out 12.5s infinite;
 }
 .cta-free {
   font-size: 22px;

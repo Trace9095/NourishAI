@@ -90,10 +90,10 @@ body {
   padding: 80px 60px;
 }
 
-/* ---- Scene 1: Hook (0.2s - 1.8s) ---- */
+/* ---- Scene 1: Hook (0.3s - 3.0s) ---- */
 .scene-hook {
   opacity: 0;
-  animation: sceneIn 0.6s ease-out 0.2s forwards, sceneOut 0.5s ease-in 1.8s forwards;
+  animation: sceneIn 0.6s ease-out 0.3s forwards, sceneOut 0.5s ease-in 3.0s forwards;
 }
 .hook-text {
   font-family: 'Outfit', sans-serif;
@@ -120,7 +120,7 @@ body {
   background: #FF6B6B;
   transform: translateY(-50%) rotate(-2deg);
   opacity: 0;
-  animation: strikeIn 0.5s ease-out 0.8s forwards;
+  animation: strikeIn 0.5s ease-out 1.2s forwards;
 }
 @keyframes strikeIn {
   from { opacity: 0; transform: translateY(-50%) rotate(-2deg) scaleX(0); }
@@ -133,13 +133,13 @@ body {
   text-align: center;
   margin-top: 32px;
   opacity: 0;
-  animation: fadeIn 0.5s ease-out 1.2s forwards;
+  animation: fadeIn 0.5s ease-out 2.0s forwards;
 }
 
-/* ---- Scene 2: Before / Old Way (2.1s - 4.6s) ---- */
+/* ---- Scene 2: Before / Old Way (3.5s - 7.5s) ---- */
 .scene-before {
   opacity: 0;
-  animation: sceneIn 0.6s ease-out 2.1s forwards, sceneOut 0.5s ease-in 4.6s forwards;
+  animation: sceneIn 0.6s ease-out 3.5s forwards, sceneOut 0.5s ease-in 7.5s forwards;
 }
 .before-label {
   font-size: 22px;
@@ -149,7 +149,7 @@ body {
   letter-spacing: 6px;
   margin-bottom: 40px;
   opacity: 0;
-  animation: fadeIn 0.4s ease-out 2.5s forwards;
+  animation: fadeIn 0.4s ease-out 3.8s forwards;
 }
 .before-card {
   width: 100%;
@@ -166,7 +166,7 @@ body {
   gap: 1px;
   margin-bottom: 12px;
   opacity: 0;
-  animation: fadeIn 0.4s ease-out 2.6s forwards;
+  animation: fadeIn 0.4s ease-out 4.0s forwards;
 }
 .spreadsheet-header div {
   flex: 1;
@@ -206,10 +206,10 @@ body {
   border-bottom: 1px solid rgba(255,255,255,0.04);
   opacity: 0;
 }
-.problem-row:nth-child(1) { animation: slideRight 0.4s ease-out 2.8s forwards; }
-.problem-row:nth-child(2) { animation: slideRight 0.4s ease-out 3.0s forwards; }
-.problem-row:nth-child(3) { animation: slideRight 0.4s ease-out 3.2s forwards; }
-.problem-row:nth-child(4) { animation: slideRight 0.4s ease-out 3.4s forwards; }
+.problem-row:nth-child(1) { animation: slideRight 0.4s ease-out 4.3s forwards; }
+.problem-row:nth-child(2) { animation: slideRight 0.4s ease-out 4.7s forwards; }
+.problem-row:nth-child(3) { animation: slideRight 0.4s ease-out 5.1s forwards; }
+.problem-row:nth-child(4) { animation: slideRight 0.4s ease-out 5.5s forwards; }
 .problem-x {
   width: 48px;
   height: 48px;
@@ -234,7 +234,7 @@ body {
   border-radius: 20px;
   padding: 18px 80px;
   opacity: 0;
-  animation: failBounce 0.6s ease-out 4.0s forwards;
+  animation: failBounce 0.6s ease-out 6.5s forwards;
 }
 .fail-badge-text {
   font-family: 'Outfit', sans-serif;
@@ -250,10 +250,10 @@ body {
   100% { opacity: 1; transform: scale(1); }
 }
 
-/* ---- Scene 3: After / NourishAI (4.9s - 6.8s) ---- */
+/* ---- Scene 3: After / NourishAI (8.0s - 11.5s) ---- */
 .scene-after {
   opacity: 0;
-  animation: sceneIn 0.6s ease-out 4.9s forwards, sceneOut 0.5s ease-in 6.8s forwards;
+  animation: sceneIn 0.6s ease-out 8.0s forwards, sceneOut 0.5s ease-in 11.5s forwards;
 }
 .after-label {
   font-size: 22px;
@@ -263,7 +263,7 @@ body {
   letter-spacing: 6px;
   margin-bottom: 40px;
   opacity: 0;
-  animation: fadeIn 0.4s ease-out 5.1s forwards;
+  animation: fadeIn 0.4s ease-out 8.2s forwards;
 }
 .after-card {
   width: 100%;
@@ -325,7 +325,7 @@ body {
   height: 2px;
   background: linear-gradient(90deg, transparent, #34C759, transparent);
   box-shadow: 0 0 12px #34C759;
-  animation: scanDown 1.5s ease-in-out 5.4s infinite;
+  animation: scanDown 1.5s ease-in-out 8.6s infinite;
 }
 @keyframes scanDown {
   0% { top: 0; opacity: 1; }
@@ -358,7 +358,7 @@ body {
   align-items: center;
   justify-content: center;
   opacity: 0;
-  animation: scaleIn 0.3s ease-out 5.8s forwards;
+  animation: scaleIn 0.3s ease-out 9.2s forwards;
 }
 
 /* Success rows */
@@ -373,10 +373,10 @@ body {
   border-bottom: 1px solid rgba(255,255,255,0.04);
   opacity: 0;
 }
-.success-row:nth-child(1) { animation: slideRight 0.4s ease-out 5.15s forwards; }
-.success-row:nth-child(2) { animation: slideRight 0.4s ease-out 5.35s forwards; }
-.success-row:nth-child(3) { animation: slideRight 0.4s ease-out 5.55s forwards; }
-.success-row:nth-child(4) { animation: slideRight 0.4s ease-out 5.75s forwards; }
+.success-row:nth-child(1) { animation: slideRight 0.4s ease-out 8.3s forwards; }
+.success-row:nth-child(2) { animation: slideRight 0.4s ease-out 8.7s forwards; }
+.success-row:nth-child(3) { animation: slideRight 0.4s ease-out 9.1s forwards; }
+.success-row:nth-child(4) { animation: slideRight 0.4s ease-out 9.5s forwards; }
 .success-check {
   width: 44px;
   height: 44px;
@@ -404,7 +404,7 @@ body {
   padding: 18px 64px;
   opacity: 0;
   position: relative;
-  animation: successBounce 0.6s ease-out 6.2s forwards;
+  animation: successBounce 0.6s ease-out 10.5s forwards;
 }
 .success-badge-text {
   font-family: 'Outfit', sans-serif;
@@ -427,14 +427,14 @@ body {
   border-radius: 50%;
   opacity: 0;
 }
-.confetti:nth-child(1) { background: #34C759; top: -20px; left: 15%; animation: confettiPop 1.5s ease-out 6.35s forwards; }
-.confetti:nth-child(2) { background: #FF9500; top: -16px; left: 40%; animation: confettiPop 1.5s ease-out 6.4s forwards; }
-.confetti:nth-child(3) { background: #5AC8FA; top: -24px; left: 65%; animation: confettiPop 1.5s ease-out 6.3s forwards; }
-.confetti:nth-child(4) { background: #4ECDC4; top: -18px; left: 85%; animation: confettiPop 1.5s ease-out 6.45s forwards; }
-.confetti:nth-child(5) { background: #FFE66D; bottom: -18px; left: 20%; animation: confettiPopDown 1.5s ease-out 6.38s forwards; }
-.confetti:nth-child(6) { background: #FF6B6B; bottom: -22px; left: 50%; animation: confettiPopDown 1.5s ease-out 6.3s forwards; }
-.confetti:nth-child(7) { background: #34C759; bottom: -16px; left: 75%; animation: confettiPopDown 1.5s ease-out 6.5s forwards; }
-.confetti:nth-child(8) { background: #FF9500; top: -14px; left: 5%; animation: confettiPop 1.5s ease-out 6.42s forwards; }
+.confetti:nth-child(1) { background: #34C759; top: -20px; left: 15%; animation: confettiPop 1.5s ease-out 10.65s forwards; }
+.confetti:nth-child(2) { background: #FF9500; top: -16px; left: 40%; animation: confettiPop 1.5s ease-out 10.7s forwards; }
+.confetti:nth-child(3) { background: #5AC8FA; top: -24px; left: 65%; animation: confettiPop 1.5s ease-out 10.6s forwards; }
+.confetti:nth-child(4) { background: #4ECDC4; top: -18px; left: 85%; animation: confettiPop 1.5s ease-out 10.75s forwards; }
+.confetti:nth-child(5) { background: #FFE66D; bottom: -18px; left: 20%; animation: confettiPopDown 1.5s ease-out 10.68s forwards; }
+.confetti:nth-child(6) { background: #FF6B6B; bottom: -22px; left: 50%; animation: confettiPopDown 1.5s ease-out 10.6s forwards; }
+.confetti:nth-child(7) { background: #34C759; bottom: -16px; left: 75%; animation: confettiPopDown 1.5s ease-out 10.8s forwards; }
+.confetti:nth-child(8) { background: #FF9500; top: -14px; left: 5%; animation: confettiPop 1.5s ease-out 10.72s forwards; }
 @keyframes confettiPop {
   0% { opacity: 0; transform: translateY(0) scale(0); }
   30% { opacity: 1; transform: translateY(-30px) scale(1.3); }
@@ -446,10 +446,10 @@ body {
   100% { opacity: 0; transform: translateY(80px) scale(0.6); }
 }
 
-/* ---- Scene 4: CTA (7.0s - 9.0s) ---- */
+/* ---- Scene 4: CTA (12.0s - 15.0s) ---- */
 .scene-cta {
   opacity: 0;
-  animation: sceneIn 0.8s ease-out 7.0s forwards;
+  animation: sceneIn 0.8s ease-out 12.0s forwards;
 }
 .cta-logo {
   font-family: 'Outfit', sans-serif;
@@ -476,7 +476,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 3px;
   box-shadow: 0 12px 40px rgba(52,199,89,0.4);
-  animation: pulse 2s ease-in-out 7.5s infinite;
+  animation: pulse 2s ease-in-out 12.5s infinite;
   position: relative;
   overflow: hidden;
 }
@@ -485,7 +485,7 @@ body {
   position: absolute;
   top: 0; left: -100%; width: 60%; height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
-  animation: shimmer 3s ease-in-out 7.5s infinite;
+  animation: shimmer 3s ease-in-out 12.5s infinite;
 }
 .cta-free {
   font-size: 22px;

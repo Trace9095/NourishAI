@@ -90,10 +90,10 @@ body {
   padding: 80px 60px;
 }
 
-/* ---- Scene 1: Hook text (0.2s - 1.8s) ---- */
+/* ---- Scene 1: Hook text (0.3s - 3.0s) ---- */
 .scene-hook {
   opacity: 0;
-  animation: sceneIn 0.6s ease-out 0.2s forwards, sceneOut 0.5s ease-in 1.8s forwards;
+  animation: sceneIn 0.6s ease-out 0.3s forwards, sceneOut 0.5s ease-in 3.0s forwards;
 }
 .hook-text {
   font-family: 'Outfit', sans-serif;
@@ -115,10 +115,10 @@ body {
   margin-top: 28px;
 }
 
-/* ---- Scene 2: Phone with scanning animation (2.1s - 4.6s) ---- */
+/* ---- Scene 2: Phone with scanning animation (3.5s - 7.5s) ---- */
 .scene-phone {
   opacity: 0;
-  animation: sceneIn 0.6s ease-out 2.1s forwards, sceneOut 0.5s ease-in 4.6s forwards;
+  animation: sceneIn 0.6s ease-out 3.5s forwards, sceneOut 0.5s ease-in 7.5s forwards;
 }
 .phone-frame {
   width: 440px;
@@ -165,7 +165,7 @@ body {
   height: 3px;
   background: linear-gradient(90deg, transparent, #34C759, transparent);
   top: 0;
-  animation: scanDown 1.5s ease-in-out 2.8s infinite;
+  animation: scanDown 1.5s ease-in-out 4.0s infinite;
   box-shadow: 0 0 20px #34C759;
 }
 @keyframes scanDown {
@@ -178,7 +178,7 @@ body {
   border: 2px solid #34C759;
   border-radius: 8px;
   opacity: 0;
-  animation: cornersIn 0.4s ease-out 2.6s forwards;
+  animation: cornersIn 0.4s ease-out 3.8s forwards;
 }
 @keyframes cornersIn {
   to { opacity: 0.6; }
@@ -189,7 +189,7 @@ body {
   margin-top: 28px;
   width: 100%;
   opacity: 0;
-  animation: slideUp 0.5s ease-out 3.5s forwards;
+  animation: slideUp 0.5s ease-out 5.5s forwards;
 }
 .macro-result-row {
   display: flex;
@@ -210,13 +210,13 @@ body {
   color: rgba(255,255,255,0.5);
   margin-top: 36px;
   opacity: 0;
-  animation: fadeIn 0.5s ease-out 3.0s forwards;
+  animation: fadeIn 0.5s ease-out 4.5s forwards;
 }
 
-/* ---- Scene 3: Feature callouts (4.9s - 6.8s) ---- */
+/* ---- Scene 3: Feature callouts (8.0s - 11.5s) ---- */
 .scene-features {
   opacity: 0;
-  animation: sceneIn 0.6s ease-out 4.9s forwards, sceneOut 0.5s ease-in 6.8s forwards;
+  animation: sceneIn 0.6s ease-out 8.0s forwards, sceneOut 0.5s ease-in 11.5s forwards;
 }
 .feature-item {
   display: flex;
@@ -225,10 +225,10 @@ body {
   padding: 32px 0;
   opacity: 0;
 }
-.feature-item:nth-child(1) { animation: slideRight 0.5s ease-out 5.1s forwards; }
-.feature-item:nth-child(2) { animation: slideRight 0.5s ease-out 5.3s forwards; }
-.feature-item:nth-child(3) { animation: slideRight 0.5s ease-out 5.5s forwards; }
-.feature-item:nth-child(4) { animation: slideRight 0.5s ease-out 5.7s forwards; }
+.feature-item:nth-child(1) { animation: slideRight 0.5s ease-out 8.2s forwards; }
+.feature-item:nth-child(2) { animation: slideRight 0.5s ease-out 8.6s forwards; }
+.feature-item:nth-child(3) { animation: slideRight 0.5s ease-out 9.0s forwards; }
+.feature-item:nth-child(4) { animation: slideRight 0.5s ease-out 9.4s forwards; }
 
 .feature-icon {
   width: 88px;
@@ -257,10 +257,10 @@ body {
   margin-top: 4px;
 }
 
-/* ---- Scene 4: CTA (7.0s - 9.0s) ---- */
+/* ---- Scene 4: CTA (12.0s - 15.0s) ---- */
 .scene-cta {
   opacity: 0;
-  animation: sceneIn 0.8s ease-out 7.0s forwards;
+  animation: sceneIn 0.8s ease-out 12.0s forwards;
 }
 .cta-logo {
   font-family: 'Outfit', sans-serif;
@@ -287,7 +287,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 3px;
   box-shadow: 0 12px 40px rgba(52,199,89,0.4);
-  animation: pulse 2s ease-in-out 7.5s infinite;
+  animation: pulse 2s ease-in-out 12.5s infinite;
   position: relative;
   overflow: hidden;
 }
@@ -296,7 +296,7 @@ body {
   position: absolute;
   top: 0; left: -100%; width: 60%; height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
-  animation: shimmer 3s ease-in-out 7.5s infinite;
+  animation: shimmer 3s ease-in-out 12.5s infinite;
 }
 @keyframes shimmer {
   0% { left: -100%; }
@@ -317,7 +317,7 @@ body {
   gap: 8px;
   margin-top: 16px;
   opacity: 0;
-  animation: fadeIn 0.5s ease-out 7.8s forwards;
+  animation: fadeIn 0.5s ease-out 13.0s forwards;
 }
 
 /* Shared animations */

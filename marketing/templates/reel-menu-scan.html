@@ -90,10 +90,10 @@ body {
   padding: 80px 60px;
 }
 
-/* ---- Scene 1: Hook (0.2s - 1.8s) ---- */
+/* ---- Scene 1: Hook (0.3s - 3.0s) ---- */
 .scene-hook {
   opacity: 0;
-  animation: sceneIn 0.6s ease-out 0.2s forwards, sceneOut 0.5s ease-in 1.8s forwards;
+  animation: sceneIn 0.6s ease-out 0.3s forwards, sceneOut 0.5s ease-in 3.0s forwards;
 }
 .hook-text {
   font-family: 'Outfit', sans-serif;
@@ -119,13 +119,13 @@ body {
 .hook-icon {
   margin-bottom: 32px;
   opacity: 0;
-  animation: fadeIn 0.4s ease-out 0.4s forwards;
+  animation: fadeIn 0.4s ease-out 0.5s forwards;
 }
 
-/* ---- Scene 2: Menu Scanning (2.1s - 4.6s) ---- */
+/* ---- Scene 2: Menu Scanning (3.5s - 7.5s) ---- */
 .scene-phone {
   opacity: 0;
-  animation: sceneIn 0.6s ease-out 2.1s forwards, sceneOut 0.5s ease-in 4.6s forwards;
+  animation: sceneIn 0.6s ease-out 3.5s forwards, sceneOut 0.5s ease-in 7.5s forwards;
 }
 .phone-frame {
   width: 440px;
@@ -221,7 +221,7 @@ body {
   top: 0;
   opacity: 0;
   box-shadow: 0 0 30px #34C759;
-  animation: scanDown 2s ease-in-out 2.5s forwards;
+  animation: scanDown 2s ease-in-out 4.1s forwards;
 }
 @keyframes scanDown {
   0% { top: 0; opacity: 1; }
@@ -232,7 +232,7 @@ body {
   inset: 0;
   background: rgba(52,199,89,0.08);
   opacity: 0;
-  animation: scanFlash 0.5s ease-out 3.4s forwards;
+  animation: scanFlash 0.5s ease-out 5.6s forwards;
 }
 @keyframes scanFlash {
   0% { opacity: 0; }
@@ -270,7 +270,7 @@ body {
   color: #34C759;
   top: 50%;
   transform: translateY(-50%);
-  animation: badgeIn 0.4s ease-out 3.5s forwards;
+  animation: badgeIn 0.4s ease-out 5.8s forwards;
 }
 .menu-item-2 .health-badge {
   background: rgba(52,199,89,0.12);
@@ -278,7 +278,7 @@ body {
   color: #4ECDC4;
   top: 50%;
   transform: translateY(-50%);
-  animation: badgeIn 0.4s ease-out 3.65s forwards;
+  animation: badgeIn 0.4s ease-out 6.0s forwards;
 }
 .menu-item-3 .health-badge {
   background: rgba(255,149,0,0.12);
@@ -286,7 +286,7 @@ body {
   color: #FF9500;
   top: 50%;
   transform: translateY(-50%);
-  animation: badgeIn 0.4s ease-out 3.8s forwards;
+  animation: badgeIn 0.4s ease-out 6.2s forwards;
 }
 .menu-item-4 .health-badge {
   background: rgba(255,107,107,0.12);
@@ -294,7 +294,7 @@ body {
   color: #FF6B6B;
   top: 50%;
   transform: translateY(-50%);
-  animation: badgeIn 0.4s ease-out 3.95s forwards;
+  animation: badgeIn 0.4s ease-out 6.4s forwards;
 }
 
 @keyframes badgeIn {
@@ -316,7 +316,7 @@ body {
   align-items: center;
   gap: 10px;
   opacity: 0;
-  animation: fadeIn 0.4s ease-out 2.7s forwards, fadeOut 0.3s ease-in 3.3s forwards;
+  animation: fadeIn 0.4s ease-out 3.8s forwards, fadeOut 0.3s ease-in 5.4s forwards;
 }
 @keyframes fadeOut {
   to { opacity: 0; }
@@ -334,7 +334,7 @@ body {
   align-items: center;
   gap: 10px;
   opacity: 0;
-  animation: fadeIn 0.4s ease-out 3.5s forwards;
+  animation: fadeIn 0.4s ease-out 5.8s forwards;
 }
 
 /* Phone outer label */
@@ -343,13 +343,13 @@ body {
   color: rgba(255,255,255,0.4);
   margin-top: 28px;
   opacity: 0;
-  animation: fadeIn 0.4s ease-out 4.2s forwards;
+  animation: fadeIn 0.4s ease-out 7.0s forwards;
 }
 
-/* ---- Scene 3: Insights (4.9s - 6.8s) ---- */
+/* ---- Scene 3: Insights (8.0s - 11.5s) ---- */
 .scene-insights {
   opacity: 0;
-  animation: sceneIn 0.6s ease-out 4.9s forwards, sceneOut 0.5s ease-in 6.8s forwards;
+  animation: sceneIn 0.6s ease-out 8.0s forwards, sceneOut 0.5s ease-in 11.5s forwards;
 }
 .insights-title {
   font-family: 'Outfit', sans-serif;
@@ -373,9 +373,9 @@ body {
   margin-bottom: 20px;
   opacity: 0;
 }
-.insight-card:nth-child(2) { animation: slideRight 0.5s ease-out 5.2s forwards; }
-.insight-card:nth-child(3) { animation: slideRight 0.5s ease-out 5.4s forwards; }
-.insight-card:nth-child(4) { animation: slideRight 0.5s ease-out 5.6s forwards; }
+.insight-card:nth-child(2) { animation: slideRight 0.5s ease-out 8.5s forwards; }
+.insight-card:nth-child(3) { animation: slideRight 0.5s ease-out 9.0s forwards; }
+.insight-card:nth-child(4) { animation: slideRight 0.5s ease-out 9.5s forwards; }
 
 .insight-icon {
   width: 80px;
@@ -406,10 +406,10 @@ body {
   line-height: 1.4;
 }
 
-/* ---- Scene 4: CTA (7.0s - 9.0s) ---- */
+/* ---- Scene 4: CTA (12.0s - 15.0s) ---- */
 .scene-cta {
   opacity: 0;
-  animation: sceneIn 0.8s ease-out 7.0s forwards;
+  animation: sceneIn 0.8s ease-out 12.0s forwards;
 }
 .cta-logo {
   font-family: 'Outfit', sans-serif;
@@ -436,7 +436,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 3px;
   box-shadow: 0 12px 40px rgba(52,199,89,0.4);
-  animation: pulse 2s ease-in-out 7.5s infinite;
+  animation: pulse 2s ease-in-out 12.5s infinite;
   position: relative;
   overflow: hidden;
 }
@@ -445,7 +445,7 @@ body {
   position: absolute;
   top: 0; left: -100%; width: 60%; height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
-  animation: shimmer 3s ease-in-out 7.5s infinite;
+  animation: shimmer 3s ease-in-out 12.5s infinite;
 }
 .cta-free {
   font-size: 22px;

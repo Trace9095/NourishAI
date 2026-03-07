@@ -87,10 +87,10 @@ body {
   padding: 80px 60px;
 }
 
-/* ---- Scene 1: Other apps slow (0.2s - 1.8s) ---- */
+/* ---- Scene 1: Other apps slow (0.3s - 3.0s) ---- */
 .scene-slow {
   opacity: 0;
-  animation: sceneIn 0.6s ease-out 0.2s forwards, sceneOut 0.5s ease-in 1.8s forwards;
+  animation: sceneIn 0.6s ease-out 0.3s forwards, sceneOut 0.5s ease-in 3.0s forwards;
 }
 .slow-label {
   font-size: 22px;
@@ -100,7 +100,7 @@ body {
   letter-spacing: 5px;
   margin-bottom: 36px;
   opacity: 0;
-  animation: fadeIn 0.4s ease-out 0.4s forwards;
+  animation: fadeIn 0.4s ease-out 0.5s forwards;
 }
 .slow-title {
   font-family: 'Outfit', sans-serif;
@@ -128,11 +128,11 @@ body {
   border-radius: 18px;
   opacity: 0;
 }
-.slow-step:nth-child(1) { animation: slideRight 0.4s ease-out 0.5s forwards; }
-.slow-step:nth-child(2) { animation: slideRight 0.4s ease-out 0.7s forwards; }
-.slow-step:nth-child(3) { animation: slideRight 0.4s ease-out 0.9s forwards; }
-.slow-step:nth-child(4) { animation: slideRight 0.4s ease-out 1.1s forwards; }
-.slow-step:nth-child(5) { animation: slideRight 0.4s ease-out 1.3s forwards; }
+.slow-step:nth-child(1) { animation: slideRight 0.4s ease-out 0.6s forwards; }
+.slow-step:nth-child(2) { animation: slideRight 0.4s ease-out 1.0s forwards; }
+.slow-step:nth-child(3) { animation: slideRight 0.4s ease-out 1.4s forwards; }
+.slow-step:nth-child(4) { animation: slideRight 0.4s ease-out 1.8s forwards; }
+.slow-step:nth-child(5) { animation: slideRight 0.4s ease-out 2.2s forwards; }
 .step-x {
   width: 40px;
   height: 40px;
@@ -155,7 +155,7 @@ body {
   color: #FF6B6B;
   margin-top: 36px;
   opacity: 0;
-  animation: fadeIn 0.4s ease-out 1.5s forwards;
+  animation: fadeIn 0.4s ease-out 2.5s forwards;
 }
 .slow-timer-label {
   font-size: 22px;
@@ -163,13 +163,13 @@ body {
   letter-spacing: 3px;
   text-transform: uppercase;
   opacity: 0;
-  animation: fadeIn 0.4s ease-out 1.6s forwards;
+  animation: fadeIn 0.4s ease-out 2.7s forwards;
 }
 
-/* ---- Scene 2: NourishAI fast (2.1s - 4.6s) ---- */
+/* ---- Scene 2: NourishAI fast (3.5s - 7.5s) ---- */
 .scene-fast {
   opacity: 0;
-  animation: sceneIn 0.6s ease-out 2.1s forwards, sceneOut 0.5s ease-in 4.6s forwards;
+  animation: sceneIn 0.6s ease-out 3.5s forwards, sceneOut 0.5s ease-in 7.5s forwards;
 }
 .fast-label {
   font-size: 22px;
@@ -225,7 +225,7 @@ body {
   inset: 0;
   background: white;
   opacity: 0;
-  animation: flash 0.3s ease-out 2.6s forwards;
+  animation: flash 0.3s ease-out 3.8s forwards;
 }
 @keyframes flash {
   0% { opacity: 0; }
@@ -240,7 +240,7 @@ body {
   top: 0;
   opacity: 0;
   box-shadow: 0 0 30px #34C759;
-  animation: scanSweep 1s ease-in-out 2.9s forwards;
+  animation: scanSweep 1s ease-in-out 4.4s forwards;
 }
 @keyframes scanSweep {
   0% { top: 0; opacity: 1; }
@@ -252,13 +252,13 @@ body {
   border: 2px solid #34C759;
   border-radius: 8px;
   opacity: 0;
-  animation: fadeIn 0.3s ease-out 2.8s forwards;
+  animation: fadeIn 0.3s ease-out 4.2s forwards;
 }
 .phone-results {
   width: 100%;
   margin-top: 20px;
   opacity: 0;
-  animation: slideUp 0.5s ease-out 3.4s forwards;
+  animation: slideUp 0.5s ease-out 5.2s forwards;
 }
 .result-row {
   display: flex;
@@ -280,7 +280,7 @@ body {
   color: #34C759;
   margin-top: 44px;
   opacity: 0;
-  animation: scaleIn 0.5s ease-out 3.8s forwards;
+  animation: scaleIn 0.5s ease-out 6.0s forwards;
 }
 .fast-timer-label {
   font-size: 22px;
@@ -288,13 +288,13 @@ body {
   letter-spacing: 3px;
   text-transform: uppercase;
   opacity: 0;
-  animation: fadeIn 0.4s ease-out 4.0s forwards;
+  animation: fadeIn 0.4s ease-out 6.4s forwards;
 }
 
-/* ---- Scene 3: Comparison (4.9s - 6.8s) ---- */
+/* ---- Scene 3: Comparison (8.0s - 11.5s) ---- */
 .scene-compare {
   opacity: 0;
-  animation: sceneIn 0.6s ease-out 4.9s forwards, sceneOut 0.5s ease-in 6.8s forwards;
+  animation: sceneIn 0.6s ease-out 8.0s forwards, sceneOut 0.5s ease-in 11.5s forwards;
 }
 .compare-title {
   font-family: 'Outfit', sans-serif;
@@ -313,9 +313,9 @@ body {
   margin-bottom: 32px;
   opacity: 0;
 }
-.compare-row:nth-child(2) { animation: fadeIn 0.4s ease-out 5.2s forwards; }
-.compare-row:nth-child(3) { animation: fadeIn 0.4s ease-out 5.4s forwards; }
-.compare-row:nth-child(4) { animation: fadeIn 0.4s ease-out 5.6s forwards; }
+.compare-row:nth-child(2) { animation: fadeIn 0.4s ease-out 8.4s forwards; }
+.compare-row:nth-child(3) { animation: fadeIn 0.4s ease-out 8.8s forwards; }
+.compare-row:nth-child(4) { animation: fadeIn 0.4s ease-out 9.2s forwards; }
 .compare-old {
   flex: 1;
   text-align: right;
@@ -349,10 +349,10 @@ body {
   margin-top: 4px;
 }
 
-/* ---- Scene 4: CTA (7.0s - 9.0s) ---- */
+/* ---- Scene 4: CTA (12.0s - 15.0s) ---- */
 .scene-cta {
   opacity: 0;
-  animation: sceneIn 0.8s ease-out 7.0s forwards;
+  animation: sceneIn 0.8s ease-out 12.0s forwards;
 }
 .cta-logo {
   font-family: 'Outfit', sans-serif;
@@ -379,7 +379,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 3px;
   box-shadow: 0 12px 40px rgba(52,199,89,0.4);
-  animation: pulse 2s ease-in-out 7.5s infinite;
+  animation: pulse 2s ease-in-out 12.5s infinite;
   position: relative;
   overflow: hidden;
 }
@@ -388,7 +388,7 @@ body {
   position: absolute;
   top: 0; left: -100%; width: 60%; height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
-  animation: shimmer 3s ease-in-out 7.5s infinite;
+  animation: shimmer 3s ease-in-out 12.5s infinite;
 }
 @keyframes shimmer {
   0% { left: -100%; }

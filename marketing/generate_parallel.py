@@ -13,7 +13,7 @@ TEMPLATE_DIR = os.path.join(SCRIPT_DIR, "templates")
 CALENDAR_DIR = os.path.join(SCRIPT_DIR, "calendar")
 OUTPUT_DIR = os.path.join(SCRIPT_DIR, "output")
 REEL_FPS = 30
-REEL_DURATION = 9
+REEL_DURATION = 15
 REEL_SIZE = (1080, 1920)
 
 

@@ -91,10 +91,10 @@ body {
   padding: 80px 60px;
 }
 
-/* ---- Scene 1: Hook (0.2s - 1.8s) ---- */
+/* ---- Scene 1: Hook (0.3s - 3.0s) ---- */
 .scene-hook {
   opacity: 0;
-  animation: sceneIn 0.8s ease-out 0.2s forwards, sceneOut 0.6s ease-in 1.8s forwards;
+  animation: sceneIn 0.8s ease-out 0.3s forwards, sceneOut 0.6s ease-in 3.0s forwards;
 }
 .hook-text {
   font-family: 'Outfit', sans-serif;
@@ -118,10 +118,10 @@ body {
   text-transform: uppercase;
 }
 
-/* ---- Scene 2: Macro Rings (2.1s - 4.6s) ---- */
+/* ---- Scene 2: Macro Rings (3.5s - 7.5s) ---- */
 .scene-rings {
   opacity: 0;
-  animation: sceneIn 0.8s ease-out 2.1s forwards, sceneOut 0.6s ease-in 4.6s forwards;
+  animation: sceneIn 0.8s ease-out 3.5s forwards, sceneOut 0.6s ease-in 7.5s forwards;
 }
 .rings-title {
   font-family: 'Outfit', sans-serif;
@@ -164,15 +164,15 @@ body {
 }
 .ring-calories .ring-progress {
   stroke: #FF9500;
-  animation: ringFill 2.5s ease-out 2.3s forwards;
+  animation: ringFill 2.5s ease-out 3.8s forwards;
 }
 .ring-protein .ring-progress {
   stroke: #FF6B6B;
-  animation: ringFill75 2.5s ease-out 2.5s forwards;
+  animation: ringFill75 2.5s ease-out 4.0s forwards;
 }
 .ring-carbs .ring-progress {
   stroke: #4ECDC4;
-  animation: ringFill60 2.5s ease-out 2.7s forwards;
+  animation: ringFill60 2.5s ease-out 4.2s forwards;
 }
 @keyframes ringFill {
   to { stroke-dashoffset: 63; }
@@ -210,10 +210,10 @@ body {
 /* Counter animation */
 .counter {
   opacity: 0;
-  animation: fadeIn 0.4s ease-out 3.0s forwards;
+  animation: fadeIn 0.4s ease-out 5.0s forwards;
 }
-.ring-protein .counter { animation-delay: 3.2s; }
-.ring-carbs .counter { animation-delay: 3.4s; }
+.ring-protein .counter { animation-delay: 5.2s; }
+.ring-carbs .counter { animation-delay: 5.4s; }
 
 /* Daily total bar */
 .daily-total {
@@ -226,7 +226,7 @@ body {
   align-items: center;
   gap: 24px;
   opacity: 0;
-  animation: slideUp 0.6s ease-out 4.0s forwards;
+  animation: slideUp 0.6s ease-out 7.0s forwards;
 }
 .daily-icon {
   width: 56px;
@@ -245,10 +245,10 @@ body {
 }
 .daily-text span { color: #34C759; }
 
-/* ---- Scene 3: Tagline (4.9s - 6.8s) ---- */
+/* ---- Scene 3: Tagline (8.0s - 11.5s) ---- */
 .scene-tagline {
   opacity: 0;
-  animation: sceneIn 0.8s ease-out 4.9s forwards, sceneOut 0.6s ease-in 6.8s forwards;
+  animation: sceneIn 0.8s ease-out 8.0s forwards, sceneOut 0.6s ease-in 11.5s forwards;
 }
 .tagline-text {
   font-family: 'Outfit', sans-serif;
@@ -281,14 +281,14 @@ body {
   color: rgba(255,255,255,0.7);
   opacity: 0;
 }
-.tagline-pill:nth-child(1) { animation: slideUp 0.4s ease-out 5.2s forwards; }
-.tagline-pill:nth-child(2) { animation: slideUp 0.4s ease-out 5.4s forwards; }
-.tagline-pill:nth-child(3) { animation: slideUp 0.4s ease-out 5.6s forwards; }
+.tagline-pill:nth-child(1) { animation: slideUp 0.4s ease-out 8.2s forwards; }
+.tagline-pill:nth-child(2) { animation: slideUp 0.4s ease-out 8.6s forwards; }
+.tagline-pill:nth-child(3) { animation: slideUp 0.4s ease-out 9.0s forwards; }
 
-/* ---- Scene 4: CTA (7.0s - 9.0s) ---- */
+/* ---- Scene 4: CTA (12.0s - 15.0s) ---- */
 .scene-cta {
   opacity: 0;
-  animation: sceneIn 0.8s ease-out 7.0s forwards;
+  animation: sceneIn 0.8s ease-out 12.0s forwards;
 }
 .cta-logo {
   font-family: 'Outfit', sans-serif;
@@ -315,7 +315,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 3px;
   box-shadow: 0 12px 40px rgba(52,199,89,0.4);
-  animation: pulse 2s ease-in-out 7.5s infinite;
+  animation: pulse 2s ease-in-out 12.5s infinite;
   position: relative;
   overflow: hidden;
 }
@@ -324,7 +324,7 @@ body {
   position: absolute;
   top: 0; left: -100%; width: 60%; height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
-  animation: shimmer 3s ease-in-out 7.5s infinite;
+  animation: shimmer 3s ease-in-out 12.5s infinite;
 }
 @keyframes shimmer {
   0% { left: -100%; }
