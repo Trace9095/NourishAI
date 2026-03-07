@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  width: 100vw;
+  height: 100vh;
+  background: #000000;
+  font-family: -apple-system, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  color: white;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  padding: 4vh 7vw 4vh;
+}
+
+/* Time */
+.time {
+  font-size: 4vh;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 2vh;
+  align-self: flex-end;
+  color: rgba(255,255,255,0.6);
+}
+
+/* Header */
+.header {
+  font-size: 5.5vw;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 3vh;
+  letter-spacing: -0.01em;
+}
+
+/* Macro rows */
+.macros {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5vh;
+  flex: 1;
+}
+
+.macro-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+}
+
+.macro-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.macro-name {
+  font-size: 4.5vw;
+  font-weight: 700;
+  color: rgba(255,255,255,0.65);
+}
+
+.macro-value {
+  font-size: 4.5vw;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.macro-value.protein { color: #FF6B6B; }
+.macro-value.carbs   { color: #4ECDC4; }
+.macro-value.fat     { color: #FFE66D; }
+
+/* Progress bar */
+.progress-track {
+  width: 100%;
+  height: 3vh;
+  background: rgba(255,255,255,0.08);
+  border-radius: 1.5vh;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 1.5vh;
+}
+
+.progress-fill.protein {
+  background: linear-gradient(90deg, #FF6B6B, #FF8E8E);
+  width: 72%;
+  box-shadow: 0 0 8px rgba(255,107,107,0.4);
+}
+
+.progress-fill.carbs {
+  background: linear-gradient(90deg, #4ECDC4, #6EE7DE);
+  width: 58%;
+  box-shadow: 0 0 8px rgba(78,205,196,0.4);
+}
+
+.progress-fill.fat {
+  background: linear-gradient(90deg, #FFE66D, #FFF0A0);
+  width: 45%;
+  box-shadow: 0 0 8px rgba(255,230,109,0.4);
+}
+
+/* Total calories */
+.total {
+  margin-top: auto;
+  text-align: center;
+  padding-top: 2vh;
+}
+
+.total-number {
+  font-size: 9vw;
+  font-weight: 900;
+  color: #FF9500;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.total-label {
+  font-size: 3.5vw;
+  color: rgba(255,255,255,0.35);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 0.5vh;
+}
+</style>
+</head>
+<body>
+
+<!-- Time -->
+<div class="time">9:41</div>
+
+<!-- Header -->
+<div class="header">Today</div>
+
+<!-- Macro Progress Bars -->
+<div class="macros">
+
+  <!-- Protein -->
+  <div class="macro-row">
+    <div class="macro-info">
+      <span class="macro-name">Protein</span>
+      <span class="macro-value protein">108/150g</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill protein"></div>
+    </div>
+  </div>
+
+  <!-- Carbs -->
+  <div class="macro-row">
+    <div class="macro-info">
+      <span class="macro-name">Carbs</span>
+      <span class="macro-value carbs">185/320g</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill carbs"></div>
+    </div>
+  </div>
+
+  <!-- Fat -->
+  <div class="macro-row">
+    <div class="macro-info">
+      <span class="macro-name">Fat</span>
+      <span class="macro-value fat">42/93g</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill fat"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Total Calories -->
+<div class="total">
+  <div class="total-number">1,847</div>
+  <div class="total-label">calories</div>
+</div>
+
+</body>
+</html>

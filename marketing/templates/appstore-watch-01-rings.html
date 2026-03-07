@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  width: 100vw;
+  height: 100vh;
+  background: #000000;
+  font-family: -apple-system, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  color: white;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4vh 6vw 3vh;
+}
+
+/* Time */
+.time {
+  font-size: 4vh;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5vh;
+  align-self: flex-end;
+  color: rgba(255,255,255,0.6);
+}
+
+/* Ring container */
+.rings-container {
+  position: relative;
+  width: 56vw;
+  height: 56vw;
+  margin: 2vh auto 3vh;
+  flex-shrink: 0;
+}
+
+.rings-container svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+/* Track (background) rings */
+.ring-track {
+  fill: none;
+  stroke-width: 14;
+  stroke-linecap: round;
+}
+
+.ring-track-calories { stroke: rgba(255,149,0,0.2); }
+.ring-track-protein  { stroke: rgba(255,107,107,0.2); }
+.ring-track-carbs    { stroke: rgba(78,205,196,0.2); }
+
+/* Fill (progress) rings */
+.ring-progress {
+  fill: none;
+  stroke-width: 14;
+  stroke-linecap: round;
+}
+
+/* Outer ring: Calories (orange) — 74% */
+.ring-calories {
+  stroke: #FF9500;
+  /* r=90, C=565.49, 74% offset = 565.49 * 0.26 = 147.03 */
+  stroke-dasharray: 565.49;
+  stroke-dashoffset: 147.03;
+  filter: drop-shadow(0 0 4px rgba(255,149,0,0.5));
+}
+
+/* Middle ring: Protein (red) — 72% */
+.ring-protein {
+  stroke: #FF6B6B;
+  /* r=72, C=452.39, 72% offset = 452.39 * 0.28 = 126.67 */
+  stroke-dasharray: 452.39;
+  stroke-dashoffset: 126.67;
+  filter: drop-shadow(0 0 4px rgba(255,107,107,0.5));
+}
+
+/* Inner ring: Carbs (teal) — 58% */
+.ring-carbs {
+  stroke: #4ECDC4;
+  /* r=54, C=339.29, 58% offset = 339.29 * 0.42 = 142.50 */
+  stroke-dasharray: 339.29;
+  stroke-dashoffset: 142.50;
+  filter: drop-shadow(0 0 4px rgba(78,205,196,0.5));
+}
+
+/* Center text overlay */
+.ring-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ring-center-number {
+  font-size: 8.5vw;
+  font-weight: 800;
+  color: #FF9500;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.ring-center-label {
+  font-size: 3.5vw;
+  color: rgba(255,255,255,0.4);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 0.5vh;
+}
+
+/* Legend */
+.legend {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8vh;
+  width: 100%;
+  margin-top: auto;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 3vw;
+}
+
+.legend-dot {
+  width: 3vw;
+  height: 3vw;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legend-dot.cal     { background: #FF9500; box-shadow: 0 0 6px rgba(255,149,0,0.4); }
+.legend-dot.protein { background: #FF6B6B; box-shadow: 0 0 6px rgba(255,107,107,0.4); }
+.legend-dot.carbs   { background: #4ECDC4; box-shadow: 0 0 6px rgba(78,205,196,0.4); }
+
+.legend-label {
+  font-size: 3.8vw;
+  font-weight: 600;
+  color: rgba(255,255,255,0.5);
+  flex: 1;
+}
+
+.legend-value {
+  font-size: 3.8vw;
+  font-weight: 700;
+  color: rgba(255,255,255,0.8);
+}
+
+/* App name */
+.app-name {
+  font-size: 4vw;
+  font-weight: 700;
+  color: #34C759;
+  letter-spacing: 0.08em;
+  margin-top: 2.5vh;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<!-- Time -->
+<div class="time">9:41</div>
+
+<!-- Activity Rings -->
+<div class="rings-container">
+  <svg viewBox="0 0 200 200">
+    <!-- Background tracks -->
+    <circle class="ring-track ring-track-calories" cx="100" cy="100" r="90" />
+    <circle class="ring-track ring-track-protein" cx="100" cy="100" r="72" />
+    <circle class="ring-track ring-track-carbs" cx="100" cy="100" r="54" />
+
+    <!-- Progress fills -->
+    <circle class="ring-progress ring-calories" cx="100" cy="100" r="90" />
+    <circle class="ring-progress ring-protein" cx="100" cy="100" r="72" />
+    <circle class="ring-progress ring-carbs" cx="100" cy="100" r="54" />
+  </svg>
+  <div class="ring-center">
+    <div class="ring-center-number">1,847</div>
+    <div class="ring-center-label">cal</div>
+  </div>
+</div>
+
+<!-- Legend -->
+<div class="legend">
+  <div class="legend-item">
+    <div class="legend-dot cal"></div>
+    <span class="legend-label">Calories</span>
+    <span class="legend-value">1,847</span>
+  </div>
+  <div class="legend-item">
+    <div class="legend-dot protein"></div>
+    <span class="legend-label">Protein</span>
+    <span class="legend-value">108g</span>
+  </div>
+  <div class="legend-item">
+    <div class="legend-dot carbs"></div>
+    <span class="legend-label">Carbs</span>
+    <span class="legend-value">185g</span>
+  </div>
+</div>
+
+<!-- App Name -->
+<div class="app-name">NourishAI</div>
+
+</body>
+</html>

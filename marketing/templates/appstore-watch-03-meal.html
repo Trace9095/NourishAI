@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  width: 100vw;
+  height: 100vh;
+  background: #000000;
+  font-family: -apple-system, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  color: white;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4vh 7vw 4vh;
+}
+
+/* Time */
+.time {
+  font-size: 4vh;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 2vh;
+  align-self: flex-end;
+  color: rgba(255,255,255,0.6);
+}
+
+/* Header */
+.header {
+  font-size: 4.5vw;
+  font-weight: 700;
+  color: rgba(255,255,255,0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5vh;
+  align-self: flex-start;
+}
+
+/* Food name */
+.food-name {
+  font-size: 5.5vw;
+  font-weight: 800;
+  color: white;
+  text-align: center;
+  line-height: 1.25;
+  margin-bottom: 2.5vh;
+  width: 100%;
+}
+
+/* Big calorie number */
+.cal-big {
+  font-size: 16vw;
+  font-weight: 900;
+  color: #FF9500;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  text-align: center;
+}
+
+.cal-unit {
+  font-size: 5vw;
+  font-weight: 600;
+  color: rgba(255,149,0,0.6);
+  text-align: center;
+  margin-top: 0.3vh;
+  margin-bottom: 3vh;
+}
+
+/* Macro row */
+.macro-row {
+  display: flex;
+  justify-content: center;
+  gap: 4vw;
+  margin-bottom: 3vh;
+  width: 100%;
+}
+
+.macro-item {
+  text-align: center;
+}
+
+.macro-val {
+  font-size: 5vw;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.macro-val.protein { color: #FF6B6B; }
+.macro-val.carbs   { color: #4ECDC4; }
+.macro-val.fat     { color: #FFE66D; }
+
+.macro-sep {
+  font-size: 4.5vw;
+  color: rgba(255,255,255,0.15);
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+}
+
+.macro-lbl {
+  font-size: 3vw;
+  color: rgba(255,255,255,0.3);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 0.3vh;
+}
+
+/* Checkmark circle */
+.check-circle {
+  width: 12vw;
+  height: 12vw;
+  background: #34C759;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  box-shadow: 0 0 16px rgba(52,199,89,0.5);
+}
+
+.check-circle svg {
+  width: 7vw;
+  height: 7vw;
+}
+</style>
+</head>
+<body>
+
+<!-- Time -->
+<div class="time">9:41</div>
+
+<!-- Header -->
+<div class="header">Last Meal</div>
+
+<!-- Food Name -->
+<div class="food-name">Grilled Chicken Salad</div>
+
+<!-- Calories -->
+<div class="cal-big">420</div>
+<div class="cal-unit">cal</div>
+
+<!-- Macro Row -->
+<div class="macro-row">
+  <div class="macro-item">
+    <div class="macro-val protein">38g</div>
+    <div class="macro-lbl">P</div>
+  </div>
+  <div class="macro-sep">|</div>
+  <div class="macro-item">
+    <div class="macro-val carbs">24g</div>
+    <div class="macro-lbl">C</div>
+  </div>
+  <div class="macro-sep">|</div>
+  <div class="macro-item">
+    <div class="macro-val fat">18g</div>
+    <div class="macro-lbl">F</div>
+  </div>
+</div>
+
+<!-- Green Checkmark -->
+<div class="check-circle">
+  <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="20 6 9 17 4 12"/>
+  </svg>
+</div>
+
+</body>
+</html>
