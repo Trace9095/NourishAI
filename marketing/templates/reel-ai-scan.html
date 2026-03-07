@@ -79,6 +79,21 @@ body {
   pointer-events: none;
 }
 
+/* Seamless loop — fades to background in last 1s so reel loops cleanly */
+.loop-fade {
+  position: absolute;
+  inset: 0;
+  background: #0A0A14;
+  opacity: 0;
+  z-index: 200;
+  pointer-events: none;
+  animation: loopFadeIn 1s ease-in 14.0s forwards;
+}
+@keyframes loopFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 /* Scene container */
 .scene {
   position: absolute;
@@ -445,5 +460,7 @@ body {
   <div class="cta-free">Available on the App Store</div>
 </div>
 
+<!-- Seamless loop fade -->
+<div class="loop-fade"></div>
 </body>
 </html>
