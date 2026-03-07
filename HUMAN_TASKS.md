@@ -30,11 +30,8 @@
   - In-App Purchase (iOS)
   - App Groups: `group.com.epicai.nourishai` (iOS + Widget)
   - Push Notifications (iOS)
-- [ ] **Create StoreKit config:** File > New > StoreKit Configuration File > `NourishAI.storekit`
-  - Add subscription group "NourishAI Pro"
-  - Add product: `com.nourishai.subscription.pro.monthly` ($7.99/month)
-  - Add product: `com.nourishai.subscription.pro.annual` ($39.99/year)
-  - Set in scheme: Edit Scheme > Run > Options > StoreKit Configuration
+- [x] StoreKit config file created (`ios/NourishAI/NourishAI.storekit` — subscription group + both products + free trial)
+- [ ] **Set StoreKit config in Xcode scheme:** Edit Scheme > Run > Options > StoreKit Configuration > select `NourishAI.storekit`
 
 ### App Store Connect
 - [ ] Register bundle IDs (`com.epicai.nourishai`, `.watchkitapp`, `.widget`)
@@ -42,7 +39,7 @@
 - [ ] Create subscription group "NourishAI Pro" with monthly ($7.99) + annual ($39.99)
 - [ ] Add localizations (required for StoreKit)
 - [ ] Verify Paid Apps agreement is active
-- [ ] Write App Store description + keywords
+- [x] App Store description + keywords written (`docs/APP_STORE_LISTING.md`)
 - [ ] Create app icon (all sizes)
 - [ ] Upload screenshots (6.5" + 6.7" iPhone, 13" iPad)
 - [ ] TestFlight beta upload
