@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  width: 1284px;
+  height: 2778px;
+  background: #0A0A14;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Background gradient */
+.bg-gradient {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 20%, rgba(52,199,89,0.15) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 70%, rgba(255,149,0,0.08) 0%, transparent 50%);
+}
+
+/* Marketing headline area */
+.headline-area {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding-top: 180px;
+  padding-bottom: 60px;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(52,199,89,0.15);
+  border: 1px solid rgba(52,199,89,0.3);
+  color: #34C759;
+  font-size: 28px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  padding: 12px 32px;
+  border-radius: 50px;
+  margin-bottom: 48px;
+}
+
+.headline {
+  font-family: 'Outfit', sans-serif;
+  font-size: 96px;
+  font-weight: 900;
+  color: white;
+  line-height: 1.05;
+  margin-bottom: 32px;
+}
+
+.headline .green { color: #34C759; }
+
+.subheadline {
+  font-size: 36px;
+  color: rgba(255,255,255,0.5);
+  font-weight: 400;
+  line-height: 1.5;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Phone mockup */
+.phone-container {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 40px;
+}
+
+.phone {
+  width: 680px;
+  height: 1400px;
+  background: #12121A;
+  border-radius: 60px;
+  border: 4px solid rgba(255,255,255,0.1);
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.6), 0 0 60px rgba(52,199,89,0.1);
+}
+
+/* Status bar */
+.status-bar {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  color: white;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* Dynamic Island */
+.dynamic-island {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160px;
+  height: 44px;
+  background: black;
+  border-radius: 22px;
+}
+
+/* App content area */
+.app-content {
+  padding: 20px 32px;
+}
+
+/* Dashboard header */
+.dash-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 36px;
+}
+
+.dash-greeting {
+  font-size: 32px;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 4px;
+}
+
+.dash-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 42px;
+  font-weight: 800;
+  color: white;
+}
+
+.dash-avatar {
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, #34C759, #30B350);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 800;
+  font-size: 28px;
+}
+
+/* Calorie ring section */
+.ring-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 28px;
+  padding: 40px 36px;
+  margin-bottom: 28px;
+}
+
+.main-ring {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.main-ring svg {
+  width: 200px;
+  height: 200px;
+  transform: rotate(-90deg);
+}
+
+.ring-bg {
+  fill: none;
+  stroke: rgba(255,149,0,0.15);
+  stroke-width: 14;
+}
+
+.ring-fill {
+  fill: none;
+  stroke: #FF9500;
+  stroke-width: 14;
+  stroke-linecap: round;
+  stroke-dasharray: 502;
+  stroke-dashoffset: 130;
+}
+
+.ring-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ring-number {
+  font-family: 'Outfit', sans-serif;
+  font-size: 52px;
+  font-weight: 900;
+  color: #FF9500;
+}
+
+.ring-label {
+  font-size: 18px;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Macro bars */
+.macro-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  flex: 1;
+}
+
+.macro-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.macro-bar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.macro-bar-name {
+  font-size: 22px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.7);
+}
+
+.macro-bar-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+}
+
+.macro-bar-track {
+  height: 12px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.macro-bar-fill {
+  height: 100%;
+  border-radius: 6px;
+}
+
+.protein-fill { background: #FF6B6B; width: 72%; }
+.carbs-fill { background: #4ECDC4; width: 58%; }
+.fat-fill { background: #FFE66D; width: 45%; }
+
+/* Meal cards */
+.meals-section {
+  margin-top: 28px;
+}
+
+.meals-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.meal-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 20px;
+  padding: 22px 24px;
+  margin-bottom: 14px;
+}
+
+.meal-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+
+.meal-icon.breakfast { background: rgba(255,149,0,0.15); }
+.meal-icon.lunch { background: rgba(52,199,89,0.15); }
+.meal-icon.dinner { background: rgba(90,200,250,0.15); }
+
+.meal-info {
+  flex: 1;
+}
+
+.meal-name {
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 4px;
+}
+
+.meal-desc {
+  font-size: 18px;
+  color: rgba(255,255,255,0.4);
+}
+
+.meal-cals {
+  font-family: 'Outfit', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: #FF9500;
+}
+
+/* Bottom glow */
+.bottom-glow {
+  position: absolute;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(52,199,89,0.2) 0%, transparent 70%);
+  filter: blur(60px);
+  z-index: 5;
+}
+</style>
+</head>
+<body>
+
+<div class="bg-gradient"></div>
+
+<!-- Headline -->
+<div class="headline-area">
+  <div class="badge">AI-Powered</div>
+  <div class="headline">Track Nutrition<br>With <span class="green">AI</span></div>
+  <div class="subheadline">Snap a photo. Get instant macros.<br>No manual entry needed.</div>
+</div>
+
+<!-- Phone mockup -->
+<div class="phone-container">
+  <div class="phone">
+    <div class="dynamic-island"></div>
+    <div class="status-bar">
+      <span>9:41</span>
+      <span></span>
+    </div>
+
+    <div class="app-content">
+      <div class="dash-header">
+        <div>
+          <div class="dash-greeting">Good Morning</div>
+          <div class="dash-title">Dashboard</div>
+        </div>
+        <div class="dash-avatar">T</div>
+      </div>
+
+      <!-- Calorie ring + macros -->
+      <div class="ring-section">
+        <div class="main-ring">
+          <svg viewBox="0 0 180 180">
+            <circle class="ring-bg" cx="90" cy="90" r="80" />
+            <circle class="ring-fill" cx="90" cy="90" r="80" />
+          </svg>
+          <div class="ring-center">
+            <div class="ring-number">1,847</div>
+            <div class="ring-label">Calories</div>
+          </div>
+        </div>
+        <div class="macro-bars">
+          <div class="macro-bar">
+            <div class="macro-bar-header">
+              <span class="macro-bar-name">Protein</span>
+              <span class="macro-bar-value">108 / 150g</span>
+            </div>
+            <div class="macro-bar-track"><div class="macro-bar-fill protein-fill"></div></div>
+          </div>
+          <div class="macro-bar">
+            <div class="macro-bar-header">
+              <span class="macro-bar-name">Carbs</span>
+              <span class="macro-bar-value">185 / 320g</span>
+            </div>
+            <div class="macro-bar-track"><div class="macro-bar-fill carbs-fill"></div></div>
+          </div>
+          <div class="macro-bar">
+            <div class="macro-bar-header">
+              <span class="macro-bar-name">Fat</span>
+              <span class="macro-bar-value">42 / 93g</span>
+            </div>
+            <div class="macro-bar-track"><div class="macro-bar-fill fat-fill"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Meals -->
+      <div class="meals-section">
+        <div class="meals-title">Today's Meals</div>
+        <div class="meal-card">
+          <div class="meal-icon breakfast">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF9500" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div class="meal-info">
+            <div class="meal-name">Breakfast</div>
+            <div class="meal-desc">Greek yogurt, granola, berries</div>
+          </div>
+          <div class="meal-cals">485</div>
+        </div>
+        <div class="meal-card">
+          <div class="meal-icon lunch">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div class="meal-info">
+            <div class="meal-name">Lunch</div>
+            <div class="meal-desc">Grilled chicken salad, quinoa</div>
+          </div>
+          <div class="meal-cals">620</div>
+        </div>
+        <div class="meal-card">
+          <div class="meal-icon dinner">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5AC8FA" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div class="meal-info">
+            <div class="meal-name">Snack</div>
+            <div class="meal-desc">Protein shake, banana</div>
+          </div>
+          <div class="meal-cals">342</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bottom-glow"></div>
+
+</body>
+</html>

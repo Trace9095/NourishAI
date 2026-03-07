@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  width: 1284px;
+  height: 2778px;
+  background: #0A0A14;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Background gradient */
+.bg-gradient {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 20%, rgba(52,199,89,0.15) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 70%, rgba(255,149,0,0.08) 0%, transparent 50%);
+}
+
+/* Marketing headline area */
+.headline-area {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding-top: 180px;
+  padding-bottom: 60px;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(52,199,89,0.15);
+  border: 1px solid rgba(52,199,89,0.3);
+  color: #34C759;
+  font-size: 28px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  padding: 12px 32px;
+  border-radius: 50px;
+  margin-bottom: 48px;
+}
+
+.headline {
+  font-family: 'Outfit', sans-serif;
+  font-size: 96px;
+  font-weight: 900;
+  color: white;
+  line-height: 1.05;
+  margin-bottom: 32px;
+}
+
+.headline .green { color: #34C759; }
+
+.subheadline {
+  font-size: 36px;
+  color: rgba(255,255,255,0.5);
+  font-weight: 400;
+  line-height: 1.5;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Phone mockup */
+.phone-container {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 40px;
+}
+
+.phone {
+  width: 680px;
+  height: 1400px;
+  background: #12121A;
+  border-radius: 60px;
+  border: 4px solid rgba(255,255,255,0.1);
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.6), 0 0 60px rgba(52,199,89,0.1);
+}
+
+/* Status bar */
+.status-bar {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  color: white;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* Dynamic Island */
+.dynamic-island {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160px;
+  height: 44px;
+  background: black;
+  border-radius: 22px;
+}
+
+/* Camera viewfinder area */
+.camera-area {
+  background: #1A1A24;
+  height: 560px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Corner brackets for scanner frame */
+.scan-frame {
+  position: absolute;
+  width: 440px;
+  height: 280px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.corner {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+}
+
+.corner-tl {
+  top: 0; left: 0;
+  border-top: 3px solid #34C759;
+  border-left: 3px solid #34C759;
+  border-top-left-radius: 8px;
+}
+
+.corner-tr {
+  top: 0; right: 0;
+  border-top: 3px solid #34C759;
+  border-right: 3px solid #34C759;
+  border-top-right-radius: 8px;
+}
+
+.corner-bl {
+  bottom: 0; left: 0;
+  border-bottom: 3px solid #34C759;
+  border-left: 3px solid #34C759;
+  border-bottom-left-radius: 8px;
+}
+
+.corner-br {
+  bottom: 0; right: 0;
+  border-bottom: 3px solid #34C759;
+  border-right: 3px solid #34C759;
+  border-bottom-right-radius: 8px;
+}
+
+/* Barcode product label */
+.barcode-label {
+  width: 400px;
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 28px 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  z-index: 2;
+}
+
+.barcode-product-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  letter-spacing: 0.5px;
+}
+
+/* Barcode lines */
+.barcode-lines {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0;
+  width: 340px;
+  height: 120px;
+}
+
+.bar {
+  background: #000;
+  height: 100%;
+}
+
+.bar-space {
+  background: #FFF;
+  height: 100%;
+}
+
+.bar-short {
+  height: 85%;
+}
+
+.barcode-number {
+  font-size: 18px;
+  font-weight: 500;
+  color: #555;
+  letter-spacing: 4px;
+  font-family: 'Courier New', monospace;
+}
+
+/* Red laser line */
+.laser-line {
+  position: absolute;
+  top: 50%;
+  left: 60px;
+  right: 60px;
+  height: 2px;
+  background: #FF3B30;
+  z-index: 5;
+  box-shadow: 0 0 12px rgba(255,59,48,0.6), 0 0 4px rgba(255,59,48,0.9);
+}
+
+/* Scan hint text */
+.scan-hint {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 18px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 1px;
+}
+
+/* Nutrition result card */
+.nutrition-card {
+  margin: 24px 28px 0;
+  background: #16161F;
+  border-radius: 24px;
+  padding: 28px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.product-name {
+  font-size: 28px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 6px;
+}
+
+.scanned-label {
+  font-size: 18px;
+  color: rgba(255,255,255,0.4);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.scanned-label svg {
+  flex-shrink: 0;
+}
+
+.card-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.06);
+  margin: 20px 0;
+}
+
+/* Nutrition grid */
+.nutrition-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.nutrient-item {
+  text-align: center;
+}
+
+.nutrient-value {
+  font-family: 'Outfit', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.nutrient-label {
+  font-size: 16px;
+  color: rgba(255,255,255,0.4);
+}
+
+.cal-color { color: #FF9500; }
+.protein-color { color: #FF6B6B; }
+.carbs-color { color: #4ECDC4; }
+.fat-color { color: #FFE66D; }
+.fiber-color { color: #34C759; }
+.sugar-color { color: rgba(255,255,255,0.8); }
+
+/* Add to meal button */
+.add-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  height: 50px;
+  background: #34C759;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 14px;
+  border: none;
+  letter-spacing: 0.3px;
+}
+
+/* Bottom glow */
+.bottom-glow {
+  position: absolute;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(52,199,89,0.2) 0%, transparent 70%);
+  filter: blur(60px);
+  z-index: 5;
+}
+</style>
+</head>
+<body>
+
+<div class="bg-gradient"></div>
+
+<!-- Headline -->
+<div class="headline-area">
+  <div class="badge">BARCODE SCANNER</div>
+  <div class="headline">Scan Any<br><span class="green">Barcode</span></div>
+  <div class="subheadline">800,000+ products in our database.<br>Instant nutrition facts.</div>
+</div>
+
+<!-- Phone mockup -->
+<div class="phone-container">
+  <div class="phone">
+    <div class="dynamic-island"></div>
+    <div class="status-bar">
+      <span>9:41</span>
+      <span></span>
+    </div>
+
+    <!-- Camera / Scanner area -->
+    <div class="camera-area">
+      <!-- Scanner frame corners -->
+      <div class="scan-frame">
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
+      </div>
+
+      <!-- Barcode on white label -->
+      <div class="barcode-label">
+        <div class="barcode-product-text">NATURE VALLEY</div>
+        <!-- Barcode lines (EAN-13 style) -->
+        <div class="barcode-lines">
+          <!-- Guard bars (left) -->
+          <div class="bar" style="width:2px;"></div>
+          <div class="bar-space" style="width:2px;"></div>
+          <div class="bar" style="width:2px;"></div>
+          <!-- Data bars -->
+          <div class="bar-space" style="width:3px;"></div>
+          <div class="bar" style="width:2px;"></div>
+          <div class="bar" style="width:5px;"></div>
+          <div class="bar-space" style="width:2px;"></div>
+          <div class="bar" style="width:3px;"></div>
+          <div class="bar-space" style="width:4px;"></div>
+          <div class="bar" style="width:2px;"></div>
+          <div class="bar-space" style="width:2px;"></div>
+          <div class="bar" style="width:6px;"></div>
+          <div class="bar-space" style="width:2px;"></div>
+          <div class="bar" style="width:3px;"></div>
+          <div class="bar-space" style="width:3px;"></div>
+          <div class="bar" style="width:2px;"></div>
+          <div class="bar-space" style="width:5px;"></div>
+          <div class="bar" style="width:2px;"></div>
+          <div class="bar-space" style="width:2px;"></div>
+          <div class="bar" style="width:4px;"></div>
+          <div class="bar-space" style="width:3px;"></div>
+          <div class="bar" style="width:2px;"></div>
+          <div class="bar-space" style="width:2px;"></div>
+          <div class="bar" style="width:5px;"></div>
+          <!-- Center guard -->
+          <div class="bar-space" style="width:2px;"></div>
+          <div class="bar" style="width:2px;"></div>
+          <div class="bar-space" style="width:2px;"></div>
+          <div class="bar" style="width:2px;"></div>
+          <div class="bar-space" style="width:2px;"></div>
+          <!-- Right data bars -->
+          <div class="bar" style="width:4px;"></div>
+          <div class="bar-space" style="width:2px;"></div>
+          <div class="bar" style="width:2px;"></div>
+          <div class="bar-space" style="width:3px;"></div>
+          <div class="bar" style="width:5px;"></div>
+          <div class="bar-space" style="width:2px;"></div>
+          <div class="bar" style="width:3px;"></div>
+          <div class="bar-space" style="width:2px;"></div>
+          <div class="bar" style="width:2px;"></div>
+          <div class="bar-space" style="width:4px;"></div>
+          <div class="bar" style="width:2px;"></div>
+          <div class="bar-space" style="width:3px;"></div>
+          <div class="bar" style="width:6px;"></div>
+          <div class="bar-space" style="width:2px;"></div>
+          <div class="bar" style="width:2px;"></div>
+          <div class="bar-space" style="width:3px;"></div>
+          <div class="bar" style="width:3px;"></div>
+          <div class="bar-space" style="width:2px;"></div>
+          <div class="bar" style="width:4px;"></div>
+          <div class="bar-space" style="width:2px;"></div>
+          <div class="bar" style="width:2px;"></div>
+          <!-- Guard bars (right) -->
+          <div class="bar-space" style="width:3px;"></div>
+          <div class="bar" style="width:2px;"></div>
+          <div class="bar-space" style="width:2px;"></div>
+          <div class="bar" style="width:2px;"></div>
+        </div>
+        <div class="barcode-number">0 16000 27550 3</div>
+      </div>
+
+      <!-- Red laser line -->
+      <div class="laser-line"></div>
+
+      <!-- Scan hint -->
+      <div class="scan-hint">Point camera at barcode</div>
+    </div>
+
+    <!-- Nutrition result card -->
+    <div class="nutrition-card">
+      <div class="product-name">Nature Valley Protein Bar</div>
+      <div class="scanned-label">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        Scanned from barcode
+      </div>
+
+      <div class="card-divider"></div>
+
+      <!-- Nutrition grid 2x3 -->
+      <div class="nutrition-grid">
+        <div class="nutrient-item">
+          <div class="nutrient-value cal-color">190</div>
+          <div class="nutrient-label">Calories</div>
+        </div>
+        <div class="nutrient-item">
+          <div class="nutrient-value protein-color">10g</div>
+          <div class="nutrient-label">Protein</div>
+        </div>
+        <div class="nutrient-item">
+          <div class="nutrient-value carbs-color">29g</div>
+          <div class="nutrient-label">Carbs</div>
+        </div>
+        <div class="nutrient-item">
+          <div class="nutrient-value fat-color">6g</div>
+          <div class="nutrient-label">Fat</div>
+        </div>
+        <div class="nutrient-item">
+          <div class="nutrient-value fiber-color">3g</div>
+          <div class="nutrient-label">Fiber</div>
+        </div>
+        <div class="nutrient-item">
+          <div class="nutrient-value sugar-color">12g</div>
+          <div class="nutrient-label">Sugar</div>
+        </div>
+      </div>
+
+      <!-- Add to meal button -->
+      <div class="add-btn">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19"/>
+          <line x1="5" y1="12" x2="19" y2="12"/>
+        </svg>
+        Add to Meal Log
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="bottom-glow"></div>
+
+</body>
+</html>

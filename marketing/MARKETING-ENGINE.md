@@ -308,6 +308,28 @@ body { width: 1080px; height: 1920px; background: #0A0A14; }
 
 **Gap between scenes:** 0.5s (sceneOut fade + sceneIn fade-up)
 
+### Seamless Loop Fade
+
+Every reel fades to the dark background in the last 1 second so it loops seamlessly. Viewers can't tell where the reel starts or ends.
+
+```css
+.loop-fade {
+  position: absolute;
+  inset: 0;
+  background: #0A0A14;
+  opacity: 0;
+  z-index: 200;         /* Above grain (z:100) */
+  pointer-events: none;
+  animation: loopFadeIn 1s ease-in 14.0s forwards;
+}
+@keyframes loopFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+```
+
+**How it works:** Reel starts from dark bg (scene 1 fades in at 0.3s). Loop-fade returns to that same dark state at 14.0s-15.0s. When the video loops, the transition is invisible. Formula: `delay = REEL_DURATION - 1.0`.
+
 ---
 
 ## Brand Colors (NourishAI)
