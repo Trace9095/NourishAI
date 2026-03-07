@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  width: 1080px;
+  height: 1920px;
+  background: #0A0A14;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Ambient gradient orbs */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0;
+  animation: orbFade 10s ease-in-out infinite;
+}
+.orb-1 {
+  width: 600px; height: 600px;
+  background: #34C759;
+  top: -200px; right: -150px;
+}
+.orb-2 {
+  width: 500px; height: 500px;
+  background: #FF6B6B;
+  bottom: 200px; left: -150px;
+  animation-delay: 3s;
+}
+.orb-3 {
+  width: 400px; height: 400px;
+  background: #5AC8FA;
+  top: 40%; left: -100px;
+  animation-delay: 6s;
+}
+
+@keyframes orbFade {
+  0%, 100% { opacity: 0.06; }
+  50% { opacity: 0.14; }
+}
+
+/* Floating particles */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+}
+.particle:nth-child(1) { width: 4px; height: 4px; background: rgba(52,199,89,0.4); left: 8%; animation: particleUp 9s ease-in-out 0s infinite; }
+.particle:nth-child(2) { width: 5px; height: 5px; background: rgba(52,199,89,0.3); left: 22%; animation: particleUp 11s ease-in-out 1s infinite; }
+.particle:nth-child(3) { width: 3px; height: 3px; background: rgba(255,149,0,0.3); left: 38%; animation: particleUp 8s ease-in-out 2s infinite; }
+.particle:nth-child(4) { width: 4px; height: 4px; background: rgba(52,199,89,0.25); left: 52%; animation: particleUp 10s ease-in-out 0.5s infinite; }
+.particle:nth-child(5) { width: 6px; height: 6px; background: rgba(90,200,250,0.2); left: 65%; animation: particleUp 12s ease-in-out 3s infinite; }
+.particle:nth-child(6) { width: 3px; height: 3px; background: rgba(255,149,0,0.25); left: 78%; animation: particleUp 9s ease-in-out 1.5s infinite; }
+.particle:nth-child(7) { width: 5px; height: 5px; background: rgba(52,199,89,0.2); left: 90%; animation: particleUp 13s ease-in-out 4s infinite; }
+.particle:nth-child(8) { width: 4px; height: 4px; background: rgba(90,200,250,0.3); left: 45%; animation: particleUp 10s ease-in-out 2.5s infinite; }
+
+@keyframes particleUp {
+  0%, 100% { bottom: -20px; opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.3; }
+  100% { bottom: 1940px; opacity: 0; }
+}
+
+/* Grain overlay */
+.grain {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  z-index: 100;
+  pointer-events: none;
+}
+
+/* Scene container */
+.scene {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 60px;
+}
+
+/* ---- Scene 1: Hook (0.2s - 1.8s) ---- */
+.scene-hook {
+  opacity: 0;
+  animation: sceneIn 0.6s ease-out 0.2s forwards, sceneOut 0.5s ease-in 1.8s forwards;
+}
+.hook-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 96px;
+  font-weight: 900;
+  color: white;
+  text-align: center;
+  line-height: 1.05;
+  text-transform: uppercase;
+  letter-spacing: -3px;
+}
+.hook-strikethrough {
+  position: relative;
+  display: inline-block;
+  color: #FF6B6B;
+}
+.hook-strikethrough::after {
+  content: '';
+  position: absolute;
+  left: -8px;
+  right: -8px;
+  top: 50%;
+  height: 10px;
+  background: #FF6B6B;
+  transform: translateY(-50%) rotate(-2deg);
+  opacity: 0;
+  animation: strikeIn 0.5s ease-out 0.8s forwards;
+}
+@keyframes strikeIn {
+  from { opacity: 0; transform: translateY(-50%) rotate(-2deg) scaleX(0); }
+  to { opacity: 1; transform: translateY(-50%) rotate(-2deg) scaleX(1); }
+}
+.hook-sub {
+  font-size: 32px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  margin-top: 32px;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out 1.2s forwards;
+}
+
+/* ---- Scene 2: Before / Old Way (2.1s - 4.6s) ---- */
+.scene-before {
+  opacity: 0;
+  animation: sceneIn 0.6s ease-out 2.1s forwards, sceneOut 0.5s ease-in 4.6s forwards;
+}
+.before-label {
+  font-size: 22px;
+  font-weight: 700;
+  color: #FF6B6B;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fadeIn 0.4s ease-out 2.5s forwards;
+}
+.before-card {
+  width: 100%;
+  max-width: 860px;
+  background: #12121A;
+  border: 1px solid rgba(255,107,107,0.15);
+  border-radius: 28px;
+  padding: 40px 44px;
+  margin-bottom: 20px;
+}
+/* Spreadsheet header */
+.spreadsheet-header {
+  display: flex;
+  gap: 1px;
+  margin-bottom: 12px;
+  opacity: 0;
+  animation: fadeIn 0.4s ease-out 2.6s forwards;
+}
+.spreadsheet-header div {
+  flex: 1;
+  background: rgba(255,107,107,0.08);
+  padding: 10px 12px;
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(255,107,107,0.4);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+}
+.spreadsheet-header div:first-child { border-radius: 8px 0 0 8px; }
+.spreadsheet-header div:last-child { border-radius: 0 8px 8px 0; }
+/* Spreadsheet rows (messy data) */
+.spreadsheet-row {
+  display: flex;
+  gap: 1px;
+  margin-bottom: 4px;
+}
+.spreadsheet-row div {
+  flex: 1;
+  background: rgba(255,255,255,0.02);
+  padding: 8px 12px;
+  font-size: 15px;
+  color: rgba(255,255,255,0.2);
+  text-align: center;
+  font-family: 'Inter', monospace;
+}
+
+/* Problem rows with X */
+.problem-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  opacity: 0;
+}
+.problem-row:nth-child(1) { animation: slideRight 0.4s ease-out 2.8s forwards; }
+.problem-row:nth-child(2) { animation: slideRight 0.4s ease-out 3.0s forwards; }
+.problem-row:nth-child(3) { animation: slideRight 0.4s ease-out 3.2s forwards; }
+.problem-row:nth-child(4) { animation: slideRight 0.4s ease-out 3.4s forwards; }
+.problem-x {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255,107,107,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.problem-text {
+  font-size: 26px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.3;
+}
+/* FAIL badge */
+.fail-badge {
+  margin-top: 36px;
+  background: rgba(255,107,107,0.12);
+  border: 2px solid rgba(255,107,107,0.3);
+  border-radius: 20px;
+  padding: 18px 80px;
+  opacity: 0;
+  animation: failBounce 0.6s ease-out 4.0s forwards;
+}
+.fail-badge-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 56px;
+  font-weight: 900;
+  color: #FF6B6B;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+}
+@keyframes failBounce {
+  0% { opacity: 0; transform: scale(0.5); }
+  60% { opacity: 1; transform: scale(1.1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* ---- Scene 3: After / NourishAI (4.9s - 6.8s) ---- */
+.scene-after {
+  opacity: 0;
+  animation: sceneIn 0.6s ease-out 4.9s forwards, sceneOut 0.5s ease-in 6.8s forwards;
+}
+.after-label {
+  font-size: 22px;
+  font-weight: 700;
+  color: #34C759;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fadeIn 0.4s ease-out 5.1s forwards;
+}
+.after-card {
+  width: 100%;
+  max-width: 860px;
+  background: #12121A;
+  border: 1px solid rgba(52,199,89,0.15);
+  border-radius: 28px;
+  padding: 44px;
+}
+/* Phone mockup inline */
+.after-phone {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 16px;
+}
+.mini-phone {
+  width: 180px;
+  height: 340px;
+  background: #1A1A2E;
+  border-radius: 30px;
+  border: 2px solid rgba(255,255,255,0.1);
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(52,199,89,0.1);
+}
+.mini-screen {
+  position: absolute;
+  inset: 8px;
+  border-radius: 22px;
+  background: #0A0A14;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 18px 12px;
+}
+.mini-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 10px;
+}
+.mini-food {
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(135deg, #1a2f1a, #0f1f0f);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.mini-scan-line {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #34C759, transparent);
+  box-shadow: 0 0 12px #34C759;
+  animation: scanDown 1.5s ease-in-out 5.4s infinite;
+}
+@keyframes scanDown {
+  0% { top: 0; opacity: 1; }
+  100% { top: 100%; opacity: 0.3; }
+}
+.mini-results {
+  width: 100%;
+  margin-top: 10px;
+}
+.mini-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+}
+.mini-row-label { font-size: 9px; color: rgba(255,255,255,0.4); }
+.mini-row-val { font-size: 10px; font-weight: 700; }
+.mini-cal { color: #FF9500; }
+.mini-pro { color: #FF6B6B; }
+.mini-carb { color: #4ECDC4; }
+.mini-fat { color: #FFE66D; }
+.mini-check {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 28px;
+  height: 28px;
+  background: rgba(52,199,89,0.25);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  animation: scaleIn 0.3s ease-out 5.8s forwards;
+}
+
+/* Success rows */
+.success-rows {
+  flex: 1;
+}
+.success-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  opacity: 0;
+}
+.success-row:nth-child(1) { animation: slideRight 0.4s ease-out 5.15s forwards; }
+.success-row:nth-child(2) { animation: slideRight 0.4s ease-out 5.35s forwards; }
+.success-row:nth-child(3) { animation: slideRight 0.4s ease-out 5.55s forwards; }
+.success-row:nth-child(4) { animation: slideRight 0.4s ease-out 5.75s forwards; }
+.success-check {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(52,199,89,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.success-text {
+  font-size: 26px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.3;
+}
+.success-text .green { color: #34C759; font-weight: 800; }
+
+/* SUCCESS badge */
+.success-badge {
+  margin-top: 36px;
+  background: rgba(52,199,89,0.1);
+  border: 2px solid rgba(52,199,89,0.25);
+  border-radius: 20px;
+  padding: 18px 64px;
+  opacity: 0;
+  position: relative;
+  animation: successBounce 0.6s ease-out 6.2s forwards;
+}
+.success-badge-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 56px;
+  font-weight: 900;
+  color: #34C759;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+}
+@keyframes successBounce {
+  0% { opacity: 0; transform: scale(0.5); }
+  60% { opacity: 1; transform: scale(1.1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+/* Confetti dots */
+.confetti {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  opacity: 0;
+}
+.confetti:nth-child(1) { background: #34C759; top: -20px; left: 15%; animation: confettiPop 1.5s ease-out 6.35s forwards; }
+.confetti:nth-child(2) { background: #FF9500; top: -16px; left: 40%; animation: confettiPop 1.5s ease-out 6.4s forwards; }
+.confetti:nth-child(3) { background: #5AC8FA; top: -24px; left: 65%; animation: confettiPop 1.5s ease-out 6.3s forwards; }
+.confetti:nth-child(4) { background: #4ECDC4; top: -18px; left: 85%; animation: confettiPop 1.5s ease-out 6.45s forwards; }
+.confetti:nth-child(5) { background: #FFE66D; bottom: -18px; left: 20%; animation: confettiPopDown 1.5s ease-out 6.38s forwards; }
+.confetti:nth-child(6) { background: #FF6B6B; bottom: -22px; left: 50%; animation: confettiPopDown 1.5s ease-out 6.3s forwards; }
+.confetti:nth-child(7) { background: #34C759; bottom: -16px; left: 75%; animation: confettiPopDown 1.5s ease-out 6.5s forwards; }
+.confetti:nth-child(8) { background: #FF9500; top: -14px; left: 5%; animation: confettiPop 1.5s ease-out 6.42s forwards; }
+@keyframes confettiPop {
+  0% { opacity: 0; transform: translateY(0) scale(0); }
+  30% { opacity: 1; transform: translateY(-30px) scale(1.3); }
+  100% { opacity: 0; transform: translateY(-80px) scale(0.6); }
+}
+@keyframes confettiPopDown {
+  0% { opacity: 0; transform: translateY(0) scale(0); }
+  30% { opacity: 1; transform: translateY(30px) scale(1.3); }
+  100% { opacity: 0; transform: translateY(80px) scale(0.6); }
+}
+
+/* ---- Scene 4: CTA (7.0s - 9.0s) ---- */
+.scene-cta {
+  opacity: 0;
+  animation: sceneIn 0.8s ease-out 7.0s forwards;
+}
+.cta-logo {
+  font-family: 'Outfit', sans-serif;
+  font-size: 80px;
+  font-weight: 900;
+  color: white;
+  margin-bottom: 16px;
+}
+.cta-logo .green { color: #34C759; }
+.cta-tagline {
+  font-size: 30px;
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  margin-bottom: 52px;
+}
+.cta-button {
+  background: linear-gradient(135deg, #34C759, #2DD870);
+  padding: 28px 88px;
+  border-radius: 24px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 34px;
+  font-weight: 800;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  box-shadow: 0 12px 40px rgba(52,199,89,0.4);
+  animation: pulse 2s ease-in-out 7.5s infinite;
+  position: relative;
+  overflow: hidden;
+}
+.cta-button::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  animation: shimmer 3s ease-in-out 7.5s infinite;
+}
+.cta-free {
+  font-size: 22px;
+  color: rgba(255,255,255,0.35);
+  margin-top: 24px;
+}
+
+/* Shared animations */
+@keyframes sceneIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes sceneOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 12px 40px rgba(52,199,89,0.4); }
+  50% { transform: scale(1.04); box-shadow: 0 16px 50px rgba(52,199,89,0.6); }
+}
+</style>
+</head>
+<body>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="grain"></div>
+
+<!-- Scene 1: Hook -->
+<div class="scene scene-hook">
+  <div class="hook-text">
+    TRACKING<br>MACROS THE<br>
+    <span class="hook-strikethrough">OLD WAY</span>?
+  </div>
+  <div class="hook-sub">There's a better way now.</div>
+</div>
+
+<!-- Scene 2: Before (Manual Tracking) -->
+<div class="scene scene-before">
+  <div class="before-label">Manual Tracking</div>
+  <div class="before-card">
+    <div class="spreadsheet-header">
+      <div>Food</div>
+      <div>Cal</div>
+      <div>Pro</div>
+      <div>Carb</div>
+      <div>Fat</div>
+    </div>
+    <div class="spreadsheet-row">
+      <div>chkn brst?</div>
+      <div>165??</div>
+      <div>31</div>
+      <div>0</div>
+      <div>3.6</div>
+    </div>
+    <div class="spreadsheet-row">
+      <div>rice 1cup</div>
+      <div>206</div>
+      <div>4</div>
+      <div>45</div>
+      <div>--</div>
+    </div>
+    <div style="height: 16px;"></div>
+    <div class="problem-row">
+      <div class="problem-x"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6B6B" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+      <div class="problem-text">Searched 12 min for chicken breast</div>
+    </div>
+    <div class="problem-row">
+      <div class="problem-x"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6B6B" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+      <div class="problem-text">Wrong serving size logged</div>
+    </div>
+    <div class="problem-row">
+      <div class="problem-x"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6B6B" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+      <div class="problem-text">Missed 2 snacks</div>
+    </div>
+    <div class="problem-row">
+      <div class="problem-x"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6B6B" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+      <div class="problem-text">Gave up day 4</div>
+    </div>
+  </div>
+  <div class="fail-badge">
+    <div class="fail-badge-text">FAIL</div>
+  </div>
+</div>
+
+<!-- Scene 3: After (NourishAI) -->
+<div class="scene scene-after">
+  <div class="after-label">With NourishAI</div>
+  <div class="after-card">
+    <div class="after-phone">
+      <div class="mini-phone">
+        <div class="mini-screen">
+          <div class="mini-title">AI Food Scanner</div>
+          <div class="mini-food">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+              <circle cx="12" cy="13" r="4"/>
+            </svg>
+            <div class="mini-scan-line"></div>
+            <div class="mini-check">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+          </div>
+          <div class="mini-results">
+            <div class="mini-row">
+              <span class="mini-row-label">Calories</span>
+              <span class="mini-row-val mini-cal">620</span>
+            </div>
+            <div class="mini-row">
+              <span class="mini-row-label">Protein</span>
+              <span class="mini-row-val mini-pro">48g</span>
+            </div>
+            <div class="mini-row">
+              <span class="mini-row-label">Carbs</span>
+              <span class="mini-row-val mini-carb">28g</span>
+            </div>
+            <div class="mini-row">
+              <span class="mini-row-label">Fat</span>
+              <span class="mini-row-val mini-fat">32g</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="success-rows">
+        <div class="success-row">
+          <div class="success-check"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="success-text">Photo scan: <span class="green">2 seconds</span></div>
+        </div>
+        <div class="success-row">
+          <div class="success-check"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="success-text">AI-accurate macros</div>
+        </div>
+        <div class="success-row">
+          <div class="success-check"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="success-text">Every meal tracked</div>
+        </div>
+        <div class="success-row">
+          <div class="success-check"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="success-text"><span class="green">30-day</span> streak</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="success-badge">
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="success-badge-text">SUCCESS</div>
+  </div>
+</div>
+
+<!-- Scene 4: CTA -->
+<div class="scene scene-cta">
+  <div class="cta-logo"><span class="green">Nourish</span>AI</div>
+  <div class="cta-tagline">The smarter way to track.</div>
+  <div class="cta-button">Download Free</div>
+  <div class="cta-free">Available on the App Store</div>
+</div>
+
+</body>
+</html>

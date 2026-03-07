@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  width: 1080px;
+  height: 1920px;
+  background: #0A0A14;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Ambient gradient orbs */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0;
+  animation: orbPulse 10s ease-in-out infinite;
+}
+.orb-1 {
+  width: 600px; height: 600px;
+  background: #34C759;
+  top: -200px; right: -150px;
+}
+.orb-2 {
+  width: 500px; height: 500px;
+  background: #FF9500;
+  bottom: 300px; left: -150px;
+  animation-delay: 3s;
+}
+.orb-3 {
+  width: 400px; height: 400px;
+  background: #5AC8FA;
+  top: 40%; left: -100px;
+  animation-delay: 6s;
+}
+
+@keyframes orbPulse {
+  0%, 100% { opacity: 0.06; }
+  50% { opacity: 0.14; }
+}
+
+/* Floating particles */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+}
+.particle:nth-child(1) { width: 4px; height: 4px; background: rgba(52,199,89,0.4); left: 8%; animation: particleUp 9s ease-in-out 0s infinite; }
+.particle:nth-child(2) { width: 5px; height: 5px; background: rgba(255,149,0,0.3); left: 22%; animation: particleUp 11s ease-in-out 1s infinite; }
+.particle:nth-child(3) { width: 3px; height: 3px; background: rgba(90,200,250,0.3); left: 38%; animation: particleUp 8s ease-in-out 2s infinite; }
+.particle:nth-child(4) { width: 4px; height: 4px; background: rgba(52,199,89,0.25); left: 55%; animation: particleUp 10s ease-in-out 0.5s infinite; }
+.particle:nth-child(5) { width: 6px; height: 6px; background: rgba(255,149,0,0.2); left: 68%; animation: particleUp 12s ease-in-out 3s infinite; }
+.particle:nth-child(6) { width: 3px; height: 3px; background: rgba(52,199,89,0.25); left: 80%; animation: particleUp 9s ease-in-out 1.5s infinite; }
+.particle:nth-child(7) { width: 5px; height: 5px; background: rgba(90,200,250,0.2); left: 92%; animation: particleUp 13s ease-in-out 4s infinite; }
+.particle:nth-child(8) { width: 4px; height: 4px; background: rgba(255,149,0,0.3); left: 48%; animation: particleUp 10s ease-in-out 2.5s infinite; }
+
+@keyframes particleUp {
+  0%, 100% { bottom: -20px; opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.3; }
+  100% { bottom: 1940px; opacity: 0; }
+}
+
+/* Grain overlay */
+.grain {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  z-index: 100;
+  pointer-events: none;
+}
+
+/* Scene container */
+.scene {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 60px;
+}
+
+/* ---- Scene 1: Hook (0.2s - 1.8s) ---- */
+.scene-hook {
+  opacity: 0;
+  animation: sceneIn 0.6s ease-out 0.2s forwards, sceneOut 0.5s ease-in 1.8s forwards;
+}
+.hook-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 96px;
+  font-weight: 900;
+  color: white;
+  text-align: center;
+  line-height: 1.05;
+  text-transform: uppercase;
+  letter-spacing: -3px;
+}
+.hook-text .green { color: #34C759; }
+.hook-text .orange { color: #FF9500; }
+.hook-sub {
+  font-size: 30px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  margin-top: 28px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+.hook-icon {
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeIn 0.4s ease-out 0.4s forwards;
+}
+
+/* ---- Scene 2: Menu Scanning (2.1s - 4.6s) ---- */
+.scene-phone {
+  opacity: 0;
+  animation: sceneIn 0.6s ease-out 2.1s forwards, sceneOut 0.5s ease-in 4.6s forwards;
+}
+.phone-frame {
+  width: 440px;
+  height: 860px;
+  background: #1A1A2E;
+  border-radius: 54px;
+  border: 3px solid rgba(255,255,255,0.15);
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 50px 100px rgba(0,0,0,0.6), 0 0 80px rgba(52,199,89,0.15);
+}
+.phone-screen {
+  position: absolute;
+  inset: 14px;
+  border-radius: 42px;
+  background: #0A0A14;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 28px;
+}
+
+/* Menu styling */
+.menu-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+.menu-restaurant {
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 8px;
+}
+.menu-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: white;
+}
+.menu-divider {
+  width: 80px;
+  height: 2px;
+  background: rgba(255,255,255,0.15);
+  margin: 16px auto;
+}
+
+.menu-items {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  position: relative;
+}
+.menu-item-name {
+  font-size: 20px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.8);
+}
+.menu-item-desc {
+  font-size: 13px;
+  color: rgba(255,255,255,0.3);
+  margin-top: 3px;
+}
+.menu-item-price {
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.5);
+  flex-shrink: 0;
+}
+
+/* Scanning overlay */
+.scan-overlay {
+  position: absolute;
+  inset: 14px;
+  border-radius: 42px;
+  overflow: hidden;
+  pointer-events: none;
+}
+.scan-line {
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #34C759, transparent);
+  top: 0;
+  opacity: 0;
+  box-shadow: 0 0 30px #34C759;
+  animation: scanDown 2s ease-in-out 2.5s forwards;
+}
+@keyframes scanDown {
+  0% { top: 0; opacity: 1; }
+  100% { top: 100%; opacity: 0.3; }
+}
+.scan-flash {
+  position: absolute;
+  inset: 0;
+  background: rgba(52,199,89,0.08);
+  opacity: 0;
+  animation: scanFlash 0.5s ease-out 3.4s forwards;
+}
+@keyframes scanFlash {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Health score badges */
+.health-badge {
+  position: absolute;
+  right: 12px;
+  padding: 6px 14px;
+  border-radius: 12px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.badge-score {
+  font-size: 20px;
+}
+.badge-label {
+  font-size: 11px;
+  font-weight: 600;
+  opacity: 0.7;
+  letter-spacing: 1px;
+}
+
+.menu-item-1 .health-badge {
+  background: rgba(52,199,89,0.15);
+  border: 1px solid rgba(52,199,89,0.3);
+  color: #34C759;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: badgeIn 0.4s ease-out 3.5s forwards;
+}
+.menu-item-2 .health-badge {
+  background: rgba(52,199,89,0.12);
+  border: 1px solid rgba(52,199,89,0.25);
+  color: #4ECDC4;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: badgeIn 0.4s ease-out 3.65s forwards;
+}
+.menu-item-3 .health-badge {
+  background: rgba(255,149,0,0.12);
+  border: 1px solid rgba(255,149,0,0.25);
+  color: #FF9500;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: badgeIn 0.4s ease-out 3.8s forwards;
+}
+.menu-item-4 .health-badge {
+  background: rgba(255,107,107,0.12);
+  border: 1px solid rgba(255,107,107,0.25);
+  color: #FF6B6B;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: badgeIn 0.4s ease-out 3.95s forwards;
+}
+
+@keyframes badgeIn {
+  from { opacity: 0; transform: translateY(-50%) scale(0.5); }
+  to { opacity: 1; transform: translateY(-50%) scale(1); }
+}
+
+/* AI analyzing label */
+.ai-label {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #34C759;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  animation: fadeIn 0.4s ease-out 2.7s forwards, fadeOut 0.3s ease-in 3.3s forwards;
+}
+@keyframes fadeOut {
+  to { opacity: 0; }
+}
+.ai-done {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #34C759;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  animation: fadeIn 0.4s ease-out 3.5s forwards;
+}
+
+/* Phone outer label */
+.phone-caption {
+  font-size: 24px;
+  color: rgba(255,255,255,0.4);
+  margin-top: 28px;
+  opacity: 0;
+  animation: fadeIn 0.4s ease-out 4.2s forwards;
+}
+
+/* ---- Scene 3: Insights (4.9s - 6.8s) ---- */
+.scene-insights {
+  opacity: 0;
+  animation: sceneIn 0.6s ease-out 4.9s forwards, sceneOut 0.5s ease-in 6.8s forwards;
+}
+.insights-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 48px;
+  font-weight: 800;
+  color: white;
+  text-align: center;
+  margin-bottom: 56px;
+  letter-spacing: -1px;
+}
+.insight-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 28px;
+  width: 100%;
+  max-width: 800px;
+  padding: 32px 36px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 24px;
+  margin-bottom: 20px;
+  opacity: 0;
+}
+.insight-card:nth-child(2) { animation: slideRight 0.5s ease-out 5.2s forwards; }
+.insight-card:nth-child(3) { animation: slideRight 0.5s ease-out 5.4s forwards; }
+.insight-card:nth-child(4) { animation: slideRight 0.5s ease-out 5.6s forwards; }
+
+.insight-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.icon-green { background: rgba(52,199,89,0.15); }
+.icon-orange { background: rgba(255,149,0,0.15); }
+.icon-blue { background: rgba(90,200,250,0.15); }
+
+.insight-content {
+  flex: 1;
+}
+.insight-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 6px;
+}
+.insight-desc {
+  font-size: 22px;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.4;
+}
+
+/* ---- Scene 4: CTA (7.0s - 9.0s) ---- */
+.scene-cta {
+  opacity: 0;
+  animation: sceneIn 0.8s ease-out 7.0s forwards;
+}
+.cta-logo {
+  font-family: 'Outfit', sans-serif;
+  font-size: 80px;
+  font-weight: 900;
+  color: white;
+  margin-bottom: 16px;
+}
+.cta-logo .green { color: #34C759; }
+.cta-tagline {
+  font-size: 30px;
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  margin-bottom: 52px;
+}
+.cta-button {
+  background: linear-gradient(135deg, #34C759, #2DD870);
+  padding: 28px 88px;
+  border-radius: 24px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 34px;
+  font-weight: 800;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  box-shadow: 0 12px 40px rgba(52,199,89,0.4);
+  animation: pulse 2s ease-in-out 7.5s infinite;
+  position: relative;
+  overflow: hidden;
+}
+.cta-button::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  animation: shimmer 3s ease-in-out 7.5s infinite;
+}
+.cta-free {
+  font-size: 22px;
+  color: rgba(255,255,255,0.35);
+  margin-top: 24px;
+}
+
+/* Shared animations */
+@keyframes sceneIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes sceneOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 12px 40px rgba(52,199,89,0.4); }
+  50% { transform: scale(1.04); box-shadow: 0 16px 50px rgba(52,199,89,0.6); }
+}
+</style>
+</head>
+<body>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="grain"></div>
+
+<!-- Scene 1: Hook -->
+<div class="scene scene-hook">
+  <div class="hook-icon">
+    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+  </div>
+  <div class="hook-text">
+    <span class="orange">EATING<br>OUT?</span><br>
+    <span class="green">SCAN THE<br>MENU.</span>
+  </div>
+  <div class="hook-sub">Know before you order</div>
+</div>
+
+<!-- Scene 2: Phone with menu scanning -->
+<div class="scene scene-phone">
+  <div class="phone-frame">
+    <div class="phone-screen">
+      <div class="menu-header">
+        <div class="menu-restaurant">The Golden Fork</div>
+        <div class="menu-title">Today's Specials</div>
+        <div class="menu-divider"></div>
+      </div>
+
+      <div class="menu-items">
+        <div class="menu-item menu-item-1">
+          <div>
+            <div class="menu-item-name">Grilled Salmon</div>
+            <div class="menu-item-desc">Herb-crusted, seasonal vegetables</div>
+          </div>
+          <div class="menu-item-price">$28</div>
+          <div class="health-badge">
+            <span class="badge-score">9/10</span>
+          </div>
+        </div>
+        <div class="menu-item menu-item-2">
+          <div>
+            <div class="menu-item-name">Caesar Salad</div>
+            <div class="menu-item-desc">Romaine, parmesan, croutons</div>
+          </div>
+          <div class="menu-item-price">$16</div>
+          <div class="health-badge">
+            <span class="badge-score">7/10</span>
+          </div>
+        </div>
+        <div class="menu-item menu-item-3">
+          <div>
+            <div class="menu-item-name">Pasta Alfredo</div>
+            <div class="menu-item-desc">Fettuccine, cream sauce, garlic</div>
+          </div>
+          <div class="menu-item-price">$22</div>
+          <div class="health-badge">
+            <span class="badge-score">4/10</span>
+          </div>
+        </div>
+        <div class="menu-item menu-item-4">
+          <div>
+            <div class="menu-item-name">Fried Chicken</div>
+            <div class="menu-item-desc">Buttermilk-battered, coleslaw</div>
+          </div>
+          <div class="menu-item-price">$19</div>
+          <div class="health-badge">
+            <span class="badge-score">3/10</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scan overlay -->
+    <div class="scan-overlay">
+      <div class="scan-line"></div>
+      <div class="scan-flash"></div>
+    </div>
+
+    <!-- AI labels -->
+    <div class="ai-label">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+      AI Analyzing Menu...
+    </div>
+    <div class="ai-done">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+      Health Scores Ready
+    </div>
+  </div>
+  <div class="phone-caption">Instant health scores for every dish</div>
+</div>
+
+<!-- Scene 3: Feature Insights -->
+<div class="scene scene-insights">
+  <div class="insights-title">What you get</div>
+
+  <div class="insight-card">
+    <div class="insight-icon icon-green">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    </div>
+    <div class="insight-content">
+      <div class="insight-name">AI Health Scores</div>
+      <div class="insight-desc">Rate any menu item 1-10</div>
+    </div>
+  </div>
+
+  <div class="insight-card">
+    <div class="insight-icon icon-orange">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="1"/><path d="M16.24 7.76l1.42-1.42"/></svg>
+    </div>
+    <div class="insight-content">
+      <div class="insight-name">Smart Suggestions</div>
+      <div class="insight-desc">Find the healthiest option</div>
+    </div>
+  </div>
+
+  <div class="insight-card">
+    <div class="insight-icon icon-blue">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg>
+    </div>
+    <div class="insight-content">
+      <div class="insight-name">Full Macros</div>
+      <div class="insight-desc">Calories, protein, carbs, fat</div>
+    </div>
+  </div>
+</div>
+
+<!-- Scene 4: CTA -->
+<div class="scene scene-cta">
+  <div class="cta-logo"><span class="green">Nourish</span>AI</div>
+  <div class="cta-tagline">Eat smart. Everywhere.</div>
+  <div class="cta-button">Download Free</div>
+  <div class="cta-free">Available on the App Store</div>
+</div>
+
+</body>
+</html>

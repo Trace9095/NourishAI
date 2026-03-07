@@ -93,6 +93,14 @@
     }
   },
   {
+    "id": "nai-2026-06-10-reel-before-after",
+    "date": "2026-06-10",
+    "template": "reel-before-after",
+    "type": "reel",
+    "caption": "Old school food logging vs NourishAI. Watch the side-by-side comparison.\n\n#NourishAI #BeforeAndAfter #FoodTracking #FitTok #AIvManual #NutritionApp",
+    "data": {}
+  },
+  {
     "id": "nai-2026-06-11-vitamin-d-sun",
     "date": "2026-06-11",
     "type": "feed",
@@ -164,6 +172,14 @@
       "TIP3_EMOJI": "🥩",
       "TIP3_TEXT": "Break your fast with <strong>protein, not carbs</strong> for steady energy"
     }
+  },
+  {
+    "id": "nai-2026-06-18-reel-barcode-scan",
+    "date": "2026-06-18",
+    "template": "reel-barcode-scan",
+    "type": "reel",
+    "caption": "Point. Scan. Done. Instant nutrition from any barcode. Free forever.\n\n#NourishAI #BarcodeScanner #FreeApp #FitTok #MacroTracking #GroceryHack",
+    "data": {}
   },
   {
     "id": "nai-2026-06-19-before-after-marathon",

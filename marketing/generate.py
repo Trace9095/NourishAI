@@ -8,7 +8,7 @@ Uses Playwright (headless Chromium) for rendering, ffmpeg for video encoding.
 Sizes:
   Feed:  1080x1080 (square PNG)
   Story: 1080x1920 (vertical PNG)
-  Reel:  1080x1920 (vertical MP4, 16-18 seconds, 30fps)
+  Reel:  1080x1920 (vertical MP4, 8-10 seconds, 30fps)
 
 Usage:
   python3 generate.py                          # All posts
@@ -37,7 +37,7 @@ OUTPUT_DIR = os.path.join(SCRIPT_DIR, "output")
 FEED_SIZE = (1080, 1080)
 STORY_SIZE = (1080, 1920)
 REEL_SIZE = (1080, 1920)
-REEL_DURATION = 17  # seconds
+REEL_DURATION = 9  # seconds
 REEL_FPS = 30
 
 

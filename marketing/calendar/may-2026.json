@@ -73,6 +73,14 @@
     }
   },
   {
+    "id": "nai-2026-05-08-reel-weekly-progress",
+    "date": "2026-05-08",
+    "template": "reel-weekly-progress",
+    "type": "reel",
+    "caption": "Your week in macros, visualized. 7 days of consistency = results.\n\n#NourishAI #WeeklyProgress #MacroTracking #FitTok #ConsistencyIsKey #NutritionApp",
+    "data": {}
+  },
+  {
     "id": "nai-2026-05-08-before-after-body-comp",
     "date": "2026-05-08",
     "type": "feed",
@@ -203,6 +211,14 @@
       "TIP3_EMOJI": "📱",
       "TIP3_TEXT": "Scan once in NourishAI, then <strong>log saved meals</strong> all week in 1 tap"
     }
+  },
+  {
+    "id": "nai-2026-05-20-reel-menu-scan",
+    "date": "2026-05-20",
+    "template": "reel-menu-scan",
+    "type": "reel",
+    "caption": "Eating out? Scan the menu first. AI scores every dish so you pick the best option.\n\n#NourishAI #MenuScanner #EatOut #FitTok #RestaurantHacks #SmartEating",
+    "data": {}
   },
   {
     "id": "nai-2026-05-20-before-after-athlete",

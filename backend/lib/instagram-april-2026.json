@@ -178,6 +178,14 @@
     }
   },
   {
+    "id": "nai-2026-04-14-reel-barcode-scan",
+    "date": "2026-04-14",
+    "template": "reel-barcode-scan",
+    "type": "reel",
+    "caption": "500K+ products. One scan. Instant macros. The barcode scanner is completely FREE.\n\n#NourishAI #BarcodeScanner #MacroTracking #FitTok #FreeApp #NutritionApp",
+    "data": {}
+  },
+  {
     "id": "nai-2026-04-14-feature-scan-log",
     "date": "2026-04-14",
     "type": "story",
@@ -336,6 +344,14 @@
       "TIP3_EMOJI": "📦",
       "TIP3_TEXT": "Restaurant portions are <strong>2x recommended</strong> — box half immediately"
     }
+  },
+  {
+    "id": "nai-2026-04-25-reel-protein-goal",
+    "date": "2026-04-25",
+    "template": "reel-protein-goal",
+    "type": "reel",
+    "caption": "Watch your protein ring fill up meal by meal. Hit your target. Confetti.\n\n#NourishAI #ProteinGoals #MacroTracking #FitTok #GymTok #ProteinRing",
+    "data": {}
   },
   {
     "id": "nai-2026-04-26-before-after-supplements",

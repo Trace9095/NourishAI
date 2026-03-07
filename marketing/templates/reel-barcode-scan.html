@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  width: 1080px;
+  height: 1920px;
+  background: #0A0A14;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Ambient gradient orbs */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0;
+  animation: orbFade 10s ease-in-out infinite;
+}
+.orb-1 {
+  width: 600px; height: 600px;
+  background: #34C759;
+  top: -200px; left: -100px;
+}
+.orb-2 {
+  width: 500px; height: 500px;
+  background: #FF9500;
+  bottom: 150px; right: -150px;
+  animation-delay: 3s;
+}
+.orb-3 {
+  width: 400px; height: 400px;
+  background: #5AC8FA;
+  top: 45%; right: -80px;
+  animation-delay: 6s;
+}
+
+@keyframes orbFade {
+  0%, 100% { opacity: 0.06; }
+  50% { opacity: 0.14; }
+}
+
+/* Floating particles */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+}
+.particle:nth-child(1) { width: 4px; height: 4px; background: rgba(52,199,89,0.4); left: 8%; animation: particleUp 9s ease-in-out 0s infinite; }
+.particle:nth-child(2) { width: 5px; height: 5px; background: rgba(52,199,89,0.3); left: 22%; animation: particleUp 11s ease-in-out 1s infinite; }
+.particle:nth-child(3) { width: 3px; height: 3px; background: rgba(255,149,0,0.3); left: 38%; animation: particleUp 8s ease-in-out 2s infinite; }
+.particle:nth-child(4) { width: 4px; height: 4px; background: rgba(52,199,89,0.25); left: 52%; animation: particleUp 10s ease-in-out 0.5s infinite; }
+.particle:nth-child(5) { width: 6px; height: 6px; background: rgba(90,200,250,0.2); left: 65%; animation: particleUp 12s ease-in-out 3s infinite; }
+.particle:nth-child(6) { width: 3px; height: 3px; background: rgba(255,149,0,0.25); left: 78%; animation: particleUp 9s ease-in-out 1.5s infinite; }
+.particle:nth-child(7) { width: 5px; height: 5px; background: rgba(52,199,89,0.2); left: 90%; animation: particleUp 13s ease-in-out 4s infinite; }
+.particle:nth-child(8) { width: 4px; height: 4px; background: rgba(90,200,250,0.3); left: 45%; animation: particleUp 10s ease-in-out 2.5s infinite; }
+
+@keyframes particleUp {
+  0%, 100% { bottom: -20px; opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.3; }
+  100% { bottom: 1940px; opacity: 0; }
+}
+
+/* Grain overlay */
+.grain {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  z-index: 100;
+  pointer-events: none;
+}
+
+/* Scene container */
+.scene {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 60px;
+}
+
+/* ---- Scene 1: Hook text (0.2s - 1.8s) ---- */
+.scene-hook {
+  opacity: 0;
+  animation: sceneIn 0.6s ease-out 0.2s forwards, sceneOut 0.5s ease-in 1.8s forwards;
+}
+.hook-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 96px;
+  font-weight: 900;
+  color: white;
+  text-align: center;
+  line-height: 1.05;
+  text-transform: uppercase;
+  letter-spacing: -3px;
+}
+.hook-text .green { color: #34C759; }
+.hook-text .orange { color: #FF9500; }
+.hook-sub {
+  font-size: 28px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+  margin-top: 32px;
+}
+
+/* ---- Scene 2: Phone with barcode scanning (2.1s - 4.6s) ---- */
+.scene-phone {
+  opacity: 0;
+  animation: sceneIn 0.6s ease-out 2.1s forwards, sceneOut 0.5s ease-in 4.6s forwards;
+}
+.phone-frame {
+  width: 440px;
+  height: 860px;
+  background: #1A1A2E;
+  border-radius: 54px;
+  border: 3px solid rgba(255,255,255,0.15);
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 50px 100px rgba(0,0,0,0.6), 0 0 80px rgba(52,199,89,0.15);
+}
+.phone-screen {
+  position: absolute;
+  inset: 14px;
+  border-radius: 42px;
+  background: #0A0A14;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 44px 24px 28px;
+}
+.phone-header {
+  font-family: 'Outfit', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 24px;
+}
+
+/* Barcode area */
+.barcode-area {
+  width: 340px;
+  height: 240px;
+  background: linear-gradient(135deg, #1a1a2e, #12121a);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Stylized barcode lines */
+.barcode-lines {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: 120px;
+  opacity: 0;
+  animation: fadeIn 0.4s ease-out 2.5s forwards;
+}
+.barcode-bar {
+  background: rgba(255,255,255,0.7);
+  border-radius: 1px;
+}
+.barcode-bar:nth-child(1) { width: 3px; height: 100%; }
+.barcode-bar:nth-child(2) { width: 2px; height: 100%; }
+.barcode-bar:nth-child(3) { width: 5px; height: 100%; }
+.barcode-bar:nth-child(4) { width: 2px; height: 100%; }
+.barcode-bar:nth-child(5) { width: 3px; height: 100%; }
+.barcode-bar:nth-child(6) { width: 6px; height: 100%; opacity: 0.3; }
+.barcode-bar:nth-child(7) { width: 2px; height: 100%; }
+.barcode-bar:nth-child(8) { width: 4px; height: 100%; }
+.barcode-bar:nth-child(9) { width: 2px; height: 100%; }
+.barcode-bar:nth-child(10) { width: 3px; height: 100%; }
+.barcode-bar:nth-child(11) { width: 5px; height: 100%; opacity: 0.3; }
+.barcode-bar:nth-child(12) { width: 2px; height: 100%; }
+.barcode-bar:nth-child(13) { width: 4px; height: 100%; }
+.barcode-bar:nth-child(14) { width: 3px; height: 100%; }
+.barcode-bar:nth-child(15) { width: 2px; height: 100%; }
+.barcode-bar:nth-child(16) { width: 6px; height: 100%; }
+.barcode-bar:nth-child(17) { width: 2px; height: 100%; opacity: 0.3; }
+.barcode-bar:nth-child(18) { width: 3px; height: 100%; }
+.barcode-bar:nth-child(19) { width: 5px; height: 100%; }
+.barcode-bar:nth-child(20) { width: 2px; height: 100%; }
+.barcode-bar:nth-child(21) { width: 4px; height: 100%; }
+.barcode-bar:nth-child(22) { width: 2px; height: 100%; opacity: 0.3; }
+.barcode-bar:nth-child(23) { width: 3px; height: 100%; }
+.barcode-bar:nth-child(24) { width: 5px; height: 100%; }
+
+/* Red scanning laser */
+.scan-laser {
+  position: absolute;
+  width: 90%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #FF3B30, #FF3B30, transparent);
+  top: 15%;
+  box-shadow: 0 0 20px rgba(255,59,48,0.6), 0 0 40px rgba(255,59,48,0.3);
+  animation: laserSweep 1.8s ease-in-out 2.7s infinite;
+}
+@keyframes laserSweep {
+  0% { top: 15%; opacity: 1; }
+  50% { top: 80%; opacity: 1; }
+  100% { top: 15%; opacity: 0.6; }
+}
+
+/* Scan corners */
+.scan-corners {
+  position: absolute;
+  inset: 12px;
+  border: 2px solid rgba(255,59,48,0.5);
+  border-radius: 8px;
+  opacity: 0;
+  animation: cornersIn 0.4s ease-out 2.6s forwards;
+}
+@keyframes cornersIn {
+  to { opacity: 0.6; }
+}
+
+/* Found label */
+.phone-label {
+  font-size: 20px;
+  color: rgba(255,255,255,0.5);
+  margin-top: 24px;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out 3.1s forwards;
+}
+
+/* Nutrition facts card */
+.nutrition-facts {
+  margin-top: 20px;
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 20px 24px;
+  opacity: 0;
+  animation: slideUp 0.5s ease-out 3.5s forwards;
+}
+.nf-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid rgba(255,255,255,0.1);
+}
+.nf-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+}
+.nf-row + .nf-row {
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+.nf-label { font-size: 16px; color: rgba(255,255,255,0.5); }
+.nf-value { font-size: 20px; font-weight: 700; }
+.nf-cal { color: #FF9500; }
+.nf-pro { color: #FF6B6B; }
+.nf-carb { color: #4ECDC4; }
+.nf-fat { color: #FFE66D; }
+
+/* Products badge */
+.products-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  background: rgba(52,199,89,0.1);
+  border: 1px solid rgba(52,199,89,0.2);
+  border-radius: 40px;
+  padding: 10px 24px;
+  opacity: 0;
+  animation: slideUp 0.4s ease-out 4.0s forwards;
+}
+.badge-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #34C759;
+  animation: badgePulse 1.5s ease-in-out 4.2s infinite;
+}
+@keyframes badgePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.badge-text {
+  font-size: 16px;
+  font-weight: 700;
+  color: #34C759;
+  letter-spacing: 1px;
+}
+
+/* ---- Scene 3: Feature callouts (4.9s - 6.8s) ---- */
+.scene-features {
+  opacity: 0;
+  animation: sceneIn 0.6s ease-out 4.9s forwards, sceneOut 0.5s ease-in 6.8s forwards;
+}
+.features-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  margin-bottom: 64px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 32px 0;
+  opacity: 0;
+  width: 100%;
+  max-width: 800px;
+}
+.feature-item:nth-child(2) { animation: slideRight 0.5s ease-out 5.1s forwards; }
+.feature-item:nth-child(3) { animation: slideRight 0.5s ease-out 5.3s forwards; }
+.feature-item:nth-child(4) { animation: slideRight 0.5s ease-out 5.5s forwards; }
+
+.feature-icon {
+  width: 100px;
+  height: 100px;
+  border-radius: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.fi-green { background: rgba(52,199,89,0.15); }
+.fi-orange { background: rgba(255,149,0,0.15); }
+.fi-blue { background: rgba(90,200,250,0.15); }
+.feature-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 38px;
+  font-weight: 700;
+  color: white;
+  line-height: 1.2;
+}
+.feature-sub {
+  font-size: 24px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.45);
+  margin-top: 6px;
+}
+
+/* Divider lines between features */
+.feature-divider {
+  width: 100%;
+  max-width: 800px;
+  height: 1px;
+  background: rgba(255,255,255,0.06);
+}
+
+/* ---- Scene 4: CTA (7.0s - 9.0s) ---- */
+.scene-cta {
+  opacity: 0;
+  animation: sceneIn 0.8s ease-out 7.0s forwards;
+}
+.cta-logo {
+  font-family: 'Outfit', sans-serif;
+  font-size: 80px;
+  font-weight: 900;
+  color: white;
+  margin-bottom: 16px;
+}
+.cta-logo .green { color: #34C759; }
+.cta-tagline {
+  font-size: 30px;
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  margin-bottom: 52px;
+  letter-spacing: 2px;
+}
+.cta-button {
+  background: linear-gradient(135deg, #34C759, #2DD870);
+  padding: 28px 88px;
+  border-radius: 24px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 34px;
+  font-weight: 800;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  box-shadow: 0 12px 40px rgba(52,199,89,0.4);
+  animation: pulse 2s ease-in-out 7.5s infinite;
+  position: relative;
+  overflow: hidden;
+}
+.cta-button::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  animation: shimmer 3s ease-in-out 7.5s infinite;
+}
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 12px 40px rgba(52,199,89,0.4); }
+  50% { transform: scale(1.04); box-shadow: 0 16px 50px rgba(52,199,89,0.6); }
+}
+.cta-free {
+  font-size: 22px;
+  color: rgba(255,255,255,0.35);
+  margin-top: 24px;
+}
+
+/* Shared animations */
+@keyframes sceneIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes sceneOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+</style>
+</head>
+<body>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="grain"></div>
+
+<!-- Scene 1: Hook -->
+<div class="scene scene-hook">
+  <div class="hook-text">
+    SCAN ANY<br>
+    <span class="green">BARCODE.</span><br>
+    INSTANT<br>
+    <span class="orange">MACROS.</span>
+  </div>
+  <div class="hook-sub">500K+ products in your pocket</div>
+</div>
+
+<!-- Scene 2: Phone with barcode scanning -->
+<div class="scene scene-phone">
+  <div class="phone-frame">
+    <div class="phone-screen">
+      <div class="phone-header">Barcode Scanner</div>
+      <div class="barcode-area">
+        <div class="barcode-lines">
+          <div class="barcode-bar"></div>
+          <div class="barcode-bar"></div>
+          <div class="barcode-bar"></div>
+          <div class="barcode-bar"></div>
+          <div class="barcode-bar"></div>
+          <div class="barcode-bar"></div>
+          <div class="barcode-bar"></div>
+          <div class="barcode-bar"></div>
+          <div class="barcode-bar"></div>
+          <div class="barcode-bar"></div>
+          <div class="barcode-bar"></div>
+          <div class="barcode-bar"></div>
+          <div class="barcode-bar"></div>
+          <div class="barcode-bar"></div>
+          <div class="barcode-bar"></div>
+          <div class="barcode-bar"></div>
+          <div class="barcode-bar"></div>
+          <div class="barcode-bar"></div>
+          <div class="barcode-bar"></div>
+          <div class="barcode-bar"></div>
+          <div class="barcode-bar"></div>
+          <div class="barcode-bar"></div>
+          <div class="barcode-bar"></div>
+          <div class="barcode-bar"></div>
+        </div>
+        <div class="scan-corners"></div>
+        <div class="scan-laser"></div>
+      </div>
+      <div class="phone-label">Product found!</div>
+      <div class="nutrition-facts">
+        <div class="nf-title">Nutrition Facts</div>
+        <div class="nf-row">
+          <span class="nf-label">Calories</span>
+          <span class="nf-value nf-cal">210 kcal</span>
+        </div>
+        <div class="nf-row">
+          <span class="nf-label">Protein</span>
+          <span class="nf-value nf-pro">12g</span>
+        </div>
+        <div class="nf-row">
+          <span class="nf-label">Carbs</span>
+          <span class="nf-value nf-carb">28g</span>
+        </div>
+        <div class="nf-row">
+          <span class="nf-label">Fat</span>
+          <span class="nf-value nf-fat">6g</span>
+        </div>
+      </div>
+      <div class="products-badge">
+        <div class="badge-dot"></div>
+        <span class="badge-text">500K+ Products</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scene 3: Features -->
+<div class="scene scene-features">
+  <div class="features-title">How It Works</div>
+  <div class="feature-item">
+    <div class="feature-icon fi-green">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 7V5a2 2 0 0 1 2-2h2"/>
+        <path d="M17 3h2a2 2 0 0 1 2 2v2"/>
+        <path d="M21 17v2a2 2 0 0 1-2 2h-2"/>
+        <path d="M7 21H5a2 2 0 0 1-2-2v-2"/>
+        <line x1="7" y1="8" x2="7" y2="16"/>
+        <line x1="10" y1="8" x2="10" y2="16"/>
+        <line x1="13" y1="8" x2="13" y2="16"/>
+        <line x1="16" y1="8" x2="16" y2="16"/>
+      </svg>
+    </div>
+    <div>
+      <div class="feature-text">Instant Lookup</div>
+      <div class="feature-sub">Scan any packaged food</div>
+    </div>
+  </div>
+  <div class="feature-divider"></div>
+  <div class="feature-item">
+    <div class="feature-icon fi-orange">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <ellipse cx="12" cy="5" rx="9" ry="3"/>
+        <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+        <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+      </svg>
+    </div>
+    <div>
+      <div class="feature-text">500K+ Products</div>
+      <div class="feature-sub">OpenFoodFacts database</div>
+    </div>
+  </div>
+  <div class="feature-divider"></div>
+  <div class="feature-item">
+    <div class="feature-icon fi-blue">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+      </svg>
+    </div>
+    <div>
+      <div class="feature-text">Always Free</div>
+      <div class="feature-sub">No limits, no subscription</div>
+    </div>
+  </div>
+</div>
+
+<!-- Scene 4: CTA -->
+<div class="scene scene-cta">
+  <div class="cta-logo"><span class="green">Nourish</span>AI</div>
+  <div class="cta-tagline">Scan. Track. Repeat.</div>
+  <div class="cta-button">Download Free</div>
+  <div class="cta-free">Available on the App Store</div>
+</div>
+
+</body>
+</html>

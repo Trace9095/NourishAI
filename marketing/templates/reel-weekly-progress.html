@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  width: 1080px;
+  height: 1920px;
+  background: #0A0A14;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Ambient gradient orbs */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0;
+  animation: orbFade 10s ease-in-out infinite;
+}
+.orb-1 {
+  width: 600px; height: 600px;
+  background: #34C759;
+  top: -150px; right: -100px;
+}
+.orb-2 {
+  width: 500px; height: 500px;
+  background: #FF9500;
+  bottom: 250px; left: -150px;
+  animation-delay: 3s;
+}
+.orb-3 {
+  width: 400px; height: 400px;
+  background: #5AC8FA;
+  top: 55%; left: -80px;
+  animation-delay: 6s;
+}
+
+@keyframes orbFade {
+  0%, 100% { opacity: 0.06; }
+  50% { opacity: 0.14; }
+}
+
+/* Floating particles */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+}
+.particle:nth-child(1) { width: 4px; height: 4px; background: rgba(52,199,89,0.4); left: 8%; animation: particleUp 9s ease-in-out 0s infinite; }
+.particle:nth-child(2) { width: 5px; height: 5px; background: rgba(255,149,0,0.3); left: 22%; animation: particleUp 11s ease-in-out 1s infinite; }
+.particle:nth-child(3) { width: 3px; height: 3px; background: rgba(90,200,250,0.3); left: 38%; animation: particleUp 8s ease-in-out 2s infinite; }
+.particle:nth-child(4) { width: 4px; height: 4px; background: rgba(52,199,89,0.25); left: 55%; animation: particleUp 10s ease-in-out 0.5s infinite; }
+.particle:nth-child(5) { width: 6px; height: 6px; background: rgba(255,107,107,0.2); left: 68%; animation: particleUp 12s ease-in-out 3s infinite; }
+.particle:nth-child(6) { width: 3px; height: 3px; background: rgba(78,205,196,0.25); left: 80%; animation: particleUp 9s ease-in-out 1.5s infinite; }
+.particle:nth-child(7) { width: 5px; height: 5px; background: rgba(52,199,89,0.2); left: 92%; animation: particleUp 13s ease-in-out 4s infinite; }
+.particle:nth-child(8) { width: 4px; height: 4px; background: rgba(255,149,0,0.3); left: 48%; animation: particleUp 10s ease-in-out 2.5s infinite; }
+
+@keyframes particleUp {
+  0%, 100% { bottom: -20px; opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.3; }
+  100% { bottom: 1940px; opacity: 0; }
+}
+
+/* Grain overlay */
+.grain {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  z-index: 100;
+  pointer-events: none;
+}
+
+/* Scene container */
+.scene {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 60px;
+}
+
+/* ---- Scene 1: Hook (0.2s - 1.8s) ---- */
+.scene-hook {
+  opacity: 0;
+  animation: sceneIn 0.8s ease-out 0.2s forwards, sceneOut 0.6s ease-in 1.8s forwards;
+}
+.hook-pre {
+  font-size: 22px;
+  font-weight: 700;
+  color: #FF9500;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  margin-bottom: 28px;
+}
+.hook-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 96px;
+  font-weight: 900;
+  color: white;
+  text-align: center;
+  line-height: 1.05;
+  text-transform: uppercase;
+  letter-spacing: -3px;
+}
+.hook-text .green { color: #34C759; }
+.hook-text .orange { color: #FF9500; }
+.hook-sub {
+  font-size: 28px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+  margin-top: 32px;
+}
+
+/* ---- Scene 2: Weekly Calendar (2.1s - 4.6s) ---- */
+.scene-calendar {
+  opacity: 0;
+  animation: sceneIn 0.6s ease-out 2.1s forwards, sceneOut 0.5s ease-in 4.6s forwards;
+}
+.calendar-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 52px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+.week-grid {
+  display: flex;
+  gap: 20px;
+  align-items: flex-end;
+}
+.day-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 110px;
+}
+.day-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Progress rings */
+.day-ring-wrap {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.day-ring-svg {
+  width: 100px;
+  height: 100px;
+  transform: rotate(-90deg);
+}
+.day-ring-bg {
+  fill: none;
+  stroke: rgba(255,255,255,0.06);
+  stroke-width: 8;
+}
+.day-ring-progress {
+  fill: none;
+  stroke: #34C759;
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-dasharray: 251;
+  stroke-dashoffset: 251;
+}
+
+/* Staggered ring fill animations for each day */
+.day-1 .day-ring-progress { animation: ringDay90 1.2s ease-out 2.4s forwards; }
+.day-2 .day-ring-progress { animation: ringDay85 1.2s ease-out 2.6s forwards; }
+.day-3 .day-ring-progress { animation: ringDay100 1.2s ease-out 2.8s forwards; }
+.day-4 .day-ring-progress { animation: ringDay75 1.2s ease-out 3.0s forwards; }
+.day-5 .day-ring-progress { animation: ringDay95 1.2s ease-out 3.2s forwards; }
+.day-6 .day-ring-progress { animation: ringDay80 1.2s ease-out 3.4s forwards; }
+.day-7 .day-ring-progress { animation: ringDay100 1.2s ease-out 3.6s forwards; }
+
+@keyframes ringDay100 { to { stroke-dashoffset: 0; } }
+@keyframes ringDay95 { to { stroke-dashoffset: 13; } }
+@keyframes ringDay90 { to { stroke-dashoffset: 25; } }
+@keyframes ringDay85 { to { stroke-dashoffset: 38; } }
+@keyframes ringDay80 { to { stroke-dashoffset: 50; } }
+@keyframes ringDay75 { to { stroke-dashoffset: 63; } }
+
+/* Day checkmark inside ring */
+.day-check {
+  position: absolute;
+  opacity: 0;
+}
+.day-1 .day-check { animation: fadeIn 0.3s ease-out 3.0s forwards; }
+.day-2 .day-check { animation: fadeIn 0.3s ease-out 3.15s forwards; }
+.day-3 .day-check { animation: fadeIn 0.3s ease-out 3.3s forwards; }
+.day-4 .day-check { animation: fadeIn 0.3s ease-out 3.45s forwards; }
+.day-5 .day-check { animation: fadeIn 0.3s ease-out 3.6s forwards; }
+.day-6 .day-check { animation: fadeIn 0.3s ease-out 3.75s forwards; }
+.day-7 .day-check { animation: fadeIn 0.3s ease-out 3.9s forwards; }
+
+/* Calorie number below ring */
+.day-cals {
+  font-size: 16px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.5);
+  opacity: 0;
+}
+.day-1 .day-cals { animation: fadeIn 0.3s ease-out 2.6s forwards; }
+.day-2 .day-cals { animation: fadeIn 0.3s ease-out 2.75s forwards; }
+.day-3 .day-cals { animation: fadeIn 0.3s ease-out 2.9s forwards; }
+.day-4 .day-cals { animation: fadeIn 0.3s ease-out 3.05s forwards; }
+.day-5 .day-cals { animation: fadeIn 0.3s ease-out 3.2s forwards; }
+.day-6 .day-cals { animation: fadeIn 0.3s ease-out 3.35s forwards; }
+.day-7 .day-cals { animation: fadeIn 0.3s ease-out 3.5s forwards; }
+
+/* Streak badge */
+.streak-badge {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 52px;
+  background: rgba(52,199,89,0.08);
+  border: 1px solid rgba(52,199,89,0.2);
+  border-radius: 40px;
+  padding: 18px 40px;
+  opacity: 0;
+  animation: streakPop 0.6s ease-out 4.0s forwards;
+}
+@keyframes streakPop {
+  0% { opacity: 0; transform: scale(0.8); }
+  60% { transform: scale(1.05); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.streak-fire {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.streak-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 30px;
+  font-weight: 800;
+  color: #34C759;
+  letter-spacing: 1px;
+}
+
+/* ---- Scene 3: Stats Summary (4.9s - 6.8s) ---- */
+.scene-stats {
+  opacity: 0;
+  animation: sceneIn 0.8s ease-out 4.9s forwards, sceneOut 0.6s ease-in 6.8s forwards;
+}
+.stat-block {
+  text-align: center;
+  margin-bottom: 56px;
+  opacity: 0;
+}
+.stat-block:nth-child(1) { animation: statIn 0.6s ease-out 5.2s forwards; }
+.stat-block:nth-child(2) { animation: statIn 0.6s ease-out 5.6s forwards; }
+.stat-block:nth-child(3) { animation: statIn 0.6s ease-out 6.0s forwards; }
+
+@keyframes statIn {
+  from { opacity: 0; transform: translateY(30px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.stat-number {
+  font-family: 'Outfit', sans-serif;
+  font-size: 120px;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.stat-green { color: #34C759; }
+.stat-protein { color: #FF6B6B; }
+.stat-orange { color: #FF9500; }
+.stat-label {
+  font-size: 28px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Decorative divider between stats */
+.stat-divider {
+  width: 120px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  margin-bottom: 56px;
+  opacity: 0;
+}
+.stat-divider:nth-of-type(2) { animation: fadeIn 0.3s ease-out 5.5s forwards; }
+.stat-divider:nth-of-type(4) { animation: fadeIn 0.3s ease-out 5.9s forwards; }
+
+/* ---- Scene 4: CTA (7.0s - 9.0s) ---- */
+.scene-cta {
+  opacity: 0;
+  animation: sceneIn 0.8s ease-out 7.0s forwards;
+}
+.cta-logo {
+  font-family: 'Outfit', sans-serif;
+  font-size: 80px;
+  font-weight: 900;
+  color: white;
+  margin-bottom: 16px;
+}
+.cta-logo .green { color: #34C759; }
+.cta-tagline {
+  font-size: 30px;
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  margin-bottom: 52px;
+  letter-spacing: 2px;
+}
+.cta-button {
+  background: linear-gradient(135deg, #34C759, #2DD870);
+  padding: 28px 88px;
+  border-radius: 24px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 34px;
+  font-weight: 800;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  box-shadow: 0 12px 40px rgba(52,199,89,0.4);
+  animation: pulse 2s ease-in-out 7.5s infinite;
+  position: relative;
+  overflow: hidden;
+}
+.cta-button::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  animation: shimmer 3s ease-in-out 7.5s infinite;
+}
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 12px 40px rgba(52,199,89,0.4); }
+  50% { transform: scale(1.04); box-shadow: 0 16px 50px rgba(52,199,89,0.6); }
+}
+.cta-free {
+  font-size: 22px;
+  color: rgba(255,255,255,0.35);
+  margin-top: 24px;
+}
+
+/* Shared animations */
+@keyframes sceneIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes sceneOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+</style>
+</head>
+<body>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="grain"></div>
+
+<!-- Scene 1: Hook -->
+<div class="scene scene-hook">
+  <div class="hook-pre">Weekly Review</div>
+  <div class="hook-text">
+    YOUR<br>
+    <span class="green">WEEK.</span><br>
+    <span class="orange">VISUALIZED.</span>
+  </div>
+  <div class="hook-sub">Seven days of progress at a glance</div>
+</div>
+
+<!-- Scene 2: Weekly Calendar with Progress Rings -->
+<div class="scene scene-calendar">
+  <div class="calendar-title">This Week</div>
+  <div class="week-grid">
+    <div class="day-column day-1">
+      <div class="day-label">Mon</div>
+      <div class="day-ring-wrap">
+        <svg class="day-ring-svg" viewBox="0 0 100 100">
+          <circle class="day-ring-bg" cx="50" cy="50" r="40" />
+          <circle class="day-ring-progress" cx="50" cy="50" r="40" />
+        </svg>
+        <div class="day-check">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+      </div>
+      <div class="day-cals">2,040</div>
+    </div>
+    <div class="day-column day-2">
+      <div class="day-label">Tue</div>
+      <div class="day-ring-wrap">
+        <svg class="day-ring-svg" viewBox="0 0 100 100">
+          <circle class="day-ring-bg" cx="50" cy="50" r="40" />
+          <circle class="day-ring-progress" cx="50" cy="50" r="40" />
+        </svg>
+        <div class="day-check">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+      </div>
+      <div class="day-cals">1,920</div>
+    </div>
+    <div class="day-column day-3">
+      <div class="day-label">Wed</div>
+      <div class="day-ring-wrap">
+        <svg class="day-ring-svg" viewBox="0 0 100 100">
+          <circle class="day-ring-bg" cx="50" cy="50" r="40" />
+          <circle class="day-ring-progress" cx="50" cy="50" r="40" />
+        </svg>
+        <div class="day-check">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+      </div>
+      <div class="day-cals">2,100</div>
+    </div>
+    <div class="day-column day-4">
+      <div class="day-label">Thu</div>
+      <div class="day-ring-wrap">
+        <svg class="day-ring-svg" viewBox="0 0 100 100">
+          <circle class="day-ring-bg" cx="50" cy="50" r="40" />
+          <circle class="day-ring-progress" cx="50" cy="50" r="40" />
+        </svg>
+        <div class="day-check">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+      </div>
+      <div class="day-cals">1,860</div>
+    </div>
+    <div class="day-column day-5">
+      <div class="day-label">Fri</div>
+      <div class="day-ring-wrap">
+        <svg class="day-ring-svg" viewBox="0 0 100 100">
+          <circle class="day-ring-bg" cx="50" cy="50" r="40" />
+          <circle class="day-ring-progress" cx="50" cy="50" r="40" />
+        </svg>
+        <div class="day-check">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+      </div>
+      <div class="day-cals">2,080</div>
+    </div>
+    <div class="day-column day-6">
+      <div class="day-label">Sat</div>
+      <div class="day-ring-wrap">
+        <svg class="day-ring-svg" viewBox="0 0 100 100">
+          <circle class="day-ring-bg" cx="50" cy="50" r="40" />
+          <circle class="day-ring-progress" cx="50" cy="50" r="40" />
+        </svg>
+        <div class="day-check">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+      </div>
+      <div class="day-cals">2,180</div>
+    </div>
+    <div class="day-column day-7">
+      <div class="day-label">Sun</div>
+      <div class="day-ring-wrap">
+        <svg class="day-ring-svg" viewBox="0 0 100 100">
+          <circle class="day-ring-bg" cx="50" cy="50" r="40" />
+          <circle class="day-ring-progress" cx="50" cy="50" r="40" />
+        </svg>
+        <div class="day-check">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+      </div>
+      <div class="day-cals">2,100</div>
+    </div>
+  </div>
+  <div class="streak-badge">
+    <div class="streak-fire">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#FF9500" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2c.5 2.5 2 4.5 2 4.5s3-2 3 2.5c0 3-1.5 4.5-3 5.5 0 0 1.5.5 2-1.5 0 0-1 5-4 5.5-3 .5-5-2-5-5 0-2 1-3 1-3s-1 2 1 3c0 0-2-2-1-5 .5-1.5 1.5-3 2-4 .5-1 1-2.5 2-2.5z"/>
+        <path d="M12 22c-2 0-3.5-1.5-3.5-3.5 0-1.5 1-2.5 1-2.5s-.5 1.5.5 2c0 0-.5-1.5 0-3 .5-1.5 1.5-2 2-2s1.5.5 2 2c.5 1.5 0 3 0 3 1-.5.5-2 .5-2s1 1 1 2.5C15.5 20.5 14 22 12 22z"/>
+      </svg>
+    </div>
+    <div class="streak-text">7 Day Streak</div>
+  </div>
+</div>
+
+<!-- Scene 3: Stats Summary -->
+<div class="scene scene-stats">
+  <div class="stat-block">
+    <div class="stat-number stat-green">14,280</div>
+    <div class="stat-label">calories tracked</div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-block">
+    <div class="stat-number stat-protein">1,089g</div>
+    <div class="stat-label">protein consumed</div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-block">
+    <div class="stat-number stat-orange">98%</div>
+    <div class="stat-label">goal accuracy</div>
+  </div>
+</div>
+
+<!-- Scene 4: CTA -->
+<div class="scene scene-cta">
+  <div class="cta-logo"><span class="green">Nourish</span>AI</div>
+  <div class="cta-tagline">See your progress. Stay consistent.</div>
+  <div class="cta-button">Download Free</div>
+  <div class="cta-free">Available on the App Store</div>
+</div>
+
+</body>
+</html>
