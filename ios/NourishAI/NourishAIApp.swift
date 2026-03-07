@@ -17,7 +17,9 @@ struct NourishAIApp: App {
         ])
         let config = ModelConfiguration(isStoredInMemoryOnly: false)
         container = try! ModelContainer(for: schema, configurations: [config])
+        #if DEBUG
         seedScreenshotData(container: container)
+        #endif
     }
 
     var body: some Scene {

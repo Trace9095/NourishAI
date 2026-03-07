@@ -15,6 +15,18 @@ final class NourishAPIManager {
         return newId
     }
 
+    /// Maps HTTP status codes to specific API errors
+    private func mapError(statusCode: Int, context: String) -> APIError {
+        switch statusCode {
+        case 401: return .deviceNotRegistered
+        case 403: return .scanLimitReached
+        case 429: return .cooldownActive
+        case 502: return .aiServiceBusy
+        case 503: return .aiServiceUnavailable
+        default: return .analysisServerError(statusCode: statusCode)
+        }
+    }
+
     // MARK: - Register Device
 
     struct RegisterResponse: Codable, Sendable {
@@ -119,14 +131,11 @@ final class NourishAPIManager {
         let (data, response) = try await URLSession.shared.data(for: request)
         let httpResponse = response as? HTTPURLResponse
 
-        if httpResponse?.statusCode == 403 {
-            throw APIError.scanLimitReached
+        guard let statusCode = httpResponse?.statusCode else {
+            throw APIError.networkError
         }
-        if httpResponse?.statusCode == 429 {
-            throw APIError.cooldownActive
-        }
-        guard let statusCode = httpResponse?.statusCode, statusCode < 300 else {
-            throw APIError.analysisServerError
+        guard statusCode < 300 else {
+            throw mapError(statusCode: statusCode, context: "analyzeFood")
         }
 
         let raw = try JSONDecoder().decode(AnalysisResponse.self, from: data)
@@ -146,11 +155,11 @@ final class NourishAPIManager {
         let (data, response) = try await URLSession.shared.data(for: request)
         let httpResponse = response as? HTTPURLResponse
 
-        if httpResponse?.statusCode == 403 {
-            throw APIError.scanLimitReached
+        guard let statusCode = httpResponse?.statusCode else {
+            throw APIError.networkError
         }
-        guard let statusCode = httpResponse?.statusCode, statusCode < 300 else {
-            throw APIError.analysisServerError
+        guard statusCode < 300 else {
+            throw mapError(statusCode: statusCode, context: "analyzeDescription")
         }
 
         let raw = try JSONDecoder().decode(AnalysisResponse.self, from: data)
@@ -270,14 +279,37 @@ final class NourishAPIManager {
         let (data, response) = try await URLSession.shared.data(for: request)
         let httpResponse = response as? HTTPURLResponse
 
-        if httpResponse?.statusCode == 403 {
-            throw APIError.scanLimitReached
+        guard let statusCode = httpResponse?.statusCode else {
+            throw APIError.networkError
         }
-        if httpResponse?.statusCode == 429 {
-            throw APIError.cooldownActive
+        guard statusCode < 300 else {
+            throw mapError(statusCode: statusCode, context: "analyzeMenu")
         }
-        guard let statusCode = httpResponse?.statusCode, statusCode < 300 else {
-            throw APIError.analysisServerError
+
+        return try JSONDecoder().decode(MenuAnalysisResponse.self, from: data)
+    }
+
+    // MARK: - Analyze Menu URL
+
+    func analyzeMenuURL(url: String) async throws -> MenuAnalysisResponse {
+        let apiURL = URL(string: APIConfig.analyzeMenu)!
+        var request = URLRequest(url: apiURL)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(deviceId, forHTTPHeaderField: "X-Device-ID")
+        request.timeoutInterval = 30
+
+        let body: [String: String] = ["menuUrl": url]
+        request.httpBody = try JSONEncoder().encode(body)
+
+        let (data, response) = try await URLSession.shared.data(for: request)
+        let httpResponse = response as? HTTPURLResponse
+
+        guard let statusCode = httpResponse?.statusCode else {
+            throw APIError.networkError
+        }
+        guard statusCode < 300 else {
+            throw mapError(statusCode: statusCode, context: "analyzeMenuURL")
         }
 
         return try JSONDecoder().decode(MenuAnalysisResponse.self, from: data)
@@ -347,11 +379,11 @@ final class NourishAPIManager {
         let (data, response) = try await URLSession.shared.data(for: request)
         let httpResponse = response as? HTTPURLResponse
 
-        if httpResponse?.statusCode == 429 {
-            throw APIError.rateLimitExceeded
+        guard let statusCode = httpResponse?.statusCode else {
+            throw APIError.networkError
         }
-        guard let statusCode = httpResponse?.statusCode, statusCode < 300 else {
-            throw APIError.analysisServerError
+        guard statusCode < 300 else {
+            throw mapError(statusCode: statusCode, context: "suggestFoods")
         }
 
         return try JSONDecoder().decode(FoodSuggestionsResponse.self, from: data)
@@ -392,11 +424,14 @@ final class NourishAPIManager {
         let (data, response) = try await URLSession.shared.data(for: request)
         let httpResponse = response as? HTTPURLResponse
 
-        if httpResponse?.statusCode == 429 {
+        guard let statusCode = httpResponse?.statusCode else {
+            throw APIError.networkError
+        }
+        if statusCode == 429 {
             throw APIError.chatLimitReached
         }
-        guard let statusCode = httpResponse?.statusCode, statusCode < 300 else {
-            throw APIError.analysisServerError
+        guard statusCode < 300 else {
+            throw mapError(statusCode: statusCode, context: "chat")
         }
 
         return try JSONDecoder().decode(ChatResponse.self, from: data)
@@ -458,7 +493,10 @@ enum APIError: LocalizedError, Sendable {
     case invalidImage
     case scanLimitReached
     case cooldownActive
-    case analysisServerError
+    case deviceNotRegistered
+    case aiServiceUnavailable
+    case aiServiceBusy
+    case analysisServerError(statusCode: Int)
     case productNotFound
     case barcodeLookupFailed
     case subscriptionVerificationFailed
@@ -468,17 +506,20 @@ enum APIError: LocalizedError, Sendable {
 
     var errorDescription: String? {
         switch self {
-        case .registrationFailed: return "Failed to register device"
+        case .registrationFailed: return "Failed to register device. Please restart the app."
         case .invalidImage: return "Could not process image"
         case .scanLimitReached: return "Weekly scan limit reached. Upgrade to Pro for unlimited scans."
         case .cooldownActive: return "Please wait 30 seconds between scans"
-        case .analysisServerError: return "AI analysis temporarily unavailable"
+        case .deviceNotRegistered: return "Device not registered. Please restart the app."
+        case .aiServiceUnavailable: return "AI service is temporarily down. Please try again later."
+        case .aiServiceBusy: return "AI service is busy. Please try again in a moment."
+        case .analysisServerError(let code): return "Analysis failed (error \(code)). Please try again."
         case .productNotFound: return "Product not found in database"
         case .barcodeLookupFailed: return "Barcode lookup failed"
         case .subscriptionVerificationFailed: return "Could not verify subscription"
         case .rateLimitExceeded: return "Too many requests. Please try again later."
         case .chatLimitReached: return "Daily chat limit reached. Upgrade to Pro for unlimited."
-        case .networkError: return "Network connection error"
+        case .networkError: return "Network connection error. Check your internet."
         }
     }
 }

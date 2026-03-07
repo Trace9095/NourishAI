@@ -128,10 +128,10 @@ struct SubscriptionView: View {
                             .font(.caption2)
                             .foregroundColor(.gray.opacity(0.7))
                         HStack(spacing: 16) {
-                            Button("Terms") {}
+                            Link("Terms", destination: URL(string: "https://nourishhealthai.com/terms")!)
                                 .font(.caption2)
                                 .foregroundColor(.brandGreen)
-                            Button("Privacy") {}
+                            Link("Privacy", destination: URL(string: "https://nourishhealthai.com/privacy")!)
                                 .font(.caption2)
                                 .foregroundColor(.brandGreen)
                             Button("Restore Purchases") {

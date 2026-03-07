@@ -92,26 +92,9 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Parse the image from the request
     const body = await request.json();
-    const { imageBase64, mediaType } = body;
+    const { imageBase64, mediaType, menuUrl } = body;
 
-    if (!imageBase64 || !mediaType) {
-      return NextResponse.json(
-        { error: "Missing image data" },
-        { status: 400, headers: corsHeaders(request) }
-      );
-    }
-
-    // Limit image size to 10MB base64 (~7.5MB raw) to prevent cost abuse
-    if (imageBase64.length > 10_000_000) {
-      return NextResponse.json(
-        { error: "Image too large (max 10MB)" },
-        { status: 400, headers: corsHeaders(request) }
-      );
-    }
-
-    // Call Claude Haiku vision
     const apiKey = process.env.ANTHROPIC_API_KEY;
     if (!apiKey) {
       return NextResponse.json(
@@ -120,31 +103,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const claudeResponse = await fetch(ANTHROPIC_API_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-api-key": apiKey,
-        "anthropic-version": "2023-06-01",
-      },
-      body: JSON.stringify({
-        model: "claude-haiku-4-5-20251001",
-        max_tokens: 2048,
-        messages: [
-          {
-            role: "user",
-            content: [
-              {
-                type: "image",
-                source: {
-                  type: "base64",
-                  media_type: mediaType,
-                  data: imageBase64,
-                },
-              },
-              {
-                type: "text",
-                text: `Analyze this restaurant menu photo. Extract every menu item you can read and estimate the nutritional content for each. Respond in this exact JSON format:
+    const menuPrompt = `Analyze this restaurant menu. Extract every menu item you can find and estimate the nutritional content for each. Respond in this exact JSON format:
 {
   "items": [
     {
@@ -160,11 +119,114 @@ export async function POST(request: NextRequest) {
   "healthiestPicks": ["top 3 healthiest item names by health score"],
   "totalItemsFound": number
 }
-Only respond with valid JSON, no other text.`,
+Only respond with valid JSON, no other text.`;
+
+    let claudeMessages;
+    let scanType: string;
+
+    if (menuUrl) {
+      // URL-based menu analysis: fetch the restaurant website and extract menu
+      if (typeof menuUrl !== "string" || menuUrl.length > 500) {
+        return NextResponse.json(
+          { error: "Invalid URL" },
+          { status: 400, headers: corsHeaders(request) }
+        );
+      }
+
+      // Validate URL format
+      let parsedUrl: URL;
+      try {
+        parsedUrl = new URL(menuUrl);
+        if (!["http:", "https:"].includes(parsedUrl.protocol)) {
+          throw new Error("Invalid protocol");
+        }
+      } catch {
+        return NextResponse.json(
+          { error: "Invalid URL format. Please enter a valid website address." },
+          { status: 400, headers: corsHeaders(request) }
+        );
+      }
+
+      // Fetch the website content
+      let pageText: string;
+      try {
+        const pageResponse = await fetch(menuUrl, {
+          headers: { "User-Agent": "NourishAI Menu Scanner/1.0" },
+          signal: AbortSignal.timeout(10_000),
+        });
+        if (!pageResponse.ok) {
+          return NextResponse.json(
+            { error: "Could not access the restaurant website. Please check the URL." },
+            { status: 400, headers: corsHeaders(request) }
+          );
+        }
+        const html = await pageResponse.text();
+        // Strip HTML tags, keep text content (limit to 8000 chars for Claude context)
+        pageText = html
+          .replace(/<script[\s\S]*?<\/script>/gi, "")
+          .replace(/<style[\s\S]*?<\/style>/gi, "")
+          .replace(/<[^>]+>/g, " ")
+          .replace(/\s+/g, " ")
+          .trim()
+          .slice(0, 8000);
+      } catch {
+        return NextResponse.json(
+          { error: "Could not load the website. Please try again or use a photo instead." },
+          { status: 400, headers: corsHeaders(request) }
+        );
+      }
+
+      claudeMessages = [
+        {
+          role: "user" as const,
+          content: `Here is text content from a restaurant website at ${menuUrl}:\n\n${pageText}\n\n${menuPrompt}`,
+        },
+      ];
+      scanType = "menu_url";
+    } else if (imageBase64 && mediaType) {
+      // Photo-based menu analysis
+      if (imageBase64.length > 10_000_000) {
+        return NextResponse.json(
+          { error: "Image too large (max 10MB)" },
+          { status: 400, headers: corsHeaders(request) }
+        );
+      }
+
+      claudeMessages = [
+        {
+          role: "user" as const,
+          content: [
+            {
+              type: "image" as const,
+              source: {
+                type: "base64" as const,
+                media_type: mediaType,
+                data: imageBase64,
               },
-            ],
-          },
-        ],
+            },
+            { type: "text" as const, text: menuPrompt },
+          ],
+        },
+      ];
+      scanType = "menu_photo";
+    } else {
+      return NextResponse.json(
+        { error: "Provide either an image or a restaurant URL" },
+        { status: 400, headers: corsHeaders(request) }
+      );
+    }
+
+    const claudeResponse = await fetch(ANTHROPIC_API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": apiKey,
+        "anthropic-version": "2023-06-01",
+      },
+      body: JSON.stringify({
+        model: "claude-haiku-4-5-20251001",
+        max_tokens: 2048,
+        messages: claudeMessages,
       }),
     });
 
@@ -184,7 +246,7 @@ Only respond with valid JSON, no other text.`,
     // Log the scan (counts against free tier limit)
     await db().insert(scanUsage).values({
       userId: user.id,
-      scanType: "menu_photo",
+      scanType,
       modelUsed: "haiku",
       tokensUsed: tokensUsed ?? 0,
     });
@@ -198,10 +260,7 @@ Only respond with valid JSON, no other text.`,
       analysis = { raw: analysisText, parseError: true };
     }
 
-    return NextResponse.json(
-      { analysis, tokensUsed },
-      { headers: corsHeaders(request) }
-    );
+    return NextResponse.json(analysis, { headers: corsHeaders(request) });
   } catch (error) {
     console.error("analyze-menu error:", error);
     return NextResponse.json(

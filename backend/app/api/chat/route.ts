@@ -5,7 +5,7 @@ import { eq, and, gte } from "drizzle-orm";
 import { handleCors, corsHeaders } from "@/lib/security";
 
 const ANTHROPIC_API_URL = "https://api.anthropic.com/v1/messages";
-const FREE_DAILY_CHATS = 20;
+const FREE_DAILY_CHATS = 5;
 
 export async function OPTIONS(request: NextRequest) {
   return handleCors(request) ?? NextResponse.json(null, { status: 204 });
@@ -115,6 +115,11 @@ export async function POST(request: NextRequest) {
       }
     }
 
+    // Use Haiku for free users (cheap), Sonnet for Pro users (premium experience)
+    const model = isPro
+      ? "claude-sonnet-4-6-20250514"
+      : "claude-haiku-4-5-20251001";
+
     const claudeResponse = await fetch(ANTHROPIC_API_URL, {
       method: "POST",
       headers: {
@@ -123,8 +128,8 @@ export async function POST(request: NextRequest) {
         "anthropic-version": "2023-06-01",
       },
       body: JSON.stringify({
-        model: "claude-sonnet-4-6-20250514",
-        max_tokens: 512,
+        model,
+        max_tokens: isPro ? 1024 : 512,
         system: `You are NourishAI, a friendly and knowledgeable nutrition assistant. You help users understand their diet, make healthier choices, and reach their nutrition goals. Keep responses concise, practical, and encouraging. Use simple language. If asked about medical conditions, remind the user to consult a healthcare professional. Never provide medical diagnoses or treatment plans.${contextInfo}`,
         messages: [
           {
@@ -152,7 +157,7 @@ export async function POST(request: NextRequest) {
     await db().insert(scanUsage).values({
       userId: user.id,
       scanType: "chat",
-      modelUsed: "sonnet",
+      modelUsed: isPro ? "sonnet" : "haiku",
       tokensUsed: tokensUsed ?? 0,
     });
 

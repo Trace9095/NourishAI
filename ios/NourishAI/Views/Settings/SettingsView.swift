@@ -2,10 +2,13 @@ import SwiftUI
 import SwiftData
 
 struct SettingsView: View {
+    @Environment(\.openURL) private var openURL
     @Query private var profiles: [UserProfile]
     @State private var showSubscription = false
     @State private var healthKitRequested = false
     @State private var isEditing = false
+    @State private var subscriptionExpiry: Date?
+    @State private var currentPlanName: String?
 
     // Editing state
     @State private var editName = ""
@@ -165,6 +168,30 @@ struct SettingsView: View {
                         }
                     }
                     .frame(minHeight: Layout.minTouchTarget)
+
+                    if profile?.subscriptionTier == "pro" {
+                        if let planName = currentPlanName {
+                            settingsRow("Plan", value: planName, color: .brandOrange)
+                        }
+                        if let expiry = subscriptionExpiry {
+                            settingsRow("Renews", value: expiry.formatted(.dateTime.month(.abbreviated).day().year()), color: .gray)
+                        }
+                        Button {
+                            Task {
+                                try? await AppStore.showManageSubscriptions(in: UIApplication.shared.connectedScenes.first as! UIWindowScene)
+                            }
+                        } label: {
+                            HStack {
+                                Text("Manage Subscription")
+                                    .foregroundColor(.brandGreen)
+                                Spacer()
+                                Image(systemName: "arrow.up.forward")
+                                    .font(.caption)
+                                    .foregroundColor(.gray)
+                            }
+                        }
+                        .frame(minHeight: Layout.minTouchTarget)
+                    }
                 } header: {
                     Text("Subscription").foregroundColor(.gray)
                 }
@@ -217,6 +244,13 @@ struct SettingsView: View {
             }
             .sheet(isPresented: $showSubscription) {
                 SubscriptionView()
+            }
+            .task {
+                // Fetch current subscription details
+                subscriptionExpiry = await SubscriptionManager.shared.currentSubscriptionExpiry
+                if let productID = await SubscriptionManager.shared.currentProductID {
+                    currentPlanName = productID.contains("annual") ? "Pro Annual" : "Pro Monthly"
+                }
             }
         }
     }

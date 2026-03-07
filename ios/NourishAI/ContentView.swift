@@ -25,6 +25,26 @@ struct ContentView: View {
                 showOnboarding = true
             }
         }
+        .task {
+            // Ensure device is registered with backend on every launch
+            if let profile = profiles.first, profile.onboardingComplete, profile.serverUserId == nil {
+                do {
+                    let response = try await NourishAPIManager.shared.registerDevice()
+                    await MainActor.run {
+                        profile.serverUserId = response.userId
+                    }
+                } catch {
+                    print("[ContentView] Device registration failed: \(error)")
+                }
+            }
+            // Sync subscription status with StoreKit on launch
+            await SubscriptionManager.shared.updatePurchasedProducts()
+            if let profile = profiles.first {
+                await MainActor.run {
+                    profile.subscriptionTier = SubscriptionManager.shared.isPro ? "pro" : "free"
+                }
+            }
+        }
     }
 }
 

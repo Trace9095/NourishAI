@@ -48,6 +48,15 @@ final class SubscriptionManager {
             let transaction = try checkVerified(verification)
             await updatePurchasedProducts()
             await transaction.finish()
+
+            // Sync subscription with backend
+            let expiresDate = transaction.expirationDate
+            try? await NourishAPIManager.shared.verifySubscription(
+                transactionId: String(transaction.id),
+                productId: transaction.productID,
+                expiresDate: expiresDate
+            )
+
             return true
 
         case .userCancelled:
@@ -58,6 +67,32 @@ final class SubscriptionManager {
 
         @unknown default:
             return false
+        }
+    }
+
+    // MARK: - Current Subscription Info
+
+    var currentSubscriptionExpiry: Date? {
+        get async {
+            for await result in Transaction.currentEntitlements {
+                if let transaction = try? checkVerified(result),
+                   transaction.revocationDate == nil {
+                    return transaction.expirationDate
+                }
+            }
+            return nil
+        }
+    }
+
+    var currentProductID: String? {
+        get async {
+            for await result in Transaction.currentEntitlements {
+                if let transaction = try? checkVerified(result),
+                   transaction.revocationDate == nil {
+                    return transaction.productID
+                }
+            }
+            return nil
         }
     }
 

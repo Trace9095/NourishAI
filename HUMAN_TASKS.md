@@ -17,15 +17,12 @@
 
 ### Xcode Project
 - [x] Xcode project generated and builds successfully (BUILD SUCCEEDED)
-- [x] 25 Swift files compiled (all models, views, services, components)
+- [x] 29 Swift files compiled (all models, views, services, components — including 4 V1 views + 3 S81 services)
 - [x] SettingsView made fully editable (Edit/Save/Cancel, macro targets, goal picker)
+- [x] All 29 Swift files in pbxproj (verified S84)
+- [x] NSLocationWhenInUseUsageDescription set in pbxproj (both Debug + Release)
+- [x] Push notification entitlement added (aps-environment in NourishAI.entitlements)
 - [ ] **Set your Apple Developer Team** in Signing & Capabilities
-- [ ] **Add 4 new Swift files to Xcode project:**
-  - MenuScanView.swift (Views/FoodLog/)
-  - FoodIdeasView.swift (Views/FoodLog/)
-  - RestaurantMapView.swift (Views/Discovery/)
-  - NutritionChatView.swift (Views/Chat/)
-  - Right-click folder > Add Files to "NourishAI" > select each .swift file
 - [ ] **Add Watch target:** File > New > Target > watchOS > Watch App
 - [ ] **Add Widget target:** File > New > Target > iOS > Widget Extension
 - [ ] **Verify capabilities in Xcode:**
@@ -33,7 +30,6 @@
   - In-App Purchase (iOS)
   - App Groups: `group.com.epicai.nourishai` (iOS + Widget)
   - Push Notifications (iOS)
-- [ ] **Add NSLocationWhenInUseUsageDescription to Info.plist** (for RestaurantMapView)
 - [ ] **Create StoreKit config:** File > New > StoreKit Configuration File > `NourishAI.storekit`
   - Add subscription group "NourishAI Pro"
   - Add product: `com.nourishai.subscription.pro.monthly` ($7.99/month)
@@ -52,21 +48,13 @@
 - [ ] TestFlight beta upload
 - [ ] App Store submission
 
-### Marketing Templates — Major Overhaul Needed
-- [ ] **REEL OVERHAUL (Priority 1):**
-  - CTA scenes only get 1.5s — need 3-4 seconds on ALL templates
-  - All content too small — text, phone mockups, icons need to be 30-50% bigger
-  - Only 4 reel templates — need 8-10 unique templates (more variety)
-  - Need MORE reels in content calendar — double the count
-  - Overall quality must be premium/professional — these sell the app
-  - Templates to fix: reel-ai-scan, reel-speed-demo, reel-macro-rings, reel-day-tracker
-  - Scene timing across all: compress early scenes, give CTA 3-4s
-  - Reel timing fix IS working (Web Animations API pause+seek) — just need better content
-- [ ] **Story template redesign** — stories look bad, need premium SVG icons instead of emojis
-- [ ] **Feed macro-tip template** — replace emoji icons with numbered SVG badges
-- [ ] **Hero rotating text** — homepage needs cycling text animation (Gold Standard #38)
-- [ ] **Blog [slug] dynamic OG image** — per-post OG images (Gold Standard #37)
-- [ ] **Regenerate all marketing assets** after template fixes (`python3 marketing/generate.py --force`)
+### Marketing Templates
+- [x] Reel overhaul complete (S79 — 10 templates, 16 reels, 15s format, SVG icons, seamless loop fade)
+- [x] Blog [slug] dynamic OG images (S78)
+- [x] Hero rotating text on homepage (S78)
+- [x] All emojis replaced with SVG icons (S78)
+- [ ] **Story template redesign** — could use visual refresh
+- [ ] **Regenerate marketing assets** after any template updates
 
 ### DNS & Services
 - [x] Domain: nourishhealthai.com (LIVE on Vercel)
@@ -87,12 +75,19 @@
 - [x] SSL verified
 
 ### iOS App
-- [x] 25 Swift files on disk and in pbxproj
+- [x] 29 Swift files on disk and in pbxproj (verified S84)
 - [x] All cross-file dependencies verified
 - [x] iOS app builds successfully (BUILD SUCCEEDED)
 - [x] Settings page fully editable (name, age, height, weight, goal, activity, macro targets)
 - [x] Recalculate Targets button (Mifflin-St Jeor BMR)
-- [x] HealthKit integration (height, weight, age pull)
+- [x] HealthKit integration (height, weight, age pull + real steps/active calories display)
+- [x] Seed data guarded by #if DEBUG (S84)
+- [x] Device registration on launch (S84)
+- [x] Subscription sync on launch (S84)
+- [x] Specific API error messages per HTTP status (S84)
+- [x] Menu scanner URL mode (S84)
+- [x] Chat AI paywall with upgrade CTA (S84)
+- [x] Chat cost optimization — Haiku free / Sonnet pro (S84)
 
 ### Marketing Engine
 - [x] 8 reel MP4s generated with correct timing (17s each, 30fps, 510 frames)
@@ -103,10 +98,12 @@
 
 ### Website
 - [x] 16 pages (landing, features, about, blog, contact, brand, privacy, terms, accessibility, 404, admin suite)
-- [x] 17 API routes (AI vision, barcode, subscriptions, admin CRUD, chat, menu scan, food ideas)
-- [x] Gold Standard compliant (24/27 — 3 gaps noted above in remaining improvements)
+- [x] 17 API routes (AI vision, barcode, subscriptions, admin CRUD, chat, menu scan + URL, food ideas)
+- [x] Gold Standard compliant (20/20 — full audit passed S84)
 - [x] Blog: 10 posts with category filters
 - [x] Admin dashboard: 12 KPIs, charts, auto-refresh
+- [x] Chat route: Haiku for free / Sonnet for pro, 5 msg/day free limit (S84)
+- [x] Menu route: supports both photo + URL-based analysis (S84)
 
 ---
 

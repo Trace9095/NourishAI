@@ -9,6 +9,8 @@ struct DashboardView: View {
     private var allWater: [DailyWaterIntake]
 
     @State private var showAddFood = false
+    @State private var todaySteps: Double = 0
+    @State private var todayActiveCalories: Double = 0
 
     private var profile: UserProfile? { profiles.first }
 
@@ -100,6 +102,22 @@ struct DashboardView: View {
             .sheet(isPresented: $showAddFood) {
                 AddFoodSheet()
             }
+            .task {
+                await fetchHealthKitData()
+            }
+            .refreshable {
+                await fetchHealthKitData()
+            }
+        }
+    }
+
+    private func fetchHealthKitData() async {
+        guard profile?.healthKitEnabled == true else { return }
+        do {
+            todaySteps = try await HealthKitManager.shared.getSteps(for: Date())
+            todayActiveCalories = try await HealthKitManager.shared.getActiveCalories(for: Date())
+        } catch {
+            print("[Dashboard] HealthKit fetch error: \(error)")
         }
     }
 
@@ -247,23 +265,36 @@ struct DashboardView: View {
         HStack(spacing: 12) {
             QuickStatCard(
                 title: "Water",
-                value: "\(todayWater?.totalMl ?? 0) ml",
+                value: formatWaterDisplay(ml: todayWater?.totalMl ?? 0),
                 icon: "drop.fill",
                 color: .macroWater
             )
             QuickStatCard(
                 title: "Steps",
-                value: "--",
+                value: todaySteps > 0 ? formatNumber(todaySteps) : (profile?.healthKitEnabled == true ? "0" : "--"),
                 icon: "figure.walk",
                 color: .brandGreen
             )
             QuickStatCard(
-                title: "Streak",
-                value: "\(calculateStreak()) days",
+                title: "Active",
+                value: todayActiveCalories > 0 ? "\(Int(todayActiveCalories))" : (profile?.healthKitEnabled == true ? "0" : "--"),
                 icon: "flame.fill",
                 color: .brandOrange
             )
         }
+    }
+
+    private func formatNumber(_ value: Double) -> String {
+        if value >= 1000 {
+            return String(format: "%.1fk", value / 1000)
+        }
+        return "\(Int(value))"
+    }
+
+    private func formatWaterDisplay(ml: Int) -> String {
+        if ml == 0 { return "0 oz" }
+        let oz = Double(ml) / 29.5735
+        return String(format: "%.0f oz", oz)
     }
 
     // MARK: - Recent Meals

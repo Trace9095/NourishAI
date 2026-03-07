@@ -5,6 +5,21 @@
 
 ---
 
+## Production Readiness (Phase 3.6, S84)
+- [x] Remove seed/placeholder data from production builds (#if DEBUG guard)
+- [x] Fix HealthKit integration — real steps + active calories display
+- [x] Fix "AI analysis temporarily unavailable" — device registration on launch
+- [x] Specific API error messages per HTTP status (401/403/429/502/503)
+- [x] Subscription lifecycle — purchase syncs with backend, profile tier updates on launch
+- [x] Settings shows plan name, renewal date, manage subscription button
+- [x] Menu scanner URL mode — search restaurant websites for menus
+- [x] Chat AI paywall — 5 msg/day free (was 20), upgrade CTA
+- [x] Chat cost optimization — Haiku free / Sonnet pro (60x savings)
+- [x] Push notification entitlement added to NourishAI.entitlements
+- [x] Full Gold Standard audit (20/20 website, all 29 Swift files in pbxproj)
+- [x] Backend builds cleanly with all route changes
+- [x] All Info.plist usage descriptions verified (Camera, Photos, Health read/write, Location)
+
 ## V1 MVP (Phases 0-5)
 
 ### Infrastructure
@@ -144,15 +159,15 @@
 - [ ] Meal plan templates (muscle gain, fat loss, maintenance)
 
 ## V3 — Restaurant Menu Scanner
-- [ ] Camera-based menu scanning
-- [ ] Website URL menu scraping
-- [ ] Healthiest option recommendations per dietary goal
+- [x] Camera-based menu scanning (Phase 3.5, S77)
+- [x] Website URL menu scraping (Phase 3.6, S84)
+- [x] Healthiest option recommendations per dietary goal (health scores 1-10)
 - [ ] Restaurant favorites/history
 
 ## V4 — Location-Based Healthy Eating
-- [ ] GPS-based nearby restaurant search
+- [x] GPS-based nearby restaurant search (Phase 3.5, S77 — MapKit)
 - [ ] Healthy menu item recommendations by location
-- [ ] "Healthy near me" feature
+- [x] "Healthy near me" feature (RestaurantMapView)
 - [ ] Integration with Google Places / Yelp API
 
 ## V5 — Social Features

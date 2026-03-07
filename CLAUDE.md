@@ -47,9 +47,9 @@ NourishAI is an AI-powered nutrition tracking iOS app + marketing website. Targe
 **API Routes (17) + RSS Feed:**
 - `api/analyze-food/route.ts` — Claude Haiku vision proxy (photo → macros)
 - `api/analyze-description/route.ts` — Text-based food analysis
-- `api/analyze-menu/route.ts` — Menu photo scanning with health insights (Claude Haiku vision)
+- `api/analyze-menu/route.ts` — Menu photo + URL scanning with health insights (Claude Haiku vision)
 - `api/suggest-foods/route.ts` — AI food suggestions based on remaining macros (Claude Haiku text)
-- `api/chat/route.ts` — AI nutrition chat assistant (Claude Sonnet, 20 msg/day free)
+- `api/chat/route.ts` — AI nutrition chat (Haiku free / Sonnet pro, 5 msg/day free)
 - `api/lookup-barcode/route.ts` — OpenFoodFacts API (free)
 - `api/register-device/route.ts` — Device UUID registration
 - `api/scan-count/route.ts` — Usage tracking / remaining scans
@@ -76,11 +76,11 @@ AnimateIn, BrandContent, ContactForm, CookieConsentBanner, DownloadCTA, FAQ, Fea
 
 **Other:** `middleware.ts` (admin auth redirect + llms.txt Link header), `app/opengraph-image.tsx`, `app/robots.ts`, `app/sitemap.ts`, `app/feed.xml/route.ts` (RSS), `app/admin/layout.tsx`, `app/blog/layout.tsx`
 
-### iOS (25 Swift files + Xcode project)
+### iOS (29 Swift files + Xcode project)
 
 **Root (3):** NourishAIApp.swift, ContentView.swift, Constants.swift
 **Models (3):** UserProfile.swift, NutritionModels.swift, NutritionCalculator.swift
-**Services (3):** NourishAPIManager.swift, HealthKitManager.swift, SubscriptionManager.swift
+**Services (6):** NourishAPIManager.swift, HealthKitManager.swift, SubscriptionManager.swift, KeychainService.swift, AppDelegate.swift, PushNotificationService.swift
 **Components (2):** MacroRingView.swift, MealRow.swift
 **Views/Dashboard (1):** DashboardView.swift
 **Views/FoodLog (7):** FoodLogView.swift, AIFoodCameraView.swift, AIFoodChatView.swift, ManualEntryView.swift, BarcodeScanView.swift, MenuScanView.swift, FoodIdeasView.swift
@@ -195,16 +195,27 @@ cd backend && npx next build     # Website
 - Session 79: Reel overhaul complete. 4 existing + 6 new reel templates (10 total). All retimed from 9s to 15s (sweet spot). Bigger content, SVG icons replace emojis, floating particles, shimmer CTA, enhanced gradient orbs. 16 reels rendered via parallel generator (450 frames each, 30fps). Added seamless loop fade (.loop-fade overlay, z-index 200, fades to #0A0A14 in last 1s — reels loop invisibly). Created comprehensive documentation: `marketing/MARKETING-ENGINE.md` (NourishAI-specific) + `MARKETING-ENGINES/REEL-ENGINE-TEMPLATE.md` (reusable blueprint for any project). Updated cross-project docs (master CLAUDE.md, MARKETING-ENGINES/CLAUDE.md, REEL-GOLDEN-STANDARDS.md, MEMORY.md) so all LLMs/projects can discover reel engine patterns. Seamless looping added as Golden Standard #14 in REEL-GOLDEN-STANDARDS.md. All 16 MP4s synced to backend/public and deployed.
 - Remaining: Notification system (APNs), story/feed template redesign (remove emojis), hero rotating text, blog dynamic OG, add 4 new Swift files to Xcode, set developer team, Watch/Widget, StoreKit, App Store submission.
 - Session 80: App Store screenshot generator complete (9 HTML templates, 25 PNGs across 5 device sizes: iPhone 6.5"/6.7", iPad 12.9", Watch 45mm/Ultra). Gold Standard audit: 37/37 verified (footer lock icon + 44px targets confirmed). Cross-iOS-app docs & Gold Standard audit (NourishAI, LiftLabPro, TacosY).
-- Remaining: Notification system (APNs), add 4 new Swift files to Xcode, set developer team, Watch/Widget, StoreKit, App Store submission.
+- Session 84: **App Store Production Readiness — 7-Phase Audit & Fix:**
+  - **Phase 0:** Removed seed/placeholder data from production builds (`#if DEBUG` guard on `seedScreenshotData()`)
+  - **Phase 1:** Fixed HealthKit — real steps + active calories from HealthKit instead of hardcoded "--"
+  - **Phase 2:** Fixed "AI analysis temporarily unavailable" — root cause: `seedScreenshotData()` bypassed onboarding → `registerDevice()` never called → all API calls 401. Fixed: auto-registration on launch in ContentView `.task`, specific error messages per HTTP status (401/403/429/502/503)
+  - **Phase 3:** Subscription lifecycle — purchase syncs with backend via `verifySubscription`, profile tier updates on launch, Settings shows plan name + renewal date + manage subscription
+  - **Phase 4:** Menu scanner URL mode — segmented picker (Photo/URL), URL input with validation, `analyzeMenuURL()` method + backend URL-based analysis (fetches website, strips HTML, Claude analyzes)
+  - **Phase 5:** Chat AI paywall — reduced free limit 20→5 msg/day, Haiku for free users / Sonnet for pro (60x cost reduction), upgrade CTA when 2 or fewer messages remain
+  - **Phase 6:** Full production audit — backend builds cleanly, all 29 Swift files in pbxproj, Gold Standard 20/20 website, all Info.plist usage descriptions present, push notification entitlement added
+  - **Phase 7:** Updated all docs (CLAUDE.md, TODO.md, HUMAN_TASKS.md, MEMORY.md)
+  - 11 files modified (2 backend routes + 9 iOS files)
+- Remaining: Set Apple Developer Team, Watch/Widget targets, StoreKit config, App Store Connect setup, TestFlight, App Store submission
 
 ### Phase Status
 | Phase | Status |
 |-------|--------|
 | 0 — Infrastructure | COMPLETE |
-| 1 — iOS Core | DONE (25 source files + Xcode project generated) |
+| 1 — iOS Core | DONE (29 source files + Xcode project generated) |
 | 2 — iOS Views + AI | DONE |
-| 3 — Website + API + DB | DONE (Gold Standard compliant, 17 API routes) |
-| 3.5 — V1 Features | DONE (menu scan, food ideas, restaurant discovery, AI chat) |
+| 3 — Website + API + DB | DONE (Gold Standard 20/20, 17 API routes) |
+| 3.5 — V1 Features | DONE (menu scan + URL, food ideas, restaurant discovery, AI chat) |
+| 3.6 — Production Ready | DONE (S84: seed data fix, HealthKit real data, API error handling, subscription lifecycle, chat paywall, full audit) |
 | 4 — Watch + Widget | NOT STARTED (depends on Xcode project) |
 | 5 — Launch | NOT STARTED |
 

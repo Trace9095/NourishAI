@@ -24,8 +24,9 @@ struct NutritionChatView: View {
     @State private var isTyping = false
     @State private var errorMessage: String?
     @State private var messagesUsedToday = 0
+    @State private var showSubscription = false
 
-    private let maxFreeMessages = 20
+    private let maxFreeMessages = 5
 
     private var profile: UserProfile? { profiles.first }
     private var isPro: Bool { profile?.subscriptionTier == "pro" }
@@ -77,17 +78,24 @@ struct NutritionChatView: View {
                     Text("\(remainingMessages)/\(maxFreeMessages) messages today")
                         .font(.caption)
                     Spacer()
-                    if remainingMessages <= 5 {
-                        Text("Upgrade to Pro")
-                            .font(.caption.bold())
-                            .foregroundColor(.brandGreen)
+                    if remainingMessages <= 2 {
+                        Button {
+                            showSubscription = true
+                        } label: {
+                            Text("Upgrade to Pro")
+                                .font(.caption.bold())
+                                .foregroundColor(.brandGreen)
+                        }
                     }
                 }
                 .foregroundColor(.gray)
                 .padding(.horizontal)
                 .padding(.vertical, 8)
-                .background(Color.brandCard)
+                .background(remainingMessages <= 1 ? Color.brandOrange.opacity(0.1) : Color.brandCard)
             }
+        }
+        .sheet(isPresented: $showSubscription) {
+            SubscriptionView()
         }
     }
 

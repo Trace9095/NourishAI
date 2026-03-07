@@ -11,12 +11,19 @@ struct MenuScanView: View {
         case idle, analyzing, results, error
     }
 
+    enum ScanMode: String, CaseIterable {
+        case photo = "Photo"
+        case url = "Website URL"
+    }
+
     @State private var scanState: ScanState = .idle
+    @State private var scanMode: ScanMode = .photo
     @State private var selectedPhotoItem: PhotosPickerItem?
     @State private var capturedImage: UIImage?
     @State private var analysisResult: NourishAPIManager.MenuAnalysisResponse?
     @State private var errorMessage: String?
     @State private var selectedMealType: MealType = .lunch
+    @State private var restaurantURL = ""
 
     private var profile: UserProfile? { profiles.first }
 
@@ -53,12 +60,32 @@ struct MenuScanView: View {
     // MARK: - Idle
 
     private var idleView: some View {
-        VStack(spacing: 24) {
-            Spacer()
+        ScrollView {
+            VStack(spacing: 24) {
+                // Mode picker
+                Picker("Scan Mode", selection: $scanMode) {
+                    ForEach(ScanMode.allCases, id: \.self) { mode in
+                        Text(mode.rawValue).tag(mode)
+                    }
+                }
+                .pickerStyle(.segmented)
+                .padding(.horizontal, 20)
+                .padding(.top, 16)
 
+                if scanMode == .photo {
+                    photoModeView
+                } else {
+                    urlModeView
+                }
+            }
+        }
+    }
+
+    private var photoModeView: some View {
+        VStack(spacing: 24) {
             RoundedRectangle(cornerRadius: 20)
                 .strokeBorder(Color.brandGreen.opacity(0.5), lineWidth: 2)
-                .frame(width: 280, height: 280)
+                .frame(width: 280, height: 240)
                 .overlay {
                     VStack(spacing: 16) {
                         Image(systemName: "doc.text.viewfinder")
@@ -105,8 +132,73 @@ struct MenuScanView: View {
             Text("Choose a photo of the menu")
                 .font(.caption)
                 .foregroundColor(.gray)
+        }
+    }
 
-            Spacer()
+    private var urlModeView: some View {
+        VStack(spacing: 24) {
+            VStack(spacing: 16) {
+                Image(systemName: "globe")
+                    .font(.system(size: 48))
+                    .foregroundColor(.brandGreen)
+                Text("Search Restaurant Website")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                Text("Enter a restaurant's website URL and we'll find and analyze their menu")
+                    .font(.caption)
+                    .foregroundColor(.gray)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 20)
+            }
+            .padding(.top, 20)
+
+            // URL input
+            HStack(spacing: 12) {
+                Image(systemName: "link")
+                    .foregroundColor(.brandGreen)
+                    .frame(width: 20)
+                TextField("", text: $restaurantURL, prompt: Text("https://restaurant.com/menu").foregroundColor(.gray.opacity(0.5)))
+                    .font(.body)
+                    .foregroundColor(.white)
+                    .tint(.brandGreen)
+                    .textInputAutocapitalization(.never)
+                    .keyboardType(.URL)
+                    .autocorrectionDisabled()
+            }
+            .padding(16)
+            .background(Color.brandCard)
+            .overlay(
+                RoundedRectangle(cornerRadius: 14)
+                    .strokeBorder(restaurantURL.isEmpty ? Color.white.opacity(0.08) : Color.brandGreen.opacity(0.5), lineWidth: 1.5)
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 14))
+            .padding(.horizontal, 20)
+
+            mealTypeSelector
+
+            Button {
+                analyzeMenuURL()
+            } label: {
+                HStack {
+                    Image(systemName: "magnifyingglass")
+                    Text("Analyze Menu")
+                }
+                .font(.headline)
+                .foregroundColor(.brandDark)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 16)
+                .background(restaurantURL.isEmpty ? Color.gray : Color.brandGreen)
+                .clipShape(RoundedRectangle(cornerRadius: Layout.buttonCornerRadius))
+            }
+            .frame(minHeight: Layout.minTouchTarget)
+            .disabled(restaurantURL.isEmpty)
+            .padding(.horizontal, 20)
+
+            Text("We'll search the website for menu items and nutritional info")
+                .font(.caption)
+                .foregroundColor(.gray)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 40)
         }
     }
 
@@ -405,11 +497,38 @@ struct MenuScanView: View {
         }
     }
 
+    private func analyzeMenuURL() {
+        // Normalize URL
+        var urlString = restaurantURL.trimmingCharacters(in: .whitespacesAndNewlines)
+        if !urlString.hasPrefix("http://") && !urlString.hasPrefix("https://") {
+            urlString = "https://" + urlString
+        }
+
+        scanState = .analyzing
+        errorMessage = nil
+
+        Task {
+            do {
+                let result = try await NourishAPIManager.shared.analyzeMenuURL(url: urlString)
+                await MainActor.run {
+                    self.analysisResult = result
+                    self.scanState = .results
+                }
+            } catch {
+                await MainActor.run {
+                    self.errorMessage = error.localizedDescription
+                    self.scanState = .error
+                }
+            }
+        }
+    }
+
     private func resetScan() {
         capturedImage = nil
         analysisResult = nil
         errorMessage = nil
         selectedPhotoItem = nil
+        restaurantURL = ""
         scanState = .idle
     }
 }
