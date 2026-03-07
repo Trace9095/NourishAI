@@ -522,6 +522,55 @@ For a full reusable template, see: `MARKETING-ENGINES/REEL-ENGINE-TEMPLATE.md`
 
 ---
 
+## App Store Connect Screenshot Generator
+
+In addition to Instagram marketing content, this engine generates App Store Connect screenshots.
+
+### Overview
+Pixel-perfect App Store screenshots rendered from pure HTML/CSS via Playwright. No Xcode simulator captures needed.
+
+### Generator
+`generate_appstore.py` — renders 9 templates at 5 device sizes = 25 PNGs total.
+
+### Device Sizes
+| Size | Dimensions | Device |
+|------|-----------|--------|
+| iphone-6.5 | 1242x2688 | iPhone 11 Pro Max |
+| iphone-6.7 | 1284x2778 | iPhone 14 Pro Max |
+| ipad-12.9 | 2048x2732 | iPad Pro 12.9" |
+| watch-45mm | 396x484 | Apple Watch Series 7-9 |
+| watch-ultra | 410x502 | Apple Watch Ultra |
+
+### Templates (9)
+**iPhone/iPad (6):** appstore-01-hero (dashboard), appstore-02-ai-scan, appstore-03-barcode, appstore-04-meal-log, appstore-05-ai-chat, appstore-06-progress
+
+**Watch (3):** appstore-watch-01-rings, appstore-watch-02-macros, appstore-watch-03-meal
+
+### Usage
+```bash
+python3 marketing/generate_appstore.py
+```
+
+### Output
+```
+marketing/output/appstore/
+├── iphone-6.5/    ← 6 PNGs
+├── iphone-6.7/    ← 6 PNGs
+├── ipad-12.9/     ← 6 PNGs
+├── watch-45mm/    ← 3 PNGs
+└── watch-ultra/   ← 3 PNGs
+```
+
+### Key Conventions
+- Templates use `100vw`/`100vh` (auto-scale to any device size)
+- iPad renders inject CSS to hide Dynamic Island + center status bar
+- Watch templates are separate (no phone chrome, OLED black bg)
+- Status bar always shows 9:41, full signal, wifi, 80% battery
+- All icons are inline SVGs (no emojis)
+- Reusable blueprint: `MARKETING-ENGINES/APPSTORE-SCREENSHOT-ENGINE-TEMPLATE.md`
+
+---
+
 ## Known Issues
 
 1. **Playwright font loading:** First-render fonts may not load if Google Fonts CDN is slow. The generator waits 200-500ms but self-hosted fonts are more reliable.
