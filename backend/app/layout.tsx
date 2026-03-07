@@ -37,9 +37,9 @@ export const metadata: Metadata = {
     "meal tracker",
     "HealthKit nutrition",
   ],
-  authors: [{ name: "Epic AI", url: "https://epicai.ai" }],
-  creator: "Epic AI",
-  publisher: "Epic AI",
+  authors: [{ name: "NourishAI", url: "https://nourishhealthai.com" }],
+  creator: "NourishAI",
+  publisher: "NourishAI",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -99,8 +99,8 @@ const jsonLdString = JSON.stringify({
   ],
   creator: {
     "@type": "Organization",
-    name: "Epic AI",
-    url: "https://epicai.ai",
+    name: "NourishAI",
+    url: "https://nourishhealthai.com",
   },
 });
 

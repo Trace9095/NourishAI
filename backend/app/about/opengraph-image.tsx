@@ -8,6 +8,6 @@ export const contentType = ogContentType
 export default function OGImage() {
   return createOGImage({
     title: 'About NourishAI',
-    subtitle: 'AI-powered nutrition tracking built by Epic AI.',
+    subtitle: 'AI-powered nutrition tracking from Canon City, Colorado.',
   })
 }

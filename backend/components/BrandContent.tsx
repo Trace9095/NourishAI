@@ -17,9 +17,9 @@ const BRAND_COLORS = [
 
 const REFERRAL_LINKS = [
   {
-    category: "Epic AI Network",
+    category: "NourishAI",
     links: [
-      { name: "Epic AI", url: "https://epicai.ai", description: "AI software studio" },
+      { name: "NourishAI", url: "https://nourishhealthai.com", description: "AI nutrition tracking" },
     ],
   },
   {

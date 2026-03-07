@@ -88,14 +88,12 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <a
-                  href="https://epicai.ai"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/about"
                   className="text-gray-500 text-sm hover:text-brand-green transition-colors"
                 >
-                  Epic AI
-                </a>
+                  About
+                </Link>
               </li>
             </ul>
           </div>
@@ -128,17 +126,7 @@ export function Footer() {
           <div className="flex items-center gap-2 text-xs text-gray-600">
             <span>&copy; {year} NourishAI. All rights reserved.</span>
             <span className="text-gray-700">·</span>
-            <span>
-              Built by{" "}
-              <a
-                href="https://epicai.ai"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-500 hover:text-brand-green transition-colors"
-              >
-                Epic AI
-              </a>
-            </span>
+            <span>Canon City, Colorado</span>
           </div>
 
           <Link

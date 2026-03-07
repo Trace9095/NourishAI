@@ -209,3 +209,9 @@ cd backend && npx next build     # Website
 | 5 — Launch | NOT STARTED |
 
 See `PHASES.md` for detailed task tracking, `HUMAN_TASKS.md` for Trace's action items, `TODO.md` for full backlog.
+
+## Media Library
+
+Master media library: `~/Documents/APPS/MEDIA/` — see `MEDIA/MEDIA_DIRECTORY.md` for full inventory.
+
+- **Note:** NourishAI does not yet have entries in MEDIA/originals or MEDIA/logos. Images are self-contained in `backend/public/images/`.

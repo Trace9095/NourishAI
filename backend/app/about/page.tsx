@@ -301,7 +301,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* ───────── BUILT BY EPIC AI ───────── */}
+        {/* ───────── BUILT IN COLORADO ───────── */}
         <section className="relative py-20 sm:py-28 overflow-hidden">
           {/* Decorative orb */}
           <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-brand-green/3 rounded-full blur-[140px] pointer-events-none" />
@@ -328,7 +328,6 @@ export default function AboutPage() {
                 </svg>
 
                 <div className="relative">
-                  {/* Epic AI wordmark */}
                   <div className="inline-flex items-center gap-3 mb-6">
                     <div className="w-10 h-10 rounded-xl bg-brand-green/10 border border-brand-green/20 flex items-center justify-center">
                       <svg
@@ -341,54 +340,22 @@ export default function AboutPage() {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                       >
-                        <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                        <path d="M2 17l10 5 10-5" />
-                        <path d="M2 12l10 5 10-5" />
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                        <circle cx="12" cy="10" r="3" />
                       </svg>
                     </div>
                     <span className="font-[family-name:var(--font-outfit)] text-lg font-bold text-white">
-                      Epic AI
+                      Canon City, Colorado
                     </span>
                   </div>
 
                   <h2 className="font-[family-name:var(--font-outfit)] text-2xl sm:text-3xl font-bold text-white mb-5">
-                    Proudly Built by Epic AI
+                    Built in Colorado
                   </h2>
 
-                  <p className="text-gray-400 leading-relaxed max-w-2xl mx-auto mb-8">
-                    NourishAI is built by{" "}
-                    <a
-                      href="https://epicai.ai"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-brand-green hover:text-brand-green-dark transition-colors underline underline-offset-4 decoration-brand-green/30"
-                    >
-                      Epic AI
-                    </a>
-                    , a Colorado-based software studio specializing in AI-powered applications. From restaurant management to tourism platforms, we build tools that solve real problems with cutting-edge technology.
+                  <p className="text-gray-400 leading-relaxed max-w-2xl mx-auto">
+                    NourishAI is designed and built in Canon City, Colorado. We combine cutting-edge AI with a passion for health and fitness to create tools that make nutrition tracking effortless for athletes and gym-goers everywhere.
                   </p>
-
-                  <a
-                    href="https://epicai.ai"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm font-semibold text-brand-green hover:text-brand-green-dark transition-colors min-h-[44px]"
-                  >
-                    Visit epicai.ai
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M7 17L17 7" />
-                      <path d="M7 7h10v10" />
-                    </svg>
-                  </a>
                 </div>
               </div>
             </AnimateIn>

@@ -135,7 +135,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <p className="text-sm text-gray-500 mb-1">Company</p>
-                      <p className="text-white">Epic AI</p>
+                      <p className="text-white">NourishAI</p>
                     </div>
                   </div>
 

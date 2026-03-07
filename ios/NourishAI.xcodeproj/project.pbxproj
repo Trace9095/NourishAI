@@ -33,6 +33,9 @@
 		A10001010000000000000024 /* FoodIdeasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000024 /* FoodIdeasView.swift */; };
 		A10001010000000000000025 /* RestaurantMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000025 /* RestaurantMapView.swift */; };
 		A10001010000000000000026 /* NutritionChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000026 /* NutritionChatView.swift */; };
+		A10001010000000000000027 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000027 /* KeychainService.swift */; };
+		A10001010000000000000028 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000028 /* AppDelegate.swift */; };
+		A10001010000000000000029 /* PushNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10002010000000000000029 /* PushNotificationService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +65,9 @@
 		A10002010000000000000024 /* FoodIdeasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodIdeasView.swift; sourceTree = "<group>"; };
 		A10002010000000000000025 /* RestaurantMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantMapView.swift; sourceTree = "<group>"; };
 		A10002010000000000000026 /* NutritionChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionChatView.swift; sourceTree = "<group>"; };
+		A10002010000000000000027 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		A10002010000000000000028 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A10002010000000000000029 /* PushNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationService.swift; sourceTree = "<group>"; };
 		A10002010000000000000099 /* NourishAI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NourishAI.entitlements; sourceTree = "<group>"; };
 		A10003010000000000000001 /* NourishAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NourishAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -117,6 +123,9 @@
 				A10002010000000000000007 /* NourishAPIManager.swift */,
 				A10002010000000000000008 /* HealthKitManager.swift */,
 				A10002010000000000000009 /* SubscriptionManager.swift */,
+				A10002010000000000000027 /* KeychainService.swift */,
+				A10002010000000000000028 /* AppDelegate.swift */,
+				A10002010000000000000029 /* PushNotificationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -317,6 +326,9 @@
 				A10001010000000000000024 /* FoodIdeasView.swift in Sources */,
 				A10001010000000000000025 /* RestaurantMapView.swift in Sources */,
 				A10001010000000000000026 /* NutritionChatView.swift in Sources */,
+				A10001010000000000000027 /* KeychainService.swift in Sources */,
+				A10001010000000000000028 /* AppDelegate.swift in Sources */,
+				A10001010000000000000029 /* PushNotificationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

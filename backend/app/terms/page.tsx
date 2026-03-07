@@ -18,7 +18,7 @@ export default function TermsPage() {
         <h1 className="font-[family-name:var(--font-outfit)] text-4xl font-extrabold text-white mb-8">Terms of Service</h1>
         <div className="prose prose-invert prose-gray max-w-none space-y-6 text-gray-400 text-sm leading-relaxed">
           <p><strong className="text-white">Last updated:</strong> March 2026</p>
-          <p>By using NourishAI (&ldquo;the App&rdquo;) or visiting nourishhealthai.com (&ldquo;the Website&rdquo;), you agree to these Terms of Service. NourishAI is operated by Epic AI.</p>
+          <p>By using NourishAI (&ldquo;the App&rdquo;) or visiting nourishhealthai.com (&ldquo;the Website&rdquo;), you agree to these Terms of Service.</p>
 
           <h2 className="font-[family-name:var(--font-outfit)] text-xl font-bold text-white pt-4">Use of Service</h2>
           <p>NourishAI provides AI-powered nutrition tracking tools. You must be at least 17 years old to use the App. The AI-generated nutrition data is an estimate and should not replace professional medical or dietary advice.</p>
@@ -39,7 +39,7 @@ export default function TermsPage() {
           <p>NourishAI is provided &ldquo;as is&rdquo; without warranty. AI-generated nutrition estimates may not be 100% accurate. Always consult a healthcare professional for dietary decisions. We are not liable for any health outcomes based on information from the App.</p>
 
           <h2 className="font-[family-name:var(--font-outfit)] text-xl font-bold text-white pt-4">Intellectual Property</h2>
-          <p>All content, design, and code in NourishAI are owned by Epic AI. You may not reproduce, distribute, or create derivative works without written permission.</p>
+          <p>All content, design, and code in NourishAI are proprietary. You may not reproduce, distribute, or create derivative works without written permission.</p>
 
           <h2 className="font-[family-name:var(--font-outfit)] text-xl font-bold text-white pt-4">Changes</h2>
           <p>We may update these terms at any time. Continued use of the App constitutes acceptance of updated terms.</p>

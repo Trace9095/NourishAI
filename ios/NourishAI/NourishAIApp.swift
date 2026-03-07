@@ -3,6 +3,7 @@ import SwiftData
 
 @main
 struct NourishAIApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     let container: ModelContainer
 
     init() {

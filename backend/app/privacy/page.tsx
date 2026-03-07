@@ -18,7 +18,7 @@ export default function PrivacyPage() {
           <h1 className="font-[family-name:var(--font-outfit)] text-4xl font-extrabold text-white mb-8">Privacy Policy</h1>
           <div className="prose prose-invert prose-gray max-w-none space-y-6 text-gray-400 text-sm leading-relaxed">
             <p><strong className="text-white">Last updated:</strong> March 2026</p>
-            <p>NourishAI (&ldquo;we&rdquo;, &ldquo;our&rdquo;, &ldquo;us&rdquo;) is operated by Epic AI, based in Canon City, Colorado. This Privacy Policy explains how we collect, use, and protect your information when you use the NourishAI iOS app and website (nourishhealthai.com).</p>
+            <p>NourishAI (&ldquo;we&rdquo;, &ldquo;our&rdquo;, &ldquo;us&rdquo;) is based in Canon City, Colorado. This Privacy Policy explains how we collect, use, and protect your information when you use the NourishAI iOS app and website (nourishhealthai.com).</p>
 
             <h2 className="font-[family-name:var(--font-outfit)] text-xl font-bold text-white pt-4">Our Privacy Philosophy</h2>
             <p>NourishAI is built with a <strong className="text-gray-300">local-first architecture</strong>. This means your nutrition data — food logs, macro tracking, body measurements, health information — is stored on your device, not on our servers. We designed it this way because your nutrition data is personal, and we believe you should own it completely.</p>
@@ -91,7 +91,7 @@ export default function PrivacyPage() {
 
             <h2 className="font-[family-name:var(--font-outfit)] text-xl font-bold text-white pt-4">Contact</h2>
             <p>Questions about this policy? Email <a href="mailto:CEO@epicai.ai" className="text-brand-green hover:underline">CEO@epicai.ai</a> or visit our <Link href="/contact" className="text-brand-green hover:underline">contact page</Link>.</p>
-            <p className="text-xs text-gray-600 pt-4">Epic AI · Canon City, Colorado · USA</p>
+            <p className="text-xs text-gray-600 pt-4">NourishAI · Canon City, Colorado · USA</p>
           </div>
         </div>
       </main>
