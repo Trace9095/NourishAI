@@ -2,140 +2,78 @@
 <html>
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap');
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+
+html, body {
+  width: 100vw;
+  height: 100vh;
+  background: #0A0A14;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow: hidden;
+  color: white;
+}
 
 body {
-  width: 1284px;
-  height: 2778px;
-  background: #0A0A14;
-  font-family: 'Inter', sans-serif;
-  overflow: hidden;
-  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
-/* Background gradients */
-.bg-gradient {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 50% 20%, rgba(52,199,89,0.15) 0%, transparent 60%),
-              radial-gradient(ellipse at 80% 70%, rgba(255,149,0,0.08) 0%, transparent 50%);
-}
-
-/* ── Headline area (top ~30%) ── */
-.headline-area {
-  position: relative;
-  z-index: 10;
-  text-align: center;
-  padding-top: 180px;
-  padding-bottom: 60px;
-}
-
-.badge {
-  display: inline-block;
-  background: rgba(52,199,89,0.15);
-  border: 1px solid rgba(52,199,89,0.3);
-  color: #34C759;
-  font-size: 28px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  padding: 12px 32px;
-  border-radius: 50px;
-  margin-bottom: 48px;
-}
-
-.headline {
-  font-family: 'Outfit', sans-serif;
-  font-size: 96px;
-  font-weight: 900;
-  color: white;
-  line-height: 1.05;
-  margin-bottom: 32px;
-}
-
-.headline .green { color: #34C759; }
-
-.subheadline {
-  font-size: 36px;
-  color: rgba(255,255,255,0.5);
-  font-weight: 400;
-  line-height: 1.5;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-/* ── Phone mockup (bottom ~70%) ── */
-.phone-container {
-  position: relative;
-  z-index: 10;
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding-top: 40px;
-}
-
-.phone {
-  width: 680px;
-  height: 1400px;
-  background: #12121A;
-  border-radius: 60px;
-  border: 4px solid rgba(255,255,255,0.1);
-  overflow: hidden;
-  position: relative;
-  box-shadow: 0 40px 100px rgba(0,0,0,0.6), 0 0 60px rgba(52,199,89,0.1);
-}
-
-/* Status bar */
+/* ── Status bar ── */
 .status-bar {
-  height: 60px;
+  flex-shrink: 0;
+  height: 5.4vh;
   display: flex;
+  align-items: flex-end;
   justify-content: space-between;
-  align-items: center;
-  padding: 0 40px;
-  color: white;
-  font-size: 22px;
+  padding: 0 3.2vw 0.6vh;
+  font-size: 1.25vh;
   font-weight: 600;
+  letter-spacing: 0.01em;
 }
 
-/* Dynamic Island */
+.status-time {
+  width: 20vw;
+}
+
+.status-icons {
+  width: 20vw;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.6vw;
+}
+
+/* ── Dynamic Island ── */
 .dynamic-island {
   position: absolute;
-  top: 16px;
+  top: 1.2vh;
   left: 50%;
   transform: translateX(-50%);
-  width: 160px;
-  height: 44px;
-  background: black;
-  border-radius: 22px;
+  width: 12.5vw;
+  height: 3.2vh;
+  background: #000000;
+  border-radius: 2vh;
+  z-index: 100;
 }
 
-/* ── Chat screen layout ── */
-.chat-screen {
-  display: flex;
-  flex-direction: column;
-  height: calc(100% - 60px);
-}
-
-/* Chat header */
+/* ── Chat header ── */
 .chat-header {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
-  padding: 18px 32px 16px;
+  gap: 1.2vw;
+  padding: 1.6vh 4vw 1.4vh;
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
-.chat-header-avatar {
-  width: 36px;
-  height: 36px;
+.chat-header-icon {
+  width: 3.2vh;
+  height: 3.2vh;
   background: #34C759;
   border-radius: 50%;
   display: flex;
@@ -145,26 +83,27 @@ body {
 }
 
 .chat-header-title {
-  font-size: 30px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.2vh;
   font-weight: 700;
   color: white;
 }
 
-/* Chat messages area */
+/* ── Chat messages ── */
 .chat-messages {
   flex: 1;
-  padding: 28px 28px 20px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1.8vh;
+  padding: 2.4vh 4vw 1.6vh;
   overflow: hidden;
 }
 
-/* Message row containers */
+/* Message rows */
 .msg-row {
   display: flex;
   align-items: flex-end;
-  gap: 10px;
+  gap: 1.2vw;
 }
 
 .msg-row.user {
@@ -175,86 +114,101 @@ body {
   justify-content: flex-start;
 }
 
-/* AI avatar next to bubble */
+/* AI avatar */
 .msg-avatar {
-  width: 28px;
-  height: 28px;
+  width: 2.6vh;
+  height: 2.6vh;
   background: #34C759;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  margin-bottom: 4px;
+  margin-bottom: 0.3vh;
 }
 
-/* Bubble styles */
+/* Bubble base */
 .bubble {
-  padding: 18px 22px;
-  font-size: 22px;
+  padding: 1.4vh 2vw;
+  font-size: 1.55vh;
   line-height: 1.55;
   color: white;
+  max-width: 72vw;
 }
 
 .bubble.user {
   background: #34C759;
-  border-radius: 20px 20px 6px 20px;
-  max-width: 440px;
-  margin-left: auto;
+  border-radius: 2vh 2vh 0.6vh 2vh;
+  font-weight: 500;
 }
 
 .bubble.ai {
-  background: #1C1C28;
-  border-radius: 20px 20px 20px 6px;
-  max-width: 480px;
+  background: #1C1C2E;
+  border-radius: 2vh 2vh 2vh 0.6vh;
 }
 
-.bubble.ai .ai-bold {
+/* AI bubble formatting */
+.bubble .bold {
   font-weight: 700;
 }
 
-.bubble.ai .ai-list {
-  margin-top: 12px;
-  margin-bottom: 12px;
+.bubble .list {
+  margin-top: 1vh;
+  margin-bottom: 1vh;
 }
 
-.bubble.ai .ai-list-item {
-  margin-bottom: 6px;
+.bubble .list-item {
+  margin-bottom: 0.5vh;
+  padding-left: 0.4vw;
 }
 
-.bubble.ai .ai-list-item:last-child {
+.bubble .list-item:last-child {
   margin-bottom: 0;
 }
 
-.bubble.ai .ai-tip {
-  margin-top: 12px;
-  color: rgba(255,255,255,0.7);
-  font-size: 20px;
+.bubble .protein-highlight {
+  color: #34C759;
+  font-weight: 600;
 }
 
-/* ── Chat input bar ── */
+.bubble .tip {
+  margin-top: 1vh;
+  color: rgba(255,255,255,0.6);
+  font-size: 1.4vh;
+  line-height: 1.5;
+}
+
+.bubble .stat-bold {
+  font-weight: 700;
+  color: #34C759;
+}
+
+/* ── Input bar ── */
 .chat-input-bar {
-  padding: 16px 28px 38px;
+  flex-shrink: 0;
+  padding: 1.2vh 4vw 4.5vh;
 }
 
 .chat-input {
   display: flex;
   align-items: center;
   background: #16161F;
-  border-radius: 28px;
-  padding: 10px 10px 10px 26px;
-  gap: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 3vh;
+  padding: 0.8vh 1vw 0.8vh 3vw;
+  gap: 1.2vw;
 }
 
 .chat-input-placeholder {
   flex: 1;
-  font-size: 22px;
+  font-size: 1.5vh;
   color: rgba(255,255,255,0.3);
+  font-weight: 400;
 }
 
 .chat-send-btn {
-  width: 44px;
-  height: 44px;
+  width: 3.8vh;
+  height: 3.8vh;
   background: #34C759;
   border-radius: 50%;
   display: flex;
@@ -263,120 +217,125 @@ body {
   flex-shrink: 0;
 }
 
-/* ── Bottom glow ── */
-.bottom-glow {
+/* ── Home indicator ── */
+.home-indicator {
   position: absolute;
-  bottom: -100px;
+  bottom: 1vh;
   left: 50%;
   transform: translateX(-50%);
-  width: 800px;
-  height: 400px;
-  background: radial-gradient(ellipse, rgba(52,199,89,0.2) 0%, transparent 70%);
-  filter: blur(60px);
-  z-index: 5;
+  width: 28vw;
+  height: 0.5vh;
+  background: rgba(255,255,255,0.2);
+  border-radius: 0.3vh;
 }
 </style>
 </head>
 <body>
 
-<div class="bg-gradient"></div>
+<!-- Dynamic Island -->
+<div class="dynamic-island"></div>
 
-<!-- Headline -->
-<div class="headline-area">
-  <div class="badge">AI Coach</div>
-  <div class="headline">Your Nutrition<br><span class="green">Coach</span></div>
-  <div class="subheadline">Ask anything about nutrition.<br>Powered by AI that understands your goals.</div>
+<!-- Status bar -->
+<div class="status-bar">
+  <span class="status-time">9:41</span>
+  <div class="status-icons">
+    <!-- Signal bars -->
+    <svg width="1.4vh" height="1.1vh" viewBox="0 0 17 12" fill="white">
+      <rect x="0" y="9" width="3" height="3" rx="0.5"/>
+      <rect x="4.5" y="6" width="3" height="6" rx="0.5"/>
+      <rect x="9" y="3" width="3" height="9" rx="0.5"/>
+      <rect x="13.5" y="0" width="3" height="12" rx="0.5"/>
+    </svg>
+    <!-- WiFi -->
+    <svg width="1.5vh" height="1.1vh" viewBox="0 0 16 12" fill="white">
+      <path d="M8 11.5a1.2 1.2 0 110-2.4 1.2 1.2 0 010 2.4zM4.2 7.8a5.4 5.4 0 017.6 0" stroke="white" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+      <path d="M1.5 5a9 9 0 0113 0" stroke="white" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+    </svg>
+    <!-- Battery -->
+    <svg width="2.4vh" height="1.1vh" viewBox="0 0 27 13" fill="none">
+      <rect x="0.5" y="0.5" width="23" height="12" rx="2.5" stroke="white" stroke-opacity="0.35"/>
+      <rect x="25" y="4" width="2" height="5" rx="1" fill="white" fill-opacity="0.35"/>
+      <rect x="2" y="2" width="19" height="9" rx="1.5" fill="white"/>
+    </svg>
+  </div>
 </div>
 
-<!-- Phone mockup -->
-<div class="phone-container">
-  <div class="phone">
-    <div class="dynamic-island"></div>
-    <div class="status-bar">
-      <span>9:41</span>
-      <span></span>
+<!-- Chat header -->
+<div class="chat-header">
+  <div class="chat-header-icon">
+    <!-- Sparkle icon -->
+    <svg viewBox="0 0 24 24" fill="none" style="width:1.8vh;height:1.8vh;">
+      <path d="M12 2L13.5 8.5L20 10L13.5 11.5L12 18L10.5 11.5L4 10L10.5 8.5L12 2Z" fill="white"/>
+      <path d="M19 14L19.75 16.25L22 17L19.75 17.75L19 20L18.25 17.75L16 17L18.25 16.25L19 14Z" fill="white" opacity="0.7"/>
+    </svg>
+  </div>
+  <span class="chat-header-title">AI Coach</span>
+</div>
+
+<!-- Chat messages -->
+<div class="chat-messages">
+
+  <!-- User message 1 -->
+  <div class="msg-row user">
+    <div class="bubble user">
+      What should I eat for a high-protein post-workout meal?
     </div>
+  </div>
 
-    <div class="chat-screen">
-
-      <!-- Chat header -->
-      <div class="chat-header">
-        <div class="chat-header-avatar">
-          <!-- Sparkle/brain icon -->
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-            <path d="M12 2L14.09 8.26L20 9.27L15.55 13.97L16.91 20L12 16.9L7.09 20L8.45 13.97L4 9.27L9.91 8.26L12 2Z" fill="white"/>
-          </svg>
-        </div>
-        <span class="chat-header-title">AI Coach</span>
+  <!-- AI response 1 -->
+  <div class="msg-row ai">
+    <div class="msg-avatar">
+      <svg viewBox="0 0 24 24" fill="none" style="width:1.3vh;height:1.3vh;">
+        <path d="M12 2L13.5 8.5L20 10L13.5 11.5L12 18L10.5 11.5L4 10L10.5 8.5L12 2Z" fill="white"/>
+      </svg>
+    </div>
+    <div class="bubble ai">
+      <span class="bold">Great question!</span> Here are 3 high-protein post-workout options:
+      <div class="list">
+        <div class="list-item">1. Grilled chicken breast (<span class="protein-highlight">42g protein</span>) with sweet potato</div>
+        <div class="list-item">2. Greek yogurt parfait with whey protein (<span class="protein-highlight">38g</span>)</div>
+        <div class="list-item">3. Salmon with quinoa bowl (<span class="protein-highlight">35g protein</span>)</div>
       </div>
+      <div class="tip">Aim for 30-40g protein within 30 minutes after your workout for optimal recovery.</div>
+    </div>
+  </div>
 
-      <!-- Chat messages -->
-      <div class="chat-messages">
+  <!-- User message 2 -->
+  <div class="msg-row user">
+    <div class="bubble user">
+      How much water should I drink today?
+    </div>
+  </div>
 
-        <!-- User message 1 -->
-        <div class="msg-row user">
-          <div class="bubble user">
-            What should I eat for a high-protein post-workout meal?
-          </div>
-        </div>
+  <!-- AI response 2 -->
+  <div class="msg-row ai">
+    <div class="msg-avatar">
+      <svg viewBox="0 0 24 24" fill="none" style="width:1.3vh;height:1.3vh;">
+        <path d="M12 2L13.5 8.5L20 10L13.5 11.5L12 18L10.5 11.5L4 10L10.5 8.5L12 2Z" fill="white"/>
+      </svg>
+    </div>
+    <div class="bubble ai">
+      Based on your profile (175 lbs, active), aim for about <span class="stat-bold">88oz (2.6L)</span> of water daily. You've logged 48oz so far -- you're over halfway there! Try to drink another <span class="stat-bold">40oz</span> before bed.
+    </div>
+  </div>
 
-        <!-- AI response 1 -->
-        <div class="msg-row ai">
-          <div class="msg-avatar">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2L14.09 8.26L20 9.27L15.55 13.97L16.91 20L12 16.9L7.09 20L8.45 13.97L4 9.27L9.91 8.26L12 2Z" fill="white"/>
-            </svg>
-          </div>
-          <div class="bubble ai">
-            <span class="ai-bold">Great question!</span> Here are 3 high-protein post-workout options:
-            <div class="ai-list">
-              <div class="ai-list-item">1. Grilled chicken breast (42g protein) with sweet potato</div>
-              <div class="ai-list-item">2. Greek yogurt parfait with whey protein (38g)</div>
-              <div class="ai-list-item">3. Salmon with quinoa bowl (35g protein)</div>
-            </div>
-            <div class="ai-tip">Aim for 30-40g protein within 30 minutes after your workout for optimal recovery.</div>
-          </div>
-        </div>
+</div>
 
-        <!-- User message 2 -->
-        <div class="msg-row user">
-          <div class="bubble user">
-            How much water should I drink today?
-          </div>
-        </div>
-
-        <!-- AI response 2 -->
-        <div class="msg-row ai">
-          <div class="msg-avatar">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2L14.09 8.26L20 9.27L15.55 13.97L16.91 20L12 16.9L7.09 20L8.45 13.97L4 9.27L9.91 8.26L12 2Z" fill="white"/>
-            </svg>
-          </div>
-          <div class="bubble ai">
-            Based on your profile (175 lbs, active), aim for about <span class="ai-bold">88oz (2.6L)</span> of water daily. You've logged 48oz so far -- you're over halfway there! Try to drink another <span class="ai-bold">40oz</span> before bed.
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Input bar -->
-      <div class="chat-input-bar">
-        <div class="chat-input">
-          <span class="chat-input-placeholder">Ask about nutrition...</span>
-          <div class="chat-send-btn">
-            <!-- Arrow-up send icon -->
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-              <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-        </div>
-      </div>
-
+<!-- Input bar -->
+<div class="chat-input-bar">
+  <div class="chat-input">
+    <span class="chat-input-placeholder">Ask about nutrition...</span>
+    <div class="chat-send-btn">
+      <!-- Arrow up send icon -->
+      <svg viewBox="0 0 24 24" fill="none" style="width:1.8vh;height:1.8vh;">
+        <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
     </div>
   </div>
 </div>
 
-<div class="bottom-glow"></div>
+<!-- Home indicator -->
+<div class="home-indicator"></div>
 
 </body>
 </html>

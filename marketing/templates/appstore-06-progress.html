@@ -2,178 +2,154 @@
 <html>
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap');
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-body {
-  width: 1284px;
-  height: 2778px;
+html, body {
+  width: 100vw;
+  height: 100vh;
   background: #0A0A14;
   font-family: 'Inter', sans-serif;
   overflow: hidden;
-  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
-/* Background gradients */
-.bg-gradient {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 50% 20%, rgba(52,199,89,0.15) 0%, transparent 60%),
-              radial-gradient(ellipse at 80% 70%, rgba(255,149,0,0.08) 0%, transparent 50%);
-}
-
-/* Headline area */
-.headline-area {
-  position: relative;
-  z-index: 10;
-  text-align: center;
-  padding-top: 180px;
-  padding-bottom: 60px;
-}
-
-.badge {
-  display: inline-block;
-  background: rgba(52,199,89,0.15);
-  border: 1px solid rgba(52,199,89,0.3);
-  color: #34C759;
-  font-size: 28px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  padding: 12px 32px;
-  border-radius: 50px;
-  margin-bottom: 48px;
-}
-
-.headline {
-  font-family: 'Outfit', sans-serif;
-  font-size: 96px;
-  font-weight: 900;
-  color: white;
-  line-height: 1.05;
-  margin-bottom: 32px;
-}
-
-.headline .green { color: #34C759; }
-
-.subheadline {
-  font-size: 36px;
-  color: rgba(255,255,255,0.5);
-  font-weight: 400;
-  line-height: 1.5;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-/* Phone mockup */
-.phone-container {
-  position: relative;
-  z-index: 10;
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding-top: 40px;
-}
-
-.phone {
-  width: 680px;
-  height: 1400px;
-  background: #12121A;
-  border-radius: 60px;
-  border: 4px solid rgba(255,255,255,0.1);
-  overflow: hidden;
-  position: relative;
-  box-shadow: 0 40px 100px rgba(0,0,0,0.6), 0 0 60px rgba(52,199,89,0.1);
-}
-
-/* Dynamic Island */
-.dynamic-island {
-  position: absolute;
-  top: 16px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 160px;
-  height: 44px;
-  background: black;
-  border-radius: 22px;
-}
-
-/* Status bar */
+/* ── Status Bar ── */
 .status-bar {
-  height: 60px;
+  flex-shrink: 0;
+  height: 5.4vh;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 0 40px;
+  align-items: flex-end;
+  padding: 0 4.2vw 0.6vh;
   color: white;
-  font-size: 22px;
+}
+
+.status-time {
+  font-size: 1.7vh;
   font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
-/* App content */
-.app-content {
-  padding: 20px 32px;
+.status-icons {
+  display: flex;
+  align-items: center;
+  gap: 0.8vw;
 }
 
-/* Page header */
+/* ── Dynamic Island ── */
+.dynamic-island {
+  position: absolute;
+  top: 1.2vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 27vw;
+  height: 3.6vh;
+  background: #000000;
+  border-radius: 2vh;
+  z-index: 100;
+}
+
+/* ── Scrollable Content ── */
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2vh 5.5vw 12vh;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Hide scrollbar */
+.content::-webkit-scrollbar { display: none; }
+.content { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── Page Header ── */
 .page-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 28px;
+  margin-bottom: 2.8vh;
 }
 
 .page-title {
   font-family: 'Outfit', sans-serif;
-  font-size: 36px;
+  font-size: 3.6vh;
   font-weight: 800;
   color: white;
+  letter-spacing: -0.02em;
 }
 
 .streak-badge {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  background: #34C759;
+  gap: 1.2vw;
+  background: linear-gradient(135deg, #34C759, #2DA44E);
   color: white;
-  font-size: 22px;
+  font-size: 1.65vh;
   font-weight: 700;
-  padding: 10px 20px;
-  border-radius: 50px;
+  padding: 0.9vh 3.4vw;
+  border-radius: 5vh;
+  box-shadow: 0 0.4vh 1.6vh rgba(52, 199, 89, 0.35);
 }
 
-/* Bar chart */
-.chart-section {
-  background: rgba(255,255,255,0.03);
+.streak-badge svg {
+  flex-shrink: 0;
+}
+
+/* ── Weekly Bar Chart Card ── */
+.chart-card {
+  background: rgba(255,255,255,0.035);
   border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 28px;
-  padding: 28px 24px 20px;
-  margin-bottom: 20px;
-  position: relative;
+  border-radius: 2.4vh;
+  padding: 2.6vh 4vw 2vh;
+  margin-bottom: 2vh;
+}
+
+.chart-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2vh;
+}
+
+.chart-card-title {
+  font-size: 1.8vh;
+  font-weight: 700;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.chart-card-period {
+  font-size: 1.5vh;
+  font-weight: 500;
+  color: rgba(255,255,255,0.3);
 }
 
 .chart-area {
   position: relative;
-  height: 200px;
+  height: 22vh;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  padding: 0 8px;
+  padding: 0 1vw;
 }
 
-/* Grid lines */
+/* Grid lines behind bars */
 .grid-lines {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  bottom: 32px;
+  bottom: 5vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -183,7 +159,16 @@ body {
 .grid-line {
   width: 100%;
   height: 1px;
-  background: rgba(255,255,255,0.05);
+  background: rgba(255,255,255,0.04);
+}
+
+.grid-line-label {
+  position: absolute;
+  right: 0;
+  font-size: 1.15vh;
+  color: rgba(255,255,255,0.2);
+  font-weight: 500;
+  transform: translateY(-50%);
 }
 
 /* Individual bars */
@@ -191,267 +176,532 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 0.8vh;
   z-index: 2;
-  width: 56px;
+  width: 9vw;
 }
 
-.bar {
-  width: 56px;
-  border-radius: 8px 8px 0 0;
-  background: linear-gradient(to top, #34C759, #4ECDC4);
-  opacity: 0.7;
-}
-
-.bar.active {
-  opacity: 1;
-  box-shadow: 0 0 20px rgba(52,199,89,0.3);
-}
-
-.bar-label {
-  font-size: 18px;
-  font-weight: 600;
-  color: rgba(255,255,255,0.35);
-}
-
-.bar-label.active {
-  color: white;
-}
-
-/* Stats grid */
-.stats-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-  margin-bottom: 20px;
-}
-
-.stat-card {
-  background: #16161F;
-  border-radius: 24px;
-  padding: 24px;
-}
-
-.stat-card-label {
-  font-size: 18px;
-  font-weight: 600;
-  color: rgba(255,255,255,0.5);
-  margin-bottom: 10px;
+.bar-container {
+  height: 16vh;
   display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   align-items: center;
-  gap: 8px;
-}
-
-.stat-card-value {
-  font-family: 'Outfit', sans-serif;
-  font-size: 40px;
-  font-weight: 800;
-  margin-bottom: 4px;
-}
-
-.stat-card-goal {
-  font-size: 18px;
-  color: rgba(255,255,255,0.35);
-}
-
-/* Trend card */
-.trend-card {
-  background: #16161F;
-  border-radius: 24px;
-  padding: 24px;
   width: 100%;
 }
 
-.trend-title {
-  font-size: 24px;
+.bar {
+  width: 7.2vw;
+  border-radius: 1vh 1vh 0.3vh 0.3vh;
+  background: linear-gradient(to top, rgba(52,199,89,0.5), rgba(78,205,196,0.5));
+  position: relative;
+}
+
+.bar.active {
+  background: linear-gradient(to top, #34C759, #4ECDC4);
+  box-shadow: 0 0 2vh rgba(52,199,89,0.4), 0 -0.4vh 1.2vh rgba(78,205,196,0.25);
+}
+
+.bar-cal-label {
+  font-size: 1.1vh;
   font-weight: 700;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 0.4vh;
+  text-align: center;
+}
+
+.bar-cal-label.active {
+  color: rgba(255,255,255,0.8);
+}
+
+.bar-day {
+  font-size: 1.5vh;
+  font-weight: 600;
+  color: rgba(255,255,255,0.3);
+}
+
+.bar-day.active {
   color: white;
-  margin-bottom: 20px;
+  font-weight: 800;
+}
+
+.bar-today-dot {
+  width: 0.6vh;
+  height: 0.6vh;
+  border-radius: 50%;
+  background: #34C759;
+  margin-top: 0.3vh;
+}
+
+/* ── 2x2 Stats Grid ── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.6vh 3vw;
+  margin-bottom: 2vh;
+}
+
+.stat-card {
+  background: #14141E;
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 2.2vh;
+  padding: 2.2vh 3.2vw;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Colored accent line at top of each stat card */
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  border-radius: 0 0 2px 2px;
+}
+
+.stat-card.orange::before { background: linear-gradient(90deg, transparent, #FF9500, transparent); }
+.stat-card.red::before { background: linear-gradient(90deg, transparent, #FF6B6B, transparent); }
+.stat-card.blue::before { background: linear-gradient(90deg, transparent, #5AC8FA, transparent); }
+.stat-card.green::before { background: linear-gradient(90deg, transparent, #34C759, transparent); }
+
+.stat-card-top {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 1.4vw;
+  margin-bottom: 1.2vh;
+}
+
+.stat-icon {
+  width: 3.6vh;
+  height: 3.6vh;
+  border-radius: 1vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stat-icon.orange { background: rgba(255,149,0,0.15); }
+.stat-icon.red { background: rgba(255,107,107,0.15); }
+.stat-icon.blue { background: rgba(90,200,250,0.15); }
+.stat-icon.green { background: rgba(52,199,89,0.15); }
+
+.stat-label {
+  font-size: 1.4vh;
+  font-weight: 600;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.2;
+}
+
+.stat-value {
+  font-family: 'Outfit', sans-serif;
+  font-size: 4vh;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.4vh;
+}
+
+.stat-value.orange { color: #FF9500; }
+.stat-value.red { color: #FF6B6B; }
+.stat-value.blue { color: #5AC8FA; }
+.stat-value.green { color: #34C759; }
+
+.stat-goal {
+  font-size: 1.3vh;
+  color: rgba(255,255,255,0.28);
+  font-weight: 500;
+}
+
+/* ── Weight Trend Card ── */
+.trend-card {
+  background: #14141E;
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 2.2vh;
+  padding: 2.4vh 3.5vw 1.6vh;
+}
+
+.trend-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2vh;
+}
+
+.trend-title {
+  display: flex;
+  align-items: center;
+  gap: 1.6vw;
+  font-size: 1.9vh;
+  font-weight: 700;
+  color: white;
+}
+
+.trend-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6vw;
+  background: rgba(52,199,89,0.12);
+  border: 1px solid rgba(52,199,89,0.2);
+  color: #34C759;
+  font-size: 1.25vh;
+  font-weight: 700;
+  padding: 0.5vh 2vw;
+  border-radius: 5vh;
 }
 
 .trend-chart {
   width: 100%;
-  height: 140px;
+  height: 16vh;
 }
 
-/* Bottom glow */
-.bottom-glow {
-  position: absolute;
-  bottom: -100px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 800px;
-  height: 400px;
-  background: radial-gradient(ellipse, rgba(52,199,89,0.2) 0%, transparent 70%);
-  filter: blur(60px);
-  z-index: 5;
+/* ── Tab Bar ── */
+.tab-bar {
+  flex-shrink: 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 10vh;
+  background: #0A0A14;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  padding: 1.4vh 4vw 0;
+}
+
+.tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5vh;
+  opacity: 0.35;
+}
+
+.tab-item.active {
+  opacity: 1;
+}
+
+.tab-item.active .tab-label {
+  color: #34C759;
+}
+
+.tab-label {
+  font-size: 1.15vh;
+  font-weight: 600;
+  color: rgba(255,255,255,0.5);
 }
 </style>
 </head>
 <body>
 
-<div class="bg-gradient"></div>
+<!-- Dynamic Island -->
+<div class="dynamic-island"></div>
 
-<!-- Headline -->
-<div class="headline-area">
-  <div class="badge">INSIGHTS</div>
-  <div class="headline">Watch Your<br><span class="green">Progress</span></div>
-  <div class="subheadline">Weekly reports. Streak tracking.<br>See how your nutrition improves over time.</div>
-</div>
-
-<!-- Phone mockup -->
-<div class="phone-container">
-  <div class="phone">
-    <div class="dynamic-island"></div>
-    <div class="status-bar">
-      <span>9:41</span>
-      <span></span>
-    </div>
-
-    <div class="app-content">
-      <!-- Header with title and streak -->
-      <div class="page-header">
-        <div class="page-title">This Week</div>
-        <div class="streak-badge">
-          <!-- Flame SVG icon -->
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
-            <path d="M12 23c-4.97 0-8-3.03-8-7.5 0-3.82 2.42-7.23 4.5-9.5 0.28-0.3 0.72-0.3 1 0 0.82 0.88 1.7 2 2.3 3.2C12.5 7.8 13.5 7 14.5 5.5c0.22-0.33 0.68-0.38 0.96-0.1C18.03 7.67 20 11.18 20 15.5 20 19.97 16.97 23 12 23zM12 20c2.21 0 4-1.79 4-4 0-1.95-1.1-3.75-2.5-5.25-0.5 0.75-1 1.6-1.5 2.5-0.2 0.36-0.7 0.4-0.96 0.08C10.36 12.38 9.6 11.5 9 10.5 7.72 12.3 7 14.1 7 16c0 2.76 2.24 4 5 4z"/>
-          </svg>
-          7 Day Streak
-        </div>
-      </div>
-
-      <!-- Weekly bar chart -->
-      <div class="chart-section">
-        <div class="chart-area">
-          <!-- Grid lines -->
-          <div class="grid-lines">
-            <div class="grid-line"></div>
-            <div class="grid-line"></div>
-            <div class="grid-line"></div>
-          </div>
-
-          <!-- Mon -->
-          <div class="bar-wrapper">
-            <div class="bar" style="height: 140px;"></div>
-            <div class="bar-label">M</div>
-          </div>
-          <!-- Tue -->
-          <div class="bar-wrapper">
-            <div class="bar" style="height: 160px;"></div>
-            <div class="bar-label">T</div>
-          </div>
-          <!-- Wed -->
-          <div class="bar-wrapper">
-            <div class="bar" style="height: 130px;"></div>
-            <div class="bar-label">W</div>
-          </div>
-          <!-- Thu (active/current day) -->
-          <div class="bar-wrapper">
-            <div class="bar active" style="height: 180px;"></div>
-            <div class="bar-label active">T</div>
-          </div>
-          <!-- Fri -->
-          <div class="bar-wrapper">
-            <div class="bar" style="height: 150px;"></div>
-            <div class="bar-label">F</div>
-          </div>
-          <!-- Sat -->
-          <div class="bar-wrapper">
-            <div class="bar" style="height: 190px;"></div>
-            <div class="bar-label">S</div>
-          </div>
-          <!-- Sun -->
-          <div class="bar-wrapper">
-            <div class="bar" style="height: 120px;"></div>
-            <div class="bar-label">S</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 2x2 Stats grid -->
-      <div class="stats-grid">
-        <!-- Avg. Calories -->
-        <div class="stat-card">
-          <div class="stat-card-label">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF9500" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20v-6M6 20V10M18 20V4"/></svg>
-            Avg. Calories
-          </div>
-          <div class="stat-card-value" style="color: #FF9500;">1,892</div>
-          <div class="stat-card-goal">Goal: 2,100</div>
-        </div>
-        <!-- Avg. Protein -->
-        <div class="stat-card">
-          <div class="stat-card-label">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF6B6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
-            Avg. Protein
-          </div>
-          <div class="stat-card-value" style="color: #FF6B6B;">132g</div>
-          <div class="stat-card-goal">Goal: 150g</div>
-        </div>
-        <!-- Water Intake -->
-        <div class="stat-card">
-          <div class="stat-card-label">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5AC8FA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L5.5 13c-1.3 2.2-.5 4.5 1 6s3.8 2 6.5 2 5-0.5 6.5-2 2.3-3.8 1-6L12 2z"/></svg>
-            Water Intake
-          </div>
-          <div class="stat-card-value" style="color: #5AC8FA;">82oz</div>
-          <div class="stat-card-goal">Goal: 88oz</div>
-        </div>
-        <!-- Consistency -->
-        <div class="stat-card">
-          <div class="stat-card-label">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
-            Consistency
-          </div>
-          <div class="stat-card-value" style="color: #34C759;">94%</div>
-          <div class="stat-card-goal">Logged 6/7 days</div>
-        </div>
-      </div>
-
-      <!-- Weight Trend card -->
-      <div class="trend-card">
-        <div class="trend-title">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg>
-          Weight Trend
-        </div>
-        <svg class="trend-chart" viewBox="0 0 560 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Subtle horizontal grid -->
-          <line x1="40" y1="20" x2="520" y2="20" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-          <line x1="40" y1="55" x2="520" y2="55" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-          <line x1="40" y1="90" x2="520" y2="90" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-
-          <!-- Green fill area under curve -->
-          <path d="M40 30 C120 35, 180 50, 200 55 C220 60, 300 68, 360 75 C420 82, 480 88, 520 95 L520 120 L40 120 Z" fill="rgba(52,199,89,0.1)"/>
-
-          <!-- Trend line (gentle downward curve: 183 lbs → 178 lbs) -->
-          <path d="M40 30 C120 35, 180 50, 200 55 C220 60, 300 68, 360 75 C420 82, 480 88, 520 95" stroke="#34C759" stroke-width="3" stroke-linecap="round" fill="none"/>
-
-          <!-- Dot markers -->
-          <circle cx="40" cy="30" r="8" fill="#34C759" stroke="white" stroke-width="2"/>
-          <circle cx="200" cy="55" r="8" fill="#34C759" stroke="white" stroke-width="2"/>
-          <circle cx="360" cy="75" r="8" fill="#34C759" stroke="white" stroke-width="2"/>
-          <circle cx="520" cy="95" r="8" fill="#34C759" stroke="white" stroke-width="2"/>
-
-          <!-- Y-axis labels -->
-          <text x="35" y="26" text-anchor="end" fill="rgba(255,255,255,0.4)" font-family="Inter, sans-serif" font-size="14" font-weight="600">183</text>
-          <text x="35" y="100" text-anchor="end" fill="rgba(255,255,255,0.4)" font-family="Inter, sans-serif" font-size="14" font-weight="600">178</text>
-
-          <!-- X-axis labels -->
-          <text x="40" y="138" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-family="Inter, sans-serif" font-size="16">Week 1</text>
-          <text x="200" y="138" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-family="Inter, sans-serif" font-size="16">Week 2</text>
-          <text x="360" y="138" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-family="Inter, sans-serif" font-size="16">Week 3</text>
-          <text x="520" y="138" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-family="Inter, sans-serif" font-size="16">Week 4</text>
-        </svg>
-      </div>
-    </div>
+<!-- Status Bar -->
+<div class="status-bar">
+  <span class="status-time">9:41</span>
+  <div class="status-icons">
+    <!-- Signal -->
+    <svg width="1.8vh" height="1.4vh" viewBox="0 0 18 14" fill="white">
+      <rect x="0" y="10" width="3" height="4" rx="0.5"/>
+      <rect x="5" y="7" width="3" height="7" rx="0.5"/>
+      <rect x="10" y="3.5" width="3" height="10.5" rx="0.5"/>
+      <rect x="15" y="0" width="3" height="14" rx="0.5"/>
+    </svg>
+    <!-- WiFi -->
+    <svg width="1.8vh" height="1.5vh" viewBox="0 0 16 12" fill="white">
+      <path d="M8 10.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3z"/>
+      <path d="M4.5 8.5C5.5 7.3 6.7 6.5 8 6.5s2.5.8 3.5 2" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <path d="M1.5 5.5C3.3 3.3 5.5 2 8 2s4.7 1.3 6.5 3.5" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    </svg>
+    <!-- Battery -->
+    <svg width="3vh" height="1.4vh" viewBox="0 0 28 13" fill="none">
+      <rect x="0.5" y="0.5" width="23" height="12" rx="3" stroke="white" stroke-opacity="0.35"/>
+      <rect x="2" y="2" width="18" height="9" rx="1.5" fill="white"/>
+      <path d="M25 4.5v4a2 2 0 000-4z" fill="white" fill-opacity="0.4"/>
+    </svg>
   </div>
 </div>
 
-<div class="bottom-glow"></div>
+<!-- Scrollable Content -->
+<div class="content">
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="page-title">This Week</div>
+    <div class="streak-badge">
+      <svg width="1.8vh" height="1.8vh" viewBox="0 0 24 24" fill="white">
+        <path d="M12 23c-4.97 0-8-3.03-8-7.5 0-3.82 2.42-7.23 4.5-9.5.28-.3.72-.3 1 0 .82.88 1.7 2 2.3 3.2C12.5 7.8 13.5 7 14.5 5.5c.22-.33.68-.38.96-.1C18.03 7.67 20 11.18 20 15.5 20 19.97 16.97 23 12 23z"/>
+      </svg>
+      7 Day Streak
+    </div>
+  </div>
+
+  <!-- Weekly Bar Chart Card -->
+  <div class="chart-card">
+    <div class="chart-card-header">
+      <div class="chart-card-title">Weekly Intake</div>
+      <div class="chart-card-period">Mar 3 - Mar 9</div>
+    </div>
+    <div class="chart-area">
+      <!-- Grid lines -->
+      <div class="grid-lines">
+        <div class="grid-line" style="position: relative;">
+          <span class="grid-line-label">2,100</span>
+        </div>
+        <div class="grid-line"></div>
+        <div class="grid-line"></div>
+        <div class="grid-line"></div>
+      </div>
+
+      <!-- Mon -->
+      <div class="bar-wrapper">
+        <div class="bar-container">
+          <div class="bar-cal-label">1,820</div>
+          <div class="bar" style="height: 62%;"></div>
+        </div>
+        <div class="bar-day">M</div>
+      </div>
+      <!-- Tue -->
+      <div class="bar-wrapper">
+        <div class="bar-container">
+          <div class="bar-cal-label">2,045</div>
+          <div class="bar" style="height: 74%;"></div>
+        </div>
+        <div class="bar-day">T</div>
+      </div>
+      <!-- Wed -->
+      <div class="bar-wrapper">
+        <div class="bar-container">
+          <div class="bar-cal-label">1,760</div>
+          <div class="bar" style="height: 58%;"></div>
+        </div>
+        <div class="bar-day">W</div>
+      </div>
+      <!-- Thu (today) -->
+      <div class="bar-wrapper">
+        <div class="bar-container">
+          <div class="bar-cal-label active">1,892</div>
+          <div class="bar active" style="height: 68%;"></div>
+        </div>
+        <div class="bar-day active">T</div>
+        <div class="bar-today-dot"></div>
+      </div>
+      <!-- Fri -->
+      <div class="bar-wrapper">
+        <div class="bar-container">
+          <div class="bar-cal-label">1,950</div>
+          <div class="bar" style="height: 70%;"></div>
+        </div>
+        <div class="bar-day">F</div>
+      </div>
+      <!-- Sat -->
+      <div class="bar-wrapper">
+        <div class="bar-container">
+          <div class="bar-cal-label">2,180</div>
+          <div class="bar" style="height: 82%;"></div>
+        </div>
+        <div class="bar-day">S</div>
+      </div>
+      <!-- Sun -->
+      <div class="bar-wrapper">
+        <div class="bar-container">
+          <div class="bar-cal-label">1,700</div>
+          <div class="bar" style="height: 52%;"></div>
+        </div>
+        <div class="bar-day">S</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2x2 Stats Grid -->
+  <div class="stats-grid">
+    <!-- Avg. Calories -->
+    <div class="stat-card orange">
+      <div class="stat-card-top">
+        <div class="stat-icon orange">
+          <svg width="1.8vh" height="1.8vh" viewBox="0 0 24 24" fill="none" stroke="#FF9500" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 20v-6M6 20V10M18 20V4"/>
+          </svg>
+        </div>
+        <div class="stat-label">Avg. Calories</div>
+      </div>
+      <div class="stat-value orange">1,892</div>
+      <div class="stat-goal">Goal: 2,100</div>
+    </div>
+
+    <!-- Avg. Protein -->
+    <div class="stat-card red">
+      <div class="stat-card-top">
+        <div class="stat-icon red">
+          <svg width="1.8vh" height="1.8vh" viewBox="0 0 24 24" fill="none" stroke="#FF6B6B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 5l6 6M14 5l-6 6"/>
+            <path d="M6 19l6-6M14 19l-6-6"/>
+            <path d="M18 5l-4 4M18 19l-4-4"/>
+          </svg>
+        </div>
+        <div class="stat-label">Avg. Protein</div>
+      </div>
+      <div class="stat-value red">132g</div>
+      <div class="stat-goal">Goal: 150g</div>
+    </div>
+
+    <!-- Water Intake -->
+    <div class="stat-card blue">
+      <div class="stat-card-top">
+        <div class="stat-icon blue">
+          <svg width="1.8vh" height="1.8vh" viewBox="0 0 24 24" fill="none" stroke="#5AC8FA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L5.5 13c-1.3 2.2-.5 4.5 1 6s3.8 2 6.5 2 5-.5 6.5-2 2.3-3.8 1-6L12 2z"/>
+          </svg>
+        </div>
+        <div class="stat-label">Water Intake</div>
+      </div>
+      <div class="stat-value blue">82oz</div>
+      <div class="stat-goal">Goal: 88oz</div>
+    </div>
+
+    <!-- Consistency -->
+    <div class="stat-card green">
+      <div class="stat-card-top">
+        <div class="stat-icon green">
+          <svg width="1.8vh" height="1.8vh" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+            <path d="M22 4L12 14.01l-3-3"/>
+          </svg>
+        </div>
+        <div class="stat-label">Consistency</div>
+      </div>
+      <div class="stat-value green">94%</div>
+      <div class="stat-goal">Logged 6/7 days</div>
+    </div>
+  </div>
+
+  <!-- Weight Trend Card -->
+  <div class="trend-card">
+    <div class="trend-header">
+      <div class="trend-title">
+        <svg width="2.2vh" height="2.2vh" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+        </svg>
+        Weight Trend
+      </div>
+      <div class="trend-badge">
+        <svg width="1.2vh" height="1.2vh" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/>
+          <polyline points="17 18 23 18 23 12"/>
+        </svg>
+        -5 lbs
+      </div>
+    </div>
+    <svg class="trend-chart" viewBox="0 0 600 160" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+      <!-- Subtle horizontal grid -->
+      <line x1="50" y1="15" x2="560" y2="15" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+      <line x1="50" y1="45" x2="560" y2="45" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+      <line x1="50" y1="75" x2="560" y2="75" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+      <line x1="50" y1="105" x2="560" y2="105" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+
+      <!-- Y-axis labels -->
+      <text x="42" y="22" text-anchor="end" fill="rgba(255,255,255,0.25)" font-family="Inter, sans-serif" font-size="13" font-weight="600">183</text>
+      <text x="42" y="52" text-anchor="end" fill="rgba(255,255,255,0.25)" font-family="Inter, sans-serif" font-size="13" font-weight="600">181</text>
+      <text x="42" y="82" text-anchor="end" fill="rgba(255,255,255,0.25)" font-family="Inter, sans-serif" font-size="13" font-weight="600">180</text>
+      <text x="42" y="112" text-anchor="end" fill="rgba(255,255,255,0.25)" font-family="Inter, sans-serif" font-size="13" font-weight="600">178</text>
+
+      <!-- Gradient fill definition -->
+      <defs>
+        <linearGradient id="fillGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#34C759" stop-opacity="0.25"/>
+          <stop offset="100%" stop-color="#34C759" stop-opacity="0.02"/>
+        </linearGradient>
+        <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#34C759"/>
+          <stop offset="100%" stop-color="#4ECDC4"/>
+        </linearGradient>
+      </defs>
+
+      <!-- Green fill area under curve -->
+      <path d="M90 18 C155 22, 200 40, 260 48 C320 56, 380 68, 420 78 C460 88, 500 100, 530 105 L530 130 L90 130 Z" fill="url(#fillGrad)"/>
+
+      <!-- Trend line (gentle downward: 183 -> 181 -> 180 -> 178 lbs) -->
+      <path d="M90 18 C155 22, 200 40, 260 48 C320 56, 380 68, 420 78 C460 88, 500 100, 530 105" stroke="url(#lineGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+
+      <!-- Data point dots with glow -->
+      <circle cx="90" cy="18" r="5" fill="#0A0A14" stroke="#34C759" stroke-width="3"/>
+      <circle cx="260" cy="48" r="5" fill="#0A0A14" stroke="#34C759" stroke-width="3"/>
+      <circle cx="420" cy="78" r="5" fill="#0A0A14" stroke="#34C759" stroke-width="3"/>
+      <circle cx="530" cy="105" r="5" fill="#0A0A14" stroke="#4ECDC4" stroke-width="3"/>
+
+      <!-- Weight value labels near dots -->
+      <text x="90" y="40" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="Inter, sans-serif" font-size="12" font-weight="700">183</text>
+      <text x="260" y="68" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="Inter, sans-serif" font-size="12" font-weight="700">181</text>
+      <text x="420" y="98" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="Inter, sans-serif" font-size="12" font-weight="700">180</text>
+      <text x="530" y="125" text-anchor="middle" fill="#4ECDC4" font-family="Inter, sans-serif" font-size="12" font-weight="700">178</text>
+
+      <!-- X-axis labels -->
+      <text x="90" y="150" text-anchor="middle" fill="rgba(255,255,255,0.25)" font-family="Inter, sans-serif" font-size="13" font-weight="500">Week 1</text>
+      <text x="260" y="150" text-anchor="middle" fill="rgba(255,255,255,0.25)" font-family="Inter, sans-serif" font-size="13" font-weight="500">Week 2</text>
+      <text x="420" y="150" text-anchor="middle" fill="rgba(255,255,255,0.25)" font-family="Inter, sans-serif" font-size="13" font-weight="500">Week 3</text>
+      <text x="530" y="150" text-anchor="middle" fill="rgba(255,255,255,0.25)" font-family="Inter, sans-serif" font-size="13" font-weight="500">Week 4</text>
+    </svg>
+  </div>
+
+</div>
+
+<!-- Tab Bar -->
+<div class="tab-bar">
+  <!-- Dashboard -->
+  <div class="tab-item">
+    <svg width="2.6vh" height="2.6vh" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="3" width="7" height="9" rx="1"/>
+      <rect x="14" y="3" width="7" height="5" rx="1"/>
+      <rect x="14" y="12" width="7" height="9" rx="1"/>
+      <rect x="3" y="16" width="7" height="5" rx="1"/>
+    </svg>
+    <span class="tab-label">Home</span>
+  </div>
+
+  <!-- Food Log -->
+  <div class="tab-item">
+    <svg width="2.6vh" height="2.6vh" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+      <polyline points="14 2 14 8 20 8"/>
+      <line x1="16" y1="13" x2="8" y2="13"/>
+      <line x1="16" y1="17" x2="8" y2="17"/>
+      <polyline points="10 9 9 9 8 9"/>
+    </svg>
+    <span class="tab-label">Log</span>
+  </div>
+
+  <!-- Camera (center) -->
+  <div class="tab-item">
+    <div style="width: 5.6vh; height: 5.6vh; background: linear-gradient(135deg, #34C759, #2DA44E); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0.4vh 1.6vh rgba(52,199,89,0.4); margin-top: -1.4vh;">
+      <svg width="2.8vh" height="2.8vh" viewBox="0 0 24 24" fill="white">
+        <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/>
+        <circle cx="12" cy="13" r="4" fill="#2DA44E"/>
+      </svg>
+    </div>
+    <span class="tab-label">Scan</span>
+  </div>
+
+  <!-- Progress (active) -->
+  <div class="tab-item active">
+    <svg width="2.6vh" height="2.6vh" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+    </svg>
+    <span class="tab-label">Progress</span>
+  </div>
+
+  <!-- Settings -->
+  <div class="tab-item">
+    <svg width="2.6vh" height="2.6vh" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="3"/>
+      <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
+    </svg>
+    <span class="tab-label">Settings</span>
+  </div>
+</div>
 
 </body>
 </html>
