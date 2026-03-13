@@ -85,8 +85,8 @@ export default function NotFound() {
         {/* Contact info */}
         <p className="text-gray-700 text-xs mt-8">
           Need help? Email us at{" "}
-          <a href="mailto:CEO@epicai.ai" className="text-gray-500 hover:text-brand-green transition-colors">
-            CEO@epicai.ai
+          <a href="mailto:support@nourishhealthai.com" className="text-gray-500 hover:text-brand-green transition-colors">
+            support@nourishhealthai.com
           </a>
         </p>
       </div>

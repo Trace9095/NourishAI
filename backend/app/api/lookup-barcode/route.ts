@@ -48,7 +48,7 @@ export async function GET(request: NextRequest) {
     // Fetch from OpenFoodFacts (free, no API key needed)
     const response = await fetch(
       `${OPENFOODFACTS_API}/${barcode}.json?fields=product_name,brands,nutriments,serving_size,image_url`,
-      { headers: { "User-Agent": "NourishAI/1.0 (CEO@epicai.ai)" } }
+      { headers: { "User-Agent": "NourishAI/1.0 (support@nourishhealthai.com)" } }
     );
 
     if (!response.ok) {

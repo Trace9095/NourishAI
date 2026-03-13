@@ -40,7 +40,7 @@ export default function AccessibilityPage() {
           <p>The AI food photo scanning feature requires the use of the device camera, which may present challenges for users with certain visual impairments. Manual food entry and barcode scanning are available as alternative input methods.</p>
 
           <h2 className="font-[family-name:var(--font-outfit)] text-xl font-bold text-white pt-4">Feedback</h2>
-          <p>We welcome your feedback on our accessibility efforts. If you encounter any barriers, please contact us at <a href="mailto:CEO@epicai.ai" className="text-brand-green hover:underline">CEO@epicai.ai</a> and we will work to resolve the issue promptly.</p>
+          <p>We welcome your feedback on our accessibility efforts. If you encounter any barriers, please contact us at <a href="mailto:support@nourishhealthai.com" className="text-brand-green hover:underline">support@nourishhealthai.com</a> and we will work to resolve the issue promptly.</p>
         </div>
       </div>
     </main>

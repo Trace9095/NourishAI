@@ -29,5 +29,5 @@ NourishAI helps gym-goers, macro trackers, and athletes track their nutrition ef
 
 ## Contact
 
-- Email: CEO@epicai.ai
+- Email: hello@nourishhealthai.com
 - Built by Epic AI (epicai.ai)

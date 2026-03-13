@@ -108,10 +108,10 @@ export default function ContactPage() {
                     <div>
                       <p className="text-sm text-gray-500 mb-1">Email</p>
                       <a
-                        href="mailto:CEO@epicai.ai"
+                        href="mailto:hello@nourishhealthai.com"
                         className="text-white hover:text-brand-green transition-colors"
                       >
-                        CEO@epicai.ai
+                        hello@nourishhealthai.com
                       </a>
                     </div>
                   </div>

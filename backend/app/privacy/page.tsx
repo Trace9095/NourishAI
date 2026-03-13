@@ -80,17 +80,17 @@ export default function PrivacyPage() {
               <li><strong className="text-gray-300">Portability:</strong> Your local nutrition data syncs to Apple Health, which supports data export</li>
               <li><strong className="text-gray-300">Opt-out:</strong> Decline analytics cookies via our consent banner</li>
             </ul>
-            <p>To exercise any of these rights, email <a href="mailto:CEO@epicai.ai" className="text-brand-green hover:underline">CEO@epicai.ai</a>. We will respond within 30 days.</p>
+            <p>To exercise any of these rights, email <a href="mailto:support@nourishhealthai.com" className="text-brand-green hover:underline">support@nourishhealthai.com</a>. We will respond within 30 days.</p>
             <p>You can delete all local data by uninstalling the app. To request deletion of server-side data (device UUID, scan counts), contact us and we will process the request within 48 hours.</p>
 
             <h2 className="font-[family-name:var(--font-outfit)] text-xl font-bold text-white pt-4">California Privacy Rights (CCPA)</h2>
-            <p>California residents have the right to know what personal information we collect, request deletion, and opt out of the sale of personal information. We do not sell personal information. To make a CCPA request, email <a href="mailto:CEO@epicai.ai" className="text-brand-green hover:underline">CEO@epicai.ai</a>.</p>
+            <p>California residents have the right to know what personal information we collect, request deletion, and opt out of the sale of personal information. We do not sell personal information. To make a CCPA request, email <a href="mailto:support@nourishhealthai.com" className="text-brand-green hover:underline">support@nourishhealthai.com</a>.</p>
 
             <h2 className="font-[family-name:var(--font-outfit)] text-xl font-bold text-white pt-4">Changes to This Policy</h2>
             <p>We may update this Privacy Policy from time to time. We will notify you of significant changes by posting a notice on our website. Your continued use of NourishAI after changes constitutes acceptance of the updated policy.</p>
 
             <h2 className="font-[family-name:var(--font-outfit)] text-xl font-bold text-white pt-4">Contact</h2>
-            <p>Questions about this policy? Email <a href="mailto:CEO@epicai.ai" className="text-brand-green hover:underline">CEO@epicai.ai</a> or visit our <Link href="/contact" className="text-brand-green hover:underline">contact page</Link>.</p>
+            <p>Questions about this policy? Email <a href="mailto:support@nourishhealthai.com" className="text-brand-green hover:underline">support@nourishhealthai.com</a> or visit our <Link href="/contact" className="text-brand-green hover:underline">contact page</Link>.</p>
             <p className="text-xs text-gray-600 pt-4">NourishAI · Canon City, Colorado · USA</p>
           </div>
         </div>

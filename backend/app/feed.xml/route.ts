@@ -13,7 +13,7 @@ export async function GET() {
       <description>${escapeXml(post.excerpt)}</description>
       <pubDate>${new Date(post.publishedAt).toUTCString()}</pubDate>
       <category>${escapeXml(post.category)}</category>
-      <author>CEO@epicai.ai (${escapeXml(post.author)})</author>
+      <author>hello@nourishhealthai.com (${escapeXml(post.author)})</author>
     </item>`
     )
     .join("\n");

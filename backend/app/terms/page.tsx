@@ -45,7 +45,7 @@ export default function TermsPage() {
           <p>We may update these terms at any time. Continued use of the App constitutes acceptance of updated terms.</p>
 
           <h2 className="font-[family-name:var(--font-outfit)] text-xl font-bold text-white pt-4">Contact</h2>
-          <p>Questions? Email <a href="mailto:CEO@epicai.ai" className="text-brand-green hover:underline">CEO@epicai.ai</a>.</p>
+          <p>Questions? Email <a href="mailto:support@nourishhealthai.com" className="text-brand-green hover:underline">support@nourishhealthai.com</a>.</p>
         </div>
       </div>
     </main>
