@@ -1,10 +1,86 @@
-# NourishAI
+<p align="center">
+  <img src="backend/public/favicon.svg" alt="NourishAI" width="120" height="120" />
+</p>
 
-**AI-powered nutrition tracking for fitness-focused people. Snap a photo, get instant macros.**
+<h1 align="center">NourishAI</h1>
 
-**Website:** [nourishhealthai.com](https://nourishhealthai.com)
-**Bundle ID:** `com.epicai.nourishai`
-**Built by:** [Epic AI](https://epicai.ai)
+<p align="center">
+  <strong>AI-powered nutrition tracking for fitness-focused people. Snap a photo, get instant macros.</strong>
+</p>
+
+<p align="center">
+  <a href="https://nourishhealthai.com"><img src="https://img.shields.io/badge/Website-nourishhealthai.com-34C759?style=flat-square&logo=vercel&logoColor=white" alt="Website" /></a>
+  <img src="https://img.shields.io/badge/iOS-17%2B-000000?style=flat-square&logo=apple&logoColor=white" alt="iOS 17+" />
+  <img src="https://img.shields.io/badge/Swift-6-F05138?style=flat-square&logo=swift&logoColor=white" alt="Swift 6" />
+  <img src="https://img.shields.io/badge/Next.js-16-000000?style=flat-square&logo=next.js&logoColor=white" alt="Next.js 16" />
+  <img src="https://img.shields.io/badge/TypeScript-Strict-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/AI-Claude%20Haiku-CC785C?style=flat-square&logo=anthropic&logoColor=white" alt="Claude Haiku" />
+  <img src="https://img.shields.io/badge/Database-Neon%20PostgreSQL-4ECDC4?style=flat-square&logo=postgresql&logoColor=white" alt="Neon PostgreSQL" />
+  <img src="https://img.shields.io/badge/License-Proprietary-red?style=flat-square" alt="License" />
+</p>
+
+---
+
+## Overview
+
+NourishAI is an AI-powered nutrition tracking iOS app paired with a Next.js marketing website and backend API. Users snap a photo of any meal and get instant calorie and macro breakdowns powered by Claude Haiku vision. The app targets gym-goers, macro trackers, and athletes with a freemium subscription model.
+
+**Built by [Epic AI](https://epicai.ai)** | Bundle ID: `com.epicai.nourishai`
+
+---
+
+## Codebase Stats
+
+| Metric | Count |
+|:-------|------:|
+| iOS Swift Files | 29 |
+| iOS Lines of Code | ~7,900 |
+| Backend TS/TSX Files | ~78 |
+| React Components | 15 |
+| API Routes | 17 |
+| Website Pages | 16 |
+| Database Tables | 5 |
+| Total Platforms | 2 (iOS + Web) |
+
+---
+
+## Features
+
+### iOS App
+
+- **AI Photo Scanning** -- Snap a photo of any meal, get instant calorie and macro breakdown via Claude Haiku vision
+- **AI Text Analysis** -- Describe what you ate in natural language for quick macro estimates
+- **Menu Scanner** -- Photograph or URL-scan restaurant menus with health scores (1-10)
+- **Barcode Scanner** -- Scan packaged food barcodes via OpenFoodFacts (free, no AI cost)
+- **AI Food Suggestions** -- Get smart food ideas based on remaining daily macros
+- **AI Nutrition Chat** -- Conversational nutrition advice (Haiku free / Sonnet pro, 5 msg/day free)
+- **Daily Dashboard** -- Calorie ring, macro progress rings, recent meals, water intake, streak tracking
+- **Food Log** -- Horizontal day strip, daily summary with progress bars, meals grouped by type
+- **Progress Analytics** -- 7-day calorie chart, macro averages, consistency score, 9 achievement badges
+- **Restaurant Discovery** -- Apple MapKit integration for nearby healthy dining options
+- **Onboarding** -- 7-step flow: name, body metrics, sex, activity level, goal, plan summary
+- **HealthKit** -- Real steps, active calories, and weight sync
+- **StoreKit 2** -- Auto-renewable subscriptions with backend receipt validation
+
+### Marketing Website
+
+- **Landing Page** -- Hero, features grid, how-it-works, pricing, testimonials, FAQ, download CTA
+- **Features Page** -- Detailed breakdown with Free vs Pro comparison table
+- **About Page** -- Brand story, values, Epic AI partnership
+- **Blog** -- 10 articles with category filters, individual post pages, RSS feed
+- **Contact** -- Form with Resend email integration
+- **Brand Page** -- Color palette (click-to-copy), typography, referral links
+- **Legal** -- Privacy Policy, Terms of Service, Accessibility Statement
+
+### Admin Dashboard
+
+- **12 KPI Cards** -- Total users, pro subscribers, revenue, AI costs, scans today/week/month, conversion rate
+- **Charts** -- 30-day scan volume and user growth
+- **Tables** -- Recent scans and recent users with pagination
+- **User Management** -- CRUD for admin accounts (super_admin, admin, viewer roles)
+- **Password Reset** -- Forgot password via Resend email with HMAC-based self-validating tokens
+- **Instagram Calendar** -- Grid/list view, month filter, search, posted tracking
+- **Auto-refresh** -- 30-second polling (pauses on tab hide)
 
 ---
 
@@ -12,62 +88,17 @@
 
 | Layer | Technology |
 |:------|:-----------|
-| iOS App | Swift 6, SwiftUI, SwiftData, iOS 17+ |
-| Web Framework | Next.js 16 (App Router) |
-| Language | TypeScript (strict), Swift 6 (MainActor) |
+| iOS App | Swift 6, SwiftUI, SwiftData, HealthKit, StoreKit 2, iOS 17+ |
+| Web Framework | Next.js 16 (App Router), TypeScript (strict) |
 | Styling | Tailwind CSS v4 |
-| Database | Neon PostgreSQL via Drizzle ORM |
-| AI | Claude Haiku (vision) via server proxy |
-| Auth | PBKDF2 + HMAC sessions (admin), Device UUID (iOS) |
+| Database | Neon PostgreSQL via Drizzle ORM (5 tables) |
+| AI | Claude Haiku (vision + text) via server proxy |
+| Admin Auth | PBKDF2 (100K iterations) + HMAC SHA-256 sessions, HttpOnly cookies |
+| iOS Auth | Device UUID registration |
 | Email | Resend API |
-| Health | HealthKit (read/write nutrition, weight, steps) |
 | Payments | StoreKit 2 (auto-renewable subscriptions) |
-| Hosting | Vercel (serverless) |
-
----
-
-## Features
-
-### iOS App
-- **AI Photo Scanning** -- Snap a photo of any meal, get instant calorie and macro breakdown via Claude Haiku vision
-- **AI Text Analysis** -- Describe what you ate in natural language for quick macro estimates
-- **Barcode Scanner** -- Scan packaged food barcodes via OpenFoodFacts API (free, no AI cost)
-- **Manual Entry** -- Full manual macro entry for precise tracking
-- **Daily Dashboard** -- Calorie ring, macro progress rings, recent meals, water intake, streak tracking
-- **Food Log** -- Horizontal day strip, daily summary with progress bars, meals grouped by type
-- **Progress Analytics** -- 7-day calorie chart, macro averages, consistency score, 9 achievement badges, AI weekly insights
-- **Onboarding** -- 7-step flow: name, body metrics (ft/in + lbs conversions), sex, activity level, goal, plan summary
-- **Subscription** -- Free tier (1 AI scan/week) + Pro ($7.99/mo or $39.99/yr unlimited)
-- **Dark Theme** -- Full dark mode UI with branded green/orange accents
-
-### Marketing Website
-- **Landing Page** -- Hero, features grid, how-it-works, pricing, testimonials, FAQ, download CTA
-- **Features Page** -- Detailed breakdown with Free vs Pro comparison table
-- **About Page** -- Brand story, values, Epic AI
-- **Blog** -- 5 seed articles with category filters, individual post pages
-- **Contact** -- Form with Resend email integration
-- **Brand Page** -- Color palette (click-to-copy), typography, referral links
-- **Legal** -- Privacy Policy, Terms of Service, Accessibility Statement
-
-### Admin Dashboard
-- **12 KPI Cards** -- Total users, pro subscribers, revenue, AI costs, scans today/week/month, conversion rate
-- **Charts** -- 30-day scan volume and user growth
-- **Tables** -- Recent scans and recent users with pagination
-- **Auto-refresh** -- 30-second polling for real-time monitoring
-- **Auth** -- PBKDF2 password hashing, HMAC session cookies, HttpOnly/Secure
-
-### API Routes (11)
-- `analyze-food` -- Claude Haiku vision proxy (photo to macros)
-- `analyze-description` -- Text-based food analysis
-- `lookup-barcode` -- OpenFoodFacts API lookup
-- `register-device` -- Device UUID registration
-- `scan-count` -- Usage tracking / remaining scans
-- `verify-subscription` -- StoreKit receipt validation
-- `contact` -- Contact form (Resend email)
-- `admin/login` -- Admin authentication
-- `admin/logout` -- Session destruction
-- `admin/setup` -- One-time admin seed (token-protected)
-- `admin/stats` -- Dashboard data aggregation
+| Analytics | Vercel Analytics + Speed Insights |
+| Hosting | Vercel (serverless, auto-deploy on push) |
 
 ---
 
@@ -75,39 +106,77 @@
 
 ```
 NourishAI-main/
-├── ios/                          # iOS app (Swift 6 / SwiftUI)
+├── ios/                              # iOS app (Swift 6 / SwiftUI)
 │   ├── NourishAI.xcodeproj
 │   └── NourishAI/
-│       ├── Models/               # SwiftData models (UserProfile, Nutrition, FoodEntry)
-│       ├── Services/             # API manager, HealthKit, Subscriptions
-│       ├── Views/                # Dashboard, FoodLog, Progress, Settings, Onboarding
-│       └── Components/           # MacroRingView, MealRow
-├── backend/                      # Next.js 16 website + API (Vercel root dir)
-│   ├── app/                      # Pages, API routes, metadata
-│   ├── components/               # React components (15)
-│   ├── lib/                      # DB, auth, blog, security, cookies
-│   └── public/                   # Favicons, llms.txt, ai.txt
-├── CLAUDE.md                     # Project instructions for LLM
-├── PHASES.md                     # Phase tracking
-├── TODO.md                       # Feature backlog
-└── HUMAN_TASKS.md                # Manual action items
+│       ├── Models/                   # SwiftData: UserProfile, Nutrition, FoodEntry
+│       ├── Services/                 # API manager, HealthKit, Subscriptions, Keychain, Push
+│       ├── Views/                    # Dashboard, FoodLog, Progress, Settings, Onboarding, Chat
+│       │   ├── Dashboard/            # DashboardView (macro rings, meals, water)
+│       │   ├── FoodLog/              # Camera, Text, Barcode, Menu, Ideas (7 views)
+│       │   ├── Chat/                 # NutritionChatView (AI conversation)
+│       │   ├── Discovery/            # RestaurantMapView (MapKit)
+│       │   ├── Progress/             # Charts, achievements, streaks
+│       │   ├── Settings/             # Profile editing, subscription management
+│       │   ├── Onboarding/           # 7-step onboarding
+│       │   └── Subscription/         # Paywall, plans, StoreKit 2
+│       └── Components/               # MacroRingView, MealRow
+│
+├── backend/                          # Next.js 16 (Vercel root dir)
+│   ├── app/                          # Pages + API routes
+│   │   ├── page.tsx                  # Landing page
+│   │   ├── features/                 # Features page
+│   │   ├── about/                    # About page
+│   │   ├── blog/                     # Blog index + [slug] posts
+│   │   ├── contact/                  # Contact form
+│   │   ├── brand/                    # Brand assets (noindex)
+│   │   ├── privacy/                  # Privacy policy
+│   │   ├── terms/                    # Terms of service
+│   │   ├── accessibility/            # Accessibility statement
+│   │   ├── admin/                    # Login, dashboard, users, forgot/reset password, IG calendar
+│   │   └── api/                      # 17 API routes
+│   │       ├── analyze-food/         # Claude Haiku vision (photo -> macros)
+│   │       ├── analyze-description/  # Text-based food analysis
+│   │       ├── analyze-menu/         # Menu photo + URL scanning
+│   │       ├── suggest-foods/        # AI food suggestions
+│   │       ├── chat/                 # AI nutrition chat (Haiku free / Sonnet pro)
+│   │       ├── lookup-barcode/       # OpenFoodFacts API
+│   │       ├── register-device/      # Device UUID registration
+│   │       ├── scan-count/           # Usage tracking
+│   │       ├── verify-subscription/  # StoreKit receipt validation
+│   │       ├── contact/              # Contact form (Resend)
+│   │       └── admin/                # login, logout, setup, stats, users, forgot/reset password
+│   ├── components/                   # 15 React components
+│   ├── lib/                          # DB, auth, blog, security, cookies
+│   └── public/                       # Favicons, llms.txt, ai.txt
+│
+├── marketing/                        # Instagram + reel generators
+├── CLAUDE.md                         # Project instructions
+├── PHASES.md                         # Phase tracking
+└── HUMAN_TASKS.md                    # Manual action items
 ```
 
 ### Data Architecture
 
-**iOS (SwiftData -- local, offline-capable):**
-- `UserProfile` -- Goals, body info, dietary preferences, macro targets
-- `DailyNutrition` -- Daily macro totals with food entry relationships
-- `FoodEntry` -- Individual meals with calories, protein, carbs, fat, meal type, entry method
-- `SavedFood` -- Favorite/frequent foods for quick re-logging
-- `DailyWaterIntake` + `WaterEntry` -- Hydration tracking
+**iOS (SwiftData -- local-first, offline-capable):**
+
+| Model | Purpose |
+|:------|:--------|
+| `UserProfile` | Goals, body info, dietary preferences, macro targets |
+| `DailyNutrition` | Daily macro totals with food entry relationships |
+| `FoodEntry` | Individual meals (calories, protein, carbs, fat, meal type, entry method) |
+| `SavedFood` | Favorite/frequent foods for quick re-logging |
+| `DailyWaterIntake` | Hydration tracking with water entries |
 
 **Server (Neon PostgreSQL -- 5 tables):**
-- `users` -- Device registration, subscription status
-- `scan_usage` -- AI scan tracking (type, model, tokens, timestamp)
-- `admin_users` -- Dashboard access (super_admin, admin, viewer roles)
-- `blog_posts` -- Blog content management
-- `contact_submissions` -- Contact form entries
+
+| Table | Purpose |
+|:------|:--------|
+| `users` | Device registration, subscription status |
+| `scan_usage` | AI scan tracking (type, model, tokens, timestamp) |
+| `admin_users` | Dashboard access (super_admin, admin, viewer roles) |
+| `blog_posts` | Blog content management |
+| `contact_submissions` | Contact form entries |
 
 ---
 
@@ -116,13 +185,9 @@ NourishAI-main/
 | Tier | Price | AI Scans | Features |
 |:-----|:------|:---------|:---------|
 | Free | $0 | 1/week | Basic logging, manual entry, barcode, HealthKit |
-| Pro | $7.99/mo or $39.99/yr | Unlimited (30s cooldown) | All free + unlimited AI, saved meals, analytics, water tracking, weekly insights |
+| Pro | $7.99/mo or $39.99/yr | Unlimited (30s cooldown) | All free + unlimited AI, menu scanner, food ideas, AI chat (Sonnet), saved meals, analytics, water tracking |
 
-**Product IDs:**
-- `com.nourishai.subscription.pro.monthly`
-- `com.nourishai.subscription.pro.annual`
-
-**AI Cost:** ~$0.001-0.002 per photo scan (Claude Haiku). Free tier costs essentially nothing. Pro user at 10 scans/day = ~$0.30/month.
+**AI Cost:** ~$0.001-0.002 per photo scan (Claude Haiku). Free tier costs near zero. Pro user at 10 scans/day = ~$0.30/month.
 
 ---
 
@@ -130,31 +195,19 @@ NourishAI-main/
 
 ### Prerequisites
 
-- Node.js 18+
-- npm
+- Node.js 18+, npm
 - Xcode 16+ (for iOS development)
 - Neon PostgreSQL database
-- Anthropic API key (for AI features)
+- Anthropic API key
 
-### Website
+### Website / Backend
 
 ```bash
 cd backend
 npm install
-cp .env.example .env.local   # Configure environment variables
-npm run dev                   # http://localhost:3000
+cp .env.example .env.local    # Configure environment variables
+npm run dev                    # http://localhost:3000
 ```
-
-### Environment Variables
-
-| Variable | Description |
-|:---------|:-----------|
-| `ANTHROPIC_API_KEY` | Claude API key (server-side only) |
-| `RESEND_API_KEY` | Email sending |
-| `DATABASE_URL` | Neon PostgreSQL connection string |
-| `NEXT_PUBLIC_APP_URL` | Production URL |
-| `ADMIN_SETUP_TOKEN` | One-time admin seed token |
-| `ADMIN_SESSION_SECRET` | HMAC session signing secret |
 
 ### iOS App
 
@@ -163,40 +216,36 @@ npm run dev                   # http://localhost:3000
 3. Build and run on simulator or device (iOS 17+)
 4. API calls route through the website's API routes -- no embedded keys
 
-### Admin Setup
+### First Admin Setup
 
 ```bash
-# Seed the first admin account (one-time)
 curl -X POST https://nourishhealthai.com/api/admin/setup \
   -H "Content-Type: application/json" \
-  -d '{"email":"your@email.com","password":"your-password","name":"Admin","token":"your-setup-token"}'
+  -d '{"email":"you@example.com","password":"your-password","name":"Admin","token":"your-setup-token"}'
 ```
 
 ---
 
-## Brand
+## Environment Variables
 
-| Element | Value |
-|:--------|:------|
-| Primary | `#34C759` (green) |
-| Accent | `#FF9500` (orange) |
-| Dark BG | `#0A0A14` |
-| Card BG | `#1A1A2E` |
-| Protein | `#FF6B6B` (red) |
-| Carbs | `#4ECDC4` (teal) |
-| Fat | `#FFE66D` (yellow) |
-| Water | `#5AC8FA` (blue) |
-| iOS Font | SF Pro (system) |
-| Web Fonts | Outfit (headlines) + Inter (body) |
+| Variable | Required | Description |
+|:---------|:--------:|:------------|
+| `ANTHROPIC_API_KEY` | Yes | Claude API key (server-side only) |
+| `RESEND_API_KEY` | Yes | Resend email sending |
+| `DATABASE_URL` | Yes | Neon PostgreSQL connection string |
+| `NEXT_PUBLIC_APP_URL` | Yes | Production URL (`https://nourishhealthai.com`) |
+| `ADMIN_SETUP_TOKEN` | Yes | One-time admin seed token |
+| `ADMIN_SESSION_SECRET` | Yes | HMAC session signing secret |
 
 ---
 
 ## Security
 
 - **No embedded API keys** -- All AI calls proxy through server API routes
-- **PBKDF2 password hashing** -- 100,000 iterations with random salt (admin auth)
+- **PBKDF2 password hashing** -- 100,000 iterations with random salt
 - **HMAC session tokens** -- SHA-256 signed, HttpOnly, Secure, SameSite cookies
-- **Input validation** -- Size limits on all API inputs (photos: 10MB, text: 1000 chars)
+- **Serverless-safe password reset** -- HMAC-based self-validating tokens (no in-memory state)
+- **Input validation** -- Size limits on all inputs (photos: 10MB, text: 1,000 chars)
 - **Rate limiting** -- 30-second cooldown between scans, weekly caps for free tier
 - **Security headers** -- CSP, HSTS (2yr + preload), X-Frame-Options DENY, Permissions-Policy
 - **CORS** -- Configured in `lib/security.ts`
@@ -205,9 +254,28 @@ curl -X POST https://nourishhealthai.com/api/admin/setup \
 
 ## Deployment
 
-- **Website:** Auto-deploys to Vercel on push to `main` (root dir: `backend/`)
-- **iOS:** Build in Xcode, submit via App Store Connect
-- **Database:** Neon PostgreSQL via Vercel Integration
+| Target | Method |
+|:-------|:-------|
+| Website/API | Auto-deploys to Vercel on push to `main` (root dir: `backend/`) |
+| iOS App | Build in Xcode, submit via App Store Connect |
+| Database | Neon PostgreSQL via Vercel Integration |
+
+---
+
+## Brand
+
+| Element | Value |
+|:--------|:------|
+| Primary Green | `#34C759` |
+| Accent Orange | `#FF9500` |
+| Dark Background | `#0A0A14` |
+| Card Background | `#1A1A2E` |
+| Protein | `#FF6B6B` |
+| Carbs | `#4ECDC4` |
+| Fat | `#FFE66D` |
+| Water | `#5AC8FA` |
+| iOS Font | SF Pro (system) |
+| Web Fonts | Outfit (headlines) + Inter (body) |
 
 ---
 
