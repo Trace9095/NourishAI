@@ -226,3 +226,15 @@ See `PHASES.md` for detailed task tracking, `HUMAN_TASKS.md` for Trace's action 
 Master media library: `~/Documents/APPS/MEDIA/` — see `MEDIA/MEDIA_DIRECTORY.md` for full inventory.
 
 - **Note:** NourishAI does not yet have entries in MEDIA/originals or MEDIA/logos. Images are self-contained in `backend/public/images/`.
+
+## Claude Context Folder
+
+The `.claude/` folder contains standardized context for LLM onboarding:
+
+| File | Purpose |
+|------|---------|
+| `.claude/PROMPT.md` | Quick start guide -- read this first |
+| `.claude/CONTEXT.md` | Business context, product model, audience |
+| `.claude/ARCHITECTURE.md` | Full technical map (repo layout, data, auth, AI, security) |
+| `.claude/CONVENTIONS.md` | Stack, code patterns, git conventions, Gold Standard rules |
+| `SETUP.md` | Service runbook (env vars, DB, deploy, troubleshooting) |
