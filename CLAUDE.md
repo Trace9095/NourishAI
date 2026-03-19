@@ -6,6 +6,12 @@
 > **Repo:** Trace9095/NourishAI | **Branch:** main
 > **Domain:** nourishhealthai.com | **Project #:** 23
 
+## Auto-Compact
+Always enable autoCompact for long sessions:
+```
+claude config set autoCompact true
+```
+
 ## What This Is
 
 NourishAI is an AI-powered nutrition tracking iOS app + marketing website. Targets fitness-focused people (gym-goers, macro trackers, athletes). Freemium subscription model.
