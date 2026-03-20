@@ -646,7 +646,7 @@ export default function FeaturesPage() {
 
             <AnimateIn delay={0.3}>
               <a
-                href="#"
+                href="/#download"
                 className="inline-flex items-center justify-center gap-3 rounded-2xl bg-white px-10 py-5 text-lg font-bold text-brand-dark hover:bg-gray-100 transition-all min-h-[44px] shadow-lg shadow-white/10"
               >
                 <AppleIcon />

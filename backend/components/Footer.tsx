@@ -33,7 +33,7 @@ export function Footer() {
             </p>
             {/* App Store badge placeholder */}
             <a
-              href="#"
+              href="/#download"
               className="inline-flex items-center gap-2 mt-5 px-4 py-2.5 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-colors min-h-[44px]"
             >
               <svg width="20" height="24" viewBox="0 0 384 512" fill="white">
@@ -89,10 +89,10 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/about"
+                  href="/features"
                   className="text-gray-500 text-sm hover:text-brand-green transition-colors"
                 >
-                  About
+                  Features
                 </Link>
               </li>
             </ul>
