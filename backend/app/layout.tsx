@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Outfit } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: "%s | NourishAI",
   },
   description:
-    "Snap a photo of your food, get instant macro breakdown. AI-powered nutrition tracking for gym-goers, macro trackers, and athletes.",
+    "NourishAI — your AI-powered nutrition coach. Personalized meal plans, nutrition tracking, and health insights powered by artificial intelligence.",
   keywords: [
     "nutrition tracking",
     "macro tracker",
@@ -58,6 +58,7 @@ export const metadata: Metadata = {
     images: ["/opengraph-image"],
   },
   alternates: {
+    canonical: "https://nourishhealthai.com",
     types: {
       "text/markdown": "/llms.txt",
       "application/rss+xml": "/feed.xml",
@@ -73,6 +74,12 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   manifest: "/site.webmanifest",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 const jsonLdString = JSON.stringify({
