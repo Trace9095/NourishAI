@@ -1,16 +1,24 @@
 {
-  "name": "NourishAI",
+  "name": "Nourish Health AI",
   "short_name": "NourishAI",
-  "description": "AI-powered nutrition tracking for fitness-focused people",
+  "description": "AI-powered nutrition tracking — snap a photo for instant macro breakdown.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
+  "orientation": "portrait-primary",
   "background_color": "#0A0A14",
   "theme_color": "#34C759",
+  "categories": ["health", "fitness"],
   "icons": [
     {
       "src": "/favicon.svg",
       "type": "image/svg+xml",
       "sizes": "any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
     },
     {
       "src": "/icon-192.png",
