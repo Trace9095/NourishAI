@@ -127,7 +127,7 @@ export default function InstagramCalendarPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-brand-dark text-white">
+    <div className="min-h-dvh bg-brand-dark text-white">
       {/* Header */}
       <header className="sticky top-0 z-40 bg-brand-dark border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
@@ -318,6 +318,7 @@ export default function InstagramCalendarPage() {
                         src={imgPath}
                         alt={getHeadline(post)}
                         fill
+                        sizes="48px"
                         className="object-cover"
                         unoptimized
                       />
@@ -441,6 +442,7 @@ export default function InstagramCalendarPage() {
                         src={imgPath}
                         alt={getHeadline(post)}
                         fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
                         className="object-cover"
                         unoptimized
                       />
@@ -644,6 +646,7 @@ export default function InstagramCalendarPage() {
                   src={lightbox}
                   alt="Post preview"
                   fill
+                  sizes="100vw"
                   className="object-contain"
                   unoptimized
                 />

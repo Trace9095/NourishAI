@@ -199,7 +199,7 @@ export default function AdminUsersPage() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
+      <div className="flex items-center justify-center min-h-dvh">
         <div className="w-8 h-8 border-2 border-brand-green border-t-transparent rounded-full animate-spin" />
       </div>
     );
@@ -209,7 +209,7 @@ export default function AdminUsersPage() {
   const canCreate = currentAdmin?.role === "super_admin" || currentAdmin?.role === "admin";
 
   return (
-    <main id="main-content" className="min-h-screen">
+    <main id="main-content" className="min-h-dvh">
       {/* Top bar */}
       <header className="sticky top-0 z-50 bg-brand-dark border-b border-brand-border/30">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">

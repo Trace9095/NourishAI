@@ -12,7 +12,7 @@ export default function PrivacyPage() {
   return (
     <>
       <Header />
-      <main id="main-content" className="min-h-screen pt-24 pb-16 px-6">
+      <main id="main-content" className="min-h-dvh pt-24 pb-16 px-6">
         <div className="mx-auto max-w-3xl">
           <Link href="/" className="text-sm text-brand-green hover:underline mb-8 inline-block min-h-[44px] flex items-center">&larr; Back to Home</Link>
           <h1 className="font-[family-name:var(--font-outfit)] text-4xl font-extrabold text-white mb-8">Privacy Policy</h1>

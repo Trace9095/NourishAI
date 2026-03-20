@@ -49,7 +49,7 @@ export default function ContactPage() {
   return (
     <>
       <Header />
-      <main id="main-content" className="min-h-screen pt-24 pb-16 px-6">
+      <main id="main-content" className="min-h-dvh pt-24 pb-16 px-6">
         <div className="mx-auto max-w-7xl">
           {/* Back link */}
           <Link
