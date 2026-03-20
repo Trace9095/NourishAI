@@ -3,7 +3,7 @@ import { HeroRotatingText } from "./HeroRotatingText";
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+    <section className="relative min-h-dvh flex items-center pt-20 overflow-hidden">
       {/* Background gradient orbs */}
       <div className="absolute top-20 left-1/4 w-[500px] h-[500px] bg-brand-green/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-20 right-1/4 w-[400px] h-[400px] bg-brand-orange/5 rounded-full blur-[120px] pointer-events-none" />
