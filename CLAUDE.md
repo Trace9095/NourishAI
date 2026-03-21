@@ -1,10 +1,9 @@
-# NourishAI — Project Instructions
+# CLAUDE.md — NAI (NourishAI)
 
-> **Owner:** Trace Hildebrand | CEO@epicai.ai | GitHub: Trace9095
-> **Bundle ID:** com.epicai.nourishai | **App Group:** group.com.epicai.nourishai
-> **Vercel Slug:** `nourish-ai` | **Team:** `team_pGqkBUxWUXiBoZoKYPgweHDl`
-> **Repo:** Trace9095/NourishAI | **Branch:** main
-> **Domain:** nourishhealthai.com | **Project #:** 23
+> AGENTS: Read this file BEFORE touching any code. Check git log. Do NOT redo completed work.
+> Last updated: 2026-03-20 (Session 124)
+
+---
 
 ## Auto-Compact
 Always enable autoCompact for long sessions:
@@ -12,104 +11,91 @@ Always enable autoCompact for long sessions:
 claude config set autoCompact true
 ```
 
-## What This Is
+## Project Overview
+
+| Field | Value |
+|-------|-------|
+| **Project #** | 23 |
+| **App** | NourishAI — AI-powered nutrition tracking iOS app + marketing website |
+| **Bundle ID** | com.epicai.nourishai |
+| **App Group** | group.com.epicai.nourishai |
+| **Live URL** | [nourishhealthai.com](https://nourishhealthai.com) |
+| **Vercel Slug** | `nourish-ai` |
+| **GitHub** | Trace9095/NourishAI |
+| **Root Directory** | `backend/` |
+| **Branch** | main |
+| **Version** | 0.3.1 (web) |
 
 NourishAI is an AI-powered nutrition tracking iOS app + marketing website. Targets fitness-focused people (gym-goers, macro trackers, athletes). Freemium subscription model.
 
-## Architecture
+---
 
-- **iOS App** (Swift 6 / SwiftUI / iOS 17+) — local-first with SwiftData
-- **Marketing Website + Backend API** (Next.js 16 / Tailwind v4 / Vercel) — serves as iOS app's server + admin dashboard
-- **Database** (Neon PostgreSQL via Vercel) — user accounts, scan tracking, admin users, blog, contact
-- **AI** — Claude Haiku vision via server proxy (NO embedded API keys in iOS)
+## Current Status
 
-### Data Split
-- **iOS (SwiftData):** UserProfile, DailyNutrition, FoodEntry, SavedFood, DailyWaterIntake
-- **Server (Neon PostgreSQL, 5 tables):** users, scan_usage, admin_users, blog_posts, contact_submissions
+- **Build:** Passing (Next.js 16.2.0)
+- **Deployment:** Live at nourishhealthai.com
+- **URL:** https://nourishhealthai.com
+- **Vercel Slug:** `nourish-ai`
+- **Last commit:** `c66873d` — chore: add Python __pycache__ to .gitignore
 
-## File Inventory
-
-### Backend (Next.js 16 — Vercel root dir: `backend/`)
-
-**Pages (16):**
-- `app/page.tsx` — Landing page (hero, features, how-it-works, pricing, testimonials, FAQ, download CTA)
-- `app/features/page.tsx` — Detailed features with comparison table
-- `app/about/page.tsx` — About page with story, values, Epic AI
-- `app/blog/page.tsx` — Blog index with category filters
-- `app/blog/[slug]/page.tsx` — Blog post pages (SSG via generateStaticParams)
-- `app/contact/page.tsx` — Contact page with form
-- `app/brand/page.tsx` — Brand assets, colors (click-to-copy), typography, referral links (noindex)
-- `app/privacy/page.tsx` — Privacy policy
-- `app/terms/page.tsx` — Terms of service
-- `app/accessibility/page.tsx` — Accessibility statement
-- `app/not-found.tsx` — Branded 404 with gradient orbs, quick nav
-- `app/admin/page.tsx` — Admin login (email + password, forgot password link)
-- `app/admin/dashboard/page.tsx` — Full admin dashboard (12 KPIs, charts, tables, auto-refresh)
-- `app/admin/users/page.tsx` — Admin users management (CRUD, role badges, inline add form)
-- `app/admin/instagram-calendar/page.tsx` — Instagram content calendar (grid/list, filters, posted tracking)
-- `app/admin/forgot-password/page.tsx` — Forgot password form (email input)
-- `app/admin/reset-password/page.tsx` — Reset password form (token validation, dual password input)
-
-**API Routes (17) + RSS Feed:**
-- `api/analyze-food/route.ts` — Claude Haiku vision proxy (photo → macros)
-- `api/analyze-description/route.ts` — Text-based food analysis
-- `api/analyze-menu/route.ts` — Menu photo + URL scanning with health insights (Claude Haiku vision)
-- `api/suggest-foods/route.ts` — AI food suggestions based on remaining macros (Claude Haiku text)
-- `api/chat/route.ts` — AI nutrition chat (Haiku free / Sonnet pro, 5 msg/day free)
-- `api/lookup-barcode/route.ts` — OpenFoodFacts API (free)
-- `api/register-device/route.ts` — Device UUID registration
-- `api/scan-count/route.ts` — Usage tracking / remaining scans
-- `api/verify-subscription/route.ts` — StoreKit receipt validation
-- `api/contact/route.ts` — Contact form (Resend email)
-- `api/admin/login/route.ts` — Admin login (PBKDF2 password verification)
-- `api/admin/logout/route.ts` — Session cookie destruction
-- `api/admin/setup/route.ts` — One-time admin seed (protected by ADMIN_SETUP_TOKEN)
-- `api/admin/stats/route.ts` — Dashboard data (users, scans, revenue, costs)
-- `api/admin/users/route.ts` — Admin user CRUD (GET, POST, PATCH, DELETE with role checks)
-- `api/admin/forgot-password/route.ts` — Password reset email (Resend + in-memory token, 15min expiry)
-- `api/admin/reset-password/route.ts` — Token validation + PBKDF2 password update
-
-**Components (15):**
-AnimateIn, BrandContent, ContactForm, CookieConsentBanner, DownloadCTA, FAQ, Features, Footer, Header, Hero, HowItWorks, MacroRings, Pricing, Stats, Testimonials
-
-**Lib (6 files):**
-- `lib/admin-auth.ts` — PBKDF2 hashing, HMAC sessions, HttpOnly cookies
-- `lib/blog.ts` — 5 seed articles with full HTML content
-- `lib/cookie-consent.ts` — 3-tier consent (necessary/analytics/marketing)
-- `lib/security.ts` — CORS utilities
-- `lib/db/index.ts` — Neon + Drizzle lazy singleton connection
-- `lib/db/schema.ts` — 5 tables (users, scan_usage, admin_users, blog_posts, contact_submissions)
-
-**Other:** `middleware.ts` (admin auth redirect + llms.txt Link header), `app/opengraph-image.tsx`, `app/robots.ts`, `app/sitemap.ts`, `app/feed.xml/route.ts` (RSS), `app/admin/layout.tsx`, `app/blog/layout.tsx`
-
-### iOS (29 Swift files + Xcode project)
-
-**Root (3):** NourishAIApp.swift, ContentView.swift, Constants.swift
-**Models (3):** UserProfile.swift, NutritionModels.swift, NutritionCalculator.swift
-**Services (6):** NourishAPIManager.swift, HealthKitManager.swift, SubscriptionManager.swift, KeychainService.swift, AppDelegate.swift, PushNotificationService.swift
-**Components (2):** MacroRingView.swift, MealRow.swift
-**Views/Dashboard (1):** DashboardView.swift
-**Views/FoodLog (7):** FoodLogView.swift, AIFoodCameraView.swift, AIFoodChatView.swift, ManualEntryView.swift, BarcodeScanView.swift, MenuScanView.swift, FoodIdeasView.swift
-**Views/Discovery (1):** RestaurantMapView.swift
-**Views/Chat (1):** NutritionChatView.swift
-**Views/Onboarding (1):** OnboardingContainerView.swift
-**Views/Progress (1):** ProgressView.swift
-**Views/Settings (1):** SettingsView.swift
-**Views/Subscription (1):** SubscriptionView.swift
-
-**All view dependencies satisfied.** SubscriptionView wired to SubscriptionManager with StoreKit 2.
+---
 
 ## Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
 | iOS | Swift 6, SwiftUI, SwiftData, HealthKit, StoreKit 2, iOS 17+ |
-| Web | Next.js 16 App Router, Tailwind CSS v4, Drizzle ORM |
+| Web | Next.js 16.2.0 App Router, Tailwind CSS v4, Drizzle ORM ^0.45.1 |
 | DB | Neon PostgreSQL (5 tables) |
-| AI | Claude Haiku (vision) via server proxy |
+| AI | Claude Haiku (vision) via server proxy — Haiku free / Sonnet pro |
 | Auth | PBKDF2 + HMAC sessions (admin), device UUID (iOS) |
 | Email | Resend API |
 | Deploy | Vercel (auto-deploy on push to main) |
+
+---
+
+## Root Directory & Build Command
+
+- **Vercel Root Directory:** `backend/`
+- **Build command:** `cd backend && npx next build`
+- **iOS:** Open `ios/NourishAI.xcodeproj` in Xcode (must create project first)
+
+---
+
+## Key Architecture Decisions
+
+- **NO embedded API keys in iOS** — All AI calls go through `/api/analyze-food` server route
+- **Rate limiting:** Free = 1 scan/week. Pro = unlimited + 30s cooldown. Server-side.
+- **AI model tiering:** Haiku for free users / Sonnet for pro users (60x cost reduction)
+- **Admin auth:** PBKDF2 + HMAC sessions. `ADMIN_SESSION_SECRET` env var required.
+- **StoreKit 2 product IDs:** `com.nourishai.subscription.pro.monthly`, `com.nourishai.subscription.pro.annual`
+- **DO NOT add RevenueCat** — LiftLabPro uses it, NourishAI uses StoreKit 2 only
+
+---
+
+## iOS App (29 Swift files)
+
+**Architecture:** Swift 6, SwiftUI, SwiftData (local-first), HealthKit, StoreKit 2, iOS 17+
+
+**Key files:**
+- Services: NourishAPIManager, HealthKitManager, SubscriptionManager, KeychainService, PushNotificationService
+- Views: DashboardView, FoodLogView, AIFoodCameraView, AIFoodChatView, ManualEntryView, BarcodeScanView, MenuScanView, FoodIdeasView, RestaurantMapView, NutritionChatView, OnboardingContainerView, ProgressView, SettingsView, SubscriptionView
+
+**Data split:**
+- iOS (SwiftData): UserProfile, DailyNutrition, FoodEntry, SavedFood, DailyWaterIntake
+- Server (Neon PostgreSQL, 5 tables): users, scan_usage, admin_users, blog_posts, contact_submissions
+
+---
+
+## Backend File Inventory
+
+**Pages (16):** Landing, features, about, blog (index + [slug]), contact, brand, privacy, terms, accessibility, not-found, admin (login, dashboard, users, instagram-calendar, forgot/reset-password)
+
+**API Routes (17):** analyze-food, analyze-description, analyze-menu, suggest-foods, chat (Haiku free / Sonnet pro), lookup-barcode, register-device, scan-count, verify-subscription, contact, admin/login, admin/logout, admin/setup, admin/stats, admin/users, admin/forgot-password, admin/reset-password
+
+**DB Schema (5 tables):** users, scan_usage, admin_users, blog_posts, contact_submissions
+
+---
 
 ## Subscription Model
 
@@ -118,16 +104,43 @@ AnimateIn, BrandContent, ContactForm, CookieConsentBanner, DownloadCTA, FAQ, Fea
 | Free | $0 | 1/week |
 | Pro | $7.99/mo or $39.99/yr | Unlimited (30s cooldown) |
 
-**Product IDs:** `com.nourishai.subscription.pro.monthly`, `com.nourishai.subscription.pro.annual`
+---
 
-## Brand
+## Admin Dashboard
 
-- Primary: `#34C759` (green) | Accent: `#FF9500` (orange) | Dark: `#0A0A14` | Card: `#12121A`
-- Macros: Protein `#FF6B6B` | Carbs `#4ECDC4` | Fat `#FFE66D` | Calories `#FF9500` | Water `#5AC8FA`
-- Typography: SF Pro (iOS), Inter body + Outfit headlines (web)
-- Epic AI product — CAN show "Built by Epic AI" branding
+- **Login:** `/admin` (email + password, "Forgot password?" link)
+- **Dashboard:** `/admin/dashboard` (protected by middleware cookie check)
+- **Users:** `/admin/users` (CRUD for admin accounts)
+- **Instagram Calendar:** `/admin/instagram-calendar`
+- **Setup:** POST `/api/admin/setup` with `ADMIN_SETUP_TOKEN` to seed first super_admin
+- **Roles:** super_admin, admin, viewer (pgEnum in schema)
+- **Admins:** CEO@epicai.ai (primary), Trace.hildebrand@gmail.com (added S123)
 
-## Environment Variables (Vercel)
+---
+
+## Recent Work (Last 15 Commits)
+
+```
+c66873d chore: add Python __pycache__ to .gitignore
+02afffc fix: viewport fixes and code splitting improvements
+211b44a feat: audit + enhance JSON-LD structured data
+2c28e74 chore: rename middleware to proxy.ts, commit session changes
+6bb9352 docs: add standardized _notes and update docs for 2026
+87065e7 feat: update robots.ts and site manifest
+3fcd3c5 perf: mobile scroll + touch + viewport fixes
+4414bc2 chore: update sitemap with static lastModified dates for SEO
+31bd278 docs: add golden standard documentation files
+9cedce1 chore: bump version to 0.3.0
+2b3475c security: upgrade Next.js to 16.2.0 — fixes CSRF + DoS CVEs
+6132f0c docs: update project context
+86d053c docs: add BRAND.md brand identity file
+426fb54 docs: upgrade README to professional format with badges and stats
+de71205 docs: add .claude context folder and service runbook
+```
+
+---
+
+## Environment Variables
 
 | Variable | Status | Notes |
 |----------|--------|-------|
@@ -138,82 +151,19 @@ AnimateIn, BrandContent, ContactForm, CookieConsentBanner, DownloadCTA, FAQ, Fea
 | ADMIN_SETUP_TOKEN | SET | `nourishai-admin-setup-2026` |
 | ADMIN_SESSION_SECRET | SET | Random string for session signing |
 
-## Build Commands
+---
 
-```bash
-cd backend && npx next build     # Website
-# iOS: Open ios/NourishAI.xcodeproj in Xcode (must create project first)
-```
+## Brand Identity
 
-## Critical Rules
+- **Primary:** `#34C759` (green) | Accent: `#FF9500` (orange) | Dark: `#0A0A14` | Card: `#12121A`
+- **Macros:** Protein `#FF6B6B` | Carbs `#4ECDC4` | Fat `#FFE66D` | Calories `#FF9500` | Water `#5AC8FA`
+- **Typography:** SF Pro (iOS), Inter body + Outfit headlines (web)
+- Epic AI product — CAN show "Built by Epic AI" branding
 
-1. **NO embedded API keys in iOS.** All AI calls → `/api/analyze-food` server route.
-2. **Rate limiting:** Free = 1 scan/week. Pro = unlimited + 30s cooldown. Server-side.
-3. **pbxproj rule:** Create Swift files through Xcode UI, not manually.
-4. **Swift 6:** MainActor default. `nonisolated` for background. Codable = Sendable.
-5. **Gold Standard:** Website follows all 36 rules (see master CLAUDE.md).
-6. **Security pattern:** CORS in `lib/security.ts`, headers in `next.config.ts`. Never both.
-7. **No backdrop-blur on fixed/sticky.** Opaque backgrounds only.
-8. **44px touch targets.** All tappable elements.
-9. **quality={90}** on `<Image>` components. Never on `<ImageIcon>`/`<ImagePlus>`.
-10. **Vercel root dir:** `backend/`
-11. **Admin auth:** PBKDF2 + HMAC sessions. `ADMIN_SESSION_SECRET` env var required.
-12. **Commit format:** `feat:`/`fix:`/`chore:` + `Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>`
+---
 
-## Admin Dashboard
+## Phase Status
 
-- **Login:** `/admin` (email + password, "Forgot password?" link)
-- **Dashboard:** `/admin/dashboard` (protected by middleware cookie check)
-- **Users:** `/admin/users` (CRUD for admin accounts — add/edit/deactivate admins)
-- **Forgot Password:** `/admin/forgot-password` → sends email via Resend with reset token
-- **Reset Password:** `/admin/reset-password?token=...` → validates token, sets new password
-- **Setup:** POST `/api/admin/setup` with `ADMIN_SETUP_TOKEN` to seed first super_admin
-- **Roles:** super_admin, admin, viewer (pgEnum in schema)
-- **Instagram:** `/admin/instagram-calendar` (grid/list view, month filter, search, posted tracking)
-- **Features:** 12 KPI cards, scan/user charts (30-day), recent activity tables, auto-refresh 30s (pauses on tab hide)
-- **Footer lock icon** links to `/admin` (Gold Standard pattern)
-
-## Session History
-
-### Sessions 68-71 (March 2026)
-- Phase 0 COMPLETE: Infrastructure, GitHub repo, Vercel project, docs, SVG logo
-- Phase 1 DONE: 21 iOS Swift files written (awaiting Xcode project creation)
-- Phase 2 DONE: All views + services, all compile errors resolved, all cross-file deps verified
-- Phase 3 DONE: Full website (12 pages), 11 API routes + RSS feed, admin dashboard, Gold Standard compliant
-- Session 71: Security hardening (removed hardcoded session secret, fixed CORS), iOS fixes (ProgressView rename, servingSize type mismatch, WaterEntry model container, MealRow optional binding), FAQ CTA buttons, comprehensive code review via background agents
-- Session 72: Fixed all remaining code review findings. iOS: DashboardView #Predicate crash (Calendar not translatable), SubscriptionManager Task.detached Swift 6 violation, BarcodeScanView loading spinner state machine, AIFoodCameraView PhotosPicker wiring, SubscriptionView isPurchasing reset. Web: scan limit consistency (all scan types counted), input size limits, cooldown on analyze-description, CookieConsentBanner hidden on admin, complete favicon metadata, device ID truncation in admin stats, blog Copy Link client component.
-- Session 73: Generated Xcode project.pbxproj programmatically (all 21 Swift files, iOS 17, Swift 6, MainActor isolation). Set all Vercel env vars (ADMIN_SETUP_TOKEN, ADMIN_SESSION_SECRET). Ran Drizzle migration (5 tables). Seeded admin account (CEO@epicai.ai, super_admin). Verified admin login, website live at nourishhealthai.com, API routes responding.
-- Session 74: Admin users management (/admin/users with CRUD), forgot password flow (Resend email + token reset), fixed Claude JSON parsing (strip markdown fences), fixed barcode kJ/kcal swap detection, expanded FAQ to 34 questions (6 categories), expanded blog to 8 posts, marketing engine (5 templates + March/April calendars = 35 posts, 25 PNGs, 1 MP4). Full Gold Standard audit passed all 36 rules. Security headers verified live. All docs updated.
-- Session 75: Security audit (53 findings from 2 background agents). Critical fix: replaced in-memory password reset tokens with HMAC-based self-validating tokens (serverless-safe). Added isActive check to getSessionAdmin(). Fixed tokensUsed NaN, 44px touch targets on admin pages, CSS block/flex conflicts, contact form double-encoding (raw in DB, escape in email only), removed unused rateLimitKey. All fixes deployed to Vercel (READY).
-- Session 76: Instagram calendar admin page (/admin/instagram-calendar — grid/list view, month filters, search, posted tracking, lightbox). May/June 2026 content calendars (33 new posts, total 68 across Mar-Jun). Dashboard auto-refresh pauses on tab hide. Password complexity requirements (uppercase + lowercase + number) on admin create and reset. Email format validation. 2 new blog posts (10 total). Per-page OG images deployed.
-- Session 77: V1 MVP Expansion — 6 phases implemented:
-  - Phase 1: Fixed all 68 Instagram calendar JSON field names (4 months) to match HTML templates. Regenerated all 65 PNGs + 3 MP4s.
-  - Phase 3: Menu scanning API route (Claude Haiku vision, health scores 1-10) + iOS MenuScanView
-  - Phase 4: Food suggestions API route (Claude Haiku text, 5 suggestions) + iOS FoodIdeasView
-  - Phase 5: Restaurant discovery via Apple MapKit (iOS-only, no backend) + RestaurantMapView
-  - Phase 6: AI nutrition chat API route (Claude Sonnet, 20 msg/day free) + iOS NutritionChatView
-  - iOS wiring: 3 new API endpoints in Constants, 3 new manager methods, DashboardView AddFoodSheet + restaurant card
-  - 4 new iOS Swift files (need Xcode project addition), 3 new API routes, 8 calendar JSONs fixed
-  - All deployed to Vercel (READY). Visual audit screenshots saved.
-- Remaining: Open project in Xcode (set team, build, add 4 new Swift files), Watch/Widget targets, StoreKit config, App Store Connect setup, payment testing, Resend domain verification, NSLocationWhenInUseUsageDescription in Info.plist
-- Session 78: iOS BUILD SUCCEEDED on simulator. Fixed SettingsView compile errors (NutritionGoal/ActivityLevel enum refs, biologicalSex property, calculateTargets parameter order). Made Settings fully editable (Edit/Save/Cancel toolbar, profile fields + macro target fields + Recalculate Targets). Fixed reel timing bug (CSS animations ran real-time during frame capture — fixed with Web Animations API pause+seek for frame-accurate 17s videos). All 8 reels regenerated (510 frames each, 30fps). Synced MP4s to backend/public. Updated HUMAN_TASKS.md with App Store Connect screenshot requirements (need iPhone 11 Pro Max for 6.5" 1242x2688, iPhone 14 Pro Max for 6.7" 1284x2778 — iPhone 17 Pro Max produces wrong dimensions).
-- Remaining: Reel overhaul (CTA too short at 1.5s, content too small, need more templates + more reels, premium quality), notification system (APNs), story/feed template redesign (remove emojis), hero rotating text, blog dynamic OG, add 4 new Swift files to Xcode, set developer team, Watch/Widget, StoreKit, App Store submission. Screenshot sizes confirmed: iPhone 17 Pro Max = 1260x2736 (6.9"), iPad Pro 13" M5 = 2064x2752 (13").
-- Session 79: Reel overhaul complete. 4 existing + 6 new reel templates (10 total). All retimed from 9s to 15s (sweet spot). Bigger content, SVG icons replace emojis, floating particles, shimmer CTA, enhanced gradient orbs. 16 reels rendered via parallel generator (450 frames each, 30fps). Added seamless loop fade (.loop-fade overlay, z-index 200, fades to #0A0A14 in last 1s — reels loop invisibly). Created comprehensive documentation: `marketing/MARKETING-ENGINE.md` (NourishAI-specific) + `MARKETING-ENGINES/REEL-ENGINE-TEMPLATE.md` (reusable blueprint for any project). Updated cross-project docs (master CLAUDE.md, MARKETING-ENGINES/CLAUDE.md, REEL-GOLDEN-STANDARDS.md, MEMORY.md) so all LLMs/projects can discover reel engine patterns. Seamless looping added as Golden Standard #14 in REEL-GOLDEN-STANDARDS.md. All 16 MP4s synced to backend/public and deployed.
-- Remaining: Notification system (APNs), story/feed template redesign (remove emojis), hero rotating text, blog dynamic OG, add 4 new Swift files to Xcode, set developer team, Watch/Widget, StoreKit, App Store submission.
-- Session 80: App Store screenshot generator complete (9 HTML templates, 25 PNGs across 5 device sizes: iPhone 6.5"/6.7", iPad 12.9", Watch 45mm/Ultra). Gold Standard audit: 37/37 verified (footer lock icon + 44px targets confirmed). Cross-iOS-app docs & Gold Standard audit (NourishAI, LiftLabPro, TacosY).
-- Session 84: **App Store Production Readiness — 7-Phase Audit & Fix:**
-  - **Phase 0:** Removed seed/placeholder data from production builds (`#if DEBUG` guard on `seedScreenshotData()`)
-  - **Phase 1:** Fixed HealthKit — real steps + active calories from HealthKit instead of hardcoded "--"
-  - **Phase 2:** Fixed "AI analysis temporarily unavailable" — root cause: `seedScreenshotData()` bypassed onboarding → `registerDevice()` never called → all API calls 401. Fixed: auto-registration on launch in ContentView `.task`, specific error messages per HTTP status (401/403/429/502/503)
-  - **Phase 3:** Subscription lifecycle — purchase syncs with backend via `verifySubscription`, profile tier updates on launch, Settings shows plan name + renewal date + manage subscription
-  - **Phase 4:** Menu scanner URL mode — segmented picker (Photo/URL), URL input with validation, `analyzeMenuURL()` method + backend URL-based analysis (fetches website, strips HTML, Claude analyzes)
-  - **Phase 5:** Chat AI paywall — reduced free limit 20→5 msg/day, Haiku for free users / Sonnet for pro (60x cost reduction), upgrade CTA when 2 or fewer messages remain
-  - **Phase 6:** Full production audit — backend builds cleanly, all 29 Swift files in pbxproj, Gold Standard 20/20 website, all Info.plist usage descriptions present, push notification entitlement added
-  - **Phase 7:** Updated all docs (CLAUDE.md, TODO.md, HUMAN_TASKS.md, MEMORY.md)
-  - 11 files modified (2 backend routes + 9 iOS files)
-- Remaining: Set Apple Developer Team, Watch/Widget targets, StoreKit config, App Store Connect setup, TestFlight, App Store submission
-
-### Phase Status
 | Phase | Status |
 |-------|--------|
 | 0 — Infrastructure | COMPLETE |
@@ -221,26 +171,65 @@ cd backend && npx next build     # Website
 | 2 — iOS Views + AI | DONE |
 | 3 — Website + API + DB | DONE (Gold Standard 20/20, 17 API routes) |
 | 3.5 — V1 Features | DONE (menu scan + URL, food ideas, restaurant discovery, AI chat) |
-| 3.6 — Production Ready | DONE (S84: seed data fix, HealthKit real data, API error handling, subscription lifecycle, chat paywall, full audit) |
-| 4 — Watch + Widget | NOT STARTED (depends on Xcode project) |
+| 3.6 — Production Ready | DONE (S84: seed data fix, HealthKit real data, API error handling, subscription lifecycle, chat paywall) |
+| 4 — Watch + Widget | NOT STARTED (depends on Xcode project setup) |
 | 5 — Launch | NOT STARTED |
 
-See `PHASES.md` for detailed task tracking, `HUMAN_TASKS.md` for Trace's action items, `TODO.md` for full backlog.
+---
 
-## Media Library
+## Known Issues / Open Bugs
 
-Master media library: `~/Documents/APPS/MEDIA/` — see `MEDIA/MEDIA_DIRECTORY.md` for full inventory.
+- Phase 4 (Watch/Widget) requires Xcode target creation — not done
+- Phase 5 (Launch) requires App Store Connect setup, TestFlight, StoreKit config
+- APNs push notification testing pending
+- Resend domain verification for nourishhealthai.com pending
 
-- **Note:** NourishAI does not yet have entries in MEDIA/originals or MEDIA/logos. Images are self-contained in `backend/public/images/`.
+---
 
-## Claude Context Folder
+## Completed Work (DO NOT REDO)
 
-The `.claude/` folder contains standardized context for LLM onboarding:
+- Full website (12 pages), 17 API routes, RSS feed
+- Admin dashboard with users CRUD, forgot password, Instagram calendar
+- iOS app: 29 Swift files, all views complete, HealthKit, StoreKit 2, APNs
+- App Store screenshot generator (9 HTML templates, 25 PNGs, 5 device sizes)
+- Marketing engine: 10 reel templates, 16 reels, seamless loop fade
+- Security hardening: HMAC-based password reset tokens (serverless-safe)
+- OWASP security audit (S122) — all issues resolved
+- Next.js 16.2.0 CSRF patch applied
+- Drizzle migration run, 5 tables in Neon
+
+---
+
+## TODO / Next Steps
+
+1. Phase 4: Apple Watch companion target (needs Xcode)
+2. Phase 4: Home screen widget target (needs Xcode)
+3. Phase 5: StoreKit configuration + payment testing
+4. Phase 5: App Store Connect setup + submission
+5. Resend domain verification for nourishhealthai.com
+6. NSLocationWhenInUseUsageDescription in Info.plist (RestaurantMapView)
+
+---
+
+## CEO Rules for This Project
+
+1. **NO embedded API keys in iOS** — all AI calls go through server proxy
+2. **Rate limiting is server-side** — Free = 1 scan/week, Pro = unlimited + 30s cooldown
+3. **Swift 6:** MainActor default. `nonisolated` for background. Codable = Sendable.
+4. **Admin auth:** PBKDF2 + HMAC sessions. `ADMIN_SESSION_SECRET` env var required.
+5. **pbxproj rule:** Create Swift files through Xcode UI, not manually.
+6. **DO NOT add RevenueCat** — StoreKit 2 only for this project
+7. **Haiku free / Sonnet pro** — AI model tiering is intentional, do not change
+8. **No backdrop-blur on fixed/sticky** — Gold Standard #31
+
+---
+
+## Claude Context Files
 
 | File | Purpose |
 |------|---------|
-| `.claude/PROMPT.md` | Quick start guide -- read this first |
+| `.claude/PROMPT.md` | Quick start guide — read this first |
 | `.claude/CONTEXT.md` | Business context, product model, audience |
 | `.claude/ARCHITECTURE.md` | Full technical map (repo layout, data, auth, AI, security) |
 | `.claude/CONVENTIONS.md` | Stack, code patterns, git conventions, Gold Standard rules |
-| `SETUP.md` | Service runbook (env vars, DB, deploy, troubleshooting) |
+| `_notes/` | Per-session notes (SESSION_2026_03_19_ADMIN.md, SECURITY_AUDIT.md, etc.) |
