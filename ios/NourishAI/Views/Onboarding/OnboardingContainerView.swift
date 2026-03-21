@@ -462,6 +462,24 @@ struct OnboardingContainerView: View {
             .clipShape(Capsule())
             .padding(.top, 16)
 
+            // Medical disclaimer
+            HStack(alignment: .top, spacing: 8) {
+                Image(systemName: "info.circle")
+                    .font(.caption)
+                    .foregroundColor(.gray)
+                    .padding(.top, 1)
+                Text("Estimates use the Mifflin-St Jeor equation. For personalized medical nutrition therapy, consult a registered dietitian.")
+                    .font(.caption2)
+                    .foregroundColor(.gray)
+                    .multilineTextAlignment(.leading)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            .padding(12)
+            .background(Color.brandCard)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .padding(.horizontal, 4)
+            .padding(.top, 12)
+
             Spacer()
 
             primaryButton("Start Tracking") {

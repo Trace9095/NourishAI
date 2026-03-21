@@ -6,6 +6,7 @@ struct SettingsView: View {
     @Environment(\.openURL) private var openURL
     @Query private var profiles: [UserProfile]
     @State private var showSubscription = false
+    @State private var showDisclaimer = false
     @State private var healthKitRequested = false
     @State private var isEditing = false
     @State private var subscriptionExpiry: Date?
@@ -135,7 +136,7 @@ struct SettingsView: View {
                                 Image(systemName: "checkmark.circle.fill")
                                     .foregroundColor(.brandGreen)
                             } else {
-                                Text("Connect")
+                                Text("Enable")
                                     .foregroundColor(.brandGreen)
                             }
                         }
@@ -222,10 +223,23 @@ struct SettingsView: View {
                 // About
                 Section {
                     settingsRow("Version", value: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0")
+                    Button {
+                        showDisclaimer = true
+                    } label: {
+                        HStack {
+                            Label("Health Sources & Disclaimer", systemImage: "cross.circle")
+                                .foregroundColor(.macroProtein)
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .font(.caption)
+                                .foregroundColor(.gray)
+                        }
+                    }
+                    .frame(minHeight: Layout.minTouchTarget)
                     Link("Privacy Policy", destination: URL(string: "https://nourishhealthai.com/privacy")!)
                         .foregroundColor(.brandGreen)
                         .frame(minHeight: Layout.minTouchTarget)
-                    Link("Terms of Service", destination: URL(string: "https://nourishhealthai.com/terms")!)
+                    Link("Terms of Use", destination: URL(string: "https://nourishhealthai.com/terms")!)
                         .foregroundColor(.brandGreen)
                         .frame(minHeight: Layout.minTouchTarget)
                     HStack {
@@ -266,6 +280,9 @@ struct SettingsView: View {
             }
             .sheet(isPresented: $showSubscription) {
                 SubscriptionView()
+            }
+            .sheet(isPresented: $showDisclaimer) {
+                HealthDisclaimerView()
             }
             .task {
                 await refreshSubscriptionDetails()

@@ -123,19 +123,33 @@ struct SubscriptionView: View {
                     .padding(.horizontal, 20)
                     .disabled(isPurchasing)
 
-                    // Legal text
-                    VStack(spacing: 4) {
-                        Text("7-day free trial, then \(selectedPlan == .annual ? "$39.99/year" : "$7.99/month")")
+                    // Subscription title, length, price — Apple Guideline 3.1.2(c)
+                    VStack(spacing: 6) {
+                        Text(selectedPlan == .annual
+                             ? "NourishAI Pro · Annual Subscription"
+                             : "NourishAI Pro · Monthly Subscription")
+                            .font(.caption.weight(.semibold))
+                            .foregroundColor(.gray)
+
+                        Text(selectedPlan == .annual
+                             ? "7-day free trial, then $39.99 per year (billed annually)"
+                             : "7-day free trial, then $7.99 per month (billed monthly)")
                             .font(.caption)
                             .foregroundColor(.gray)
-                        Text("Cancel anytime. Recurring billing.")
+                            .multilineTextAlignment(.center)
+
+                        Text("Subscription automatically renews unless cancelled at least 24 hours before the end of the current period. Your Apple ID account will be charged at confirmation of purchase. You can cancel anytime in Settings > Apple ID > Subscriptions.")
                             .font(.caption2)
                             .foregroundColor(.gray.opacity(0.7))
+                            .multilineTextAlignment(.center)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .padding(.horizontal, 8)
+
                         HStack(spacing: 16) {
-                            Link("Terms", destination: URL(string: "https://nourishhealthai.com/terms")!)
+                            Link("Terms of Use", destination: URL(string: "https://nourishhealthai.com/terms")!)
                                 .font(.caption2)
                                 .foregroundColor(.brandGreen)
-                            Link("Privacy", destination: URL(string: "https://nourishhealthai.com/privacy")!)
+                            Link("Privacy Policy", destination: URL(string: "https://nourishhealthai.com/privacy")!)
                                 .font(.caption2)
                                 .foregroundColor(.brandGreen)
                             Button("Restore Purchases") {

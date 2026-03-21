@@ -70,7 +70,20 @@ struct NutritionChatView: View {
     // MARK: - Messages Counter
 
     private var messagesCounter: some View {
-        Group {
+        VStack(spacing: 0) {
+            // Disclaimer banner — always visible
+            HStack(spacing: 6) {
+                Image(systemName: "info.circle")
+                    .font(.caption2)
+                Text("For informational purposes only — not medical advice.")
+                    .font(.caption2)
+                Spacer()
+            }
+            .foregroundColor(.gray.opacity(0.7))
+            .padding(.horizontal)
+            .padding(.vertical, 6)
+            .background(Color.brandCard)
+
             if !isPro {
                 HStack {
                     Image(systemName: "bubble.left.and.bubble.right")
