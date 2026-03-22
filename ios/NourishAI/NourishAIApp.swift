@@ -17,6 +17,11 @@ struct NourishAIApp: App {
         ])
         let config = ModelConfiguration(isStoredInMemoryOnly: false)
         container = try! ModelContainer(for: schema, configurations: [config])
+
+        // RevenueCat (activate after adding SPM package from https://github.com/RevenueCat/purchases-ios.git)
+        // RevenueCatManager.shared.configure()
+        // Note: SubscriptionManager products are loaded lazily in SubscriptionView via .task { }
+        // After migration, RevenueCatManager.shared.configure() replaces that lazy load.
     }
 
     var body: some Scene {

@@ -1,3 +1,7 @@
+// MIGRATION NOTE: This view uses StoreKit 2 directly.
+// After adding RevenueCat SPM, update purchase/restore calls to use RevenueCatManager.shared
+// See RevenueCatManager.swift for the migration path.
+
 import SwiftUI
 import SwiftData
 import StoreKit
@@ -153,6 +157,8 @@ struct SubscriptionView: View {
                                 .font(.caption2)
                                 .foregroundColor(.brandGreen)
                             Button("Restore Purchases") {
+                                // TODO: After RevenueCat SPM is added, replace with:
+                                // Task { try? await RevenueCatManager.shared.restorePurchases() }
                                 Task { await subscriptionManager.restorePurchases() }
                             }
                                 .font(.caption2)
@@ -263,6 +269,8 @@ struct SubscriptionView: View {
         }
 
         do {
+            // TODO: After RevenueCat SPM is added, replace with:
+            // try await RevenueCatManager.shared.purchasePackage(rcPackage)
             let success = try await subscriptionManager.purchase(product)
             isPurchasing = false
             if success {
