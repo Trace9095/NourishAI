@@ -1,0 +1,44 @@
+{
+  "app_name": "NourishAI: Nutrition Tracker",
+  "subtitle": "AI-Powered Food & Macro Logging",
+  "bundle_id": "com.epicai.nourishai",
+  "version": "1.0.0",
+  "build_number": "1",
+  "primary_category": "Health & Fitness",
+  "secondary_category": "Food & Drink",
+  "age_rating": "4+",
+  "content_rights": {
+    "contains_third_party_content": false
+  },
+  "privacy_policy_url": "https://nourishhealthai.com/privacy",
+  "support_url": "https://nourishhealthai.com/support",
+  "marketing_url": "https://nourishhealthai.com",
+  "locales": {
+    "en-US": {
+      "name": "NourishAI: Nutrition Tracker",
+      "subtitle": "AI-Powered Food & Macro Logging",
+      "keywords": "nutrition tracker,calorie counter,macro tracker,AI nutrition,food log,diet,meal plan,health,protein",
+      "description": "NourishAI is the nutrition tracker that finally solved the problem every other app ignored: manual food logging is too slow, too tedious, and most people quit within a week.\n\nNourishAI uses AI to do the logging for you. Photograph your meal — restaurant plate, home-cooked dinner, snack from a bag — and the AI identifies what it is, estimates the portion, and logs the full nutritional breakdown in under 10 seconds. No barcode scanning required for packaged food. No searching databases for \"chicken breast, 4oz, grilled, unseasoned.\" Just take a photo and move on with your meal.\n\nAI food recognition:\n- Photograph any meal and get instant nutritional breakdown\n- AI identifies mixed dishes and estimates components separately\n- Portion size estimation based on visual cues and plate size\n- Restaurant meal recognition with menu-specific data for major chains\n- Packaged food barcode scan as backup for items the AI asks about\n- Continuous accuracy improvement — correct the AI once and it learns\n\nWhat's tracked:\n- Calories\n- Macros (protein, carbohydrates, fat)\n- Micronutrients (fiber, vitamins A, C, D, E, K, B12, iron, calcium, zinc, folate, and more)\n- Hydration (water intake with reminders)\n- Net carbs (for keto tracking)\n- Sugar and added sugar\n- Sodium and cholesterol\n- Omega-3 and Omega-6\n\nGoals and plans:\n- Set goals (weight loss, muscle gain, maintenance, athletic performance)\n- AI-generated daily targets based on your body metrics, activity level, and goal\n- Macro ratio customization (standard, keto, high-protein, plant-based, or custom)\n- Weekly calorie cycling for more advanced approaches\n- Adjust targets as body metrics or goals change\n\nInsights:\n- Nutritional pattern analysis — what trends over 30 days reveal about your eating\n- Meal timing insights — when you eat your biggest meals and how it correlates with your goals\n- Deficiency alerts — nutrients you're consistently under-consuming\n- Progress toward goal with realistic projections\n- Weekly nutrition report with actionable suggestions\n\nMeal planning:\n- AI-generated weekly meal plans based on your nutritional targets\n- Grocery list export from your weekly plan\n- Recipe scaling (for any serving size)\n- Recipe nutritional breakdown from URL or ingredient list\n\nIntegrations:\n- Apple Health sync (bidirectional — steps, workouts, HRV inform calorie targets)\n- Google Fit sync\n- MyFitnessPal data import for existing users switching over\n\nFor serious athletes:\nNourishAI Pro includes race-day and competition fueling calculators, periodization-aware nutrition planning (align your macros to your training phases), and recovery nutrition guidance.\n\nYou don't need a nutrition degree to eat well. You need NourishAI.\n\nDownload NourishAI. Take a photo. Know what you ate. Actually stick with it.",
+      "promotional_text": "Photograph your food and AI logs it instantly. Smart nutrition tracking without the manual entry.",
+      "whats_new": "NourishAI v1.0 — the AI nutrition tracker that eliminates manual logging.\n\nLaunch features:\n- AI food recognition from photos (restaurant, home, packaged)\n- Full macro and micronutrient tracking (20+ nutrients)\n- Calorie, protein, carb, fat goals with customizable ratios\n- AI meal plan generator with grocery list export\n- Deficiency alerts and nutritional pattern analysis\n- Apple Health and Google Fit integration\n- MyFitnessPal data import\n- Hydration tracking with reminders\n- Weekly nutrition report\n\nRecipe database with 500,000+ entries and restaurant chain integrations coming in v1.1. Download and stop dreading the food log.",
+      "screenshot_descriptions": [
+        "Screenshot 1: \"Photograph your meal — AI logs it in 10 seconds\" — No typing, no searching databases, no barcode scanning required",
+        "Screenshot 2: \"Identify mixed dishes and estimate portions automatically\" — Restaurant plate, home cooking, or a snack — the AI figures it out",
+        "Screenshot 3: \"Full macro and micronutrient tracking beyond just calories\" — Protein, fat, carbs, fiber, 15+ vitamins and minerals — all from one photo",
+        "Screenshot 4: \"AI-generated meal plans built around your exact targets\" — Grocery list included — tell it your goals and it does the planning",
+        "Screenshot 5: \"Deficiency alerts catch what you're consistently missing\" — 30-day patterns reveal the nutritional gaps in your real eating habits",
+        "Screenshot 6: \"Apple Health and Google Fit sync your workouts to your targets\" — Active day = recalibrated calorie targets — automatically"
+      ]
+    }
+  },
+  "screenshots": {
+    "iphone_65": [
+      "screenshots/iphone/01_main.png",
+      "screenshots/iphone/02_feature.png",
+      "screenshots/iphone/03_feature.png",
+      "screenshots/iphone/04_feature.png",
+      "screenshots/iphone/05_feature.png",
+      "screenshots/iphone/06_share.png"
+    ]
+  }
+}
